@@ -37,9 +37,10 @@ def main() -> None:
 
     b.plot(early.year, early.ratio10_consol, color=CONSOL, lw=2, marker="o", ms=4, mfc=SURFACE, label="Consolidated (1980–2002: privately held, FD-5 buckets)")
     b.plot(late.year, late.ratio10_consol, color=CONSOL, lw=2, marker="o", ms=4)
-    b.plot(d.year, d.ratio10_treasury, color=TREASURY, lw=2, marker="o", ms=4, label="Treasury only (MSPD, 2001–)")
+    b.plot(d.year, d.ratio10_treasury, color=TREASURY, lw=2, marker="o", ms=4, label="Treasury only: marketable debt, no currency (MSPD, 2001–)")
     b.set_ylabel("pp inflation per pp rate")
-    b.set_title("Inflation layer: sustained surprise inflation per +1pp permanent rate rise (10 years, no fiscal offset)",
+    b.set_title("Inflation layer: sustained surprise inflation per +1pp permanent rate rise (10 years, no fiscal offset)\n"
+                "erosion base: non-indexed debt not yet repriced + currency (+ reserves before 2008)",
                 loc="left", color=INK, fontsize=10)
     b.legend(frameon=False, loc="upper left", labelcolor=INK, fontsize=9)
     b.set_ylim(0, 4)
@@ -48,7 +49,7 @@ def main() -> None:
     c.set_ylabel("pp per year")
     c.set_title("Combined: inflation needed to cover the fiscal gap (φ* − φ̂)+ after a +1pp rate rise",
                 loc="left", color=INK, fontsize=10)
-    for yr in (1981, 2006, 2023):
+    for yr in (1981, 2007, 2023):
         v = d.loc[d.year == yr, "dpi_to_cover_gap"].item()
         c.annotate(f"{v:.2f}", xy=(yr, v), xytext=(0, 3), textcoords="offset points", ha="center", color=INK, fontsize=9)
     c.set_xlabel("year-end   (shaded: 1980–2002 from Treasury Bulletin FD-5 maturity buckets)")

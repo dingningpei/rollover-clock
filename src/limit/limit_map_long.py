@@ -34,13 +34,17 @@ def build() -> pd.DataFrame:
     rows = []
     for t in range(1980, 2026):
         src = early if t <= 2002 else late
-        r, b, ratio = src.loc[t, "r_stock"], src.loc[t, "b_consol"], src.loc[t, "dpi_consol_none"]
+        r, b = src.loc[t, "r_stock"], src.loc[t, "b_consol"]
+        ratio, intP, jb = src.loc[t, "ratio_H10_consol"], src.loc[t, "intP_H10_consol"], src.loc[t, "jump_base_H10_consol"]
         g_tr = gr.loc[t - 9:t].mean()
         g_fw = gr.loc[t + 1:t + 10].mean() if t + 10 <= gr.index.max() else (sep[t] + 2.0) / 100
         g_sep = (sep[t] + 2.0) / 100 if t in sep.index else np.nan
         row = {"year": t, "source": "FD-5 buckets" if t <= 2002 else "MSPD+SOMA", "r": r, "b": b,
                "g_forward": g_fw, "g_trailing": g_tr, "g_sep": g_sep, "ratio10_consol": ratio,
-               "ratio10_treasury": late.loc[t, "dpi_treasury_none"] if t in late.index else np.nan}
+               "ratio5_consol": src.loc[t, "ratio_H5_consol"], "ratio15_consol": src.loc[t, "ratio_H15_consol"],
+               "ratio10_narrow_consol": src.loc[t, "ratio_narrow_H10_consol"],
+               "ratio10_treasury": late.loc[t, "ratio_H10_treasury"] if t in late.index else np.nan,
+               "intP_consol": intP, "jump_base_consol": jb}
         row["phistar"] = 1 - g_fw / (r + PSI_BASE * b)
         band = [1 - g / (r + p * b) for g in (g_fw, g_tr) for p in (PSI_LO, PSI_BASE, PSI_HI)]
         row["phistar_lo"], row["phistar_hi"] = min(band), max(band)
@@ -48,13 +52,12 @@ def build() -> pd.DataFrame:
         row["phi_hat"] = phi_hat_regime(t)
         row["gap"] = max(row["phistar"] - row["phi_hat"], 0.0)
         row["dpi_to_cover_gap"] = row["gap"] * ratio
-        # one-time permanent price-level jump covering the same gap over H=10 (undiscounted), % of debt:
-        # dp = gap * dr * int_0^H P = gap * dr * H * ratio / (1 + ratio)   (paper, Section 3.4)
-        H = 10.0
-        row["dp_jump_to_cover_gap"] = row["gap"] * 1.0 * H * ratio / (1 + ratio)
-        rt = row["ratio10_treasury"]
-        row["intP_consol"] = H * ratio / (1 + ratio)
-        row["intP_treasury"] = H * rt / (1 + rt) if rt == rt else np.nan
+        row["dpi_to_cover_gap_H5"] = row["gap"] * row["ratio5_consol"]
+        row["dpi_to_cover_gap_H15"] = row["gap"] * row["ratio15_consol"]
+        row["dpi_to_cover_gap_narrow"] = row["gap"] * row["ratio10_narrow_consol"]
+        # one-time permanent price-level jump covering the same gap over H = 10 (undiscounted), % of debt:
+        # dp = gap * dr * int_0^H P_r / (N/b + C/b)   (paper, Section 3.4 and Appendix B.4)
+        row["dp_jump_to_cover_gap"] = row["gap"] * 1.0 * intP / jb
         rows.append(row)
     return pd.DataFrame(rows)
 
@@ -62,8 +65,9 @@ def build() -> pd.DataFrame:
 def main() -> None:
     d = build()
     d.to_csv(OUT / "limit_map_1980_2025.csv", index=False)
-    print(d[["year", "r", "b", "g_forward", "phistar", "phistar_lo", "phistar_hi", "phi_hat", "gap",
-             "ratio10_consol", "dpi_to_cover_gap"]].round(3).to_string(index=False))
+    print(d[["year", "r", "b", "g_forward", "phistar", "phi_hat", "gap", "ratio10_treasury", "ratio10_consol",
+             "ratio10_narrow_consol", "dpi_to_cover_gap", "dpi_to_cover_gap_narrow", "dp_jump_to_cover_gap"]]
+          .round(3).to_string(index=False))
 
 
 if __name__ == "__main__":

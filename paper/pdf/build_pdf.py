@@ -64,7 +64,7 @@ def tidy(md: str) -> str:
             line = re.sub(r"\^\{([^}]*)\}", r"<sup>\1</sup>", line)
             line = re.sub(r"\^(req|gap|∞|H|h)", r"<sup>\1</sup>", line)
             line = re.sub(r"_\{([^}]*)\}", r"<sub>\1</sub>", line)
-            line = re.sub(r"(?<=[A-Za-z])_t\b", r"<sub>t</sub>", line)
+            line = re.sub(r"(?<=[A-Za-z])_([A-Za-z])\b", r"<sub>\1</sub>", line)     # P_t, P_N, F_N
             line = re.sub(r"(?<![A-Za-z\\*])([rbsφgψ])\*(?!\*)", r"\1\\*", line)   # r*, b*, φ* are not emphasis
         out.append(line)
         prev = line

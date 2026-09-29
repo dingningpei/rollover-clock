@@ -8,7 +8,7 @@ When can a sovereign that borrows in its own reserve currency keep rolling its d
 
 The first is a **fiscal layer**. Debt is locally stable if and only if the primary surplus offsets at least a share φ* = 1 − g/(r + ψb) of the marginal interest cost of debt. We show that this threshold does not depend on the maturity structure of the debt, for any repricing kernel.
 
-The second is an **inflation layer**. If the fiscal response falls short, surprise inflation must substitute for it. How much inflation that takes depends entirely on how fast the consolidated liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*.
+The second is an **inflation layer**. If the fiscal response falls short, surprise inflation must substitute for it. How much inflation that takes depends on how fast the consolidated interest-bearing liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*, and on how much of the consolidated balance sheet inflation can erode: nominal debt that has not yet repriced, and currency.
 
 We measure the clock security by security for the United States from 1980 to 2025, both for the Treasury alone and consolidated with the Federal Reserve, with reserves treated as overnight debt. The clock predicts the official average interest rate on marketable debt far better than maturity summaries do. Over 12–36 months the mean absolute error is 0.05–0.07 percentage points, against 0.28–0.62 for a WAM-based clock. Frozen at end-2021, it tracks the 2022–25 rise in Treasury interest costs within about 0.05 pp. Using the Fed's actual policy rates and expenses, it also reproduces the Fed's cumulative operating loss: a predicted deferred asset of −$245bn against −$243bn actual at end-2025.
 
@@ -16,9 +16,9 @@ Three findings follow:
 
 1. The fiscal threshold in 2023–25 (φ* ≈ 0.47) is not unusual. It is back in its 1980–2007 range after the 2008–21 period in which r + ψb < g.
 2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since.
-3. Quantitative easing roughly doubled the inflation needed per unit of relief, by shortening the consolidated clock.
+3. Quantitative easing raised the inflation needed per unit of relief by roughly 60%. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed them with interest-bearing reserves that reprice overnight.
 
-Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.2–1.4 pp per year for a decade. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
+Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
 
 ---
 
@@ -34,13 +34,13 @@ $$(1-\phi)\,(r+\psi b)<g .$$
 
 Here φ is the share of marginal interest cost offset by the primary surplus, and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it, and that the result holds for any maturity structure. Shorter debt makes a rate shock bite faster, but it does not change whether the system is stable.
 
-**The inflation layer is all about maturity.** If the fiscal response is below the threshold, the gap must be closed some other way. For a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only the debt that has not yet repriced; debt that rolls over at new, Fisher-adjusted rates escapes. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years:
+**The inflation layer depends on maturity and on what the government owes.** If the fiscal response is below the threshold, the gap must be closed some other way. For a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced: debt that rolls over at new, Fisher-adjusted rates escapes, and currency, which never reprices, does not. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years, and on the erodible share E(h) of the balance sheet:
 
-$$\Delta\pi^{req}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P(h)\,dh}{\int_0^H[1-P(h)]\,dh}.$$
+$$\Delta\pi^{req}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P(h)\,dh}{\int_0^H E(h)\,dh}.$$
 
-Two implications follow. First, sustained inflation only buys time. Because P(h) → 1, the required rate diverges as the horizon lengthens, so only a fiscal response or a one-time price-level jump closes the gap for good. Second, the relevant clock is the **consolidated** one. When the central bank swaps long Treasuries for interest-bearing reserves, it shortens the maturity of the government's liabilities to the private sector. The inflation substitute becomes costlier, even though Treasury-only maturity statistics may be lengthening at the same time.
+Two implications follow. First, inflation on debt only buys time. Debt reprices, so its erosion runs out as the horizon lengthens; only currency can be taxed permanently. At end-2025, covering the fiscal gap with a permanent inflation tax on currency would take about 5.6 pp of extra inflation a year, before any flight from cash. Second, the relevant balance sheet is the **consolidated** one. A central bank that holds Treasuries against currency turns interest-bearing debt into a zero-interest liability that inflation erodes. One that holds them against interest-bearing reserves does the opposite: it shortens the maturity of the government's liabilities to the private sector and takes them out of the inflation-tax base. The inflation substitute becomes costlier, even though Treasury-only maturity statistics may be lengthening at the same time.
 
-**Measurement.** We build the clock from the Monthly Statement of the Public Debt (MSPD) security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP from SOMA data, and add reserves and reverse repos as overnight liabilities. We extend the series to 1980 with hand-transcribed maturity distributions of privately held debt from the Treasury Bulletin. The security-level reconstruction matches official totals exactly in every year. The Fed's holdings match its balance sheet exactly from 2007.
+**Measurement.** We build the clock from the Monthly Statement of the Public Debt (MSPD) security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP from SOMA data, add reserves and reverse repos as overnight liabilities, and add currency to the base that inflation erodes. We extend the series to 1980 with hand-transcribed maturity distributions of privately held debt from the Treasury Bulletin. The security-level reconstruction matches official totals exactly in every year. The Fed's holdings match its balance sheet exactly from 2007.
 
 **Validation.** Two tests show that the clock is a sufficient statistic for interest-cost pass-through in a way that maturity summaries are not.
 
@@ -51,11 +51,11 @@ Two implications follow. First, sustained inflation only buys time. Because P(h)
 
 1. The fiscal threshold today is ordinary. φ* in 2023–25 is about 0.47, within its 1980–2007 range of roughly 0.1–0.56. The 2008–21 period, when the threshold was negative, was the exception.
 2. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold; the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024).
-3. The consolidated clock sped up. Since 2008 the consolidated inflation-layer ratio has been 1.3–1.7 times the Treasury-only ratio. Before QE the two were almost identical.
+3. QE removed the Fed's inflation-tax cushion. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal, and the consolidated ratio has risen from 1.2–1.6 to 2.0–2.6.
 
-The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.22–1.41 pp per year for ten years, against 0.93 in 2006 and 0.49 in 1981.
+The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981.
 
-Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Undoing QE cuts it by about 24%. Returning reserves to their 2019 level or terming out a tenth of bills cuts it by 7–9%. Losing 50–100bp of convenience yield raises it by 8–14%.
+Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by about 18%. Returning reserves to their 2019 level or terming out a tenth of bills cuts it by 6–7%. Losing 50–100bp of convenience yield raises it by 8–14%.
 
 **Contribution.** None of the ingredients is new on its own:
 
@@ -138,20 +138,37 @@ $$\phi^*=1-\frac{g}{r+\psi b}.$$
 
 ### 3.3 The inflation layer
 
-Let a permanent real-rate rise Δr add extra interest Δr·b·P(h). Sustained surprise inflation Δπ lowers the real rate on debt that has not yet repriced, eroding Δπ·b·[1 − P(h)]. Replacing an unfinanced share u of the extra interest over horizon H requires
+Let a permanent real-rate rise Δr add extra interest Δr·b·P(h), where P is the clock of all interest-bearing liabilities; inflation-indexed debt reprices its real coupon at maturity like any other bond.
 
-$$\Delta\pi^{req}(H)=u\,\Delta r\,\frac{\int_0^H P}{\int_0^H(1-P)} .$$
+Sustained surprise inflation Δπ lowers the real value of nominal liabilities that have not yet repriced. Two parts of the consolidated balance sheet qualify:
+- non-indexed debt N, with its own clock P_N;
+- currency C, which pays no interest and never reprices. Before October 2008 this also includes reserves.
 
-**Corollary (inflation only buys time).** ∫₀^∞[1 − P] = ∫₀^∞[1 − F]e^{−gh} dh is finite, while ∫₀^H P grows with H. So Δπ^req(H) → ∞ whenever u > 0. No constant sustained inflation rate can permanently replace a fiscal response.
+Inflation-indexed debt cannot be eroded. Per unit of interest-bearing debt b, the erodible share at horizon h is
+
+$$E(h)=\frac{N}{b}\,\big[1-P_N(h)\big]+\frac{C}{b}.$$
+
+Replacing an unfinanced share u of the extra interest over horizon H requires
+
+$$\Delta\pi^{req}(H)=u\,\Delta r\,\frac{\int_0^H P}{\int_0^H E} .$$
+
+If all debt were nominal and there were no currency, the denominator would be ∫(1 − P).
+
+**Corollary (inflation on debt only buys time).** ∫₀^∞[1 − P_N] = ∫₀^∞[1 − F_N]e^{−gh} dh is finite, so the debt part of the erosion base runs out. Only the currency part grows with H. As H → ∞,
+
+$$\Delta\pi^{req}(H)\to u\,\Delta r\,\frac{b}{C},$$
+
+the permanent inflation tax on currency that covers the gap. Without currency, Δπ^req(H) → ∞. At end-2025 b/C ≈ 12, so with u = 0.46 the limit is about 5.6 pp per year indefinitely, before any fall in currency demand. In 2007 it was about 1.9.
 
 **Combined metric.** Local stability requires offsetting the share φ* of marginal interest cost. With a historical offset φ̂ < φ*, the missing share is u = (φ* − φ̂)⁺. This gives the two-layer distance to the limit:
 
-$$\Delta\pi^{gap}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P}{\int_0^H(1-P)}.$$
+$$\Delta\pi^{gap}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P}{\int_0^H E}.$$
 
 The approximations are:
 - φ* is evaluated at r rather than r + Δr, which is conservative;
 - flows are matched undiscounted;
 - Δr is exogenous;
+- currency demand does not respond to inflation, which makes the requirement a lower bound;
 - H is finite.
 
 ### 3.4 Which inflation? Reconciling the maturity sign
@@ -164,7 +181,7 @@ Let w(s) be the share of payments due at s and p(s) the cumulative surprise in t
 | Transitory surprise until τ | b·Δp·F(τ) | helps (Reis 2017: "more of the debt coming due") |
 | Sustained inflation, p(s) = Δπ·s | b·Δπ·D | hurts (Cochrane; Barro–Bianchi; HRR; this paper) |
 
-QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P, which depends on maturity only through the cost of the shock.
+QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P / (N/b + C/b), which depends on maturity only through the cost of the shock.
 
 ## 4. Measuring the rollover clock
 
@@ -177,14 +194,17 @@ QE therefore makes a front-loaded surprise more effective and a persistent infla
 **Federal Reserve, 2003–2025.**
 - SOMA Treasury holdings by CUSIP, including TIPS inflation compensation, from the New York Fed. They match H.4.1 Treasuries held outright exactly from 2007, and within 0.25–0.51% in 2003–06.
 - Reserve balances and reverse repurchase agreements from H.4.1. Both reprice overnight.
-- Currency (zero interest) and the Treasury General Account (intragovernmental) are excluded.
+- Currency pays no interest, so it is not part of interest-bearing debt b. It enters the erosion base of the inflation layer (Section 3.3), measured as H.4.1 currency in circulation in the same week as reserves. Reserves paid no interest before October 2008, so through 2007 they are counted with currency.
+- The Treasury General Account is intragovernmental and excluded.
 
 **1980–2002.** Treasury Bulletin table FD-5 (FD-7 before 1983): marketable debt held by private investors, which excludes the Fed and government accounts, by remaining-maturity bucket.
 - Reserves paid no interest before October 2008, so privately held marketable debt is the consolidated interest-bearing liability for that period.
 - We transcribed 24 December rows from FRASER scans. Every row's buckets sum to its total within ±1 (in $mn).
 - Checks against the exact data:
   - The December 2003 FD-5 total (2,908,029) matches MSPD minus SOMA (2,910,053) within 0.07%.
-  - Bucketing understates the 10-year inflation-layer ratio by a stable 0.157 (s.d. 0.028) on 2003–07 exact data. We correct for this.
+  - Bucketing understates the 10-year inflation-layer ratio by a stable 0.077 (s.d. 0.016) on 2003–07 exact data. We correct for this.
+- FD-5 does not separate inflation-indexed notes (first issued in 1997). We remove them from the erosion base by maturity bucket, using the Treasury Bulletin's FD-2 totals and the maturities of the TIPS issues outstanding at each year-end. Before 2003 this also removes the Fed's small TIPS holdings (8% of TIPS in 2003).
+- The zero-interest base is currency in circulation plus reserve balances, December averages (FRED CURRCIR and RESBALNS). It was 27–33% of privately held marketable debt in 1980–2002, against 8% in 2025.
 
 **Precedent.** Security-level accounting of U.S. debt returns and its effect on debt/GDP dynamics goes back to Hall and Sargent (2011); we use the same MSPD-based building blocks to measure repricing speed rather than realized returns.
 
@@ -277,17 +297,17 @@ The consolidated clock is thus validated where QE matters most. The 2022–25 ra
 
 ![Figure 3](figures/fig3_limit_map.png)
 
-*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫(1 − P), consolidated and Treasury only. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years.*
+*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years.*
 
 **Table 2. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
 
 | Period | φ* | φ̂ | Gap | Inflation-layer ratio | Inflation to cover gap (pp/yr) |
 |---|---|---|---|---|---|
-| 1981–85 | 0.41–0.56 | 0.39 | 0.02–0.17 | 2.4–2.9 | 0.07–0.49 |
-| 1986–99 | 0.12–0.43 | 0.39 | ≈ 0 | 2.0–2.4 | ≈ 0 |
-| 2005–07 | 0.28–0.44 | 0 | 0.28–0.44 | 2.1–2.2 | 0.60–0.93 |
-| 2009–21 | mostly < 0 (2017–19: 0.11–0.21) | 0 | ≈ 0 (2017–19: 0.11–0.21) | 2.5–3.3 | ≈ 0 (2017–19: 0.29–0.55) |
-| 2023–25 | 0.46–0.48 | 0 | 0.46–0.48 | 2.6–3.0 | 1.22–1.41 |
+| 1981–85 | 0.41–0.56 | 0.39 | 0.02–0.17 | 1.4–1.6 | 0.04–0.23 |
+| 1986–99 | 0.12–0.43 | 0.39 | ≈ 0 | 1.3–1.6 | ≈ 0 |
+| 2005–07 | 0.28–0.44 | 0 | 0.28–0.44 | 1.4–1.5 | 0.38–0.61 |
+| 2009–21 | mostly < 0 (2017–19: 0.11–0.21) | 0 | ≈ 0 (2017–19: 0.11–0.21) | 2.0–2.6 | ≈ 0 (2017–19: 0.23–0.43) |
+| 2023–25 | 0.46–0.48 | 0 | 0.46–0.48 | 2.2–2.4 | 1.01–1.12 |
 
 Three readings follow.
 
@@ -296,11 +316,17 @@ Three readings follow.
    - Before 2004, a legislated offset of about 0.39 roughly met the threshold, and the high-rate 1980s and early 1990s ended in consolidation.
    - Since 2004 the offset has been about zero, so the gap equals the threshold itself.
    - The gap first opened in 2005–07, when φ* was 0.28–0.44; the 2008–21 low-rate period then hid it.
-3. **QE raised the price of the inflation substitute.** The consolidated ratio rose from about 2.0–2.2 before 2008 to 2.6–3.3 afterwards, while the Treasury-only ratio stayed near 2.
+3. **QE raised the price of the inflation substitute.** The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on.
+   - Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07). The Fed held Treasuries against currency, which inflation erodes.
+   - Since 2009 the two have been about equal (0.86–1.19). The Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight.
 
-The combined requirement in 2023–25 is the largest since 1980.
+The combined requirement in 2023–25 is the largest since 1980, about 1.8 times its 2006–07 level.
 
-The equivalent one-time surprise price-level jump is about 3.4% of debt at end-2025. It is much less sensitive to consolidation (ratio 1.09–1.17 rather than 1.3–1.7), as Section 3.4 predicts.
+The equivalent one-time surprise rise in the price level is about 3.3% (3.27–3.42% in 2023–25). As Section 3.4 predicts, it is much less sensitive to consolidation: since 2009 the consolidated value has been 0.95–1.05 times the Treasury-only value.
+
+**Sensitivity.**
+- *Horizon.* With H = 5 the 2023–25 requirement is 0.60–0.69 pp per year; with H = 15 it is 1.33–1.46.
+- *Erosion base.* If all debt counted as erodible and currency were ignored, the requirement would be 1.22–1.41. Ignoring currency alone raises the 2025 consolidated ratio by a third (2.92 against 2.18).
 
 ### 5.3 Can φ be identified from U.S. data?
 
@@ -323,21 +349,24 @@ We therefore do not use an own estimate. The paper's conclusions rest on the thr
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
-| Baseline (consolidated; g = 3.8%, SEP) | 0.46 | 0.46 | 1.21 | — | 3.34 |
-| Fiscal response restored (φ̂ = 0.39) | 0.46 | 0.07 | 0.19 | -84% | 0.52 |
-| Fiscal response 0.25 (Bohn-based) | 0.46 | 0.21 | 0.55 | -54% | 1.54 |
-| No QE (Treasury-only clock) | 0.46 | 0.46 | 0.92 | -24% | 3.08 |
-| QT: reserves to $1.9tn, Treasuries back to private | 0.46 | 0.46 | 1.12 | -7% | 3.27 |
-| Treasury terms out: 10% of bills → 10y | 0.46 | 0.46 | 1.11 | -8% | 3.26 |
-| Convenience yield −50bp | 0.50 | 0.50 | 1.30 | +8% | 3.60 |
-| Convenience yield −100bp | 0.53 | 0.53 | 1.38 | +14% | 3.83 |
-| Trend growth 4% | 0.43 | 0.43 | 1.14 | -5% | 3.15 |
-| Trend growth 3.5% | 0.50 | 0.50 | 1.30 | +8% | 3.64 |
-| ψ = 2bp (CBO) | 0.38 | 0.38 | 0.99 | -18% | 2.74 |
-| ψ = 4.5bp | 0.55 | 0.55 | 1.45 | +20% | 4.00 |
+| Baseline (consolidated; g = 3.8%, SEP) | 0.46 | 0.46 | 1.00 | — | 3.26 |
+| Fiscal response restored (φ̂ = 0.39) | 0.46 | 0.07 | 0.16 | −84% | 0.51 |
+| Fiscal response 0.25 (Bohn-based) | 0.46 | 0.21 | 0.46 | −54% | 1.50 |
+| No QE: Fed Treasuries = currency, no reserves | 0.46 | 0.46 | 0.83 | −18% | 3.07 |
+| Treasury's own liabilities (Fed ignored) | 0.46 | 0.46 | 1.02 | +1% | 3.31 |
+| QT: reserves to $1.9tn, Treasuries back to private | 0.46 | 0.46 | 0.94 | −6% | 3.20 |
+| Treasury terms out: 10% of bills → 10y | 0.46 | 0.46 | 0.93 | −7% | 3.18 |
+| Convenience yield −50bp | 0.50 | 0.50 | 1.08 | +8% | 3.51 |
+| Convenience yield −100bp | 0.53 | 0.53 | 1.15 | +14% | 3.73 |
+| Trend growth 4% | 0.43 | 0.43 | 0.95 | −5% | 3.07 |
+| Trend growth 3.5% | 0.50 | 0.50 | 1.08 | +8% | 3.55 |
+| ψ = 2bp (CBO) | 0.38 | 0.38 | 0.82 | −18% | 2.67 |
+| ψ = 4.5bp | 0.55 | 0.55 | 1.20 | +20% | 3.90 |
+
+In the No-QE scenario the Fed holds only as many Treasuries as it has currency outstanding, as before 2008. The rest return to private holders pro rata to the SOMA maturity structure, and reserves and reverse repos go to zero. Debt/GDP is held at its baseline, to isolate the change in composition.
 
 - **The fiscal response is the dominant lever.**
-- **Balance-sheet policy moves only the inflation layer.** QE, QT and Treasury's maturity choice change the cost of the inflation substitute by 7–24%, but they cannot change the threshold.
+- **Balance-sheet policy moves only the inflation layer.** QE, QT and Treasury's maturity choice change the cost of the inflation substitute by 6–18%, but they cannot change the threshold.
 - **Losing the convenience yield, slower growth and a steeper debt-rate schedule raise the threshold itself.**
 
 Two limitations: the balance-sheet scenarios hold r fixed and ignore the term-premium effects of QE and QT, and all scenarios are static comparisons.
@@ -346,15 +375,16 @@ Two limitations: the balance-sheet scenarios hold r fixed and ignore the term-pr
 
 A reserve-currency sovereign does not run into a debt wall. It runs into a choice between fiscal adjustment and an inflation tax.
 
-The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice. That speed is measurable, and QE shortened it.
+The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
 
-The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Because sustained inflation only buys time, the durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
+The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
 **Open issues.**
 - The fiscal response φ̂ comes from the literature, and its post-2004 collapse rests mainly on one study. Our own exposure × rate-shock design is too weak in U.S. annual data (Section 5.3); a cross-country panel is the natural next step.
 - Expected growth after 2015 comes from the FOMC's longer-run projections, not from a model of trend growth.
 - The balance-sheet counterfactuals abstract from term-premium effects.
 - The combined metric is a first-order, undiscounted composition.
+- Currency demand is held fixed. A sustained inflation tax would shrink it, so the requirements are lower bounds in that respect.
 
 ---
 
@@ -409,15 +439,17 @@ The United States in 2023–25 faces an ordinary fiscal threshold with an unusua
 - one week for floating-rate notes (weekly reset);
 - zero (overnight) for reserve balances and reverse repurchase agreements.
 
-The clock adds growth-financing issuance at the new rate: P_t(h) = 1 − (1 − F_t(h))e^{−gh}, with g = 4% for the descriptive clock (Figure 1) and the year's g in the limit calculations.
+The clock adds growth-financing issuance at the new rate: P_t(h) = 1 − (1 − F_t(h))e^{−gh}, with g = 4% for the descriptive clock (Figure 1) and the year's g in the limit calculations. The erosion clock P_N is built the same way from non-indexed liabilities only.
+
+**Zero-interest base.** Currency in circulation from H.4.1 (series RESTBC), in the same week as reserves, from 2003. Before that, December averages of currency in circulation and reserve balances (FRED CURRCIR and RESBALNS). The two currency sources differ by about 1% where they overlap. Reserves are in the zero-interest base through 2007 and in overnight interest-bearing debt from 2008.
 
 **Treasury-only stock.** All unmatured marketable Treasuries in MSPD Table 3 at the year-end, one row per CUSIP, including those held by the Federal Reserve.
 
 **Consolidated stock.** Marketable Treasuries minus SOMA holdings, matched by CUSIP (with TIPS inflation compensation), plus reserve balances and reverse repos from the H.4.1 week closest to, and not after, the year-end. SOMA CUSIPs that are absent from the MSPD year-end snapshot all mature between the SOMA date and 31 December (at most $61bn, 0.3% of the stock) and are dropped.
 
-**1980–2002.** FD-5 reports privately held marketable debt in five remaining-maturity buckets: within 1 year, 1–5, 5–10, 10–20 and 20 years and over. Within each bucket we spread par uniformly over the bucket (upper edge of the last bucket: 30 years). On the exact security-level data for 2003–07, this bucketing understates the ten-year inflation-layer ratio ∫P/∫(1−P) by 0.157 (s.d. 0.028) and the remaining-maturity rate r by 0.28 pp. We add both corrections to the 1980–2002 values.
+**1980–2002.** FD-5 reports privately held marketable debt in five remaining-maturity buckets: within 1 year, 1–5, 5–10, 10–20 and 20 years and over. Within each bucket we spread par uniformly over the bucket (upper edge of the last bucket: 30 years). On the exact security-level data for 2003–07, this bucketing understates the ten-year inflation-layer ratio ∫P/∫E by 0.077 (s.d. 0.016), ∫P by 0.167, and the remaining-maturity rate r by 0.28 pp. We add these corrections to the 1980–2002 values. TIPS (1997–2002) are removed from the erosion base by bucket: their December totals come from Treasury Bulletin table FD-2 and their maturity profile from the TIPS issues outstanding at each year-end.
 
-**Required inflation.** The integrals in Result 3 are evaluated by the trapezoid rule on a grid of 1,201 points over [0, 10] years. F(h) is interpolated between the sorted repricing dates of the security-level data.
+**Required inflation.** The integrals in Result 3 are evaluated by the trapezoid rule on a grid with a step of one month over [0, 15] years. F(h) is interpolated between the sorted repricing dates of the security-level data.
 
 **Backtest projection (Section 4.3).**
 - From the year-end portfolio, every surviving security keeps its rate: the coupon for notes and bonds, the real coupon for TIPS, and the 3-month rate plus spread for FRNs.
@@ -452,16 +484,18 @@ Stability thus depends on (a, c, ψ) and not on the kernel. The exponential kern
 
 With lagged fiscal adjustment, ṡ = κ[s* + φ(r̄b − r*b*) − s], the determinant condition is the same. A scan of 3,180 combinations of (r, φ, κ) with λ ∈ [0.05, 5] finds no case in which λ changes stability.
 
-**B.4 Required inflation (Result 3).** A permanent real-rate rise Δr raises interest by Δr·b·P(h) at horizon h. A sustained surprise inflation Δπ lowers the real rate only on debt that has not yet repriced, since repriced debt carries a Fisher-adjusted coupon. The erosion flow at h is therefore Δπ·b·[1 − P(h)]. Setting cumulative erosion over [0, H] equal to the unfinanced share u of cumulative extra interest,
+**B.4 Required inflation (Result 3).** A permanent real-rate rise Δr raises interest by Δr·b·P(h) at horizon h, where P is the clock of all interest-bearing debt b = N + I (nominal plus indexed).
 
-$$\Delta\pi\,b\int_0^H[1-P]=u\,\Delta r\,b\int_0^H P\;\Rightarrow\;\Delta\pi^{req}(H)=u\,\Delta r\,\frac{\int_0^H P}{\int_0^H(1-P)} .$$
+A sustained surprise inflation Δπ lowers the real value of a nominal liability until it reprices, since repriced debt carries a Fisher-adjusted coupon. Indexed debt I is not eroded at all. Currency C pays no interest and never reprices, so it is eroded at every h. The erosion flow at h is therefore Δπ·{N[1 − P_N(h)] + C} = Δπ·b·E(h). Setting cumulative erosion over [0, H] equal to the unfinanced share u of cumulative extra interest,
+
+$$\Delta\pi\,b\int_0^H E=u\,\Delta r\,b\int_0^H P\;\Rightarrow\;\Delta\pi^{req}(H)=u\,\Delta r\,\frac{\int_0^H P}{\int_0^H E} .$$
 
 With u = (φ* − φ̂)⁺ this is the combined metric of Section 3.3.
 
 Three remarks:
 1. φ* is evaluated at r rather than r + Δr. Since φ* rises with r, the metric is conservative, and the error is second order in Δr.
-2. Because ∫₀^∞(1 − P) = ∫₀^∞(1 − F)e^{−gh}dh < ∞ while ∫₀^H P → ∞, the required rate diverges as H → ∞.
-3. For a one-time level jump Δp, erosion is b·Δp regardless of maturity. So Δp^req = u·Δr·∫₀^H P.
+2. Since ∫₀^∞(1 − P_N) = ∫₀^∞(1 − F_N)e^{−gh}dh < ∞, both ∫₀^H P and ∫₀^H E grow like H, with slopes 1 and C/b. The required rate therefore converges to u·Δr·b/C as H → ∞. Without currency it diverges.
+3. For a one-time level jump Δp, erosion is (N + C)·Δp regardless of maturity. So Δp^req = u·Δr·∫₀^H P / (N/b + C/b).
 
 ## Appendix C. Reproduction
 

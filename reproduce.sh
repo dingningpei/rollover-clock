@@ -19,6 +19,10 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
     "https://markets.newyorkfed.org/api/soma/mbs/get/asof/2021-12-29.json"
   # BEA NIPA annual tables (nominal GDP, primary surplus)
   curl -fsSL -o data/raw/bea/NipaDataA.txt "https://apps.bea.gov/national/Release/TXT/NipaDataA.txt"
+  # Currency in circulation and reserve balances (monthly, $bn), 1980-2002: the zero-interest base
+  mkdir -p data/raw/fred
+  curl -fsSL -o data/raw/fred/CURRCIR.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CURRCIR"
+  curl -fsSL -o data/raw/fred/RESBALNS.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RESBALNS"
 fi
 
 # Treasury MSPD, auctions and average rates (FiscalData API) and SOMA by CUSIP (NY Fed API);

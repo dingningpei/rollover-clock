@@ -1,9 +1,13 @@
 """Counterfactuals at end-2025 for the two-layer limit (Step 6).
 
-Baseline: consolidated end-2025 portfolio (MSPD by CUSIP net of SOMA + reserves + RRP),
-r = 4.20% (stock-structure rate), b = consolidated debt/GDP, g = 3.8% (Dec-2025 SEP
-longer-run real growth 1.8% + 2%), psi = 3bp,
+Baseline: consolidated end-2025 portfolio (MSPD by CUSIP net of SOMA + reserves + RRP;
+currency in the zero-interest base), r = stock-structure rate, b = consolidated debt/GDP,
+g = 3.8% (Dec-2025 SEP longer-run real growth 1.8% + 2%), psi = 3bp,
 phi_hat = 0 (post-2004), +1pp permanent rate rise, H = 10.
+
+No QE: the Fed's Treasury holdings shrink to its currency liability (the pre-2008 funding
+structure: SOMA Treasuries ~ currency, no MBS, negligible reserves); the rest returns to
+private holders pro rata to the SOMA maturity structure; reserves and RRP go to zero.
 """
 from __future__ import annotations
 
@@ -13,7 +17,7 @@ import numpy as np
 import pandas as pd
 
 from src.clock.consolidated_clock import OVERNIGHT, soma_by_cusip
-from src.clock.inflation_layer import required_inflation
+from src.clock.inflation_layer import layer
 from src.clock.treasury_clock import securities
 
 OUT = Path("data/processed/limit")
@@ -34,13 +38,13 @@ def portfolio_2025():
 G_SEP_2025 = 0.038
 
 
-def metrics(tau, w, r, b, g=G_SEP_2025, psi=0.03, phi_hat=0.0, dr=1.0):
-    ratio = required_inflation(np.asarray(tau), np.asarray(w, dtype=float), H, g)
+def metrics(tau, w, ix, cur, r, b, g=G_SEP_2025, psi=0.03, phi_hat=0.0, dr=1.0):
+    lay = layer(tau, w, ix, cur, H, g)
     phistar = 1 - g / (r + psi * b)
     gap = max(phistar - phi_hat, 0.0)
-    intP = H * ratio / (1 + ratio)
-    return {"ratio10": ratio, "phistar": phistar, "gap": gap,
-            "dpi_gap_pp_per_yr": gap * dr * ratio, "dp_jump_pct": gap * dr * intP}
+    return {"ratio10": lay["ratio"], "phistar": phistar, "gap": gap,
+            "dpi_gap_pp_per_yr": gap * dr * lay["ratio"],
+            "dp_jump_pct": gap * dr * lay["intP"] / lay["jump_base"]}
 
 
 def main() -> None:
@@ -49,24 +53,31 @@ def main() -> None:
     r, b = lm.r, lm.b
     priv = (x.par - x.soma_par).values
     on = lev.reserves + lev.reverse_repo
-    base_tau, base_w = np.r_[x.tau.values, OVERNIGHT], np.r_[priv, on]
+    tips = (x.kind == "tips").values
+    base_tau, base_w, base_ix = np.r_[x.tau.values, OVERNIGHT], np.r_[priv, on], np.r_[tips, False]
     rows = []
 
-    def add(name, tau=base_tau, w=base_w, **kw):
-        rows.append({"scenario": name, **metrics(tau, w, kw.pop("r", r), kw.pop("b", b), **kw)})
+    def add(name, tau=base_tau, w=base_w, ix=base_ix, cur=lev.currency, **kw):
+        rows.append({"scenario": name, **metrics(tau, w, ix, cur, kw.pop("r", r), kw.pop("b", b), **kw)})
+
+    def private_plus(returned, overnight):
+        """Consolidated stock after SOMA Treasuries `returned` go back to private holders pro rata."""
+        return np.r_[priv + x.soma_par.values * returned / x.soma_par.sum(), overnight]
 
     add("Baseline (consolidated, phi_hat=0)")
-    add("No QE: Treasury-only clock", tau=x.tau.values, w=x.par.values)
+    # b is held at baseline to isolate the change in composition (the reserves that fund the
+    # Fed's MBS would disappear with the MBS, lowering b and phi* slightly)
+    add("No QE: Fed Treasuries = currency, no reserves", w=private_plus(x.soma_par.sum() - lev.currency, 0.0))
+    add("Treasury-only clock (Fed ignored)", tau=x.tau.values, w=x.par.values, ix=tips, cur=0.0)
     # QT: Fed holdings shrink by the reserve reduction; those Treasuries return to private
     # holders pro rata to the SOMA maturity structure; RRP unchanged.
     cut = lev.reserves - 1.9e6
-    priv_qt = priv + x.soma_par.values * cut / x.soma_par.sum()
-    add("QT: reserves to ~$1.9tn (2019), Treasuries back to private", w=np.r_[priv_qt, on - cut])
+    add("QT: reserves to ~$1.9tn (2019), Treasuries back to private", w=private_plus(cut, on - cut))
     bills = (x.kind == "bill").values
     shift = 0.10 * x.par[bills].sum()
     tau_to = np.r_[x.tau.values, OVERNIGHT, 10.0]
     w_to = np.r_[np.where(bills, priv * (1 - shift / priv[bills].sum()), priv), on, shift]
-    add("Treasury terms out: 10% of bills -> 10y", tau=tau_to, w=w_to)
+    add("Treasury terms out: 10% of bills -> 10y", tau=tau_to, w=w_to, ix=np.r_[tips, False, False])
     add("Fiscal response restored (phi_hat=0.39)", phi_hat=0.39)
     add("Fiscal response at Bohn-based 0.25", phi_hat=0.25)
     add("Convenience yield lost 50bp (r+0.5pp)", r=r + 0.005)
@@ -77,7 +88,8 @@ def main() -> None:
     add("psi = 4.5bp", psi=0.045)
     d = pd.DataFrame(rows)
     d.to_csv(OUT / "counterfactuals_2025.csv", index=False)
-    print(f"end-2025: r={r:.4f}, b={b:.3f}, reserves+RRP=${on/1e6:.2f}tn")
+    print(f"end-2025: r={r:.4f}, b={b:.3f}, reserves+RRP=${on/1e6:.2f}tn, currency=${lev.currency/1e6:.2f}tn, "
+          f"SOMA Treasuries=${x.soma_par.sum()/1e6:.2f}tn")
     print(d.round(3).to_string(index=False))
 
 

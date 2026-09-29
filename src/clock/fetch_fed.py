@@ -17,6 +17,7 @@ import pandas as pd
 RAW = Path("data/raw/fed")
 OUT = Path("data/interim/fed")
 H41_SERIES = {"RESH4R_N.WW": "reserves", "RESPPLLR_N.WW": "reverse_repo", "RESPPLLN_N.WW": "fr_notes",
+              "RESTBC_N.WW": "currency",               # currency in circulation (incl. Treasury coin)
               "RESPPALGUO_N.WW": "soma_tsy_outright",
               "RESPPALGASMO_N.WW": "soma_mbs", "RESPPLLOP_N.WW": "remittances_due",
               "RESPPALGUOMI_N.WW": "soma_tips_infl_comp",

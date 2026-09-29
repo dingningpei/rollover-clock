@@ -1,7 +1,8 @@
 """Two-layer limit map by year (paper, Section 5).
 
 Fiscal layer:    phi*_t = 1 - g_t / (r_t + psi * b_t)          (maturity-free)
-Inflation layer: dpi_req_t(H) = (1 - phi_hat) * dr * [int P / int (1-P)]_t   (clock-dependent)
+Inflation layer: dpi_req_t(H) = u * dr * ratio_t(H), ratio from src/clock/inflation_layer.py
+                 (rate clock over interest-bearing debt; erosion of non-indexed debt + currency)
 
 r_t: steady-state marginal cost of the existing structure: each outstanding security's
      ORIGINAL tenor priced at the year-t average H.15 yield for that tenor, par-weighted
@@ -23,6 +24,7 @@ from src.clock.backtest import IN, col, issuance_mix
 OUT = Path("data/processed/limit")
 PSI = {"low": 0.02, "base": 0.03, "high": 0.045}         # dr/db, per unit of debt/GDP (paper, Section 5.1)
 PHI_HAT = {"none": 0.0, "base": 0.25, "high": 0.7}        # historical 10-year offset share (paper, Section 5.1)
+LAYER = ("ratio_H5", "ratio_H10", "ratio_H15", "intP_H10", "jump_base_H10", "ratio_narrow_H10", "ratio_nocur_H10")
 
 
 def gdp() -> pd.Series:
@@ -75,9 +77,11 @@ def build() -> pd.DataFrame:
                 row[f"phistar_{v}_{k}"] = 1 - g10 / (r + psi * row[f"b_{v}"])
             for gname, g in (("g35", 0.035), ("g40", 0.04)):
                 row[f"phistar_{v}_base_{gname}"] = 1 - g / (r + PSI["base"] * row[f"b_{v}"])
-        i = inf[inf.year == t]
         for v, name in (("treasury", "treasury"), ("consol", "consolidated")):
-            ratio = i[f"dpi_req_H10_{name}"].item() if len(i) and not i[f"dpi_req_H10_{name}"].isna().all() else np.nan
+            i = inf[(inf.year == t) & (inf.version == name)]
+            for k in LAYER:
+                row[f"{k}_{v}"] = i[k].item() if len(i) else np.nan
+            ratio = row[f"ratio_H10_{v}"]
             for k, ph in PHI_HAT.items():
                 row[f"dpi_{v}_{k}"] = (1 - ph) * ratio
                 # combined two-layer metric: inflation must cover only the fiscal gap (phi* - phi_hat)+
@@ -88,7 +92,6 @@ def build() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-BUCKET_RATIO_BIAS = -0.157   # FD-5 bucketed minus exact ratio10, private Treasuries 2003-07 (fd5_clock.py)
 R_REM_BIAS = -0.0028         # remaining-maturity pricing minus r_stock, mean over 2003-2025
 
 
@@ -100,7 +103,8 @@ def r_remaining(year: int, shares: np.ndarray, h15: pd.DataFrame) -> float:
 
 
 def build_fd5_era() -> pd.DataFrame:
-    """1980-2002 consolidated (= privately held; reserves unremunerated) from FD-5 buckets."""
+    """1980-2002 consolidated (= privately held; reserves unremunerated) from FD-5 buckets.
+    Inflation-layer columns are already bucket-bias corrected in fd5_clock.py."""
     f = pd.read_csv("data/processed/clock/fd5_clock_1980_2003.csv")
     f = f[f.year <= 2002]
     y = gdp()
@@ -111,7 +115,8 @@ def build_fd5_era() -> pd.DataFrame:
         rr = r_remaining(r.year, sh, h15) - R_REM_BIAS
         b = r.total_private / y[r.year]
         row = {"year": r.year, "source": "FD-5 buckets", "r_stock": rr, "b_consol": b,
-               "dpi_consol_none": r.ratio10 - BUCKET_RATIO_BIAS}
+               **{f"{k}_consol": getattr(r, k) for k in LAYER if k != "ratio_nocur_H10"}}
+        row["dpi_consol_none"] = row["ratio_H10_consol"]
         for k, psi in PSI.items():
             row[f"phistar_consol_{k}"] = 1 - 0.04 / (rr + psi * b)
         row["phistar_consol_base_g40"] = row["phistar_consol_base"]
@@ -128,8 +133,8 @@ def main() -> None:
     m["source"] = "MSPD+SOMA"
     early = build_fd5_era()
     early.to_csv(OUT / "limit_map_fd5_era.csv", index=False)
-    print(early[["year", "r_stock", "b_consol", "phistar_consol_base_g40", "gap_consol_base", "dpi_consol_none",
-                 "dpi_gap_consol_base"]].round(3).to_string(index=False))
+    print(early[["year", "r_stock", "b_consol", "phistar_consol_base_g40", "ratio_H10_consol",
+                 "ratio_narrow_H10_consol"]].round(3).to_string(index=False))
     m.to_csv(OUT / "limit_map_yearend.csv", index=False)
     cols = ["year", "r_stock", "r_mix", "g_trend", "b_treasury", "b_consol", "phistar_consol_base",
             "phistar_consol_base_g40", "dpi_treasury_none", "dpi_consol_none", "gap_consol_base", "dpi_gap_consol_base",
