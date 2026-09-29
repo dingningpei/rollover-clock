@@ -352,27 +352,30 @@ The literature values of φ̂ carry the headline, so we estimate the response ou
 
 The controls are the output gap, temporary defense spending (defense/GDP minus its HP trend, following Barro and Bohn) and a 2020–21 dummy. The static version is Bohn's. The partial-adjustment version adds the lagged surplus and reports the long-run response. Debt coefficients are mapped to φ with the window's mean r + ψb (Section 5.1).
 
+Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
+
 **Table 4. Implied fiscal response φ (standard error)**
 
-| Regressor | Sample | Static | Partial adjustment |
-|---|---|---|---|
-| Debt held by the public | 1971–2003 | 1.12 (0.51) | 1.22 (0.53) |
-| | 1984–2003 | −0.44 (0.44) | 0.63 (0.94) |
-| | 2004–2024 | −1.16 (0.09) | −1.23 (0.10) |
-| | 2004–2019 | −1.53 (0.17) | −1.71 (0.12) |
-| Interest payments | 1971–2003 | 1.52 (0.51) | 2.33 (0.58) |
-| | 1984–2003 | −0.02 (0.45) | 1.03 (0.38) |
-| | 2004–2024 | −0.62 (1.41) | −1.95 (1.54) |
-| | 2004–2019 | 3.33 (1.25) | 2.94 (1.64) |
-| Consolidated debt (this paper) | 1984–2003 | −0.48 (0.50) | 1.02 (1.26) |
-| | 2004–2024 | −1.05 (0.08) | −1.10 (0.09) |
+| Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
+|---|---|---|---|---|---|
+| Debt held by the public | 1967/71–2003 | 1.12 (0.51) | 1.22 (0.53) | 0.99 (0.40) | 1.39 (0.69) |
+|  | 1984–2003 | −0.44 (0.44) | 0.63 (0.94) | −0.55 (0.39) | 2.61 (2.87) |
+|  | 2004–2024/25 | −1.16 (0.09) | −1.23 (0.10) | −1.26 (0.08) | −1.26 (0.09) |
+|  | 2004–2019 | −1.53 (0.17) | −1.71 (0.12) | −1.61 (0.13) | −1.63 (0.07) |
+| Interest payments | 1967/71–2003 | 1.52 (0.51) | 2.33 (0.58) | 0.77 (0.26) | 1.62 (0.69) |
+|  | 1984–2003 | −0.02 (0.45) | 1.03 (0.38) | −0.17 (0.38) | 1.72 (1.02) |
+|  | 2004–2024/25 | −0.62 (1.41) | −1.95 (1.54) | 0.21 (1.67) | −1.63 (1.69) |
+|  | 2004–2019 | 3.33 (1.25) | 2.94 (1.64) | 2.98 (1.12) | 2.49 (1.86) |
+| Consolidated debt (this paper) | 1984–2003 | −0.48 (0.50) | 1.02 (1.26) | — | — |
+|  | 2004–2024/25 | −1.05 (0.08) | −1.10 (0.09) | — | — |
+|  | 2004–2019 | −1.42 (0.12) | −1.53 (0.11) | — | — |
 
-Newey–West standard errors (2 lags); delta method for the long-run responses. Annual data; debt held by the public from 1970.
+Newey–West standard errors (2 lags); delta method for the long-run responses. Actual surplus: NIPA, calendar years, from 1971 (debt held by the public from 1970). Cyclically adjusted: CBO, fiscal years, from 1967.
 
 Three things follow.
 
-1. **The estimates agree on direction.** Every debt-based specification is lower after 2004 than before. A break at 2004 is significant for debt held by the public in the static version (p = 0.005) and for interest payments with partial adjustment (p = 0.001). It is not significant for the consolidated debt measure (p ≈ 0.6), whose pre-2004 window starts only in 1981 and is itself negative in the static version. The one exception is the interest specification over 2004–19, a period when interest costs were low and falling while the 2011 spending caps cut deficits; its standard error exceeds 1.
-2. **They do not agree on size.** Implied φ ranges from about −2 to +3 across samples and specifications, far outside any plausible structural value. Regressions on the total surplus mix policy with revenue booms, recessions and wars, which the controls absorb only in part. That is why Auerbach and Yagan use legislated changes, and we do not replace their estimates with ours.
+1. **The estimates agree on direction.** Every debt-based specification is lower after 2004 than before. A break at 2004 is significant for debt held by the public in the static version (p = 0.005; p = 0.002 cyclically adjusted) and for interest payments with partial adjustment (p = 0.001 in both). It is not significant for the consolidated debt measure (p ≈ 0.6), whose pre-2004 window starts only in 1981 and is itself negative in the static version. The one exception is the interest specification over 2004–19, a period when interest costs were low and falling while the 2011 spending caps cut deficits; its standard error exceeds 1.
+2. **They do not agree on size, even without the automatic stabilizers.** Implied φ ranges from about −2 to +3 across samples and specifications, far outside any plausible structural value. Removing the stabilizers changes the estimates little, so the business cycle is not the main problem. The surplus also moves with revenue booms, tax legislation and wars that are not responses to debt. That is why Auerbach and Yagan use legislated changes, and we do not replace their estimates with ours.
 3. **The results that matter do not need the level.**
    - The inflation layer, and with it the effect of QE, does not depend on φ̂ at all.
    - The ranking of 2023–25 as the largest requirement since 1980 survives without assuming a post-2004 collapse. With one common φ̂ in every year, it holds for any φ̂ below about 0.35 (Figure 3, line).
@@ -438,6 +441,7 @@ The United States in 2023–25 faces an ordinary fiscal threshold with an unusua
 - Bohn, H. (2008). "The Sustainability of Fiscal Policy in the United States." In R. Neck and J.-E. Sturm (eds.), *Sustainability of Public Debt*, 15–49. MIT Press.
 - Cavallo, M., M. Del Negro, W. S. Frame, J. Grasing, B. A. Malin and C. Rosa (2019). "Fiscal Implications of the Federal Reserve's Balance Sheet Normalization." *International Journal of Central Banking* 15(5): 255–306.
 - Congressional Budget Office (2022). "How the Federal Reserve's Quantitative Easing Affects the Federal Budget." September. Publication 58457.
+- Congressional Budget Office (2026). "Effects of Automatic Stabilizers on the Federal Budget: 2026 to 2036." August. Publication 62568; supplemental data.
 - Choi, J., R. Kirpalani and D. J. Perez (2026). "US Public Debt and Safe Asset Market Power." *Journal of Political Economy* 134(5): 1506–1560. doi:10.1086/739824. Earlier version: "The Macroeconomic Implications of US Market Power in Safe Assets," NBER WP 30720 (2022).
 - Cochrane, J. H. (2001). "Long-Term Debt and Optimal Policy in the Fiscal Theory of the Price Level." *Econometrica* 69(1): 69–116.
 - Cochrane, J. H. (2022). "Inflation Past, Present and Future: Fiscal Shocks, Fed Response, and Fiscal Limits." NBER WP 30096.

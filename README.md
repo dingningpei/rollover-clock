@@ -59,7 +59,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | Federal Reserve Board, Data Download Program | H.4.1 (reserves, reverse repos, SOMA totals) and H.15 (yields) bulk files |
 | Federal Reserve Bank of New York API | SOMA holdings by CUSIP, SOMA MBS at end-2021, effective federal funds rate |
 | BEA | NIPA annual tables (GDP, primary balance) |
-| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, GDPC1, GDPPOT) |
+| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT) |
 
 **Hand-collected, committed in `data/manual/`:**
 
@@ -69,6 +69,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | `fed_income_2022_2025.csv` | Federal Reserve Banks' combined statements of income, 2022–2025 |
 | `sep_longrun.csv` | FOMC Summary of Economic Projections, December longer-run real GDP growth, 2013–2025 |
 | `tips_fd2_december.csv` | Treasury Bulletin FD-2: TIPS outstanding, December 1997–2002 |
+| `cbo_automatic_stabilizers_2026-08.xlsx` | CBO, *Effects of Automatic Stabilizers on the Federal Budget: 2026 to 2036* (publication 62568), supplemental data: deficits with and without automatic stabilizers, FY1966–2036. Committed because cbo.gov blocks scripted downloads. |
 
 `src/clock/fd5_locate.py` and `src/clock/fd5_parse.py` are the helpers used to find the FD-5 pages in the FRASER PDFs. They are not needed to reproduce the results.
 

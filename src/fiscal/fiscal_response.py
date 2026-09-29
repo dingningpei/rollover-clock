@@ -16,6 +16,14 @@ gap    output gap, 100*(real GDP / potential - 1), annual mean (CBO via FRED)
 gvar   temporary defense spending: defense / GDP (NIPA A824RC) minus its HP trend (Barro, Bohn)
 covid  dummy for 2020-2021
 
+Cyclically adjusted version (fiscal years 1967-2025): S_t is CBO's primary surplus WITHOUT
+automatic stabilizers (deficit without stabilizers + interest payments, % of POTENTIAL GDP;
+data/manual/cbo_automatic_stabilizers_2026-08.xlsx, CBO publication 62568), less Fed
+remittances (NIPA, calendar year, as an approximation), with CBO's GDP gap, lagged
+fiscal-year debt held by the public (FRED FYPUGDA188S) and lagged CBO interest payments.
+Removing the automatic stabilizers takes out the main source of reverse causality from
+the business cycle to the surplus.
+
 Mapping to the paper's phi. In the model s responds to interest cost with slope phi, so
 at a steady state ds/db = phi * d(r b)/db = phi * (r + psi b). Hence
     phi = rho / (r + psi b),
@@ -74,6 +82,35 @@ def build() -> pd.DataFrame:
     return d.loc[1960:2024]
 
 
+CBO_FILE = "data/manual/cbo_automatic_stabilizers_2026-08.xlsx"
+
+
+def build_cbo(cal: pd.DataFrame) -> pd.DataFrame:
+    """Fiscal-year panel with the cyclically adjusted primary surplus (CBO)."""
+    x = pd.read_excel(CBO_FILE, "2. Def or Surp - % of GDP", header=None)
+    x = x[pd.to_numeric(x[0], errors="coerce").between(1960, 2025)]
+    d = pd.DataFrame({"deficit_noAS": pd.to_numeric(x[7]).values, "deficit": pd.to_numeric(x[3]).values,
+                      "gap": pd.to_numeric(x[13]).values, "interest": pd.to_numeric(x[16]).values},
+                     index=x[0].astype(int).values)
+    n = pd.read_csv("data/raw/bea/NipaDataA.txt", dtype=str)
+    n.columns = [c.strip() for c in n.columns]
+    def nipa_series(code):
+        z = n[n.iloc[:, 0] == code]
+        return pd.Series(pd.to_numeric(z.iloc[:, 2].str.replace(",", "")).values, index=z.iloc[:, 1].astype(int).values)
+    remit = 100 * nipa_series("LA000248") / nipa_series("A191RC")
+    d["remit"] = remit.reindex(d.index)
+    d["S"] = d.deficit_noAS + d.interest - d.remit                  # cyclically adjusted primary surplus, ex Fed
+    d["S_actual"] = d.deficit + d.interest - d.remit
+    fy = pd.read_csv("data/raw/fred/FYPUGDA188S.csv")
+    fy = pd.Series(fy.FYPUGDA188S.values, index=pd.to_datetime(fy.observation_date).dt.year.values)
+    d["b_l"] = fy.shift(1).reindex(d.index)
+    d["IC_l"] = d.interest.shift(1)
+    d["S_l"] = d.S.shift(1)
+    d["gvar"], d["covid"], d["m"] = cal.gvar.reindex(d.index), d.index.isin([2020, 2021]).astype(float), cal.m.reindex(d.index)
+    d["b_consol_l"] = cal.b_consol_l.reindex(d.index)
+    return d
+
+
 def fit(d: pd.DataFrame, x: list[str]):
     s = d.dropna(subset=["S"] + x + CTRL)
     ctrl = [c for c in CTRL if s[c].std() > 0]
@@ -120,10 +157,22 @@ def main() -> None:
                 continue
             for partial in (False, True):
                 rows.append(estimate(d.loc[a:z], name, var, partial))
+    cbo = build_cbo(d)
+    cbo.to_csv(OUT / "fiscal_response_data_cbo.csv")
+    for name, (a, z) in {"FY1967-2003": (1967, 2003), "FY1984-2003": (1984, 2003), "FY2004-2025": (2004, 2025),
+                         "FY2004-2019": (2004, 2019), "FY1967-2025": (1967, 2025)}.items():
+        for var in ("b_l", "IC_l"):
+            for partial in (False, True):
+                rows.append({**estimate(cbo.loc[a:z], name, var, partial), "source": "CBO, stabilizers removed"})
     t = pd.DataFrame(rows)
+    t["source"] = t["source"].fillna("NIPA")
     t.to_csv(OUT / "fiscal_response_estimates.csv", index=False)
     b = pd.DataFrame([break_test(d.loc[a:2024], v, p) for v, a in (("b_l", 1971), ("IC_l", 1971), ("b_consol_l", 1981))
                       for p in (False, True)])
+    b["source"] = "NIPA"
+    bc = pd.DataFrame([break_test(cbo.loc[1967:2025], v, p) for v in ("b_l", "IC_l") for p in (False, True)])
+    bc["source"] = "CBO, stabilizers removed"
+    b = pd.concat([b, bc], ignore_index=True)
     b.to_csv(OUT / "fiscal_response_break.csv", index=False)
     # rolling 20-year windows, Bohn specification on debt held by the public
     roll = []
