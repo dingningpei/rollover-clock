@@ -42,7 +42,8 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Table 1 (backtest) | `data/processed/clock/backtest_scores.csv` |
 | Section 4.4, Figure 2 (2022–25 test) | `data/processed/clock/freeze2021_*.csv`, `paper/figures/fig2_*` |
 | Table 2, Figure 3 (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
-| Section 5.3 (φ identification) | `data/processed/fiscal/phi_*.csv` |
+| Section 5.3, Table 4 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
+| Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
 | Table 3 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
@@ -57,7 +58,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | Federal Reserve Board, Data Download Program | H.4.1 (reserves, reverse repos, SOMA totals) and H.15 (yields) bulk files |
 | Federal Reserve Bank of New York API | SOMA holdings by CUSIP, SOMA MBS at end-2021, effective federal funds rate |
 | BEA | NIPA annual tables (GDP, primary balance) |
-| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS) |
+| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, GDPC1, GDPPOT) |
 
 **Hand-collected, committed in `data/manual/`:**
 

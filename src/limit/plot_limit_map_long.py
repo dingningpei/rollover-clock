@@ -45,7 +45,9 @@ def main() -> None:
     b.legend(frameon=False, loc="upper left", labelcolor=INK, fontsize=9)
     b.set_ylim(0, 4)
 
-    c.bar(d.year, d.dpi_to_cover_gap, color=CONSOL, width=0.75)
+    c.bar(d.year, d.dpi_to_cover_gap, color=CONSOL, width=0.75, label="φ̂ = 0.39 to 2003, 0 from 2004 (baseline)")
+    c.plot(d.year, d["dpi_common_0.25"], color=INK, lw=1.2, marker="o", ms=2.5, label="φ̂ = 0.25 in every year")
+    c.legend(frameon=False, loc="upper left", labelcolor=INK, fontsize=9)
     c.set_ylabel("pp per year")
     c.set_title("Combined: inflation needed to cover the fiscal gap (φ* − φ̂)+ after a +1pp rate rise",
                 loc="left", color=INK, fontsize=10)

@@ -19,6 +19,7 @@ from .limit_map import gdp
 OUT = Path("data/processed/limit")
 PSI_BASE, PSI_LO, PSI_HI = 0.03, 0.02, 0.045
 G_POST = 0.04
+PHI_ALT = (0.0, 0.15, 0.25, 0.35, 0.39)
 
 
 def phi_hat_regime(year: int) -> float:
@@ -55,6 +56,12 @@ def build() -> pd.DataFrame:
         row["dpi_to_cover_gap_H5"] = row["gap"] * row["ratio5_consol"]
         row["dpi_to_cover_gap_H15"] = row["gap"] * row["ratio15_consol"]
         row["dpi_to_cover_gap_narrow"] = row["gap"] * row["ratio10_narrow_consol"]
+        # fiscal-response alternatives (paper, Section 5.3): one common phi_hat in every year,
+        # and the regime split with other post-2004 values
+        for ph in PHI_ALT:
+            row[f"dpi_common_{ph:.2f}"] = max(row["phistar"] - ph, 0.0) * ratio
+            post = ph if t >= 2004 else 0.39
+            row[f"dpi_regime_post_{ph:.2f}"] = max(row["phistar"] - post, 0.0) * ratio
         # one-time permanent price-level jump covering the same gap over H = 10 (undiscounted), % of debt:
         # dp = gap * dr * int_0^H P_r / (N/b + C/b)   (paper, Section 3.4 and Appendix B.4)
         row["dp_jump_to_cover_gap"] = row["gap"] * 1.0 * intP / jb

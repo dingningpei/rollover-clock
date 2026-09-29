@@ -1,6 +1,6 @@
 # The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign
 
-*Preliminary working paper, September 2026. Comments welcome. Replication code and data: <https://github.com/dingningpei/rollover-clock> (Appendix C).*
+*Preliminary working paper, September 2026. Comments welcome. Replication code and data: <https://github.com/dingningpei/rollover-clock> (Appendix D).*
 
 ## Abstract
 
@@ -15,10 +15,10 @@ We measure the clock security by security for the United States from 1980 to 202
 Three findings follow:
 
 1. The fiscal threshold in 2023–25 (φ* ≈ 0.47) is not unusual. It is back in its 1980–2007 range after the 2008–21 period in which r + ψb < g.
-2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since.
+2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since. Our own regressions agree on the direction of this change, though not on its size.
 3. Quantitative easing raised the inflation needed per unit of relief by roughly 60%. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed them with interest-bearing reserves that reprice overnight.
 
-Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
+Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
 
 ---
 
@@ -50,10 +50,10 @@ Two implications follow. First, inflation on debt only buys time. Debt reprices,
 **Findings.** Putting the two layers on a common 1980–2025 timeline gives three results.
 
 1. The fiscal threshold today is ordinary. φ* in 2023–25 is about 0.47, within its 1980–2007 range of roughly 0.1–0.56. The 2008–21 period, when the threshold was negative, was the exception.
-2. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold; the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024).
+2. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold; the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024). Our own Bohn-type regressions confirm a break at 2004 in direction but cannot pin down its size, so we also report every result under a single fiscal response common to all years.
 3. QE removed the Fed's inflation-tax cushion. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal, and the consolidated ratio has risen from 1.2–1.6 to 2.0–2.6.
 
-The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981.
+The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981. This ranking does not depend on the post-2004 collapse of the fiscal response. With one common response in every year it holds for any value below about 0.35, because it is driven by the inflation layer.
 
 Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by about 18%. Returning reserves to their 2019 level or terming out a tenth of bills cuts it by 6–7%. Losing 50–100bp of convenience yield raises it by 8–14%.
 
@@ -97,7 +97,7 @@ Section 2 reviews related work. Section 3 presents the model. Section 4 builds a
 - We invert the erosion calculation into a required inflation rate as a function of the measured clock, and quantify how consolidation shifts it.
 
 **Fiscal responses.**
-- Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt.
+- Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt. His coefficient maps exactly into ours (Section 5.1).
 - Eichengreen, Menuet and Donnat (2026) find that surpluses respond to debt service more than to debt stocks, and more strongly when r > g. Their object is a log-log elasticity, and they describe their evidence as descriptive.
 - Auerbach and Yagan (2024) find that legislated U.S. fiscal feedback, including the response to lagged net interest, was substantial before 2004 and has been about zero since.
 - We use these estimates as the historical benchmark φ̂. The paper does not depend on estimating φ ourselves; φ enters only through a threshold comparison.
@@ -289,7 +289,14 @@ The consolidated clock is thus validated where QE matters most. The 2022–25 ra
 ### 5.1 Parameters
 
 - **ψ = 3bp per pp of debt/GDP**, range 2–4.5. Sources: Laubach 2009 (3–4); Engen and Hubbard 2005 (≈ 3); Plante, Richter and Zubairy 2025 (3.0–3.5); Bhatt et al. 2026 (3–4); Bi, Phillot and Zubairy 2026 (2.8 at peak, from identified supply shocks). CBO's 2bp (Neveu and Schafer 2024) is the low case.
-- **φ̂ = 0.39 through 2003 and ≈ 0 from 2004.** These are Auerbach and Yagan's (2024) estimates of the legislated response to lagged net interest (0.386, s.e. 0.131, for 1984–2003; −0.31, s.e. 0.41, for 2004–24; their Table 3). The pre-2004 coefficient comes from semi-annual data and falls to about −0.12 once their projected-surplus control is added. For the upper end of the sensitivity range we also use de Groot, Holm-Hadulla and Leiner-Killinger (2015), whose European estimates imply an offset of about 0.7 over ten years. We use a Bohn-based 0.25 as a sensitivity.
+- **φ̂, the historical fiscal response.** The baseline is 0.39 through 2003 and 0 from 2004. These are Auerbach and Yagan's (2024) estimates of the legislated response to lagged net interest (0.386, s.e. 0.131, for 1984–2003; −0.31, s.e. 0.41, for 2004–24; their Table 3).
+  - The evidence is thinner than the point values suggest. The pre-2004 coefficient comes from semi-annual data and falls to about −0.12 once their projected-surplus control is added, and the post-2004 coefficient cannot reject 0.39.
+  - We therefore also report results under a single φ̂ common to all years (0, 0.15, 0.25, 0.35, 0.39), and we estimate the response ourselves in Section 5.3.
+  - De Groot, Holm-Hadulla and Leiner-Killinger (2015) imply an offset of about 0.7 over ten years for European countries. We treat that as an upper bound.
+- **Mapping from Bohn's coefficient.** Bohn (1998) estimates ρ in s = ρb + controls. In our model the surplus responds to interest cost with slope φ, so at a steady state ds/db = φ(r + ψb), and
+  - φ = ρ / (r + ψb);
+  - Bohn's sustainability condition ρ > (r + ψb) − g is then exactly our condition (1 − φ)(r + ψb) < g;
+  - a Bohn coefficient of 0.02 at a marginal cost of 8% corresponds to φ = 0.25, the intermediate value we use.
 - **r** is the steady-state marginal cost of the existing structure: each security's original tenor priced at current yields. Before 2003 we use remaining-maturity pricing, corrected by its measured 0.28 pp gap on 2003–2025.
 - **g**, expected nominal growth, is proxied by realized forward ten-year nominal GDP growth through 2015. From 2016 we use the December FOMC Summary of Economic Projections: the longer-run median real GDP growth (1.8–1.9%) plus the 2% inflation objective. Trailing ten-year growth is a sensitivity. In 2013–15, when both measures exist, the SEP-based g (4.0–4.3%) was below realized forward growth (5.2–5.4%), which was inflated by 2021–22.
 
@@ -297,7 +304,7 @@ The consolidated clock is thus validated where QE matters most. The 2022–25 ra
 
 ![Figure 3](figures/fig3_limit_map.png)
 
-*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years.*
+*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the baseline φ̂ (0.39 to 2003, 0 from 2004), the line a common φ̂ = 0.25 in every year.*
 
 **Table 2. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
 
@@ -312,7 +319,7 @@ The consolidated clock is thus validated where QE matters most. The 2022–25 ra
 Three readings follow.
 
 1. **The fiscal threshold is ordinary today.** The period that stands out is 2008–21, when r + ψb < g and debt stabilized with no fiscal response. That period is over.
-2. **The fiscal response is not ordinary.**
+2. **The fiscal response is not ordinary.** On the baseline φ̂:
    - Before 2004, a legislated offset of about 0.39 roughly met the threshold, and the high-rate 1980s and early 1990s ended in consolidation.
    - Since 2004 the offset has been about zero, so the gap equals the threshold itself.
    - The gap first opened in 2005–07, when φ* was 0.28–0.44; the 2008–21 low-rate period then hid it.
@@ -328,20 +335,43 @@ The equivalent one-time surprise rise in the price level is about 3.3% (3.27–3
 - *Horizon.* With H = 5 the 2023–25 requirement is 0.60–0.69 pp per year; with H = 15 it is 1.33–1.46.
 - *Erosion base.* If all debt counted as erodible and currency were ignored, the requirement would be 1.22–1.41. Ignoring currency alone raises the 2025 consolidated ratio by a third (2.92 against 2.18).
 
-### 5.3 Can φ be identified from U.S. data?
+### 5.3 How large is the fiscal response? Our own estimates
 
-We tried to estimate φ directly with the clock.
-- **Instrument.** The predicted interest-cost change b_t·P_t(1)·Δr_{t+1} uses the predetermined repricing exposure.
-- **Outcome.** The subsequent change in the NIPA primary surplus, excluding Fed remittances.
-- **Controls.** The rate change, debt, growth and the lagged surplus.
+The literature values of φ̂ carry the headline, so we estimate the response ourselves. We regress the federal primary surplus (NIPA, excluding Fed remittances, % of GDP) on one of three lagged variables:
+- debt held by the public, as in Bohn (1998);
+- interest payments;
+- the paper's consolidated debt.
 
-In annual data for 1980–2024 the instrument is weak:
-- First-stage F ≈ 6.7, falling below 1 once Δr·b is controlled.
-- The implied φ is implausible (6–26).
+The controls are the output gap, temporary defense spending (defense/GDP minus its HP trend, following Barro and Bohn) and a 2020–21 dummy. The static version is Bohn's. The partial-adjustment version adds the lagged surplus and reports the long-run response. Debt coefficients are mapped to φ with the window's mean r + ψb (Section 5.1).
 
-The reason is that the U.S. repricing speed varies too little over time. P(1) has a standard deviation of 0.056, and the instrument is 99% correlated with Δr·b.
+**Table 4. Implied fiscal response φ (standard error)**
 
-We therefore do not use an own estimate. The paper's conclusions rest on the threshold comparison with literature values of φ̂ (Section 5.1 and Table 3). Maturity structures and QE intensities differ widely across countries, so a cross-country panel is the natural way to identify φ with this design.
+| Regressor | Sample | Static | Partial adjustment |
+|---|---|---|---|
+| Debt held by the public | 1971–2003 | 1.12 (0.51) | 1.22 (0.53) |
+| | 1984–2003 | −0.44 (0.44) | 0.63 (0.94) |
+| | 2004–2024 | −1.16 (0.09) | −1.23 (0.10) |
+| | 2004–2019 | −1.53 (0.17) | −1.71 (0.12) |
+| Interest payments | 1971–2003 | 1.52 (0.51) | 2.33 (0.58) |
+| | 1984–2003 | −0.02 (0.45) | 1.03 (0.38) |
+| | 2004–2024 | −0.62 (1.41) | −1.95 (1.54) |
+| | 2004–2019 | 3.33 (1.25) | 2.94 (1.64) |
+| Consolidated debt (this paper) | 1984–2003 | −0.48 (0.50) | 1.02 (1.26) |
+| | 2004–2024 | −1.05 (0.08) | −1.10 (0.09) |
+
+Newey–West standard errors (2 lags); delta method for the long-run responses. Annual data; debt held by the public from 1970.
+
+Three things follow.
+
+1. **The estimates agree on direction.** Every debt-based specification is lower after 2004 than before. A break at 2004 is significant for debt held by the public in the static version (p = 0.005) and for interest payments with partial adjustment (p = 0.001). It is not significant for the consolidated debt measure (p ≈ 0.6), whose pre-2004 window starts only in 1981 and is itself negative in the static version. The one exception is the interest specification over 2004–19, a period when interest costs were low and falling while the 2011 spending caps cut deficits; its standard error exceeds 1.
+2. **They do not agree on size.** Implied φ ranges from about −2 to +3 across samples and specifications, far outside any plausible structural value. Regressions on the total surplus mix policy with revenue booms, recessions and wars, which the controls absorb only in part. That is why Auerbach and Yagan use legislated changes, and we do not replace their estimates with ours.
+3. **The results that matter do not need the level.**
+   - The inflation layer, and with it the effect of QE, does not depend on φ̂ at all.
+   - The ranking of 2023–25 as the largest requirement since 1980 survives without assuming a post-2004 collapse. With one common φ̂ in every year, it holds for any φ̂ below about 0.35 (Figure 3, line).
+   - At φ̂ = 0.25 throughout, the 2023–25 requirement is 0.46–0.53 pp per year, against a pre-2022 maximum of 0.43 in 1981.
+   - Only if the pre-2004 legislated value of 0.39 held in every year does 1981 rank first.
+
+We also tried to identify φ with the clock itself, using the predetermined repricing exposure as an instrument for interest-cost changes. The instrument is weak in U.S. annual data (Appendix C). Maturity structures and QE intensities differ widely across countries, so a cross-country panel is the natural way to identify φ with this design.
 
 ## 6. Counterfactuals
 
@@ -351,7 +381,7 @@ We therefore do not use an own estimate. The paper's conclusions rest on the thr
 |---|---|---|---|---|---|
 | Baseline (consolidated; g = 3.8%, SEP) | 0.46 | 0.46 | 1.00 | — | 3.26 |
 | Fiscal response restored (φ̂ = 0.39) | 0.46 | 0.07 | 0.16 | −84% | 0.51 |
-| Fiscal response 0.25 (Bohn-based) | 0.46 | 0.21 | 0.46 | −54% | 1.50 |
+| Fiscal response 0.25 (intermediate) | 0.46 | 0.21 | 0.46 | −54% | 1.50 |
 | No QE: Fed Treasuries = currency, no reserves | 0.46 | 0.46 | 0.83 | −18% | 3.07 |
 | Treasury's own liabilities (Fed ignored) | 0.46 | 0.46 | 1.02 | +1% | 3.31 |
 | QT: reserves to $1.9tn, Treasuries back to private | 0.46 | 0.46 | 0.94 | −6% | 3.20 |
@@ -380,7 +410,7 @@ The size of the required adjustment, the fiscal layer, depends on r − g, on ho
 The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
 **Open issues.**
-- The fiscal response φ̂ comes from the literature, and its post-2004 collapse rests mainly on one study. Our own exposure × rate-shock design is too weak in U.S. annual data (Section 5.3); a cross-country panel is the natural next step.
+- The level of the fiscal response φ̂ is not well identified. Its post-2004 collapse rests mainly on one study. Our own regressions agree on the direction but not the size, and our exposure × rate-shock design is too weak in U.S. annual data (Section 5.3 and Appendix C). The main ranking holds for any constant φ̂ below 0.35; a cross-country panel is the natural next step.
 - Expected growth after 2015 comes from the FOMC's longer-run projections, not from a model of trend growth.
 - The balance-sheet counterfactuals abstract from term-premium effects.
 - The combined metric is a first-order, undiscounted composition.
@@ -497,7 +527,22 @@ Three remarks:
 2. Since ∫₀^∞(1 − P_N) = ∫₀^∞(1 − F_N)e^{−gh}dh < ∞, both ∫₀^H P and ∫₀^H E grow like H, with slopes 1 and C/b. The required rate therefore converges to u·Δr·b/C as H → ∞. Without currency it diverges.
 3. For a one-time level jump Δp, erosion is (N + C)·Δp regardless of maturity. So Δp^req = u·Δr·∫₀^H P / (N/b + C/b).
 
-## Appendix C. Reproduction
+## Appendix C. Identifying φ with the repricing exposure
+
+We tried to estimate φ directly with the clock.
+- **Instrument.** The predicted interest-cost change b_t·P_t(1)·Δr_{t+1} uses the predetermined repricing exposure.
+- **Outcome.** The subsequent change in the NIPA primary surplus, excluding Fed remittances.
+- **Controls.** The rate change, debt, growth and the lagged surplus.
+
+In annual data for 1980–2024 the instrument is weak:
+- First-stage F ≈ 6.7, falling below 1 once Δr·b is controlled.
+- The implied φ is implausible (6–26).
+
+The reason is that the U.S. repricing speed varies too little over time. P(1) has a standard deviation of 0.056, and the instrument is 99% correlated with Δr·b.
+
+The design needs cross-sectional variation in repricing speed, which a panel of countries would supply.
+
+## Appendix D. Reproduction
 
 The replication package is at <https://github.com/dingningpei/rollover-clock>. It contains the code (`src/`) and three hand-collected inputs (`data/manual/`):
 - the Treasury Bulletin FD-5/FD-7 December rows for 1980–2003, transcribed from FRASER scans;

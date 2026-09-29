@@ -23,6 +23,10 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   mkdir -p data/raw/fred
   curl -fsSL -o data/raw/fred/CURRCIR.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CURRCIR"
   curl -fsSL -o data/raw/fred/RESBALNS.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RESBALNS"
+  # Debt held by the public, real and potential GDP: fiscal-response regressions (Section 5.3)
+  for s in FYGFDPUN GDPC1 GDPPOT; do
+    curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
+  done
 fi
 
 # Treasury MSPD, auctions and average rates (FiscalData API) and SOMA by CUSIP (NY Fed API);
@@ -47,6 +51,7 @@ python3 -m src.clock.fd5_clock
 # Sections 5-6: the two-layer limit, identification attempt, counterfactuals
 python3 -m src.limit.limit_map
 python3 -m src.limit.limit_map_long
+python3 -m src.fiscal.fiscal_response
 python3 -m src.fiscal.identify_phi
 python3 -m src.limit.counterfactuals
 
