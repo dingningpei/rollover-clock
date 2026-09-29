@@ -45,6 +45,7 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Section 5.3, Table 4 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
 | Table 3 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
+| Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 

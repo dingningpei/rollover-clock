@@ -16,7 +16,7 @@ Three findings follow:
 
 1. The fiscal threshold in 2023–25 (φ* ≈ 0.47) is not unusual. It is back in its 1980–2007 range after the 2008–21 period in which r + ψb < g.
 2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since. Our own regressions agree on the direction of this change, though not on its size.
-3. Quantitative easing raised the inflation needed per unit of relief by roughly 60%. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed them with interest-bearing reserves that reprice overnight.
+3. The inflation needed per unit of relief rose by half between 2007 and 2025, and quantitative easing accounts for 50–80% of the rise. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed its additional assets with interest-bearing reserves that reprice overnight. Most of the rest comes from currency falling relative to debt, partly offset by the Treasury's longer maturities.
 
 Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
 
@@ -51,7 +51,7 @@ Two implications follow. First, inflation on debt only buys time. Debt reprices,
 
 1. The fiscal threshold today is ordinary. φ* in 2023–25 is about 0.47, within its 1980–2007 range of roughly 0.1–0.56. The 2008–21 period, when the threshold was negative, was the exception.
 2. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold; the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024). Our own Bohn-type regressions confirm a break at 2004 in direction but cannot pin down its size, so we also report every result under a single fiscal response common to all years.
-3. QE removed the Fed's inflation-tax cushion. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal, and the consolidated ratio has risen from 1.2–1.6 to 2.0–2.6.
+3. QE removed the Fed's inflation-tax cushion. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal, and the consolidated ratio has risen from 1.2–1.6 to 2.0–2.6. From end-2007 to end-2025 it rose by half, and QE's reserve funding accounts for 50–80% of that rise, depending on the order of decomposition.
 
 The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981. This ranking does not depend on the post-2004 collapse of the fiscal response. With one common response in every year it holds for any value below about 0.35, because it is driven by the inflation layer.
 
@@ -326,6 +326,14 @@ Three readings follow.
 3. **QE raised the price of the inflation substitute.** The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on.
    - Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07). The Fed held Treasuries against currency, which inflation erodes.
    - Since 2009 the two have been about equal (0.86–1.19). The Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight.
+   - The Fed's share of marketable Treasuries was actually lower at end-2025 (14%) than at end-2007 (16%). What QE changed is how its book is funded: SOMA Treasuries were 0.88 times currency in 2007 and 1.73 times in 2025, and reserves also fund the MBS.
+
+**Decomposition, end-2007 to end-2025.** The consolidated ratio rose from 1.45 to 2.18. A chain of counterfactual balance sheets splits the 0.73 rise into three parts:
+- *Currency falling relative to debt*, from 22% to 8% of interest-bearing liabilities: +0.58.
+- *Treasury's maturity and TIPS choices*, 2007 to 2025, with a Fed funded only by currency: −0.23. The Treasury's lengthening worked against the rise.
+- *QE*, meaning reserves rather than currency fund the rest of the Fed's book: +0.38.
+
+The QE share depends on the order. Measured first, on the end-2007 balance sheet (the Fed's Treasuries scaled to the end-2025 ratio to currency, and reserves added for the MBS), QE adds 0.57. QE therefore accounts for 52–78% of the rise; the fall of currency relative to debt, which reflects deficits more than monetary policy, accounts for most of the rest.
 
 The combined requirement in 2023–25 is the largest since 1980, about 1.8 times its 2006–07 level.
 
