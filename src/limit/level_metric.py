@@ -3,10 +3,13 @@
 How much sustained surprise inflation would hold consolidated debt/GDP constant over H
 years, given the actual (or projected) primary balance and today's rates?
 
-  shortfall(h) = (rbar(h) - g) * b - s(h),     rbar(h) = rbar0 + (r - rbar0) * P(h)
+  shortfall(h) = (rbar(h) - g) * b - g * z - s(h),     rbar(h) = rbar0 + (r - rbar0) * P(h)
   dpi_level(H) = int_0^H shortfall / ( b * int_0^H E ),
 
 with the rollover clock P and the erosion share E of Section 3.3 (inflation_layer.layer).
+b is interest-bearing consolidated debt/GDP and z the zero-interest base (currency, and
+unremunerated reserves)/GDP; holding both constant relative to GDP, the growth of z is
+seigniorage g*z that finances part of the deficit.
 rbar0 is the average rate on the consolidated interest-bearing stock at the year-end:
 each privately held security at its own rate, calibrated to the official average rate on
 marketable debt (TIPS: real coupon + 2% expected inflation),
@@ -64,7 +67,7 @@ def official_rate(year: int) -> float:
     return float(off.avg_interest_rate_amt.iloc[0])
 
 
-def average_rate(year: int, x: pd.DataFrame, lev) -> tuple[float, float]:
+def average_rate(year: int, x: pd.DataFrame, lev, unremunerated: float = 0.0) -> tuple[float, float]:
     """Average rate on the consolidated interest-bearing stock, percent, and the calibration
     offset. Security-level rates (TIPS at the real coupon) are shifted by a constant so that
     their par-weighted average over all marketable debt equals the official average rate;
@@ -77,32 +80,38 @@ def average_rate(year: int, x: pd.DataFrame, lev) -> tuple[float, float]:
     y["rate"] = y.rate + offset + np.where(y.kind == "tips", TIPS_INFLATION, 0.0)
     priv = y.par - y.soma_par
     ior, rrp = overnight_rates(year)
-    res = lev.reserves if year >= IOR_START else 0.0
+    res = (1 - unremunerated) * lev.reserves if year >= IOR_START else 0.0
     num = (priv * y.rate).sum() + res * ior + lev.reverse_repo * rrp
     return num / (priv.sum() + res + lev.reverse_repo), offset
 
 
-def level(year: int, s_path: np.ndarray, H: float = H) -> dict:
+def level(year: int, s_path: np.ndarray, H: float = H, unremunerated: float = 0.0) -> dict:
+    """unremunerated: share of reserves that stop earning interest (policy scenario); they
+    move from overnight interest-bearing debt to the zero-interest base."""
     x, lev = portfolio(year)
     lm = pd.read_csv(OUT / "limit_map_1980_2025.csv").set_index("year").loc[year]
     r, g, b = lm.r, lm.g_forward, lm.b
     paid = year >= IOR_START
     priv = (x.par - x.soma_par).values
-    on = lev.reverse_repo + (lev.reserves if paid else 0.0)
-    zero = lev.currency + (0.0 if paid else lev.reserves)
+    k = unremunerated if paid else 1.0
+    on = lev.reverse_repo + (1 - k) * lev.reserves
+    zero = lev.currency + k * lev.reserves
     tau, w = np.r_[x.tau.values, OVERNIGHT], np.r_[priv, on]
     ix = np.r_[(x.kind == "tips").values, False]
     h = GRID[GRID <= H + 1e-9]
     P = 1 - (1 - exact_F(tau, w, GRID)[: len(h)]) * np.exp(-g * h)
     Pn = 1 - (1 - exact_F(tau[~ix], w[~ix], GRID)[: len(h)]) * np.exp(-g * h)
     E = (w[~ix].sum() / w.sum()) * (1 - Pn) + zero / w.sum()
-    rbar0, offset = average_rate(year, x, lev)
+    rbar0, offset = average_rate(year, x, lev, unremunerated)
+    b = b * w.sum() / (priv.sum() + lev.reverse_repo + (lev.reserves if paid else 0.0))   # interest-bearing
     rbar0 /= 100
     rbar = rbar0 + (r - rbar0) * P
     s = np.interp(h, np.arange(len(s_path)) + 0.5, s_path) / 100       # annual path, mid-year
-    shortfall = (rbar - g) * b - s
+    z = b * zero / w.sum()                                               # zero-interest base / GDP
+    shortfall = (rbar - g) * b - g * z - s                               # g*z: seigniorage from growth of money
     out = {"year": year, "b": b, "r": r, "g": g, "rbar0": rbar0, "rate_offset_pp": offset, "s_first": s_path[0], "s_mean": s_path.mean(),
-           "stabilizing_s_0": (rbar0 - g) * b * 100, "stabilizing_s_H": (rbar[-1] - g) * b * 100,
+           "z": z, "seigniorage_pct_gdp": 100 * g * z,
+           "stabilizing_s_0": ((rbar0 - g) * b - g * z) * 100, "stabilizing_s_H": ((rbar[-1] - g) * b - g * z) * 100,
            "shortfall_mean_pct_gdp": 100 * np.trapezoid(shortfall, h) / H,
            "erosion_share_mean": np.trapezoid(E, h) / H}
     for tag, wt in (("", np.ones_like(h)), ("_disc", np.exp(-(r - g) * h))):
@@ -128,6 +137,16 @@ def main() -> None:
         for HH in (5.0, 10.0):
             row = level(y, path[: int(HH)], HH)
             row.update({"H": HH, "primary_path": label, "gdp_bn": gdp[y] / 1e3})
+            row["erosion_per_pp_bn"] = row["b"] * row["gdp_bn"] * row["erosion_share_mean"] / 100
+            row["scenario"] = "actual"
+            rows.append(row)
+    # policy scenario, end-2025: reserves stop earning interest (all, or half under tiering)
+    path = cbo.loc[2026:2035, "primary"].values
+    for k, lab in ((1.0, "ending interest on reserves"), (0.5, "tiering: 50% of reserves unremunerated")):
+        for HH in (5.0, 10.0):
+            row = level(2025, path[: int(HH)], HH, unremunerated=k)
+            row.update({"H": HH, "primary_path": "CBO baseline primary balance, FY2026-35", "gdp_bn": gdp[2025] / 1e3,
+                        "scenario": lab})
             row["erosion_per_pp_bn"] = row["b"] * row["gdp_bn"] * row["erosion_share_mean"] / 100
             rows.append(row)
     d = pd.DataFrame(rows)

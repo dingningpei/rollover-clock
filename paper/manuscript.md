@@ -18,7 +18,7 @@ Three findings follow:
 2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since. Our own regressions agree on the direction of this change, though not on its size.
 3. The inflation needed per unit of relief rose by half between 2007 and 2025, and quantitative easing accounts for 50–80% of the rise. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed its additional assets with interest-bearing reserves that reprice overnight. Most of the rest comes from currency falling relative to debt, partly offset by the Treasury's longer maturities.
 
-Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. In levels, holding debt/GDP stable through inflation alone at CBO's baseline deficits would take about 5 pp of extra inflation a year for a decade; each point erodes about $100bn a year. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
+Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. In levels, holding debt/GDP stable through inflation alone at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade; each point erodes about $100bn a year. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
 
 ---
 
@@ -55,9 +55,9 @@ Two implications follow. First, inflation on debt only buys time. Debt reprices,
 
 The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981. This ranking does not depend on the post-2004 collapse of the fiscal response. With one common response in every year it holds for any value below about 0.35, because it is driven by the inflation layer.
 
-In levels, the question is how much inflation would hold debt/GDP stable at today's deficits. With CBO's baseline primary deficits and today's rates, the answer is about 5 pp a year for a decade, against 4 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $500bn a year is far beyond what a modest inflation overshoot can cover.
+In levels, the question is how much inflation would hold debt/GDP stable at today's deficits. With CBO's baseline primary deficits and today's rates, the answer is about 4 pp a year for a decade, against about 3 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $400bn a year is far beyond what a modest inflation overshoot can cover.
 
-Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by about 18%. Returning reserves to their 2019 level or terming out a tenth of bills cuts it by 6–7%. Losing 50–100bp of convenience yield raises it by 8–14%.
+Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Among balance-sheet policies, ending interest on reserves has the largest effect: it cuts the requirement by a third, because reserves rejoin the zero-interest base that inflation erodes, but it amounts to a tax on banks and would change how the Fed sets rates. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by 18%. A Fed shift to bills cuts it by 12%, because it leaves longer debt in private hands. Raising the Treasury's bill share to 30% raises it by 15%. Losing 50–100bp of convenience yield raises it by 8–14%.
 
 **Contribution.** None of the ingredients is new on its own:
 
@@ -390,9 +390,13 @@ We also tried to identify φ with the clock itself, using the predetermined repr
 
 The combined metric is a sensitivity: inflation per point of a permanent rate shock. A policymaker's question is a level: at today's deficits and today's rates, how much inflation would stop debt/GDP from rising? The same two clocks answer it.
 
-Hold consolidated debt/GDP at its year-end level b for H years. The debt-stabilizing primary balance at horizon h is (r̄(h) − g)b, where the average rate moves from today's r̄₀ toward the marginal cost r along the rollover clock, r̄(h) = r̄₀ + (r − r̄₀)P(h). The shortfall against the actual primary balance s(h) must be covered by erosion Δπ·b·E(h):
+Hold interest-bearing consolidated debt b and the zero-interest base z (currency, and reserves before 2008) constant relative to GDP for H years. The debt-stabilizing primary balance at horizon h is (r̄(h) − g)b − g·z:
+- the average rate moves from today's r̄₀ toward the marginal cost r along the rollover clock, r̄(h) = r̄₀ + (r − r̄₀)P(h);
+- the growth of zero-interest money, g·z, is seigniorage that finances part of the deficit.
 
-$$\Delta\pi^{level}(H)=\frac{\int_0^H\big[(\bar r(h)-g)\,b-s(h)\big]\,dh}{b\int_0^H E(h)\,dh}.$$
+The shortfall against the actual primary balance s(h) must be covered by erosion Δπ·b·E(h):
+
+$$\Delta\pi^{level}(H)=\frac{\int_0^H\big[(\bar r(h)-g)\,b-g\,z-s(h)\big]\,dh}{b\int_0^H E(h)\,dh}.$$
 
 For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal years 2026–2035. For 2007 and 2019 we hold the actual primary balance (excluding Fed remittances) constant. The average rate r̄₀ prices each privately held security at its own rate, calibrated to the Treasury's official average rate on marketable debt; TIPS add 2% expected inflation, reserves earn the interest rate on reserves, and reverse repos the ON RRP rate.
 
@@ -400,54 +404,86 @@ For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal year
 
 | | End-2007 | End-2019 | End-2025 (CBO baseline) |
 |---|---|---|---|
-| Consolidated debt, % of GDP | 26 | 75 | 95 |
+| Interest-bearing consolidated debt, % of GDP | 26 | 75 | 95 |
+| Zero-interest base (currency; reserves before 2008), % of GDP | 5.8 | 8.4 | 7.9 |
 | Average rate on the stock r̄₀, % | 4.9 | 2.3 | 3.6 |
 | Marginal cost r / growth g, % | 4.6 / 3.1 | 2.1 / 3.9 | 4.2 / 3.8 |
 | Primary balance, % of GDP (10-year mean) | +0.97 | −2.38 | −1.41 |
-| Debt-stabilizing primary balance, % of GDP (year 0 → year 10) | 0.47 → 0.39 | −1.19 → −1.32 | −0.23 → 0.33 |
-| Shortfall, % of GDP (10-year mean) | −0.56 | 1.09 | 1.63 |
+| Debt-stabilizing primary balance, % of GDP (year 0 → year 10) | +0.29 → +0.22 | −1.52 → −1.64 | −0.53 → +0.03 |
+| Shortfall, % of GDP (10-year mean) | −0.74 | 0.76 | 1.32 |
 | Erosion per pp of inflation, $bn a year (10-year mean) | 18 | 58 | 98 |
-| Inflation to hold debt/GDP, pp a year, H = 10 (H = 5) | none | 4.0 (3.0) | 5.1 (3.7) |
-| Same, discounted at r − g | none | 4.1 | 5.1 |
+| Inflation to hold debt/GDP, pp a year, H = 10 (H = 5) | none | 2.8 (2.1) | 4.2 (3.0) |
+| Same, discounted at r − g | none | 2.9 | 4.1 |
 
 Five points stand out.
-- At end-2025, holding debt/GDP constant through inflation alone would take about **5 pp of extra inflation a year for a decade** (3.7 over five years).
-- The primary shortfall averages 1.6% of GDP, about $500bn a year. Each point of sustained surprise inflation erodes about $100bn a year on average: more at first, less as the debt reprices.
+- At end-2025, holding debt/GDP constant through inflation alone would take about **4 pp of extra inflation a year for a decade** (3.0 over five years).
+- The primary shortfall averages 1.3% of GDP, about $400bn a year. Each point of sustained surprise inflation erodes about $100bn a year on average: more at first, less as the debt reprices.
 - The requirement rises with the horizon for the reason in the corollary of Section 3.3: the erodible share of the balance sheet falls from 46% on average over five years to 33% over ten.
-- A permanent inflation tax on currency alone would need about 20 pp a year (1.6% of GDP against currency of 8% of GDP).
-- The same calculation gives 4.0 pp for 2019 and nothing for 2007, when the primary surplus exceeded the debt-stabilizing level.
+- A permanent inflation tax on currency alone would need about 17 pp a year (1.3% of GDP against currency of 7.9% of GDP).
+- The same calculation gives 2.8 pp for 2019 and nothing for 2007, when the primary surplus exceeded the debt-stabilizing level.
 
 This number does not use φ̂, since the actual and projected primary balances already embed the fiscal response. It is an order of magnitude, not a forecast:
 - It holds the primary balance fixed in real terms. Bracket creep and lags in the indexation of spending would reduce it.
 - It holds currency demand and real rates fixed. A flight from currency or a rise in the inflation risk premium would raise it.
 
-## 6. Counterfactuals
+## 6. Counterfactuals and policy options
+
+Table 5 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
 **Table 5. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
 | Baseline (consolidated; g = 3.8%, SEP) | 0.46 | 0.46 | 1.00 | — | 3.26 |
+| *Fiscal policy* | | | | | |
 | Fiscal response restored (φ̂ = 0.39) | 0.46 | 0.07 | 0.16 | −84% | 0.51 |
 | Fiscal response 0.25 (intermediate) | 0.46 | 0.21 | 0.46 | −54% | 1.50 |
+| *Central-bank balance sheet* | | | | | |
 | No QE: Fed Treasuries = currency, no reserves | 0.46 | 0.46 | 0.83 | −18% | 3.07 |
-| Treasury's own liabilities (Fed ignored) | 0.46 | 0.46 | 1.02 | +1% | 3.31 |
 | QT: reserves to $1.9tn, Treasuries back to private | 0.46 | 0.46 | 0.94 | −6% | 3.20 |
-| Treasury terms out: 10% of bills → 10y | 0.46 | 0.46 | 0.93 | −7% | 3.18 |
+| Ending interest on reserves | 0.46 | 0.46 | 0.67 | −33% | 2.82 |
+| Tiering: 50% of reserves unremunerated | 0.46 | 0.46 | 0.82 | −19% | 3.04 |
+| Tiering: 25% of reserves unremunerated | 0.46 | 0.46 | 0.90 | −10% | 3.15 |
+| Fed Treasury portfolio 50% bills (from 5.5%) | 0.46 | 0.46 | 0.89 | −12% | 3.14 |
+| *Treasury debt management* | | | | | |
+| Bill share 25% of marketable debt (from 21.6%) | 0.46 | 0.46 | 1.06 | +6% | 3.31 |
+| Bill share 30% | 0.46 | 0.46 | 1.15 | +15% | 3.39 |
+| Terms out: 10% of bills → 10-year notes | 0.46 | 0.46 | 0.93 | −7% | 3.18 |
+| *Markets and macro* | | | | | |
 | Convenience yield −50bp | 0.50 | 0.50 | 1.08 | +8% | 3.51 |
 | Convenience yield −100bp | 0.53 | 0.53 | 1.15 | +14% | 3.73 |
 | Trend growth 4% | 0.43 | 0.43 | 0.95 | −5% | 3.07 |
 | Trend growth 3.5% | 0.50 | 0.50 | 1.08 | +8% | 3.55 |
 | ψ = 2bp (CBO) | 0.38 | 0.38 | 0.82 | −18% | 2.67 |
 | ψ = 4.5bp | 0.55 | 0.55 | 1.20 | +20% | 3.90 |
+| *Accounting benchmark* | | | | | |
+| Treasury's own liabilities (Fed ignored) | 0.46 | 0.46 | 1.02 | +1% | 3.31 |
 
-In the No-QE scenario the Fed holds only as many Treasuries as it has currency outstanding, as before 2008. The rest return to private holders pro rata to the SOMA maturity structure, and reserves and reverse repos go to zero. Debt/GDP is held at its baseline, to isolate the change in composition.
+The scenarios are defined as follows.
+- *No QE.* The Fed holds only as many Treasuries as it has currency outstanding, as before 2008. The rest return to private holders pro rata to the SOMA maturity structure, and reserves and reverse repos go to zero.
+- *Ending interest on reserves; tiering.* All, half or a quarter of the $2.85tn of reserves stop earning interest. They move from overnight interest-bearing debt to the zero-interest base that inflation erodes.
+- *Fed Treasury portfolio 50% bills.* The Fed sells coupons pro rata to private holders and buys bills from them until half its Treasuries are bills, a change of about $1.9tn.
+- *Bill share.* Treasury raises bills to 25% or 30% of marketable debt and shrinks all other securities pro rata.
 
-- **The fiscal response is the dominant lever.**
-- **Balance-sheet policy moves only the inflation layer.** QE, QT and Treasury's maturity choice change the cost of the inflation substitute by 6–18%, but they cannot change the threshold.
-- **Losing the convenience yield, slower growth and a steeper debt-rate schedule raise the threshold itself.**
+Five results follow.
 
-Two limitations: the balance-sheet scenarios hold r fixed and ignore the term-premium effects of QE and QT, and all scenarios are static comparisons.
+1. **The fiscal response is the dominant lever.** Restoring the pre-2004 response cuts the requirement by 84%. No balance-sheet policy comes close.
+2. **Balance-sheet policy moves only the inflation layer.** None of the central-bank or debt-management scenarios changes φ* when debt/GDP is held fixed. They change the cost of the inflation substitute by 6–33%.
+3. **Ending interest on reserves is the largest balance-sheet lever.**
+   - It cuts the requirement by a third (36% once debt/GDP falls with the interest-bearing stock), almost twice the effect of undoing QE. Tiering at 50% or 25% cuts it by 19% or 10%.
+   - In levels (Section 5.4), it lowers the inflation needed to hold debt/GDP stable from 4.2 to 2.3 pp a year, because reserves stop costing interest (about $104bn a year at the end-2025 rate of 3.65%) and their growth becomes seigniorage.
+   - It is not a free lunch. Unremunerated reserves are a tax on banks. In an ample-reserves framework the interest rate on reserves is also how the Fed sets the policy rate, so ending it would require far smaller reserves or binding reserve requirements. The ECB's move to stop remunerating minimum reserves in 2023 is a partial version of the same idea.
+4. **A Fed shift to bills lengthens the consolidated structure.** Moving half the Fed's Treasuries into bills cuts the requirement by 12%. The Fed's own portfolio gets shorter, but the private sector ends up holding more coupons, and it is the private sector's holdings that matter. From the consolidated point of view, the Fed buying bills is Treasury terming out.
+5. **More bills raise the price of the inflation substitute.** A bill share of 25% raises the requirement by 6%, and 30% by 15%. Terming out a tenth of bills lowers it by 7%.
+
+When debt/GDP is allowed to change with the interest-bearing stock, the results are similar:
+- No QE without the reserves that fund the Fed's MBS lowers b from 0.95 to 0.90 and the requirement by 20%.
+- Ending interest on reserves lowers b to 0.86, φ* to 0.44 and the requirement by 36%.
+- Tiering at 50% lowers the requirement by 20%.
+
+Losing the convenience yield, slower growth and a steeper debt-rate schedule are different in kind: they raise the threshold itself.
+
+Two limitations apply. The balance-sheet scenarios hold r fixed and ignore the term-premium effects of QE, QT and changes in bill supply. And all scenarios are static comparisons.
 
 ## 7. Conclusion
 
@@ -455,7 +491,7 @@ A reserve-currency sovereign does not run into a debt wall. It runs into a choic
 
 The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
 
-The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 5 pp of extra inflation a year for a decade. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
+The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
 **Open issues.**
 - The level of the fiscal response φ̂ is not well identified. Its post-2004 collapse rests mainly on one study. Our own regressions agree on the direction but not the size, and our exposure × rate-shock design is too weak in U.S. annual data (Section 5.3 and Appendix C). The main ranking holds for any constant φ̂ below 0.35; a cross-country panel is the natural next step.

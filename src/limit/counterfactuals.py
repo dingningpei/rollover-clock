@@ -42,7 +42,7 @@ def metrics(tau, w, ix, cur, r, b, g=G_SEP_2025, psi=0.03, phi_hat=0.0, dr=1.0):
     lay = layer(tau, w, ix, cur, H, g)
     phistar = 1 - g / (r + psi * b)
     gap = max(phistar - phi_hat, 0.0)
-    return {"ratio10": lay["ratio"], "phistar": phistar, "gap": gap,
+    return {"b": b, "ratio10": lay["ratio"], "phistar": phistar, "gap": gap,
             "dpi_gap_pp_per_yr": gap * dr * lay["ratio"],
             "dp_jump_pct": gap * dr * lay["intP"] / lay["jump_base"]}
 
@@ -57,8 +57,11 @@ def main() -> None:
     base_tau, base_w, base_ix = np.r_[x.tau.values, OVERNIGHT], np.r_[priv, on], np.r_[tips, False]
     rows = []
 
-    def add(name, tau=base_tau, w=base_w, ix=base_ix, cur=lev.currency, **kw):
-        rows.append({"scenario": name, **metrics(tau, w, ix, cur, kw.pop("r", r), kw.pop("b", b), **kw)})
+    def add(name, tau=base_tau, w=base_w, ix=base_ix, cur=lev.currency, adjust_b=False, **kw):
+        """adjust_b: debt/GDP moves with the interest-bearing stock (otherwise composition only)."""
+        bb = b * np.sum(w) / np.sum(base_w) if adjust_b else kw.pop("b", b)
+        rows.append({"scenario": name, "b_adjusted": adjust_b,
+                     **metrics(tau, w, ix, cur, kw.pop("r", r), bb, **kw)})
 
     def private_plus(returned, overnight):
         """Consolidated stock after SOMA Treasuries `returned` go back to private holders pro rata."""
@@ -78,8 +81,31 @@ def main() -> None:
     tau_to = np.r_[x.tau.values, OVERNIGHT, 10.0]
     w_to = np.r_[np.where(bills, priv * (1 - shift / priv[bills].sum()), priv), on, shift]
     add("Treasury terms out: 10% of bills -> 10y", tau=tau_to, w=w_to, ix=np.r_[tips, False, False])
+    add("No QE, and debt/GDP without the MBS-funding reserves", w=private_plus(x.soma_par.sum() - lev.currency, 0.0),
+        adjust_b=True)
+    # --- policy scenarios (paper, Section 6) ---
+    res, rrp = lev.reserves, lev.reverse_repo
+    for k, lab in ((1.0, "Ending interest on reserves"), (0.5, "Tiering: 50% of reserves unremunerated"),
+                   (0.25, "Tiering: 25% of reserves unremunerated")):
+        for adj in (False, True):
+            add(lab + (", debt/GDP adjusted" if adj else ""), w=np.r_[priv, rrp + (1 - k) * res],
+                cur=lev.currency + k * res, adjust_b=adj)
+    # Fed shifts its Treasury portfolio to bills (TBAC 2026 charge): SOMA bill share to 50%;
+    # coupons sold pro rata to private holders, bills bought pro rata from private holders
+    soma = x.soma_par.values
+    sb = soma[bills].sum()
+    move = 0.5 * soma.sum() - sb
+    soma_new = np.where(bills, soma + priv * move / priv[bills].sum(),
+                        soma * (1 - move / soma[~bills].sum()))
+    add("Fed Treasury portfolio 50% bills (from 5.5%)", w=np.r_[x.par.values - soma_new, on])
+    # Treasury raises the bill share of marketable debt; coupons (incl. TIPS, FRNs) shrink pro rata
+    for target in (0.25, 0.30):
+        d_bills = (target - x.par[bills].sum() / x.par.sum()) * x.par.sum()
+        pb, pc = priv[bills].sum(), priv[~bills].sum()
+        w_b = np.where(bills, priv * (1 + d_bills / pb), priv * (1 - d_bills / pc))
+        add(f"Treasury bill share {target:.0%} (from 21.6%)", w=np.r_[w_b, on])
     add("Fiscal response restored (phi_hat=0.39)", phi_hat=0.39)
-    add("Fiscal response at Bohn-based 0.25", phi_hat=0.25)
+    add("Fiscal response at intermediate 0.25", phi_hat=0.25)
     add("Convenience yield lost 50bp (r+0.5pp)", r=r + 0.005)
     add("Convenience yield lost 100bp (r+1pp)", r=r + 0.010)
     add("Growth g=4% (earlier assumption)", g=0.04)
@@ -87,6 +113,7 @@ def main() -> None:
     add("psi = 2bp (CBO)", psi=0.02)
     add("psi = 4.5bp", psi=0.045)
     d = pd.DataFrame(rows)
+    d["change_vs_baseline"] = d.dpi_gap_pp_per_yr / d.dpi_gap_pp_per_yr.iloc[0] - 1
     d.to_csv(OUT / "counterfactuals_2025.csv", index=False)
     print(f"end-2025: r={r:.4f}, b={b:.3f}, reserves+RRP=${on/1e6:.2f}tn, currency=${lev.currency/1e6:.2f}tn, "
           f"SOMA Treasuries=${x.soma_par.sum()/1e6:.2f}tn")
