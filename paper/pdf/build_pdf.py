@@ -95,6 +95,8 @@ def build(author: str, affil: str, email: str, jel: str, keywords: str) -> Path:
     for k, m in enumerate(maths):
         body = body.replace(f"<p>MATHBLOCK{k}</p>", m)
 
+    # keep each table title with its table
+    body = re.sub(r"(<p><strong>Table [^<]*</strong>.*?</p>\s*<table>.*?</table>)", r'<div class="fig">\1</div>', body, flags=re.S)
     # keep each figure with its caption
     body = re.sub(r"(<p><img [^>]+></p>\s*<p><em>Figure.*?</p>)", r'<div class="fig">\1</div>', body, flags=re.S)
     # abstract block + JEL/keywords line

@@ -55,6 +55,7 @@ python3 -m src.fiscal.fiscal_response
 python3 -m src.fiscal.identify_phi
 python3 -m src.limit.counterfactuals
 python3 -m src.limit.decompose
+python3 -m src.limit.level_metric
 
 # Figures 1-3
 python3 -m src.limit.plot_limit_map_long

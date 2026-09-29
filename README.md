@@ -42,10 +42,11 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Table 1 (backtest) | `data/processed/clock/backtest_scores.csv` |
 | Section 4.4, Figure 2 (2022–25 test) | `data/processed/clock/freeze2021_*.csv`, `paper/figures/fig2_*` |
 | Table 2, Figure 3 (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
-| Section 5.3, Table 4 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
+| Section 5.3, Table 3 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
-| Table 3 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
+| Table 5 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
+| Section 5.4, Table 4 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 

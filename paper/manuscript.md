@@ -18,7 +18,7 @@ Three findings follow:
 2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since. Our own regressions agree on the direction of this change, though not on its size.
 3. The inflation needed per unit of relief rose by half between 2007 and 2025, and quantitative easing accounts for 50–80% of the rise. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed its additional assets with interest-bearing reserves that reprice overnight. Most of the rest comes from currency falling relative to debt, partly offset by the Treasury's longer maturities.
 
-Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
+Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. In levels, holding debt/GDP stable through inflation alone at CBO's baseline deficits would take about 5 pp of extra inflation a year for a decade; each point erodes about $100bn a year. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
 
 ---
 
@@ -55,6 +55,8 @@ Two implications follow. First, inflation on debt only buys time. Debt reprices,
 
 The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981. This ranking does not depend on the post-2004 collapse of the fiscal response. With one common response in every year it holds for any value below about 0.35, because it is driven by the inflation layer.
 
+In levels, the question is how much inflation would hold debt/GDP stable at today's deficits. With CBO's baseline primary deficits and today's rates, the answer is about 5 pp a year for a decade, against 4 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $500bn a year is far beyond what a modest inflation overshoot can cover.
+
 Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by about 18%. Returning reserves to their 2019 level or terming out a tenth of bills cuts it by 6–7%. Losing 50–100bp of convenience yield raises it by 8–14%.
 
 **Contribution.** None of the ingredients is new on its own:
@@ -70,7 +72,7 @@ The paper's contribution is to put them together:
 2. A long time series (1980–2025) of the full consolidated repricing profile for the U.S. It generalizes the scalar reset measures used in debt management, and is validated out of sample; we found no earlier series of this kind.
 3. A two-layer, year-by-year distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes. It quantifies the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
 
-Section 2 reviews related work. Section 3 presents the model. Section 4 builds and validates the clock. Section 5 presents the two-layer limit from 1980 to 2025, and Section 6 the counterfactuals. Section 7 concludes.
+Section 2 reviews related work. Section 3 presents the model. Section 4 builds and validates the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own estimates of the fiscal response, and the level of inflation that would hold debt stable today. Section 6 reports counterfactuals and Section 7 concludes.
 
 ## 2. Related literature
 
@@ -354,7 +356,7 @@ The controls are the output gap, temporary defense spending (defense/GDP minus i
 
 Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
 
-**Table 4. Implied fiscal response φ (standard error)**
+**Table 3. Implied fiscal response φ (standard error)**
 
 | Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
 |---|---|---|---|---|---|
@@ -384,9 +386,44 @@ Three things follow.
 
 We also tried to identify φ with the clock itself, using the predetermined repricing exposure as an instrument for interest-cost changes. The instrument is weak in U.S. annual data (Appendix C). Maturity structures and QE intensities differ widely across countries, so a cross-country panel is the natural way to identify φ with this design.
 
+### 5.4 The level: how much inflation would hold debt stable today?
+
+The combined metric is a sensitivity: inflation per point of a permanent rate shock. A policymaker's question is a level: at today's deficits and today's rates, how much inflation would stop debt/GDP from rising? The same two clocks answer it.
+
+Hold consolidated debt/GDP at its year-end level b for H years. The debt-stabilizing primary balance at horizon h is (r̄(h) − g)b, where the average rate moves from today's r̄₀ toward the marginal cost r along the rollover clock, r̄(h) = r̄₀ + (r − r̄₀)P(h). The shortfall against the actual primary balance s(h) must be covered by erosion Δπ·b·E(h):
+
+$$\Delta\pi^{level}(H)=\frac{\int_0^H\big[(\bar r(h)-g)\,b-s(h)\big]\,dh}{b\int_0^H E(h)\,dh}.$$
+
+For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal years 2026–2035. For 2007 and 2019 we hold the actual primary balance (excluding Fed remittances) constant. The average rate r̄₀ prices each privately held security at its own rate, calibrated to the Treasury's official average rate on marketable debt; TIPS add 2% expected inflation, reserves earn the interest rate on reserves, and reverse repos the ON RRP rate.
+
+**Table 4. Inflation needed to hold consolidated debt/GDP constant**
+
+| | End-2007 | End-2019 | End-2025 (CBO baseline) |
+|---|---|---|---|
+| Consolidated debt, % of GDP | 26 | 75 | 95 |
+| Average rate on the stock r̄₀, % | 4.9 | 2.3 | 3.6 |
+| Marginal cost r / growth g, % | 4.6 / 3.1 | 2.1 / 3.9 | 4.2 / 3.8 |
+| Primary balance, % of GDP (10-year mean) | +0.97 | −2.38 | −1.41 |
+| Debt-stabilizing primary balance, % of GDP (year 0 → year 10) | 0.47 → 0.39 | −1.19 → −1.32 | −0.23 → 0.33 |
+| Shortfall, % of GDP (10-year mean) | −0.56 | 1.09 | 1.63 |
+| Erosion per pp of inflation, $bn a year (10-year mean) | 18 | 58 | 98 |
+| Inflation to hold debt/GDP, pp a year, H = 10 (H = 5) | none | 4.0 (3.0) | 5.1 (3.7) |
+| Same, discounted at r − g | none | 4.1 | 5.1 |
+
+Five points stand out.
+- At end-2025, holding debt/GDP constant through inflation alone would take about **5 pp of extra inflation a year for a decade** (3.7 over five years).
+- The primary shortfall averages 1.6% of GDP, about $500bn a year. Each point of sustained surprise inflation erodes about $100bn a year on average: more at first, less as the debt reprices.
+- The requirement rises with the horizon for the reason in the corollary of Section 3.3: the erodible share of the balance sheet falls from 46% on average over five years to 33% over ten.
+- A permanent inflation tax on currency alone would need about 20 pp a year (1.6% of GDP against currency of 8% of GDP).
+- The same calculation gives 4.0 pp for 2019 and nothing for 2007, when the primary surplus exceeded the debt-stabilizing level.
+
+This number does not use φ̂, since the actual and projected primary balances already embed the fiscal response. It is an order of magnitude, not a forecast:
+- It holds the primary balance fixed in real terms. Bracket creep and lags in the indexation of spending would reduce it.
+- It holds currency demand and real rates fixed. A flight from currency or a rise in the inflation risk premium would raise it.
+
 ## 6. Counterfactuals
 
-**Table 3. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 5. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
@@ -418,7 +455,7 @@ A reserve-currency sovereign does not run into a debt wall. It runs into a choic
 
 The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
 
-The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
+The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 5 pp of extra inflation a year for a decade. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
 **Open issues.**
 - The level of the fiscal response φ̂ is not well identified. Its post-2004 collapse rests mainly on one study. Our own regressions agree on the direction but not the size, and our exposure × rate-shock design is too weak in U.S. annual data (Section 5.3 and Appendix C). The main ranking holds for any constant φ̂ below 0.35; a cross-country panel is the natural next step.
