@@ -45,9 +45,10 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Table 3, Figure 3 (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
 | Section 5.3, Table 4 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
-| Table 6 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
+| Table 7 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
 | Section 5.4, Table 5 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
+| Sections 3.5 and 5.5, Table 6, Figure 4 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 

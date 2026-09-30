@@ -57,8 +57,10 @@ python3 -m src.fiscal.identify_phi
 python3 -m src.limit.counterfactuals
 python3 -m src.limit.decompose
 python3 -m src.limit.level_metric
+python3 -m src.limit.time_to_limit
 
-# Figures 1-3
+# Figures 1-4
 python3 -m src.limit.plot_limit_map_long
+python3 -m src.limit.plot_time_to_limit
 python3 -m src.paper.figures
 echo "Done. Outputs in data/processed/, figures in paper/figures/."

@@ -32,7 +32,7 @@ This paper argues that the limit has two layers, and that they depend on the deb
 
 $$(1-\phi)\,(r+\psi b)<g .$$
 
-Here φ is the share of marginal interest cost offset by the primary surplus, and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it, and that the result holds for any maturity structure. Shorter debt makes a rate shock bite faster, but it does not change whether the system is stable.
+Here φ is the share of marginal interest cost offset by the primary surplus, and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it, and that the result holds for any maturity structure. Shorter debt makes a rate shock bite faster, but it does not change whether the system is stable. What it does change is timing: with a ceiling on the primary surplus, maturity decides how many years pass before a large rate shock breaks the limit (Section 3.5).
 
 **The inflation layer depends on maturity and on what the government owes.** If the fiscal response is below the threshold, the gap must be closed some other way. For a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced: debt that rolls over at new, Fisher-adjusted rates escapes, and currency, which never reprices, does not. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years, and on the erodible share E(h) of the balance sheet:
 
@@ -74,7 +74,7 @@ The paper's contribution is to put them together:
 2. A long time series (1980–2025) of the full consolidated repricing profile for the U.S. It generalizes the scalar reset measures used in debt management, and is validated out of sample; we found no earlier series of this kind.
 3. A two-layer, year-by-year distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes. It quantifies the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
 
-Section 2 reviews related work. Section 3 presents the model. Section 4 builds and validates the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own estimates of the fiscal response, and the level of inflation that would hold debt stable today. Section 6 reports counterfactuals and Section 7 concludes.
+Section 2 reviews related work. Section 3 presents the model. Section 4 builds and validates the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own estimates of the fiscal response, the level of inflation that would hold debt stable today, and the time to the limit when the surplus has a ceiling. Section 6 reports counterfactuals and Section 7 concludes.
 
 ## 2. Related literature
 
@@ -140,6 +140,13 @@ The minimum stabilizing offset is
 
 $$\phi^*=1-\frac{g}{r+\psi b}.$$
 
+**What Result 1 does and does not say.** CBO (2022), the OBR (2021) and TBAC (2020, 2026) show that QE shortened the maturity of the consolidated government's liabilities and so raised the budget's sensitivity to interest rates. That is correct, and the rollover clock measures it. What does not follow is that QE or shorter maturity moved the threshold at which debt becomes unstable. In this model class maturity is a filter between the market rate and the average rate: it shapes the path of interest costs after a shock but not the slow root that decides stability.
+
+The result has three boundaries.
+- If the debt-rate schedule depends on the duration the private sector holds (a term-premium channel), maturity moves r and through it φ*. The effect runs through r, which we measure, not through repricing speed.
+- If the fiscal rule responds to projected rather than realized interest, the response is faster but the threshold is the same.
+- If the primary surplus has a ceiling, maturity decides when a large shock breaks the limit. Section 3.5 makes this precise.
+
 ### 3.3 The inflation layer
 
 Let a permanent real-rate rise Δr add extra interest Δr·b·P(h), where P is the clock of all interest-bearing liabilities; inflation-indexed debt reprices its real coupon at maturity like any other bond.
@@ -186,6 +193,20 @@ Let w(s) be the share of payments due at s and p(s) the cumulative surprise in t
 | Sustained inflation, p(s) = Δπ·s | b·Δπ·D | hurts (Cochrane; Barro–Bianchi; HRR; this paper) |
 
 QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P / (N/b + C/b), which depends on maturity only through the cost of the shock.
+
+### 3.5 When maturity matters: a ceiling on the surplus
+
+Governments cannot raise the primary surplus without limit; Ghosh et al. (2013) call the flattening of the response at high debt fiscal fatigue. Let the surplus have a ceiling s_max. After a permanent rise Δr in the marginal rate, the primary balance that holds debt/GDP constant is
+
+$$s^{req}(h)=\big(\bar r(h)-g\big)\,b-g\,z-\Delta\pi\,b\,E(h),\qquad \bar r(h)=\bar r_0+(r+\Delta r-\bar r_0)\,P(h),$$
+
+where z is the zero-interest base relative to GDP, g·z its seigniorage, and Δπ an optional sustained surprise inflation. The limit is broken when s^req(h) first exceeds s_max, at the time to the limit T(Δr).
+
+Two properties follow.
+- *Whether* the limit is broken does not depend on maturity: it happens whenever the long-run requirement (r + Δr − g)b − g·z − Δπ·z exceeds s_max.
+- *When* it is broken depends only on the rollover clock, because the requirement climbs toward its long-run value at the speed P(h). A faster clock shortens T.
+
+Inflation enters the same way. A sustained surprise lowers the requirement by Δπ·b·E(h), which shrinks as the debt reprices, so it lengthens T but, unless the currency base alone can carry the gap, does not remove the limit. This is the sense in which inflation buys time. Section 5.5 measures T.
 
 ## 4. Measuring the rollover clock
 
@@ -458,11 +479,39 @@ This number does not use φ̂, since the actual and projected primary balances a
 - It holds the primary balance fixed in real terms. Bracket creep and lags in the indexation of spending would reduce it.
 - It holds currency demand and real rates fixed. A flight from currency or a rise in the inflation risk premium would raise it.
 
+### 5.5 Time to the limit
+
+Table 6 and Figure 4 compute T(Δr) at the end-2025 fiscal position: b = 0.95, r̄₀ = 3.6%, r = 4.2%, g = 3.8%, z = 0.079. The ceilings of 1–3% of GDP bracket the U.S. record. Since 1967 the primary surplus, excluding Fed remittances, has exceeded 2% of GDP only in fiscal years 1997–2001, when it peaked at 4.8%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
+
+**Table 6. Years until the debt-stabilizing primary surplus exceeds the ceiling** (end-2025 fiscal position)
+
+| Surplus ceiling | Rate shock | Consolidated, end-2025 | Without QE | End-2007 clock | Consolidated + 2 pp inflation |
+|---|---|---|---|---|---|
+| 1% of GDP | +3 pp | 0.8 | 1.5 | 1.4 | 2.9 |
+|  | +4 pp | 0.3 | 0.8 | 0.8 | 1.9 |
+|  | +5 pp | 0.2 | 0.4 | 0.5 | 1.2 |
+| 2% of GDP | +3 pp | 4.1 | 4.8 | 4.7 | 6.8 |
+|  | +4 pp | 2.0 | 2.6 | 2.4 | 3.9 |
+|  | +5 pp | 1.1 | 1.8 | 1.6 | 2.5 |
+| 3% of GDP | +3 pp | never | never | never | never |
+|  | +4 pp | 5.3 | 6.2 | 6.4 | 8.2 |
+|  | +5 pp | 2.9 | 3.7 | 3.6 | 4.6 |
+
+![Figure 4](figures/fig4_time_to_limit.png)
+
+*Figure 4. Time to the limit with a ceiling of 2% of GDP on the primary surplus. The end-2025 debt, rates and growth are common to all lines; only the repricing clock differs. The dashed line adds a sustained surprise inflation of 2 pp a year.*
+
+Four points stand out.
+- With a 2% ceiling, any permanent shock above about 2 pp eventually breaks the limit, whatever the maturity.
+- A 3 pp shock breaks it after about four years with today's consolidated clock and after almost five without QE. The faster post-QE clock costs 8–9 months at this ceiling, and more in relative terms for larger shocks: 2.0 against 2.6 years for a 4 pp shock.
+- The end-2007 clock gives almost the same times as the no-QE clock. The consolidated structure of 2025 is faster than both.
+- Two points of sustained surprise inflation lengthen the time to the limit by about 2–3 years for 3–4 pp shocks, and do not prevent the limit from binding. That is how much time inflation buys.
+
 ## 6. Counterfactuals and policy options
 
-Table 6 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
+Table 7 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
-**Table 6. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 7. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
@@ -523,7 +572,7 @@ A reserve-currency sovereign does not run into a debt wall. It runs into a choic
 
 The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
 
-The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
+The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. With a ceiling on the primary surplus, maturity decides how long the limit takes to bind: a 3 pp permanent shock breaks a 2% of GDP ceiling in about four years at today's consolidated clock, and two points of sustained inflation buy two to three more. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
 **Open issues.**
 - The level of the fiscal response φ̂ is not well identified. Its post-2004 collapse rests mainly on one study. Our own regressions agree on the direction but not the size, and our exposure × rate-shock design is too weak in U.S. annual data (Section 5.3 and Appendix C). The main ranking holds for any constant φ̂ below 0.35; a cross-country panel is the natural next step.
