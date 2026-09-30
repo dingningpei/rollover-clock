@@ -229,7 +229,7 @@ It is finite only if κ < κ\* = 1/R. Above this **monetary tolerance threshold*
 
 **Precedent.** Security-level accounting of U.S. debt returns and its effect on debt/GDP dynamics goes back to Hall and Sargent (2011); we use the same MSPD-based building blocks to measure repricing speed rather than realized returns.
 
-**Other inputs.** Yields are H.15 constant-maturity series; the −9999 missing-value code (20-year CMT, 1987–93) is treated as missing. Official average interest rates on marketable debt and the auction record are from FiscalData. GDP is from BEA.
+**Other inputs.** Yields are H.15 constant-maturity series; the −9999 missing-value code (20-year CMT, 1987–93) is treated as missing. Official average interest rates on marketable debt and the auction record are from FiscalData. GDP is from BEA. The code for collecting, reconstructing and analysing the data was written with the assistance of a generative AI tool, as described in the statement at the end of the paper.
 
 ### 4.2 The clock, 1980–2025
 
@@ -722,6 +722,12 @@ Several issues remain open.
 - *Next steps.* Extending the Japanese series before 2020 and adding the UK's Treasury bills are natural next steps. Three sovereigns are not yet the panel that could identify the fiscal response across countries.
 
 ---
+
+## Statement on the use of generative AI
+
+The author used Claude (Anthropic), a generative AI assistant, throughout this project, in four ways. First, to write and debug the code that downloads, parses and reconciles the data (the U.S., UK and Japanese security-level stocks and central-bank holdings) and that implements the model checks, projections, tests and regressions. Second, to search the literature and to check citations and quoted passages against the original sources. Third, to propose and discuss parts of the analytical and empirical design. Fourth, to draft and edit the text, tables and figures.
+
+The research question, the choice among the designs considered, and the interpretation of the results are the author's, and the author is responsible for all content. Human oversight rested on three checks that do not depend on the AI tool: the reconstructed data reproduce published official totals (Section 4.1 and Appendix A); the clock is tested out of sample against realized outcomes (Section 4); and every number in the paper is produced by public code and public data in the replication package (Appendix E), so that it can be verified independently.
 
 ## References
 
