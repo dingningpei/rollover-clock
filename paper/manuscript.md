@@ -10,7 +10,7 @@ We measure the clock security by security for the United States from 1980 to 202
 
 Today's fiscal threshold (φ* ≈ 0.47) is back in its pre-2008 range. What has changed is the fiscal response, down from about 0.39 before 2004 to about zero, and the funding of the Fed: QE replaced currency, which inflation erodes, with interest-bearing reserves, and accounts for 50–80% of the rise since 2007 in the inflation needed per unit of relief. Covering the fiscal gap after a permanent 1pp rate rise would take 1.0–1.1 pp of extra inflation a year for a decade, the most since at least 1980; holding debt/GDP stable at CBO's baseline deficits, about 4 pp.
 
-The same measures for the United Kingdom and Japan show that the inflation layer is set by the consolidated balance sheet, not by debt management. Despite the longest gilts of the three, the UK's consolidated ratio matched that of the United States at the 2021 QE peak, and Japan's 2024 move to paying interest on reserves more than doubled its ratio. The binding constraint is not default but the cost of the inflation tax.
+The same measures for the United Kingdom and Japan show that the inflation layer is set by the consolidated balance sheet, not by debt management. Despite the longest gilts of the three, the UK's consolidated ratio matched that of the United States at the 2021 QE peak, and Japan's 2024 move to paying interest on reserves more than doubled its ratio. In Japan, where yields were held down, the 2022–25 inflation transferred about 18% of GDP and was not taken back. The binding constraint is not default but the cost of the inflation tax.
 
 ---
 
@@ -42,7 +42,7 @@ Together these make the inflation needed to cover the fiscal gap after a permane
 
 Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Among balance-sheet policies, ending interest on reserves has the largest effect, a third, because reserves rejoin the zero-interest base; but it amounts to a tax on banks and would change how the Fed sets rates. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts the requirement by 18%, and a Fed shift to bills cuts it by 12% because it leaves longer debt in private hands. Raising the Treasury's bill share to 30% raises it by 15%, and losing 50–100bp of convenience yield by 8–14%.
 
-**Three sovereigns.** Section 6 builds the same measures for the United Kingdom (2007–2025, gilt by gilt, net of the Bank of England's Asset Purchase Facility) and Japan (fiscal years 2020–2024, JGB by issue, net of the Bank of Japan). On their own debt the three governments differ widely: the UK's gilts average 14–16 years and a quarter are index-linked, and its own-debt inflation ratio is about 0.9 against 2.1–2.7 for the United States. Consolidation erases most of the difference. At the QE peak the consolidated ratios were 2.47 in the UK, 2.46 in the United States and 1.99 in Japan. How the central bank funds its bonds is decisive. Japan's zero-rate reserve tier kept its ratio near 0.8 until the March 2024 reform, which raised it to about 2 with almost no change in the government's own debt. The fiscal threshold is where the three differ: the UK is the only one with r above g, and Japan's threshold depends almost entirely on how rates respond to debt. The UK's 2021–25 inflation repeats the U.S. result: new debt was priced for far less inflation than followed, so the surprise transferred 1.8 times what full Fisher repricing implies, and the extra interest on reserves then took back most of the transfer.
+**Three sovereigns.** Section 6 builds the same measures for the United Kingdom (2007–2025, gilt by gilt, net of the Bank of England's Asset Purchase Facility) and Japan (fiscal years 2020–2024, JGB by issue, net of the Bank of Japan). On their own debt the three governments differ widely: the UK's gilts average 14–16 years and a quarter are index-linked, and its own-debt inflation ratio is about 0.9 against 2.1–2.7 for the United States. Consolidation erases most of the difference. At the QE peak the consolidated ratios were 2.47 in the UK, 2.46 in the United States and 1.99 in Japan. How the central bank funds its bonds is decisive. Japan's zero-rate reserve tier kept its ratio near 0.8 until the March 2024 reform, which raised it to about 2 with almost no change in the government's own debt. The fiscal threshold is where the three differ: the UK is the only one with r above g, and Japan's threshold depends almost entirely on how rates respond to debt. The UK's 2021–25 inflation repeats the U.S. result: new debt was priced for far less inflation than followed, so the surprise transferred 1.8 times what full Fisher repricing implies, and the extra interest on reserves then took back most of the transfer. In Japan, where yields were held down, the 2022–25 surprise transferred about 18% of GDP by March 2026 and was not taken back.
 
 **Contribution.** None of the ingredients is new on its own. Debt dynamics with endogenous rates come from Mian, Straub and Sufi (2025) and Lorenzoni and Werning (2019); consolidated Treasury–Fed maturity from Greenwood, Hanson, Rudolph and Summers (2014), the TBAC (2020, 2026) and the OBR (2021); maturity and the inflation tax from Cochrane (2001, 2022), Hilscher, Raviv and Reis (2022) and Barro and Bianchi (2026); and fiscal responses to debt service from Bohn (1998), Auerbach and Yagan (2024) and Eichengreen, Menuet and Donnat (2026). The paper puts them together. It proves that the fiscal threshold is maturity-free and derives a closed-form inflation requirement in which maturity enters only through the measured clock. It builds a long series, 1980–2025, of the full consolidated repricing profile for the United States, generalizing the scalar reset measures used in debt management and testing it out of sample; we found no earlier series of this kind. And it gives a year-by-year, two-layer distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes, quantifying the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
 
@@ -528,7 +528,7 @@ We put g on a common basis across the three countries: trailing 10-year average 
 
 ![Figure 5](figures/fig5_three_countries.png)
 
-*Figure 5. United States (blue), United Kingdom (orange), Japan (green). A: inflation-layer ratio, consolidated (solid) and own debt (dashed), g = 4%, H = 10. B: fiscal threshold φ* against the debt-sensitivity of rates ψ, latest year, g = trailing 10-year real growth + 2%; the dotted line marks the U.S. baseline ψ = 3bp. C: cumulative real transfer from the 2021–25 inflation surprise, from the end-2020 consolidated balance sheet, under full Fisher repricing (B, dashed), inflation as priced (D, dotted) and actual yields (C, solid).*
+*Figure 5. United States (blue), United Kingdom (orange), Japan (green). A: inflation-layer ratio, consolidated (solid) and own debt (dashed), g = 4%, H = 10. B: fiscal threshold φ* against the debt-sensitivity of rates ψ, latest year, g = trailing 10-year real growth + 2%; the dotted line marks the U.S. baseline ψ = 3bp. C: cumulative real transfer from the post-2020 inflation surprises, from the end-2020 consolidated balance sheet (Japan: end-March 2022, plotted at fiscal year-ends), in % of GDP in the base year, under full Fisher repricing (B, dashed), inflation as priced (D, dotted; not available for Japan) and actual yields (C, solid).*
 
 Figure 5A shows the ratios over time. Four findings follow.
 
@@ -599,20 +599,52 @@ The UK results repeat the U.S. pattern closely (Figure 5C).
 
 3. **Index-linked gilts shifted part of the inflation to the government.** RPI inflation exceeded its end-2020 implied rate by 16.6 pp over 2021–25. The resulting uplift on privately held index-linked gilts added 3.6% of GDP to nominal debt, about a third of the gross erosion of nominal liabilities. This is the other face of the UK's low own-debt ratio: debt that inflation cannot erode also cannot share in an inflation surprise.
 
-### 6.5 What the comparison adds
+### 6.5 The 2022–25 inflation surprise in Japan
 
-Three points generalize beyond the United States.
+Japan's inflation came a year later and at a lower rate, but from a starting point of near-zero expectations and yields held down by yield-curve control. We apply the same test to Japan's consolidated balance sheet at end-March 2022 (trillion yen):
+- privately held nominal JGBs and bills, 659;
+- interest-bearing current accounts at the BoJ, 262;
+- current accounts in the 0% tier, 301;
+- banknotes, 120.
+
+Together these are 233% of FY2021 GDP. No public series of breakeven inflation is available, so expected inflation is the average CPI inflation of the ten years to March 2022, 0.61%, and there is no run D.
+
+The closed-portfolio design is as for the UK, over the 48 months to March 2026. Floating-rate JGBs reset every six months at the 10-year yield. Interest-bearing current accounts earn their tier-weighted rate (+0.1% on the basic balance, −0.1% on the policy-rate balance) until the March 2024 reform and the call rate after it. Under actual yields (C), the reform also started paying the call rate on the 0% tier above required reserves.
+
+**Table 11. Japan: real transfer to the consolidated government from the 2022–25 inflation surprise** (cumulative, % of FY2021 GDP; fiscal years ending in March)
+
+| End of | Cumulative surprise (pp) | Gross erosion | Model: full Fisher repricing (B) | Model, analytic s·b·E | Actual (C) | Memo: interest on the former 0% tier in C |
+|---|---|---|---|---|---|---|
+| FY2022 | 2.6 | 6.0 | 4.3 | 4.2 | 5.9 | 0.0 |
+| FY2023 | 4.6 | 10.7 | 7.4 | 7.3 | 10.1 | 0.0 |
+| FY2024 | 7.6 | 17.6 | 11.8 | 11.5 | 16.8 | 0.1 |
+| FY2025 | 8.4 | 19.5 | 12.7 | 12.6 | 18.0 | 0.4 |
+
+*Notes.* With expected inflation of 1% instead of 0.61%, the actual transfer (C) at end-FY2025 is 14.5% of GDP and the full-Fisher transfer (B) 10.4%.
+
+The result differs from the U.S. and UK tests in the direction that matters.
+
+1. **The transfer was not taken back.** Under actual yields (C), the transfer rose every year and reached 18.0% of FY2021 GDP by March 2026, 92% of gross erosion and 1.4 times the full-Fisher benchmark (B). The 10-year yield rose from 0.2% in March 2022 to 1.5% in March 2025 and 2.2% in March 2026, while CPI inflation averaged about 3% in FY2022–24. Real rates on new debt fell rather than rose. The rate layer that reversed the transfer in the United States and the UK did not operate.
+
+2. **The zero-interest base did much of the work.** Banknotes and the 0% tier were 31% of the nominal liabilities that inflation eroded, and they never reprice. The March 2024 reform cost little over this horizon (0.4% of GDP by FY2025) because the policy rate stayed low: it was 0.5% for most of FY2025. Its effect is on the clock going forward (Section 6.2), not on the transfer already made.
+
+3. **Japan shows the inflation layer at its most effective.** A large zero-interest base, slow repricing, and yields that did not price the surprise are the conditions under which inflation substitutes for a fiscal response. The size of the transfer, about 18% of GDP from a cumulative surprise of 8 pp, is the counterpart of a threshold that depends almost entirely on ψ (Section 6.3). Since the reform, however, current accounts earn the policy rate and the consolidated ratio is about 2, close to the other two countries (Section 6.2), so the same substitute would now be costlier.
+
+### 6.6 What the comparison adds
+
+Four points generalize beyond the United States.
 - **The inflation layer is a property of the consolidated balance sheet, not of debt management.** The UK issued the longest debt of the three and ended 2021 with the same consolidated ratio as the United States.
 - **The funding of the central bank's bonds is the decisive margin.** Japan's zero-rate reserves kept its ratio below one, and the end of that regime raised it by more than the U.S. ratio rose from 2007 to 2021.
+- **Whether inflation substitutes for a fiscal response depends on the rate layer that follows it.** In all three countries markets priced far less of the surprise than full Fisher repricing implies. In the United States and the UK higher real rates, much of them paid on reserves, then took most of the transfer back; in Japan, where yields were held down and a third of the eroded liabilities paid no interest, they did not.
 - **The fiscal threshold is where the countries differ.** Here what matters is r − g and the debt-sensitivity of rates, which for Japan is the open question.
 
 Three sovereigns are not a panel. They do show, however, that the variation in maturity, indexation and central-bank funding needed to identify the fiscal response across countries exists.
 
 ## 7. Counterfactuals and policy options
 
-Table 11 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
+Table 12 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
-**Table 11. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 12. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
@@ -677,7 +709,7 @@ The United States in 2023–25 faces an ordinary fiscal threshold with an unusua
 
 Several issues remain open. The level of the fiscal response is not well identified: its post-2004 collapse rests mainly on one study, and our own regressions agree on its direction but not its size. The main ranking holds for any constant response below 0.35, and a cross-country panel, with its wider variation in maturity and QE, is the natural way to identify it. Expected growth is the parameter that matters most for the level of the requirement; an ex-ante measure lowers it by about 30%, although the ranking survives. The balance-sheet counterfactuals abstract from term-premium effects, and the combined metric is a first-order, undiscounted composition. Finally, currency demand is held fixed; a sustained inflation tax would shrink it, so the requirements are lower bounds in that respect.
 
-The comparison with the United Kingdom and Japan suggests that these conclusions are not specific to the United States. In all three countries QE funded by interest-bearing reserves made the inflation substitute costlier, and QT or zero-rate reserves made it cheaper again. The UK's long, partly indexed debt did not protect its consolidated balance sheet from that effect. Extending the Japanese series before 2020 and adding the UK's Treasury bills are the next steps.
+The comparison with the United Kingdom and Japan suggests that these conclusions are not specific to the United States. In all three countries QE funded by interest-bearing reserves made the inflation substitute costlier, and QT or zero-rate reserves made it cheaper again. The UK's long, partly indexed debt did not protect its consolidated balance sheet from that effect. Japan's 2022–25 inflation shows the other side: where yields are held down and much of the balance sheet pays no interest, a surprise inflation does transfer resources to the government, at the cost of real returns to savers. Extending the Japanese series before 2020 and adding the UK's Treasury bills are the next steps.
 
 ---
 
@@ -791,6 +823,7 @@ The clock adds growth-financing issuance at the new rate: P_t(h) = 1 − (1 − 
 - *GDP.* GDP is the fiscal-year average of quarterly nominal GDP at annual rates (FRED JPNNGDP).
 - *Marginal cost.* The marginal cost r prices each issue at the fiscal-year average of the Ministry of Finance's constant-maturity yield for its original tenor. Bills and floating-rate bonds are priced at one year, and index-linked bonds at the 10-year nominal yield.
 - *Growth.* Real growth for g is the fiscal-year growth of FRED JPNRGDPEXP.
+- *Inflation test.* The test in Section 6.5 uses monthly averages of the constant-maturity JGB yields, with the call rate (BoJ series STRDCLUCON) at zero maturity, and the current-account tier balances of MD08 to weight the rates of +0.1%, 0% and −0.1%. CPI (all items) is the Statistics Bureau's 2020-base series from January 2020, chained to the OECD series (FRED JPNCPIALLMINMEI) before that.
 
 ## Appendix B. Proofs
 
@@ -867,7 +900,7 @@ Section 6 uses the code in `src/intl/`. The DMO's gilts-in-issue reports (D1A, 2
 - the Bank of Japan (JGB holdings by issue, time-series API);
 - FRED (GDP).
 
-`src/intl/comparison.py` writes Tables 8–9 and Figure 5; `src/intl/uk_inflation_test.py` writes Table 10.
+`src/intl/comparison.py` writes Tables 8–9 and Figure 5; `src/intl/uk_inflation_test.py` writes Table 10 and `src/intl/jp_inflation_test.py` Table 11.
 
 ## Appendix E. The two-layer limit by year, 1980–2025
 

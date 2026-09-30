@@ -18,6 +18,7 @@ Series (monthly unless noted; 100 million yen):
 MOF: JGB constant-maturity yields, daily (jgbcm_all.csv); debt yearbook part 09 (Table 34,
 JGBs by issue), FY2020-2024.
 BoJ: JGB holdings by issue at fiscal year-ends (mei*.xlsx).
+Statistics Bureau: CPI, all items, 2020 base, monthly (zmi2020aa.csv).
 Outputs: data/raw/jp/boj_api/<db>.csv (long: series, date, value), data/raw/jp/mof/jgbcm_all.csv,
 data/raw/jp/mof/nenpou/, data/raw/jp/boj/
 """
@@ -84,6 +85,10 @@ def main() -> None:
         urllib.request.urlretrieve(f"https://www.boj.or.jp/en/statistics/boj/other/mei/release/20{f[3:5]}/{f}", boj / f)
         time.sleep(1)
     print("MOF yearbooks and BoJ holdings saved")
+    stat = Path("data/raw/jp/stat")                     # CPI, 2020 base, monthly from January 2020
+    stat.mkdir(parents=True, exist_ok=True)
+    urllib.request.urlretrieve("https://www.stat.go.jp/data/cpi/2020/csv/zmi2020aa.csv", stat / "zmi2020aa.csv")
+    print("CPI saved")
 
 
 if __name__ == "__main__":

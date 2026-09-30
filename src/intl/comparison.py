@@ -1,7 +1,7 @@
 """United States, United Kingdom, Japan: comparison table and Figure 5 (paper, Section 6).
 
 Inputs are the country clocks (g = 4% growth issuance, H = 10), the cross-country fiscal
-threshold (src/intl/phi_star.py) and the two 2021-25 inflation tests.
+threshold (src/intl/phi_star.py) and the three inflation tests.
 Outputs: data/processed/intl_comparison.csv, paper/figures/fig5_three_countries.{png,svg}.
 """
 from __future__ import annotations
@@ -95,8 +95,13 @@ def figure(d: pd.DataFrame) -> None:
     c.plot([], [], color=INK2, lw=1.4, ls=":", label="inflation as priced (D)")
     c.plot([], [], color=INK2, lw=1.4, ls="--", label="full Fisher repricing (B)")
     c.plot([], [], color=INK2, lw=2, label="actual yields (C)")
-    c.set_xticks(range(2021, 2026))
-    c.set_title("C. Transfer from the 2021–25 inflation surprise,\ncumulative, % of 2020 GDP", loc="left",
+    jp = pd.read_csv("data/processed/jp/jp_inflation_test_summary.csv")
+    jp = jp[jp.case == "base"]
+    x = jp.fy + 1.25                                                   # fiscal years end in March
+    c.plot(x, jp.transfer_B, color=COLOR["Japan"], lw=1.4, ls="--", marker="o", ms=3)
+    c.plot(x, jp.transfer_C, color=COLOR["Japan"], lw=2, marker="o", ms=4, label="Japan (from March 2022)")
+    c.set_xticks(range(2021, 2027))
+    c.set_title("C. Transfer from the post-2020 inflation surprises,\ncumulative, % of GDP in the base year", loc="left",
                 color=INK, fontsize=10)
     c.legend(frameon=False, fontsize=9, labelcolor=INK, loc="upper left")
     fig.tight_layout()

@@ -31,8 +31,8 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT CPIAUCSL EXPINF10YR; do
     curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
   done
-  # Section 6: nominal and real GDP for the United Kingdom and Japan
-  for s in UKNGDP NGDPRSAXDCGBQ JPNNGDP JPNRGDPEXP; do
+  # Section 6: nominal and real GDP for the United Kingdom and Japan; Japan CPI before 2020
+  for s in UKNGDP NGDPRSAXDCGBQ JPNNGDP JPNRGDPEXP JPNCPIALLMINMEI; do
     curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
   done
   # Section 6: Bank of England, ONS, Ministry of Finance, Bank of Japan
@@ -82,6 +82,7 @@ python3 -m src.intl.jp_boj
 python3 -m src.intl.jp_clock
 python3 -m src.intl.phi_star
 python3 -m src.intl.uk_inflation_test
+python3 -m src.intl.jp_inflation_test
 
 # Figures 1-5
 python3 -m src.limit.plot_limit_map_long

@@ -52,7 +52,7 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Section 5.2, Table 4 (robustness, Monte Carlo) | `data/processed/limit/robustness*.csv` |
 | Section 5.4, Table 6 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
 | Sections 3.5 and 5.5, Table 7, Figure 4 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
-| Section 6, Tables 8–10, Figure 5 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 inflation test) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
+| Section 6, Tables 8–11, Figure 5 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 and Japan 2022–25 inflation tests) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 
@@ -70,7 +70,8 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | ONS | CPI (D7BT) and RPI (CHAW) |
 | Ministry of Finance, Japan | Debt yearbook, Table 34 (JGBs by issue), FY2020–2024; constant-maturity JGB yields |
 | Bank of Japan | JGB holdings by issue; Time-Series Data Search API (balance sheet, current-account tiers, required reserves, government debt by holder) |
-| FRED (Federal Reserve Bank of St. Louis) | UK and Japan nominal and real GDP (UKNGDP, NGDPRSAXDCGBQ, JPNNGDP, JPNRGDPEXP); currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL); Cleveland Fed 10-year expected inflation (EXPINF10YR) |
+| Statistics Bureau of Japan | CPI, 2020 base, monthly |
+| FRED (Federal Reserve Bank of St. Louis) | UK and Japan nominal and real GDP (UKNGDP, NGDPRSAXDCGBQ, JPNNGDP, JPNRGDPEXP); Japan CPI before 2020 (JPNCPIALLMINMEI); currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL); Cleveland Fed 10-year expected inflation (EXPINF10YR) |
 
 **Hand-collected, committed in `data/manual/`:**
 
@@ -93,7 +94,7 @@ src/clock/    data fetchers; Treasury-only and consolidated clocks; backtest; 20
 src/limit/    two-layer limit map 1980-2025; counterfactuals; Figure 3
 src/fiscal/   attempt to identify the fiscal-offset coefficient (a negative result)
 src/intl/     United Kingdom and Japan: fetchers, security-level stocks, central-bank holdings, clocks,
-              cross-country fiscal threshold, UK 2021-25 inflation test, Figure 5
+              cross-country fiscal threshold, UK and Japan inflation tests, Figure 5
 src/paper/    Figures 1-2
 ```
 
