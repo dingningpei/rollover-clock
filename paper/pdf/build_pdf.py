@@ -33,6 +33,7 @@ p { margin: .45em 0; text-align: justify; }
 .author { text-align: center; margin: .2em 0 1.2em; }
 .author .name { font-size: 12.5pt; }
 .meta { text-align: center; font-size: 10pt; color: #333; }
+a { color: inherit; }
 .abstract { margin: 1em 2.2em; font-size: 10.5pt; }
 .front { font-size: 10pt; margin: .6em 2.2em; }
 table { border-collapse: collapse; margin: .8em auto; font-size: 9.5pt; page-break-inside: avoid; }
@@ -90,7 +91,9 @@ def build(author: str, affil: str, email: str, jel: str, keywords: str) -> Path:
     md = tidy(md)
     title, rest = md.split("\n", 1)
     title = title.lstrip("# ").strip()
-    rest = re.sub(r"^\s*\*Preliminary[^\n]*\*\s*\n", "", rest)       # replaced by the title block
+    meta = re.search(r"^\s*\*(Preliminary[^\n]*)\*\s*$", rest, flags=re.M)
+    rest = rest.replace(meta.group(0), "", 1)                         # moved into the title block
+    meta = markdown.markdown(meta.group(1))[3:-4]                     # strip <p></p>
     body = markdown.markdown(rest, extensions=["tables", "fenced_code"])
     for k, m in enumerate(maths):
         body = body.replace(f"<p>MATHBLOCK{k}</p>", m)
@@ -107,7 +110,7 @@ def build(author: str, affil: str, email: str, jel: str, keywords: str) -> Path:
     head = (f"<h1>{html.escape(title)}</h1>"
             f'<div class="author"><div class="name">{html.escape(author)}</div>'
             f"<div>{html.escape(affil)}</div><div>{html.escape(email)}</div></div>"
-            f'<p class="meta">Preliminary working paper, September 2026. Comments welcome.</p>')
+            f'<p class="meta">{meta}</p>')
     doc = (f"<!doctype html><html><head><meta charset='utf-8'><title>{html.escape(title)}</title>"
            f"<style>{CSS}</style></head><body>{head}{body}</body></html>")
     page = OUT / "rollover_clock.html"
