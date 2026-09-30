@@ -12,6 +12,10 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   curl -fsSL -o data/raw/fed/h41.zip "https://www.federalreserve.gov/datadownload/Output.aspx?rel=H41&filetype=zip"
   curl -fsSL -o data/raw/fed/h15.zip "https://www.federalreserve.gov/datadownload/Output.aspx?rel=H15&filetype=zip"
   (cd data/raw/fed && unzip -oq h41.zip && unzip -oq h15.zip)
+  # Financial Accounts of the United States (Z.1): U.S. currency held abroad
+  mkdir -p data/raw/fed/z1
+  curl -fsSL -o data/raw/fed/z1/z1.zip "https://www.federalreserve.gov/datadownload/Output.aspx?rel=Z1&filetype=zip"
+  (cd data/raw/fed/z1 && unzip -oq z1.zip Z1_data.xml)
   # New York Fed: effective federal funds rate and the end-2021 SOMA MBS book
   curl -fsSL -o data/raw/fed/effr_2021_2025.json \
     "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate=2021-12-01&endDate=2025-12-31"
@@ -24,7 +28,7 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   curl -fsSL -o data/raw/fred/CURRCIR.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CURRCIR"
   curl -fsSL -o data/raw/fred/RESBALNS.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RESBALNS"
   # Debt held by the public, real and potential GDP: fiscal-response regressions (Section 5.3)
-  for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT CPIAUCSL; do
+  for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT CPIAUCSL EXPINF10YR; do
     curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
   done
 fi
@@ -34,6 +38,7 @@ fi
 python3 -m src.clock.fetch_mspd
 python3 -m src.clock.fetch_fed
 python3 -m src.clock.fetch_backtest
+python3 -m src.clock.fetch_z1
 
 # Section 3 / Appendix B: model checks
 python3 -m src.model.derive_stability
@@ -58,6 +63,7 @@ python3 -m src.limit.counterfactuals
 python3 -m src.limit.decompose
 python3 -m src.limit.level_metric
 python3 -m src.limit.time_to_limit
+python3 -m src.limit.robustness
 
 # Figures 1-4
 python3 -m src.limit.plot_limit_map_long

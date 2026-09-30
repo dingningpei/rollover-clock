@@ -4,107 +4,57 @@
 
 ## Abstract
 
-When can a sovereign that borrows in its own reserve currency keep rolling its debt over, and what stops it if it cannot? We separate two layers of the answer.
+When can a sovereign that borrows in its own reserve currency keep rolling its debt over, and what stops it if it cannot? We separate two layers of the answer. In the **fiscal layer**, debt is locally stable if and only if the primary surplus offsets at least a share φ* = 1 − g/(r + ψb) of the marginal interest cost of debt; we prove that this threshold does not depend on maturity, for any repricing kernel. In the **inflation layer**, surprise inflation substitutes for a missing fiscal response. How much it takes depends on how fast the consolidated liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*, and on how much of them inflation can erode, including currency.
 
-The first is a **fiscal layer**. Debt is locally stable if and only if the primary surplus offsets at least a share φ* = 1 − g/(r + ψb) of the marginal interest cost of debt. We show that this threshold does not depend on the maturity structure of the debt, for any repricing kernel.
+We measure the clock security by security for the United States from 1980 to 2025. It predicts the Treasury's average interest rate within 0.05–0.07 percentage points and reproduces both the 2022–25 rise in Treasury interest costs and the Federal Reserve's operating loss. In the 2021–25 inflation it shows that markets priced far less inflation into new debt than full Fisher repricing implies.
 
-The second is an **inflation layer**. If the fiscal response falls short, surprise inflation must substitute for it. How much inflation that takes depends on how fast the consolidated interest-bearing liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*, and on how much of the consolidated balance sheet inflation can erode: nominal debt that has not yet repriced, and currency.
-
-We measure the clock security by security for the United States from 1980 to 2025, both for the Treasury alone and consolidated with the Federal Reserve, with reserves treated as overnight debt. The clock predicts the official average interest rate on marketable debt far better than maturity summaries do. Over 12–36 months the mean absolute error is 0.05–0.07 percentage points, against 0.28–0.62 for a WAM-based clock. Frozen at end-2021, it tracks the 2022–25 rise in Treasury interest costs within about 0.05 pp. Using the Fed's actual policy rates and expenses, it also reproduces the Fed's cumulative operating loss: a predicted deferred asset of −$245bn against −$243bn actual at end-2025. In the 2021–23 inflation, markets priced far less inflation into new debt than the model assumes, so the surprise eroded about 1.8 times the model's prediction before higher real rates took most of it back.
-
-Three findings follow:
-
-1. The fiscal threshold in 2023–25 (φ* ≈ 0.47) is not unusual. It is back in its 1980–2007 range after the 2008–21 period in which r + ψb < g.
-2. What has changed is the fiscal response. The legislated offset of higher interest costs fell from about 0.39 before 2004 to about zero since. Our own regressions agree on the direction of this change, though not on its size.
-3. The inflation needed per unit of relief rose by half between 2007 and 2025, and quantitative easing accounts for 50–80% of the rise. Before 2008 the Fed financed its Treasuries with currency, which inflation erodes; QE financed its additional assets with interest-bearing reserves that reprice overnight. Most of the rest comes from currency falling relative to debt, partly offset by the Treasury's longer maturities.
-
-Together, these make the inflation needed to cover today's fiscal gap after a permanent 1pp rate rise the largest since at least 1980: about 1.0–1.1 pp per year for a decade, almost twice the pre-2008 peak. The ranking does not rest on the fall in the fiscal response: it holds for any constant response below 0.35. In levels, holding debt/GDP stable through inflation alone at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade; each point erodes about $100bn a year. The U.S. is far from a default limit. Its binding constraint is the cost of the inflation tax.
+Today's fiscal threshold (φ* ≈ 0.47) is back in its pre-2008 range. What has changed is the fiscal response, which fell from about 0.39 before 2004 to about zero, and the funding of the Fed: QE replaced currency, which inflation erodes, with interest-bearing reserves, and accounts for 50–80% of the rise since 2007 in the inflation needed per unit of relief. Covering the fiscal gap after a permanent 1pp rate rise would take 1.0–1.1 pp of extra inflation a year for a decade, the most since at least 1980. Holding debt/GDP stable at CBO's baseline deficits would take about 4 pp. The binding U.S. constraint is not default but the cost of the inflation tax.
 
 ---
 
 ## 1. Introduction
 
-Can an issuer that replaces maturing high-coupon debt with new low-coupon debt keep doing so forever? For a sovereign that issues the world's reserve currency and whose central bank can buy its bonds, default is a choice rather than a constraint. The question is then not whether a debt limit exists but what form it takes.
+Can an issuer that replaces maturing high-coupon debt with new low-coupon debt keep doing so forever? For a sovereign that issues the world's reserve currency and whose central bank can buy its bonds, default is a choice rather than a constraint. The question is then not whether a debt limit exists but what form it takes. This paper argues that the limit has two layers, and that they depend on the debt's maturity in opposite ways.
 
-This paper argues that the limit has two layers, and that they depend on the debt's maturity in opposite ways.
+**The fiscal layer is maturity-free.** In a transparent model of consolidated debt dynamics, the market rate rises with debt and the average rate on outstanding debt reprices toward it at a speed set by maturity. Debt is then locally stable if and only if
 
-**The fiscal layer is maturity-free.** In a transparent model of consolidated debt dynamics, where the market rate rises with debt and the average rate on outstanding debt reprices toward it at a speed set by maturity, debt is locally stable if and only if
+$$(1-\phi)\,(r+\psi b)<g ,$$
 
-$$(1-\phi)\,(r+\psi b)<g .$$
+where φ is the share of marginal interest cost offset by the primary surplus and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it for any maturity structure. Shorter debt makes a rate shock bite faster but does not change whether the system is stable. What it does change is timing. When the primary surplus has a ceiling, maturity decides how many years pass before a large rate shock breaks the limit (Section 3.5).
 
-Here φ is the share of marginal interest cost offset by the primary surplus, and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it, and that the result holds for any maturity structure. Shorter debt makes a rate shock bite faster, but it does not change whether the system is stable. What it does change is timing: with a ceiling on the primary surplus, maturity decides how many years pass before a large rate shock breaks the limit (Section 3.5).
-
-**The inflation layer depends on maturity and on what the government owes.** If the fiscal response is below the threshold, the gap must be closed some other way. For a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced: debt that rolls over at new, Fisher-adjusted rates escapes, and currency, which never reprices, does not. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years, and on the erodible share E(h) of the balance sheet:
+**The inflation layer depends on maturity and on what the government owes.** If the fiscal response falls short of the threshold, the gap must be closed some other way, and for a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced. Debt that rolls over at new, Fisher-adjusted rates escapes; currency, which never reprices, does not. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years, and on the erodible share E(h) of the balance sheet:
 
 $$\Delta\pi^{req}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P(h)\,dh}{\int_0^H E(h)\,dh}.$$
 
-Two implications follow. First, inflation on debt only buys time. Debt reprices, so its erosion runs out as the horizon lengthens; only currency can be taxed permanently. At end-2025, covering the fiscal gap with a permanent inflation tax on currency would take about 5.6 pp of extra inflation a year, before any flight from cash. Second, the relevant balance sheet is the **consolidated** one. A central bank that holds Treasuries against currency turns interest-bearing debt into a zero-interest liability that inflation erodes. One that holds them against interest-bearing reserves does the opposite: it shortens the maturity of the government's liabilities to the private sector and takes them out of the inflation-tax base. The inflation substitute becomes costlier, even though Treasury-only maturity statistics may be lengthening at the same time.
+Two implications follow. First, inflation on debt only buys time: debt reprices, so its erosion runs out as the horizon lengthens, and only currency can be taxed permanently. At end-2025, covering the fiscal gap with a permanent inflation tax on currency would take about 5.6 pp of extra inflation a year, before any flight from cash. Second, the relevant balance sheet is the consolidated one. A central bank that holds Treasuries against currency turns interest-bearing debt into a zero-interest liability that inflation erodes. One that holds them against interest-bearing reserves does the opposite: it shortens the maturity of the government's liabilities to the private sector and takes them out of the inflation-tax base. The inflation substitute then becomes costlier, even while Treasury-only maturity statistics lengthen.
 
-**Measurement.** We build the clock from the Monthly Statement of the Public Debt (MSPD) security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP from SOMA data, add reserves and reverse repos as overnight liabilities, and add currency to the base that inflation erodes. We extend the series to 1980 with hand-transcribed maturity distributions of privately held debt from the Treasury Bulletin. The security-level reconstruction matches official totals exactly in every year. The Fed's holdings match its balance sheet exactly from 2007.
+**Measurement.** We build the clock from the Monthly Statement of the Public Debt security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP, add reserves and reverse repos as overnight liabilities, and add currency to the base that inflation erodes. Hand-transcribed maturity distributions from the Treasury Bulletin extend the series to 1980. The reconstruction matches official totals exactly in every year, and the Fed's holdings match its balance sheet exactly from 2007.
 
-**Validation.** Two tests show that the clock is a sufficient statistic for interest-cost pass-through in a way that maturity summaries are not, and a third tests the inflation layer.
+**Validation.** Three tests check the clock. In a backtest over 22 year-end origins from 2001 to 2024, projecting the average interest rate on marketable debt from the portfolio known at the origin and realized yields gives a mean absolute error of 0.047 pp at 12 months, against 0.279 pp for a clock based only on weighted-average maturity. Frozen at end-2021, the clock tracks the 1.9 pp rise in the Treasury's average rate over four years within about 0.05 pp, and overnight repricing of reserves against the frozen Fed book reproduces the Fed's cumulative loss: a deferred asset of −$245bn predicted against −$243bn actual. Finally, from the end-2020 balance sheet, the 2021–23 inflation surprise transferred about 11% of GDP from holders of nominal liabilities by 2023. That is 1.8 times what full Fisher repricing implies, because new debt was priced for 2–3% inflation while prices rose 6–7% a year; higher real rates then took most of it back, leaving a net transfer of 4% of GDP by 2025.
 
-- *Historical backtest.* Across 22 year-end origins from 2001 to 2024, projecting the average interest rate on marketable debt from the portfolio known at the origin and realized yields gives a mean absolute error of 0.047 pp at 12 months (0.091 pp with trend rather than realized borrowing). A clock based only on weighted-average maturity gives 0.279 pp.
-- *Out-of-sample test on 2022–25.* Freezing the balance sheets at end-2021, the clock tracks the 1.9 pp rise in the Treasury's average rate over four years within about 0.05 pp. The WAM-based clock captures less than a fifth of the first year's rise. On the Fed side, overnight repricing of reserves against the frozen end-2021 asset book reproduces the Fed's cumulative loss: a predicted deferred asset of −$245bn against −$243bn actual.
+**Findings.** On a common 1980–2025 timeline, the fiscal threshold today is ordinary. At about 0.47 in 2023–25 it is within its 1980–2007 range of roughly 0.1–0.56; the exception was 2008–21, when the threshold was negative. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold, and the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024). Our own Bohn-type regressions confirm a break at 2004 in direction but cannot pin down its size, so we also report every result under a single fiscal response common to all years.
 
-- *The inflation layer in 2021–25.* From the end-2020 balance sheet, the inflation surprise transferred about 11% of GDP from holders of nominal liabilities by 2023. That is 1.8 times what full Fisher repricing implies, because new debt was priced for 2–3% inflation while prices rose 6–7% a year. Higher real rates then took most of it back: the net transfer was 4% of GDP by 2025.
+The third finding concerns the Fed. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal. From end-2007 to end-2025 the consolidated ratio rose by half, and QE's reserve funding accounts for 50–80% of that rise, depending on the order of decomposition.
 
-**Findings.** Putting the two layers on a common 1980–2025 timeline gives three results.
+Together these make the inflation needed to cover the fiscal gap after a permanent 1pp rate rise the highest in the sample in 2023–25: 1.01–1.12 pp a year for ten years, against 0.61 in 2007 and 0.23 in 1981. The ranking is driven by the inflation layer, not by the post-2004 collapse of the fiscal response: with one common response in every year it holds for any value below about 0.35, and it holds in 99% of draws when the parameters are drawn from their plausible ranges. In levels, holding debt/GDP stable at CBO's baseline primary deficits and today's rates would take about 4 pp of extra inflation a year for a decade, against about 3 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $400bn a year is far beyond what a modest inflation overshoot can cover.
 
-1. The fiscal threshold today is ordinary. φ* in 2023–25 is about 0.47, within its 1980–2007 range of roughly 0.1–0.56. The 2008–21 period, when the threshold was negative, was the exception.
-2. The fiscal response is not ordinary. Before 2004 the legislated offset of higher interest costs was about 0.39, roughly enough to meet the threshold; the 1990 and 1993 budget agreements belong to that regime. Since 2004 it has been about zero (Auerbach and Yagan 2024). Our own Bohn-type regressions confirm a break at 2004 in direction but cannot pin down its size, so we also report every result under a single fiscal response common to all years.
-3. QE removed the Fed's inflation-tax cushion. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal, and the consolidated ratio has risen from 1.2–1.6 to 2.0–2.6. From end-2007 to end-2025 it rose by half, and QE's reserve funding accounts for 50–80% of that rise, depending on the order of decomposition.
+Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Among balance-sheet policies, ending interest on reserves has the largest effect, a third, because reserves rejoin the zero-interest base; but it amounts to a tax on banks and would change how the Fed sets rates. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts the requirement by 18%, and a Fed shift to bills cuts it by 12% because it leaves longer debt in private hands. Raising the Treasury's bill share to 30% raises it by 15%, and losing 50–100bp of convenience yield by 8–14%.
 
-The combined metric, the inflation needed to cover the fiscal gap after a +1pp permanent rate rise, is therefore at its highest in the sample in 2023–25: 1.01–1.12 pp per year for ten years, against 0.61 in 2007 and 0.23 in 1981. This ranking does not depend on the post-2004 collapse of the fiscal response. With one common response in every year it holds for any value below about 0.35, because it is driven by the inflation layer.
+**Contribution.** None of the ingredients is new on its own. Debt dynamics with endogenous rates come from Mian, Straub and Sufi (2025) and Lorenzoni and Werning (2019); consolidated Treasury–Fed maturity from Greenwood, Hanson, Rudolph and Summers (2014), the TBAC (2020, 2026) and the OBR (2021); maturity and the inflation tax from Cochrane (2001, 2022), Hilscher, Raviv and Reis (2022) and Barro and Bianchi (2026); and fiscal responses to debt service from Bohn (1998), Auerbach and Yagan (2024) and Eichengreen, Menuet and Donnat (2026). The paper puts them together. It proves that the fiscal threshold is maturity-free and derives a closed-form inflation requirement in which maturity enters only through the measured clock. It builds a long series, 1980–2025, of the full consolidated repricing profile for the United States, generalizing the scalar reset measures used in debt management and testing it out of sample; we found no earlier series of this kind. And it gives a year-by-year, two-layer distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes, quantifying the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
 
-In levels, the question is how much inflation would hold debt/GDP stable at today's deficits. With CBO's baseline primary deficits and today's rates, the answer is about 4 pp a year for a decade, against about 3 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $400bn a year is far beyond what a modest inflation overshoot can cover.
-
-Counterfactuals rank the levers. Restoring the pre-2004 fiscal response cuts the required inflation by about 84%. Among balance-sheet policies, ending interest on reserves has the largest effect: it cuts the requirement by a third, because reserves rejoin the zero-interest base that inflation erodes, but it amounts to a tax on banks and would change how the Fed sets rates. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts it by 18%. A Fed shift to bills cuts it by 12%, because it leaves longer debt in private hands. Raising the Treasury's bill share to 30% raises it by 15%. Losing 50–100bp of convenience yield raises it by 8–14%.
-
-**Contribution.** None of the ingredients is new on its own:
-
-- debt dynamics with endogenous rates (Mian, Straub and Sufi 2025; Lorenzoni and Werning 2019);
-- consolidated Treasury–Fed maturity (Greenwood, Hanson, Rudolph and Summers 2014; TBAC 2020, 2026; OBR 2021);
-- maturity and the inflation tax (Cochrane 2001, 2022; Hilscher, Raviv and Reis 2022; Barro and Bianchi 2026);
-- fiscal responses to debt service (Bohn 1998; Auerbach and Yagan 2024; Eichengreen, Menuet and Donnat 2026).
-
-The paper's contribution is to put them together:
-
-1. A proof that the fiscal threshold is maturity-free, alongside a closed-form inflation requirement in which maturity enters only through the measured clock.
-2. A long time series (1980–2025) of the full consolidated repricing profile for the U.S. It generalizes the scalar reset measures used in debt management, and is validated out of sample; we found no earlier series of this kind.
-3. A two-layer, year-by-year distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes. It quantifies the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
-
-Section 2 reviews related work. Section 3 presents the model. Section 4 builds and validates the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own estimates of the fiscal response, the level of inflation that would hold debt stable today, and the time to the limit when the surplus has a ceiling. Section 6 reports counterfactuals and Section 7 concludes.
+Section 2 reviews related work and Section 3 presents the model. Section 4 builds and tests the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own estimates of the fiscal response, the level of inflation that would hold debt stable today, and the time to the limit when the surplus has a ceiling. Section 6 reports counterfactuals and policy options, and Section 7 concludes.
 
 ## 2. Related literature
 
-**Debt limits with endogenous rates.**
-- Mian, Straub and Sufi (2025) derive fiscal space when R − G rises with debt. Their free-lunch condition, R < G − ϕ with ϕ the sensitivity of R − G to log debt (ψb in our notation), is the φ = 0 case of ours. Their maturity extension works through the convenience yield of long versus short debt in steady state, not through repricing speed.
-- Lorenzoni and Werning (2019) show that responsive fiscal rules and longer maturity can rule out slow-moving debt crises. Their mechanism runs through default equilibria.
-- Li and Merkel (2026) show that QE can shift a default boundary inward by depleting central-bank capital. Their §4.8 notes that in transition longer maturity reduces rollover pressure, since only a fraction 1/n of the stock comes due each period, while in steady state it shrinks the fiscal dividend from convenience yields.
-- Our setting has no default. Maturity leaves the stability threshold unchanged and instead governs the inflation alternative. In the tradition of Sargent and Wallace (1981) and Davig, Leeper and Walker (2011), the non-default limit is where fiscal adjustment stops and inflation must take over; we make that boundary measurable.
-- Related work on sustainability and debt capacity includes Blanchard (2019), Mehrotra and Sergeyev (2021), Reis (2021), Ghosh et al. (2013), and the convenience-yield literature (Krishnamurthy and Vissing-Jorgensen 2012; Choi, Kirpalani and Perez 2026; Jiang et al. 2024).
+**Debt limits with endogenous rates.** Mian, Straub and Sufi (2025) derive fiscal space when R − G rises with debt. Their free-lunch condition, R < G − ϕ with ϕ the sensitivity of R − G to log debt (ψb in our notation), is the φ = 0 case of ours; their maturity extension works through the convenience yield of long versus short debt in steady state, not through repricing speed. Lorenzoni and Werning (2019) show that responsive fiscal rules and longer maturity can rule out slow-moving debt crises, through default equilibria. Li and Merkel (2026) show that QE can shift a default boundary inward by depleting central-bank capital; their §4.8 notes that in transition longer maturity reduces rollover pressure, since only a fraction 1/n of the stock comes due each period, while in steady state it shrinks the fiscal dividend from convenience yields. Our setting has no default. Maturity leaves the stability threshold unchanged and instead governs the inflation alternative. In the tradition of Sargent and Wallace (1981), Davig, Leeper and Walker (2011) and Leeper and Walker (2011), the non-default limit is where fiscal adjustment stops and inflation must take over, and we make that boundary measurable. Related work on sustainability and debt capacity includes Blanchard (2019), Mehrotra and Sergeyev (2021), Reis (2021) and Ghosh et al. (2013), and the convenience-yield literature (Krishnamurthy and Vissing-Jorgensen 2012; Choi, Kirpalani and Perez 2026; Jiang et al. 2024).
 
-**Consolidated maturity and QE.**
-- Greenwood et al. (2014) measure consolidated Treasury–Fed duration and show that Treasury's maturity extension offset about a third of QE's reduction in privately held duration (35% from a 2007 baseline; 63% from December 2008).
-- The Treasury Borrowing Advisory Committee (2020) computed consolidated Treasury–Fed maturity and duration. Since 2022, Treasury's refunding materials report a consolidated weighted-average next rate reset (WANRR), which TBAC (2026) reviews; it treats the part of SOMA that funds reserves, ON RRP and other interest-bearing Fed liabilities as repricing overnight.
-- The OBR documents the same shortening for the UK.
-- CBO (2022), Levin, Lu and Nelson (2022), Cavallo et al. (2019) and d'Avernas et al. (2024) discuss the fiscal risk this creates.
-- We generalize the scalar reset measures to the full repricing profile, build it from 1980, and validate it on realized outcomes, including the Fed's 2022–25 losses.
+**Consolidated maturity and QE.** Greenwood et al. (2014) measure consolidated Treasury–Fed duration and show that Treasury's maturity extension offset about a third of QE's reduction in privately held duration (35% from a 2007 baseline; 63% from December 2008). The Treasury Borrowing Advisory Committee (2020) computed consolidated maturity and duration, and since 2022 Treasury's refunding materials report a consolidated weighted-average next rate reset, which TBAC (2026) reviews; it treats the part of SOMA that funds reserves, ON RRP and other interest-bearing Fed liabilities as repricing overnight. The OBR (2021) documents the same shortening for the UK, and CBO (2022), Levin, Lu and Nelson (2022), Cavallo et al. (2019) and d'Avernas et al. (2024) discuss the fiscal risk it creates. Del Negro and Sims (2015) and Hall and Reis (2015) ask when a central bank's balance sheet needs fiscal support, and Bassetto and Messer (2013) trace the fiscal consequences of paying interest on reserves; our consolidated clock shows those consequences in the erosion base, since remunerated reserves took the Fed's book out of the inflation-tax base in 2008. In July 2022, Fed staff projected the deferred asset to peak at about $60 billion, with a tail of about $180 billion (Anderson et al. 2022). We generalize the scalar reset measures to the full repricing profile, build it from 1980, and test it on realized outcomes, including the Fed's 2022–25 losses.
 
-**Maturity and the inflation tax.**
-- In the fiscal theory of the price level, maturity determines whether fiscal news shows up as inflation now or later (Cochrane 2001, 2022, 2023).
-- Barro and Bianchi (2026) scale fiscal spending shocks by debt times duration in explaining 2020–23 inflation.
-- Hilscher, Raviv and Reis (2022) and Aizenman and Marion (2011) show that short U.S. maturity limits how far inflation can erode debt.
-- Reis (2017) argues that QE, by bringing more debt due, lowers the price increase a fiscal crisis requires.
-- Section 3.4 reconciles these signs. A one-time level jump is maturity-neutral, a transitory surprise favors short debt, and sustained inflation favors long debt.
-- We invert the erosion calculation into a required inflation rate as a function of the measured clock, and quantify how consolidation shifts it.
+**Maturity and the inflation tax.** In the fiscal theory of the price level, maturity determines whether fiscal news shows up as inflation now or later (Cochrane 2001, 2022, 2023), and monetary and fiscal policy jointly determine the price level (Sims 2013). Barro and Bianchi (2026) scale fiscal spending shocks by debt times duration in explaining 2020–23 inflation. Hilscher, Raviv and Reis (2022) and Aizenman and Marion (2011) show that short U.S. maturity limits how far inflation can erode debt. Reis (2017a) argues that QE, by bringing more debt due, lowers the price increase a fiscal crisis requires, and Reis (2017b) sets out how far a central bank can relieve fiscal burdens, including through seigniorage on the currency base. Krause and Moyen (2016) show in a New Keynesian model with a maturity structure that a higher inflation target lowers real debt substantially only if the change is close to permanent; our inflation layer measures the same channel on the actual consolidated balance sheet, with currency in the erosion base. Section 3.4 reconciles the signs in this literature: a one-time level jump is maturity-neutral, a transitory surprise favors short debt, and sustained inflation favors long debt. We invert the erosion calculation into a required inflation rate as a function of the measured clock and quantify how consolidation shifts it.
 
-**Fiscal responses.**
-- Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt. His coefficient maps exactly into ours (Section 5.1).
-- Eichengreen, Menuet and Donnat (2026) find that surpluses respond to debt service more than to debt stocks, and more strongly when r > g. Their object is a log-log elasticity, and they describe their evidence as descriptive.
-- Auerbach and Yagan (2024) find that legislated U.S. fiscal feedback, including the response to lagged net interest, was substantial before 2004 and has been about zero since.
-- We use these estimates as the historical benchmark φ̂. The paper does not depend on estimating φ ourselves; φ enters only through a threshold comparison.
+**Optimal maturity.** Angeletos (2002), Bhandari, Evans, Golosov and Sargent (2017) and Faraglia, Marcet, Oikonomou and Scott (2019) study how the maturity structure should be chosen to insure the budget. We take the structure as given and measure its consequences.
+
+**Fiscal responses.** Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt; his coefficient maps exactly into ours (Section 5.1). Eichengreen, Menuet and Donnat (2026) find that surpluses respond to debt service more than to debt stocks, and more strongly when r > g; their object is a log-log elasticity, and they describe their evidence as descriptive. Auerbach and Yagan (2024) find that legislated U.S. fiscal feedback, including the response to lagged net interest, was substantial before 2004 and has been about zero since. We use their estimates as the baseline φ̂, check them with our own regressions in Section 5.3, and show which conclusions hold without them.
 
 ## 3. Model
 
@@ -171,6 +121,8 @@ $$\Delta\pi^{req}(H)\to u\,\Delta r\,\frac{b}{C},$$
 
 the permanent inflation tax on currency that covers the gap. Without currency, Δπ^req(H) → ∞. At end-2025 b/C ≈ 12, so with u = 0.46 the limit is about 5.6 pp per year indefinitely, before any fall in currency demand. In 2007 it was about 1.9.
 
+The currency base is where the reserve-currency status enters the inflation layer directly. About 44% of U.S. currency is held abroad, so close to half of the inflation tax on currency is paid by foreign holders. Counting only domestically held currency would raise the 2025 consolidated ratio from 2.18 to 2.46.
+
 **Combined metric.** Local stability requires offsetting the share φ* of marginal interest cost. With a historical offset φ̂ < φ*, the missing share is u = (φ* − φ̂)⁺. This gives the two-layer distance to the limit:
 
 $$\Delta\pi^{gap}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P}{\int_0^H E}.$$
@@ -184,13 +136,15 @@ The approximations are:
 
 ### 3.4 Which inflation? Reconciling the maturity sign
 
-Let w(s) be the share of payments due at s and p(s) the cumulative surprise in the price level. Real erosion is b∫w(s)p(s)ds. How maturity matters depends on how persistent the price-level path is:
+Let w(s) be the share of nominal debt payments due at s and p(s) the cumulative surprise in the price level. Real erosion of the debt is N∫w(s)p(s)ds; currency C loses p(s) of its value for as long as the price level stays higher. How maturity matters depends on how persistent the price-level path is:
 
-| Price-level path | Erosion | Effect of shorter maturity |
+| Price-level path | Erosion (debt + currency) | Effect of shorter maturity |
 |---|---|---|
-| Permanent one-time jump, p(s) = Δp | b·Δp | none |
-| Transitory surprise until τ | b·Δp·F(τ) | helps (Reis 2017: "more of the debt coming due") |
-| Sustained inflation, p(s) = Δπ·s | b·Δπ·D | hurts (Cochrane; Barro–Bianchi; HRR; this paper) |
+| Permanent one-time jump, p(s) = Δp | (N + C)·Δp | none |
+| Transitory surprise until τ, then reversed | N·Δp·F_N(τ) | helps (Reis 2017a: "more of the debt coming due") |
+| Sustained inflation over H, p(s) = Δπ·s | (N·D_N + C·H)·Δπ | hurts through the debt term (Cochrane; Barro–Bianchi; HRR; this paper) |
+
+Here D_N is the average time to repricing of nominal debt over the horizon. A reversed surprise leaves currency holders whole, while a sustained one taxes currency throughout.
 
 QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P / (N/b + C/b), which depends on maturity only through the cost of the shock.
 
@@ -221,6 +175,8 @@ Inflation enters the same way. A sustained surprise lowers the requirement by Δ
 - Reserve balances and reverse repurchase agreements from H.4.1. Both reprice overnight.
 - Currency pays no interest, so it is not part of interest-bearing debt b. It enters the erosion base of the inflation layer (Section 3.3), measured as H.4.1 currency in circulation in the same week as reserves. Reserves paid no interest before October 2008, so through 2007 they are counted with currency.
 - The Treasury General Account is intragovernmental and excluded.
+- The Fed's MBS (about $2tn at end-2025) are funded by reserves. Consolidated debt includes those reserves but does not net the MBS: they are a fixed-rate asset funded by a floating-rate liability, so the interest-rate exposure is real. Section 6 reports the no-QE counterfactual both with debt/GDP fixed and with the MBS-funding reserves removed.
+- About 44% of U.S. currency was held abroad at end-2025 (33% at end-2007), according to the Financial Accounts of the United States. The inflation tax on it falls on foreign holders. We keep all currency in the erosion base, because the transfer accrues to the U.S. government either way.
 
 **1980–2002.** Treasury Bulletin table FD-5 (FD-7 before 1983): marketable debt held by private investors, which excludes the Fed and government accounts, by remaining-maturity bucket.
 - Reserves paid no interest before October 2008, so privately held marketable debt is the consolidated interest-bearing liability for that period.
@@ -228,7 +184,7 @@ Inflation enters the same way. A sustained surprise lowers the requirement by Δ
 - Checks against the exact data:
   - The December 2003 FD-5 total (2,908,029) matches MSPD minus SOMA (2,910,053) within 0.07%.
   - Bucketing understates the 10-year inflation-layer ratio by a stable 0.077 (s.d. 0.016) on 2003–07 exact data. We correct for this.
-- FD-5 does not separate inflation-indexed notes (first issued in 1997). We remove them from the erosion base by maturity bucket, using the Treasury Bulletin's FD-2 totals and the maturities of the TIPS issues outstanding at each year-end. Before 2003 this also removes the Fed's small TIPS holdings (8% of TIPS in 2003).
+- FD-5 does not separate inflation-indexed notes (first issued in 1997). We remove them from the erosion base by maturity bucket, using the Treasury Bulletin's FD-2 totals and the maturities of the TIPS issues outstanding at each year-end. Before 2003 this also removes the Fed's small TIPS holdings (8% of TIPS in 2003); scaling the removal by the private share instead changes the ratio by at most 0.006.
 - The zero-interest base is currency in circulation plus reserve balances, December averages (FRED CURRCIR and RESBALNS). It was 27–33% of privately held marketable debt in 1980–2002, against 8% in 2025.
 
 **Precedent.** Security-level accounting of U.S. debt returns and its effect on debt/GDP dynamics goes back to Hall and Sargent (2011); we use the same MSPD-based building blocks to measure repricing speed rather than realized returns.
@@ -250,7 +206,7 @@ Four features stand out.
 3. QE reversed this. In 2021 the consolidated P(1) was 0.53 against 0.33 for the Treasury alone, and consolidated WAM was 4.1 years against 6.0. Treasury was lengthening while the Fed was shortening.
 4. QT narrowed the gap, but in 2025 the consolidated P(1) was still about 9 points higher.
 
-### 4.3 Validation I: historical backtest
+### 4.3 Interest-cost pass-through I: historical backtest
 
 From each year-end origin t (2001–2024; 2004 is omitted because the official figure is missing), we project the official average interest rate on marketable debt for 36 months:
 - surviving securities keep their rate;
@@ -270,7 +226,7 @@ The full repricing profile cuts the error of a maturity summary by a factor of t
 
 The largest ex-ante misses come from unanticipated bill-financed deficits: 2007 (+0.52 pp at 12 months) and 2019 (+0.32 pp). They shrink to +0.14 and +0.08 pp once realized borrowing is used.
 
-### 4.4 Validation II: the 2022–25 tightening from end-2021
+### 4.4 Interest-cost pass-through II: the 2022–25 tightening from end-2021
 
 We freeze both balance sheets at end-2021, before the first rate increase, and feed in realized rates and quantities.
 
@@ -303,13 +259,15 @@ Component check against the combined financial statements:
 
 The close deferred-asset fit therefore partly reflects offsetting errors on the income and expense sides. The out-of-sample claim rests mainly on the timing and size of the expense leg.
 
+For comparison, in July 2022 Fed staff projected the deferred asset to peak at about $60 billion in their baseline and about $180 billion in the tail (Anderson et al. 2022). The outcome passed $240 billion. Because the accounting, fed the realized rates, reproduces the outcome, the gap between that projection and the outcome lies in the assumed rate path.
+
 ![Figure 2](figures/fig2_2022_test.png)
 
 *Figure 2. Out-of-sample test from end-2021. A: change in the official average rate on marketable debt; the clock (dashed) against the WAM-only clock (dotted). B: Fed deferred asset; frozen end-2021 asset book with reserves repricing overnight.*
 
 The consolidated clock is thus validated where QE matters most. The 2022–25 rate shock reached consolidated interest costs through a Treasury clock that passed through about 0.9 pp within a year, and through an overnight Fed clock that passed through at once and appeared in the budget as lost remittances.
 
-### 4.5 Validation III: the inflation layer in 2021–25
+### 4.5 The inflation layer in 2021–25
 
 The two tests above check how rate shocks pass through to interest costs. The inflation layer rests on a different assumption: surprise inflation erodes nominal liabilities until they reprice, and repriced debt then pays Fisher-adjusted rates. The inflation surprise of 2021–23 lets us test it.
 
@@ -353,7 +311,7 @@ Three findings follow.
   - Bohn's sustainability condition ρ > (r + ψb) − g is then exactly our condition (1 − φ)(r + ψb) < g;
   - a Bohn coefficient of 0.02 at a marginal cost of 8% corresponds to φ = 0.25, the intermediate value we use.
 - **r** is the steady-state marginal cost of the existing structure: each security's original tenor priced at current yields. Before 2003 we use remaining-maturity pricing, corrected by its measured 0.28 pp gap on 2003–2025.
-- **g**, expected nominal growth, is proxied by realized forward ten-year nominal GDP growth through 2015. From 2016 we use the December FOMC Summary of Economic Projections: the longer-run median real GDP growth (1.8–1.9%) plus the 2% inflation objective. Trailing ten-year growth is a sensitivity. In 2013–15, when both measures exist, the SEP-based g (4.0–4.3%) was below realized forward growth (5.2–5.4%), which was inflated by 2021–22.
+- **g**, expected nominal growth, is proxied by realized forward ten-year nominal GDP growth through 2015. From 2016 we use the December FOMC Summary of Economic Projections: the longer-run median real GDP growth (1.8–1.9%) plus the 2% inflation objective. Trailing ten-year growth and an ex-ante measure (trailing real growth plus the Cleveland Fed's ten-year expected inflation) are sensitivities (Table 4). In 2013–15, when both measures exist, the SEP-based g (4.0–4.3%) was below realized forward growth (5.2–5.4%), which was inflated by 2021–22.
 
 ### 5.2 Results
 
@@ -371,22 +329,13 @@ Three findings follow.
 | 2009–21 | mostly < 0 (2017–19: 0.11–0.21) | 0 | ≈ 0 (2017–19: 0.11–0.21) | 2.0–2.6 | ≈ 0 (2017–19: 0.23–0.43) |
 | 2023–25 | 0.46–0.48 | 0 | 0.46–0.48 | 2.2–2.4 | 1.01–1.12 |
 
-Three readings follow.
+Appendix E reports every year. Three readings follow. First, the fiscal threshold is ordinary today. The period that stands out is 2008–21, when r + ψb < g and debt stabilized with no fiscal response, and that period is over.
 
-1. **The fiscal threshold is ordinary today.** The period that stands out is 2008–21, when r + ψb < g and debt stabilized with no fiscal response. That period is over.
-2. **The fiscal response is not ordinary.** On the baseline φ̂:
-   - Before 2004, a legislated offset of about 0.39 roughly met the threshold, and the high-rate 1980s and early 1990s ended in consolidation.
-   - Since 2004 the offset has been about zero, so the gap equals the threshold itself.
-   - The gap first opened in 2005–07, when φ* was 0.28–0.44; the 2008–21 low-rate period then hid it.
-3. **QE raised the price of the inflation substitute.** The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on.
-   - Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07). The Fed held Treasuries against currency, which inflation erodes.
-   - Since 2009 the two have been about equal (0.86–1.19). The Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight.
-   - The Fed's share of marketable Treasuries was actually lower at end-2025 (14%) than at end-2007 (16%). What QE changed is how its book is funded: SOMA Treasuries were 0.88 times currency in 2007 and 1.73 times in 2025, and reserves also fund the MBS.
+Second, the fiscal response is not ordinary. On the baseline φ̂, a legislated offset of about 0.39 roughly met the threshold before 2004, and the high-rate 1980s and early 1990s ended in consolidation. Since 2004 the offset has been about zero, so the gap equals the threshold itself. The gap first opened in 2005–07, when φ* was 0.28–0.44, and the low-rate period of 2008–21 then hid it.
 
-**Decomposition, end-2007 to end-2025.** The consolidated ratio rose from 1.45 to 2.18. A chain of counterfactual balance sheets splits the 0.73 rise into three parts:
-- *Currency falling relative to debt*, from 22% to 8% of interest-bearing liabilities: +0.58.
-- *Treasury's maturity and TIPS choices*, 2007 to 2025, with a Fed funded only by currency: −0.23. The Treasury's lengthening worked against the rise.
-- *QE*, meaning reserves rather than currency fund the rest of the Fed's book: +0.38.
+Third, QE raised the price of the inflation substitute. The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on. Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07), because the Fed held Treasuries against currency, which inflation erodes. Since 2009 the two have been about equal (0.86–1.19), because the Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight. The Fed's share of marketable Treasuries was in fact lower at end-2025 (14%) than at end-2007 (16%). What QE changed is how the Fed's book is funded: SOMA Treasuries were 0.88 times currency in 2007 and 1.73 times in 2025, and reserves also fund the MBS.
+
+**Decomposition, end-2007 to end-2025.** The consolidated ratio rose from 1.45 to 2.18. A chain of counterfactual balance sheets splits the 0.73 rise into three parts. Currency fell from 22% to 8% of interest-bearing liabilities, which adds 0.58. The Treasury's maturity and TIPS choices between 2007 and 2025, with a Fed funded only by currency, subtract 0.23: the Treasury's lengthening worked against the rise. QE, in the sense that reserves rather than currency fund the rest of the Fed's book, adds 0.38.
 
 The QE share depends on the order. Measured first, on the end-2007 balance sheet (the Fed's Treasuries scaled to the end-2025 ratio to currency, and reserves added for the MBS), QE adds 0.57. QE therefore accounts for 52–78% of the rise; the fall of currency relative to debt, which reflects deficits more than monetary policy, accounts for most of the rest.
 
@@ -394,7 +343,24 @@ The combined requirement in 2023–25 is the largest since 1980, about 1.8 times
 
 The equivalent one-time surprise rise in the price level is about 3.3% (3.27–3.42% in 2023–25). As Section 3.4 predicts, it is much less sensitive to consolidation: since 2009 the consolidated value has been 0.95–1.05 times the Treasury-only value.
 
-**Sensitivity.**
+**Robustness.** Table 4 recomputes the 2023–25 requirement under alternative parameters, holding the measured clock fixed.
+
+**Table 4. Robustness of the 2023–25 requirement** (+1pp permanent rate rise, H = 10)
+
+| Variant | φ*, 2023–25 | Inflation to cover gap, 2023–25 (pp/yr) | Highest before 2022 (year) | 2023–25 highest since 1980? |
+|---|---|---|---|---|
+| Baseline (forward/SEP g; ψ = 3bp on consolidated debt) | 0.46–0.48 | 1.01–1.12 | 0.61 (2007) | yes |
+| g ex ante: trailing real growth + 10-year expected inflation | 0.32–0.34 | 0.71–0.80 | 0.41 (2018) | yes |
+| g: trailing 10-year nominal growth | 0.24–0.28 | 0.52–0.67 | 0.63 (2018) | yes |
+| ψ on privately held marketable debt (no reserves) | 0.43–0.45 | 0.95–1.03 | 0.61 (2007) | yes |
+| ψ on debt held by the public | 0.47–0.49 | 1.03–1.14 | 0.65 (2007) | yes |
+| ψ = 2bp | 0.38–0.40 | 0.83–0.93 | 0.57 (2007) | yes |
+| ψ = 4.5bp | 0.55–0.56 | 1.21–1.33 | 0.73 (2018) | yes |
+| Monte Carlo: ψ ~ U[2, 4.5]bp, g ± N(0, 0.5pp), φ̂ ~ U[0.25, 0.5] to 2003 and U[0, 0.25] after | — | 0.36–1.27 (90% band) | — | in 99% of draws |
+
+The ranking holds in every variant. Expected growth matters most for the level: an ex-ante measure built from trailing real growth and the Cleveland Fed's ten-year expected inflation puts expected nominal growth at 4.8% in 2025 rather than 3.8%, and lowers the requirement to 0.71–0.80 pp. Where ψ applies barely matters. The debt-rate elasticities in the literature are estimated on debt held by the public, and reserves are zero-duration safe assets; applying ψ only to privately held marketable debt moves φ* by about 3 points. In the Monte Carlo the 90% band for 2023–25 is 0.36–1.27 pp per year, and 2023–25 is the highest since 1980 in 99% of draws.
+
+Two further checks:
 - *Horizon.* With H = 5 the 2023–25 requirement is 0.60–0.69 pp per year; with H = 15 it is 1.33–1.46.
 - *Erosion base.* If all debt counted as erodible and currency were ignored, the requirement would be 1.22–1.41. Ignoring currency alone raises the 2025 consolidated ratio by a third (2.92 against 2.18).
 
@@ -409,7 +375,7 @@ The controls are the output gap, temporary defense spending (defense/GDP minus i
 
 Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
 
-**Table 4. Implied fiscal response φ (standard error)**
+**Table 5. Implied fiscal response φ (standard error)**
 
 | Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
 |---|---|---|---|---|---|
@@ -453,7 +419,7 @@ $$\Delta\pi^{level}(H)=\frac{\int_0^H\big[(\bar r(h)-g)\,b-g\,z-s(h)\big]\,dh}{b
 
 For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal years 2026–2035. For 2007 and 2019 we hold the actual primary balance (excluding Fed remittances) constant. The average rate r̄₀ prices each privately held security at its own rate, calibrated to the Treasury's official average rate on marketable debt; TIPS add 2% expected inflation, reserves earn the interest rate on reserves, and reverse repos the ON RRP rate.
 
-**Table 5. Inflation needed to hold consolidated debt/GDP constant**
+**Table 6. Inflation needed to hold consolidated debt/GDP constant**
 
 | | End-2007 | End-2019 | End-2025 (CBO baseline) |
 |---|---|---|---|
@@ -481,9 +447,9 @@ This number does not use φ̂, since the actual and projected primary balances a
 
 ### 5.5 Time to the limit
 
-Table 6 and Figure 4 compute T(Δr) at the end-2025 fiscal position: b = 0.95, r̄₀ = 3.6%, r = 4.2%, g = 3.8%, z = 0.079. The ceilings of 1–3% of GDP bracket the U.S. record. Since 1967 the primary surplus, excluding Fed remittances, has exceeded 2% of GDP only in fiscal years 1997–2001, when it peaked at 4.8%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
+Table 7 and Figure 4 compute T(Δr) at the end-2025 fiscal position: b = 0.95, r̄₀ = 3.6%, r = 4.2%, g = 3.8%, z = 0.079. The ceilings of 1–3% of GDP bracket the U.S. record. Since 1967 the primary surplus, excluding Fed remittances, has exceeded 2% of GDP only in fiscal years 1997–2001, when it peaked at 4.8%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
 
-**Table 6. Years until the debt-stabilizing primary surplus exceeds the ceiling** (end-2025 fiscal position)
+**Table 7. Years until the debt-stabilizing primary surplus exceeds the ceiling** (end-2025 fiscal position)
 
 | Surplus ceiling | Rate shock | Consolidated, end-2025 | Without QE | End-2007 clock | Consolidated + 2 pp inflation |
 |---|---|---|---|---|---|
@@ -509,9 +475,9 @@ Four points stand out.
 
 ## 6. Counterfactuals and policy options
 
-Table 7 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
+Table 8 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
-**Table 7. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 8. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
@@ -570,48 +536,52 @@ Two limitations apply. The balance-sheet scenarios hold r fixed and ignore the t
 
 A reserve-currency sovereign does not run into a debt wall. It runs into a choice between fiscal adjustment and an inflation tax.
 
-The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt, and on the debt level, and not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
+The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt and on the debt level, not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
 
-The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. As a result, inflation would buy less time per point than at any point since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. With a ceiling on the primary surplus, maturity decides how long the limit takes to bind: a 3 pp permanent shock breaks a 2% of GDP ceiling in about four years at today's consolidated clock, and two points of sustained inflation buy two to three more. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
+The United States in 2023–25 faces an ordinary fiscal threshold with an unusually absent fiscal response and an unusually fast consolidated clock. Inflation would therefore buy less relief per point than at any time since 1980. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. When the primary surplus has a ceiling, maturity decides how long the limit takes to bind: a 3 pp permanent shock breaks a ceiling of 2% of GDP in about four years at today's consolidated clock, and two points of sustained inflation buy two to three more. The durable resolutions are a return of the fiscal response that met the threshold before 2004, or a one-time surprise revaluation of the debt.
 
-**Open issues.**
-- The level of the fiscal response φ̂ is not well identified. Its post-2004 collapse rests mainly on one study. Our own regressions agree on the direction but not the size, and our exposure × rate-shock design is too weak in U.S. annual data (Section 5.3 and Appendix C). The main ranking holds for any constant φ̂ below 0.35; a cross-country panel is the natural next step.
-- Expected growth after 2015 comes from the FOMC's longer-run projections, not from a model of trend growth.
-- The balance-sheet counterfactuals abstract from term-premium effects.
-- The combined metric is a first-order, undiscounted composition.
-- Currency demand is held fixed. A sustained inflation tax would shrink it, so the requirements are lower bounds in that respect.
+Several issues remain open. The level of the fiscal response is not well identified: its post-2004 collapse rests mainly on one study, and our own regressions agree on its direction but not its size. The main ranking holds for any constant response below 0.35, and a cross-country panel, with its wider variation in maturity and QE, is the natural way to identify it. Expected growth is the parameter that matters most for the level of the requirement; an ex-ante measure lowers it by about 30%, although the ranking survives. The balance-sheet counterfactuals abstract from term-premium effects, and the combined metric is a first-order, undiscounted composition. Finally, currency demand is held fixed; a sustained inflation tax would shrink it, so the requirements are lower bounds in that respect.
 
 ---
 
 ## References
 
 - Aizenman, J. and N. Marion (2011). "Using Inflation to Erode the US Public Debt." *Journal of Macroeconomics* 33(4): 524–541.
+- Anderson, A., P. Marks, D. Na, B. Schlusche and Z. Senyuz (2022). "An Analysis of the Interest Rate Risk of the Federal Reserve's Balance Sheet, Part 2: Projections under Alternative Interest Rate Paths." FEDS Notes, 15 July. Board of Governors of the Federal Reserve System.
+- Angeletos, G.-M. (2002). "Fiscal Policy with Noncontingent Debt and the Optimal Maturity Structure." *Quarterly Journal of Economics* 117(3): 1105–1131.
 - Auerbach, A. J. and D. Yagan (2024). "Robust Fiscal Stabilization." *Brookings Papers on Economic Activity* 2024(2): 239–322; NBER WP 33374.
 - Barro, R. J. and F. Bianchi (2026). "Fiscal Influences on Inflation in OECD Countries, 2020–2023." *Economic Journal* 136(674): 626–654; NBER WP 31838.
+- Bassetto, M. and T. Messer (2013). "Fiscal Consequences of Paying Interest on Reserves." *Fiscal Studies* 34(4): 413–436.
+- Bhandari, A., D. Evans, M. Golosov and T. J. Sargent (2017). "Fiscal Policy and Debt Management with Incomplete Markets." *Quarterly Journal of Economics* 132(2): 617–663.
 - Bhatt, A., A. M. Diercks, B. Eyal and A. Skaperdas (2026). "The Causal Effect of Debt on Interest Rates." Finance and Economics Discussion Series 2026-031, Board of Governors of the Federal Reserve System.
 - Bi, H., M. Phillot and S. Zubairy (2026). "Treasury Supply Shocks: Propagation Through Debt Expansion and Maturity Adjustment." NBER WP 35098.
 - Blanchard, O. (2019). "Public Debt and Low Interest Rates." *American Economic Review* 109(4): 1197–1229.
 - Bohn, H. (1998). "The Behavior of U.S. Public Debt and Deficits." *Quarterly Journal of Economics* 113(3): 949–963.
 - Bohn, H. (2008). "The Sustainability of Fiscal Policy in the United States." In R. Neck and J.-E. Sturm (eds.), *Sustainability of Public Debt*, 15–49. MIT Press.
 - Cavallo, M., M. Del Negro, W. S. Frame, J. Grasing, B. A. Malin and C. Rosa (2019). "Fiscal Implications of the Federal Reserve's Balance Sheet Normalization." *International Journal of Central Banking* 15(5): 255–306.
-- Congressional Budget Office (2022). "How the Federal Reserve's Quantitative Easing Affects the Federal Budget." September. Publication 58457.
-- Congressional Budget Office (2026). "Effects of Automatic Stabilizers on the Federal Budget: 2026 to 2036." August. Publication 62568; supplemental data.
 - Choi, J., R. Kirpalani and D. J. Perez (2026). "US Public Debt and Safe Asset Market Power." *Journal of Political Economy* 134(5): 1506–1560. doi:10.1086/739824. Earlier version: "The Macroeconomic Implications of US Market Power in Safe Assets," NBER WP 30720 (2022).
 - Cochrane, J. H. (2001). "Long-Term Debt and Optimal Policy in the Fiscal Theory of the Price Level." *Econometrica* 69(1): 69–116.
 - Cochrane, J. H. (2022). "Inflation Past, Present and Future: Fiscal Shocks, Fed Response, and Fiscal Limits." NBER WP 30096.
 - Cochrane, J. H. (2023). *The Fiscal Theory of the Price Level.* Princeton University Press.
+- Congressional Budget Office (2022). "How the Federal Reserve's Quantitative Easing Affects the Federal Budget." September. Publication 58457.
+- Congressional Budget Office (2026). "Effects of Automatic Stabilizers on the Federal Budget: 2026 to 2036." August. Publication 62568; supplemental data.
 - d'Avernas, A., A. Hubert de Fraisse, L. Ning and Q. Vandeweyer (2024). "The Fiscal Cost of Quantitative Easing." SSRN 5009335.
 - Davig, T., E. M. Leeper and T. B. Walker (2011). "Inflation and the Fiscal Limit." *European Economic Review* 55(1): 31–47.
 - de Groot, O., F. Holm-Hadulla and N. Leiner-Killinger (2015). "Cost of Borrowing Shocks and Fiscal Adjustment." *Journal of International Money and Finance* 59: 23–48.
+- Del Negro, M. and C. A. Sims (2015). "When Does a Central Bank's Balance Sheet Require Fiscal Support?" *Journal of Monetary Economics* 73: 1–19.
 - Eichengreen, B., M. Menuet and G. Donnat (2026). "From Stocks to Flows: Debt Service and Fiscal Sustainability." NBER WP 35459.
 - Engen, E. M. and R. G. Hubbard (2005). "Federal Government Debt and Interest Rates." In M. Gertler and K. Rogoff (eds.), *NBER Macroeconomics Annual 2004*, Vol. 19. MIT Press.
+- Faraglia, E., A. Marcet, R. Oikonomou and A. Scott (2019). "Government Debt Management: The Long and the Short of It." *Review of Economic Studies* 86(6): 2554–2604.
 - Ghosh, A. R., J. I. Kim, E. G. Mendoza, J. D. Ostry and M. S. Qureshi (2013). "Fiscal Fatigue, Fiscal Space and Debt Sustainability in Advanced Economies." *Economic Journal* 123(566): F4–F30.
 - Greenwood, R., S. G. Hanson, J. S. Rudolph and L. H. Summers (2014). "Government Debt Management at the Zero Lower Bound." Hutchins Center on Fiscal and Monetary Policy at Brookings, Working Paper 5.
 - Hall, G. J. and T. J. Sargent (2011). "Interest Rate Risk and Other Determinants of Post-WWII U.S. Government Debt/GDP Dynamics." *AEJ: Macroeconomics* 3(3): 192–214.
+- Hall, R. E. and R. Reis (2015). "Maintaining Central-Bank Financial Stability under New-Style Central Banking." NBER WP 21173.
 - Hilscher, J., A. Raviv and R. Reis (2022). "Inflating Away the Public Debt? An Empirical Assessment." *Review of Financial Studies* 35(3): 1553–1595.
 - Jiang, Z., H. Lustig, S. Van Nieuwerburgh and M. Z. Xiaolan (2024). "The U.S. Public Debt Valuation Puzzle." *Econometrica* 92(4): 1309–1347.
+- Krause, M. U. and S. Moyen (2016). "Public Debt and Changing Inflation Targets." *American Economic Journal: Macroeconomics* 8(4): 142–176.
 - Krishnamurthy, A. and A. Vissing-Jorgensen (2012). "The Aggregate Demand for Treasury Debt." *Journal of Political Economy* 120(2): 233–267.
 - Laubach, T. (2009). "New Evidence on the Interest Rate Effects of Budget Deficits and Debt." *Journal of the European Economic Association* 7(4): 858–885.
+- Leeper, E. M. and T. B. Walker (2011). "Fiscal Limits in Advanced Economies." *Economic Papers* 30(1): 33–47; NBER WP 16819.
 - Levin, A. T., B. L. Lu and W. R. Nelson (2022). "Quantifying the Costs and Benefits of Quantitative Easing." NBER WP 30749.
 - Li, W. and S. Merkel (2026). "Quantitative Easing and Government Debt Sustainability." NBER WP 35421; SSRN 5743942.
 - Lorenzoni, G. and I. Werning (2019). "Slow Moving Debt Crises." *American Economic Review* 109(9): 3229–3263.
@@ -620,9 +590,11 @@ The United States in 2023–25 faces an ordinary fiscal threshold with an unusua
 - Neveu, A. R. and J. Schafer (2024). "Revisiting the Relationship Between Debt and Long-Term Interest Rates." CBO Working Paper 2024-05.
 - Office for Budget Responsibility (2021). "Debt Maturity, Quantitative Easing and Interest Rate Sensitivity." Box in *Economic and Fiscal Outlook – March 2021*.
 - Plante, M., A. W. Richter and S. Zubairy (2025). "Revisiting the Interest Rate Effects of Federal Debt." NBER WP 34018.
-- Reis, R. (2017). "QE in the Future: The Central Bank's Balance Sheet in a Fiscal Crisis." *IMF Economic Review* 65(1): 71–112; NBER WP 22415.
+- Reis, R. (2017a). "QE in the Future: The Central Bank's Balance Sheet in a Fiscal Crisis." *IMF Economic Review* 65(1): 71–112; NBER WP 22415.
+- Reis, R. (2017b). "Can the Central Bank Alleviate Fiscal Burdens?" NBER WP 23014.
 - Reis, R. (2021). "The Constraint on Public Debt When r < g but g < m." BIS WP 939.
 - Sargent, T. J. and N. Wallace (1981). "Some Unpleasant Monetarist Arithmetic." *Federal Reserve Bank of Minneapolis Quarterly Review* 5(3): 1–17.
+- Sims, C. A. (2013). "Paper Money." *American Economic Review* 103(2): 563–584.
 - Treasury Borrowing Advisory Committee (2020). Charge presentation on the Federal Reserve balance sheet and the consolidated government balance sheet. February 2020 Quarterly Refunding, U.S. Treasury.
 - Treasury Borrowing Advisory Committee (2026). "Bill Purchases and the Consolidated Balance Sheet." Charge presentation, 3 February 2026, U.S. Treasury.
 
@@ -722,3 +694,59 @@ bash reproduce.sh
 ```
 
 downloads the inputs, runs the model checks and the full pipeline, and writes all tables to `data/processed/` and Figures 1–3 to `paper/figures/`.
+
+## Appendix E. The two-layer limit by year, 1980–2025
+
+**Table E1. Two-layer limit by year** (consolidated; +1pp permanent rate rise, H = 10; ψ = 3bp; g forward to 2015, SEP from 2016)
+
+| Year | Source | r (%) | g (%) | b | φ* | φ̂ | Gap | Ratio, consolidated | Ratio, Treasury | Inflation to cover gap (pp/yr) | One-time jump (%) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1980 | FD-5 | 12.04 | 7.66 | 0.17 | 0.39 | 0.39 | 0.00 | 1.34 | — | 0.00 | 0.00 |
+| 1981 | FD-5 | 14.76 | 6.76 | 0.18 | 0.56 | 0.39 | 0.17 | 1.39 | — | 0.23 | 0.98 |
+| 1982 | FD-5 | 12.91 | 6.93 | 0.22 | 0.49 | 0.39 | 0.10 | 1.52 | — | 0.15 | 0.60 |
+| 1983 | FD-5 | 10.49 | 6.58 | 0.25 | 0.41 | 0.39 | 0.02 | 1.54 | — | 0.04 | 0.15 |
+| 1984 | FD-5 | 11.87 | 6.09 | 0.27 | 0.52 | 0.39 | 0.13 | 1.56 | — | 0.20 | 0.79 |
+| 1985 | FD-5 | 9.70 | 5.83 | 0.29 | 0.45 | 0.39 | 0.06 | 1.50 | — | 0.09 | 0.35 |
+| 1986 | FD-5 | 7.30 | 5.84 | 0.30 | 0.29 | 0.39 | 0.00 | 1.42 | — | 0.00 | 0.00 |
+| 1987 | FD-5 | 7.86 | 5.86 | 0.31 | 0.33 | 0.39 | 0.00 | 1.35 | — | 0.00 | 0.00 |
+| 1988 | FD-5 | 8.51 | 5.64 | 0.30 | 0.40 | 0.39 | 0.01 | 1.33 | — | 0.01 | 0.06 |
+| 1989 | FD-5 | 8.81 | 5.50 | 0.30 | 0.43 | 0.39 | 0.04 | 1.32 | — | 0.06 | 0.25 |
+| 1990 | FD-5 | 8.50 | 5.57 | 0.32 | 0.41 | 0.39 | 0.02 | 1.37 | — | 0.03 | 0.13 |
+| 1991 | FD-5 | 7.09 | 5.57 | 0.35 | 0.32 | 0.39 | 0.00 | 1.42 | — | 0.00 | 0.00 |
+| 1992 | FD-5 | 5.63 | 5.31 | 0.37 | 0.21 | 0.39 | 0.00 | 1.46 | — | 0.00 | 0.00 |
+| 1993 | FD-5 | 4.82 | 5.27 | 0.38 | 0.12 | 0.39 | 0.00 | 1.49 | — | 0.00 | 0.00 |
+| 1994 | FD-5 | 6.46 | 5.31 | 0.38 | 0.30 | 0.39 | 0.00 | 1.49 | — | 0.00 | 0.00 |
+| 1995 | FD-5 | 6.54 | 5.50 | 0.38 | 0.28 | 0.39 | 0.00 | 1.56 | — | 0.00 | 0.00 |
+| 1996 | FD-5 | 6.24 | 5.53 | 0.38 | 0.25 | 0.39 | 0.00 | 1.55 | — | 0.00 | 0.00 |
+| 1997 | FD-5 | 6.32 | 5.38 | 0.35 | 0.27 | 0.39 | 0.00 | 1.48 | — | 0.00 | 0.00 |
+| 1998 | FD-5 | 5.47 | 5.02 | 0.32 | 0.22 | 0.39 | 0.00 | 1.41 | — | 0.00 | 0.00 |
+| 1999 | FD-5 | 5.72 | 4.19 | 0.29 | 0.36 | 0.39 | 0.00 | 1.33 | — | 0.00 | 0.00 |
+| 2000 | FD-5 | 6.42 | 3.94 | 0.24 | 0.45 | 0.39 | 0.06 | 1.23 | — | 0.07 | 0.31 |
+| 2001 | FD-5 | 4.48 | 3.99 | 0.23 | 0.23 | 0.39 | 0.00 | 1.23 | 2.47 | 0.00 | 0.00 |
+| 2002 | FD-5 | 3.48 | 4.08 | 0.24 | 0.03 | 0.39 | 0.00 | 1.27 | 2.65 | 0.00 | 0.00 |
+| 2003 | MSPD+SOMA | 2.75 | 3.98 | 0.26 | −0.13 | 0.39 | 0.00 | 1.32 | 2.71 | 0.00 | 0.00 |
+| 2004 | MSPD+SOMA | 3.17 | 3.75 | 0.27 | 0.06 | 0.00 | 0.06 | 1.37 | 2.71 | 0.08 | 0.35 |
+| 2005 | MSPD+SOMA | 4.01 | 3.47 | 0.27 | 0.28 | 0.00 | 0.28 | 1.37 | 2.74 | 0.38 | 1.67 |
+| 2006 | MSPD+SOMA | 4.84 | 3.15 | 0.26 | 0.44 | 0.00 | 0.44 | 1.37 | 2.71 | 0.60 | 2.65 |
+| 2007 | MSPD+SOMA | 4.56 | 3.10 | 0.26 | 0.42 | 0.00 | 0.42 | 1.45 | 2.73 | 0.61 | 2.61 |
+| 2008 | MSPD+SOMA | 2.69 | 3.43 | 0.42 | 0.13 | 0.00 | 0.13 | 2.37 | 3.14 | 0.32 | 0.98 |
+| 2009 | MSPD+SOMA | 1.99 | 4.05 | 0.52 | −0.14 | 0.00 | 0.00 | 2.19 | 2.54 | 0.00 | 0.00 |
+| 2010 | MSPD+SOMA | 1.94 | 3.58 | 0.59 | 0.04 | 0.00 | 0.04 | 2.07 | 2.34 | 0.07 | 0.25 |
+| 2011 | MSPD+SOMA | 1.73 | 4.32 | 0.63 | −0.19 | 0.00 | 0.00 | 2.22 | 2.23 | 0.00 | 0.00 |
+| 2012 | MSPD+SOMA | 1.14 | 4.88 | 0.68 | −0.54 | 0.00 | 0.00 | 2.31 | 2.18 | 0.00 | 0.00 |
+| 2013 | MSPD+SOMA | 1.55 | 5.17 | 0.73 | −0.39 | 0.00 | 0.00 | 2.58 | 2.16 | 0.00 | 0.00 |
+| 2014 | MSPD+SOMA | 1.83 | 5.27 | 0.73 | −0.31 | 0.00 | 0.00 | 2.52 | 2.16 | 0.00 | 0.00 |
+| 2015 | MSPD+SOMA | 1.67 | 5.38 | 0.73 | −0.39 | 0.00 | 0.00 | 2.34 | 2.21 | 0.00 | 0.00 |
+| 2016 | MSPD+SOMA | 1.53 | 3.80 | 0.74 | −0.02 | 0.00 | 0.00 | 2.23 | 2.24 | 0.00 | 0.00 |
+| 2017 | MSPD+SOMA | 2.04 | 3.80 | 0.74 | 0.11 | 0.00 | 0.11 | 2.15 | 2.25 | 0.23 | 0.76 |
+| 2018 | MSPD+SOMA | 2.73 | 3.90 | 0.74 | 0.21 | 0.00 | 0.21 | 2.04 | 2.30 | 0.43 | 1.49 |
+| 2019 | MSPD+SOMA | 2.14 | 3.90 | 0.75 | 0.11 | 0.00 | 0.11 | 2.01 | 2.28 | 0.23 | 0.80 |
+| 2020 | MSPD+SOMA | 0.73 | 3.80 | 0.92 | −0.09 | 0.00 | 0.00 | 2.46 | 2.55 | 0.00 | 0.00 |
+| 2021 | MSPD+SOMA | 1.00 | 3.80 | 0.97 | 0.03 | 0.00 | 0.03 | 2.46 | 2.14 | 0.06 | 0.19 |
+| 2022 | MSPD+SOMA | 2.91 | 3.80 | 0.92 | 0.33 | 0.00 | 0.33 | 2.34 | 2.08 | 0.77 | 2.39 |
+| 2023 | MSPD+SOMA | 4.37 | 3.80 | 0.94 | 0.47 | 0.00 | 0.47 | 2.38 | 2.26 | 1.12 | 3.42 |
+| 2024 | MSPD+SOMA | 4.43 | 3.80 | 0.95 | 0.48 | 0.00 | 0.48 | 2.25 | 2.23 | 1.08 | 3.41 |
+| 2025 | MSPD+SOMA | 4.20 | 3.80 | 0.95 | 0.46 | 0.00 | 0.46 | 2.18 | 2.22 | 1.01 | 3.27 |
+
+r is the stock-structure marginal rate and g expected nominal growth, both in percent; b is consolidated interest-bearing debt/GDP. The ratios are the inflation-layer ratios ∫P/∫E; "Treasury" covers the Treasury's own marketable debt (2001 on). 1980–2002 use Treasury Bulletin FD-5 maturity buckets with the bias corrections of Appendix A.
+
