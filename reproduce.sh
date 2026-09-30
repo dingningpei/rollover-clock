@@ -39,6 +39,9 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   # (the DMO's gilts-in-issue reports are committed in data/manual/uk_dmo/)
   python3 -m src.intl.uk_fetch
   python3 -m src.intl.jp_fetch
+  # Section 5.3, Appendix C: OBR and CBO forecast revisions; OECD and BIS panel
+  python3 -m src.fiscal.fetch_phi
+  python3 -m src.fiscal.panel_fetch
 fi
 
 # Treasury MSPD, auctions and average rates (FiscalData API) and SOMA by CUSIP (NY Fed API);
@@ -72,6 +75,11 @@ python3 -m src.limit.decompose
 python3 -m src.limit.level_metric
 python3 -m src.limit.time_to_limit
 python3 -m src.limit.robustness
+python3 -m src.limit.psi_regimes
+python3 -m src.fiscal.breaks
+python3 -m src.fiscal.phi_obr
+python3 -m src.fiscal.phi_cbo
+python3 -m src.fiscal.phi_panel
 
 # Section 6: the United Kingdom and Japan
 python3 -m src.intl.uk_stock

@@ -50,9 +50,9 @@ N_TENORS = {"n0.0833": 1 / 12, "n0.25": 0.25, "n0.5": 0.5, "n1": 1, "n2": 2, "n3
 R_TENORS = {"r5": 5, "r7": 7, "r10": 10, "r20": 20, "r30": 30}
 
 
-def surprise() -> tuple[pd.Series, float]:
+def surprise(t0: int = T0) -> tuple[pd.Series, float]:
     h = pd.read_csv(IN / "h15_monthly.csv").set_index("month")
-    exp = float(h.loc[f"{T0}-12", "n5"] - h.loc[f"{T0}-12", "r5"])
+    exp = float(h.loc[f"{t0}-12", "n5"] - h.loc[f"{t0}-12", "r5"])
     c = pd.read_csv("data/raw/fred/CPIAUCSL.csv")
     c.index = pd.to_datetime(c.observation_date)
     # October 2025 CPI was not published (federal shutdown): log level interpolated
@@ -83,12 +83,13 @@ def breakeven_tenor(tau: float) -> str:
     return min(R_TENORS, key=lambda k: abs(R_TENORS[k] - max(tau, 5)))
 
 
-def scenario_h15(s: pd.Series, fisher: bool, breakeven: bool = False) -> pd.DataFrame:
+def scenario_h15(s: pd.Series, fisher: bool, breakeven: bool = False, t0: int = T0,
+                 months_n: int = MONTHS) -> pd.DataFrame:
     h = pd.read_csv(IN / "h15_monthly.csv").set_index("month")
-    base = h.loc[f"{T0}-12"]
+    base = h.loc[f"{t0}-12"]
     tn, yn = curve(base, N_TENORS, False)
     tr, yr = curve(base, R_TENORS, True)
-    months = pd.period_range(f"{T0 + 1}-01", periods=MONTHS, freq="M").strftime("%Y-%m")
+    months = pd.period_range(f"{t0 + 1}-01", periods=months_n, freq="M").strftime("%Y-%m")
     rows = []
     for m, key in enumerate(months, start=1):
         t = m / 12
@@ -112,13 +113,15 @@ def scenario_h15(s: pd.Series, fisher: bool, breakeven: bool = False) -> pd.Data
     return pd.DataFrame(rows)
 
 
-def monthly_quantities() -> pd.DataFrame:
+def monthly_quantities(t0: int = T0, months_n: int = MONTHS) -> pd.DataFrame:
     """Privately held marketable (total, TIPS), overnight liabilities, currency by month ($mn)."""
     sec = securities(pd.read_csv("data/interim/mspd/table3_market_yearend.csv", dtype=str))
     soma = soma_by_cusip(pd.read_csv("data/interim/fed/soma_tsy_yearend.csv", dtype=str))
     soma["year"] = soma.year.astype(int)
     ye = []
-    for y in range(T0, T0 + MONTHS // 12 + 1):
+    for y in range(t0, t0 + months_n // 12 + 1):
+        if not (sec.record_date.dt.year == y).any():
+            continue
         x = sec[sec.record_date.dt.year == y].merge(soma[soma.year == y][["cusip", "soma_par"]], on="cusip",
                                                     how="left").fillna({"soma_par": 0})
         p = x.par - x.soma_par
@@ -127,8 +130,8 @@ def monthly_quantities() -> pd.DataFrame:
     h41 = pd.read_csv("data/interim/fed/h41_wednesday_levels.csv")
     h41["month"] = pd.to_datetime(h41.date).dt.strftime("%Y-%m")
     h41 = h41.groupby("month")[["reserves", "reverse_repo", "currency"]].mean()
-    idx = pd.date_range(f"{T0 + 1}-01-31", periods=MONTHS, freq="ME")
-    q = ye.reindex(ye.index.union(idx)).interpolate(method="time").loc[idx]
+    idx = pd.date_range(f"{t0 + 1}-01-31", periods=months_n, freq="ME")
+    q = ye.reindex(ye.index.union(idx)).interpolate(method="time").ffill().loc[idx]   # held after the last year-end
     q.index = q.index.strftime("%Y-%m")
     return q.join(h41)
 
@@ -151,35 +154,38 @@ def overnight_rates(s: pd.Series, h_a: pd.DataFrame, h_d: pd.DataFrame) -> pd.Da
                          "C_iorb": act.iorb, "C_rrp": act.rrp})
 
 
-def analytic_E(s: pd.Series) -> pd.Series:
+def analytic_E(s: pd.Series, t0: int = T0, months_n: int = MONTHS) -> pd.Series:
     """Erosion per $ of end-2020 interest-bearing debt, model layer: s_t * E(t)."""
     sec = securities(pd.read_csv("data/interim/mspd/table3_market_yearend.csv", dtype=str))
-    x = sec[sec.record_date.dt.year == T0]
+    x = sec[sec.record_date.dt.year == t0]
     soma = soma_by_cusip(pd.read_csv("data/interim/fed/soma_tsy_yearend.csv", dtype=str))
-    x = x.merge(soma[soma.year.astype(int) == T0][["cusip", "soma_par"]], on="cusip", how="left").fillna({"soma_par": 0})
+    x = x.merge(soma[soma.year.astype(int) == t0][["cusip", "soma_par"]], on="cusip", how="left").fillna({"soma_par": 0})
     h41 = pd.read_csv("data/interim/fed/h41_wednesday_levels.csv")
-    lev = h41.loc[h41.date <= f"{T0}-12-31"].iloc[-1]
+    lev = h41.loc[h41.date <= f"{t0}-12-31"].iloc[-1]
     tau = np.r_[x.tau.values, OVERNIGHT]
     w = np.r_[(x.par - x.soma_par).values, lev.reserves + lev.reverse_repo]
     ix = np.r_[(x.kind == "tips").values, False]
     Pn = 1 - (1 - exact_F(tau[~ix], w[~ix], GRID)) * np.exp(-G_BASELINE * GRID)
     E = w[~ix].sum() / w.sum() * (1 - Pn) + lev.currency / w.sum()
-    months = pd.period_range(f"{T0 + 1}-01", periods=MONTHS, freq="M").strftime("%Y-%m")
-    e = np.interp(np.arange(1, MONTHS + 1) / 12, GRID, E)
+    months = pd.period_range(f"{t0 + 1}-01", periods=months_n, freq="M").strftime("%Y-%m")
+    e = np.interp(np.arange(1, months_n + 1) / 12, GRID, E)
     return pd.Series(e, index=months), w.sum()
 
 
-def main() -> None:
-    s, exp = surprise()
+def run(t0: int, months_n: int, realized_totals: bool, tag: str = "") -> pd.DataFrame:
+    """One run of the test from the end-t0 balance sheet; writes inflation_test{tag}_*.csv."""
+    s, exp = surprise(t0)
     market = pd.read_csv("data/interim/mspd/table3_market_yearend.csv", dtype=str)
     sec, rates = securities(market), security_rates(market)
     auc = pd.read_csv(IN / "auctions.csv", dtype=str)
     totals = sec.groupby(sec.record_date.dt.year).par.sum()
-    hA, hB, hD = scenario_h15(s, False), scenario_h15(s, True), scenario_h15(s, False, breakeven=True)
+    hA, hB, hD = (scenario_h15(s, False, t0=t0, months_n=months_n), scenario_h15(s, True, t0=t0, months_n=months_n),
+                  scenario_h15(s, False, breakeven=True, t0=t0, months_n=months_n))
     hC = pd.read_csv(IN / "h15_monthly.csv")
-    runs = {k: project(T0, sec, rates, auc, h, totals, months=MONTHS).set_index("date").pred_clock
+    runs = {k: project(t0, sec, rates, auc, h, totals, months=months_n, realized_totals=realized_totals,
+                       beyond_last_year=not realized_totals).set_index("date").pred_clock
             for k, h in (("A", hA), ("B", hB), ("C", hC), ("D", hD))}
-    q = monthly_quantities()
+    q = monthly_quantities(t0, months_n)
     on = overnight_rates(s, hA, hD)
     d = q.copy()
     d["s"] = s.reindex(d.index)
@@ -195,13 +201,13 @@ def main() -> None:
     assert d[["int_A", "int_B", "int_C", "int_D", "s"]].notna().all().all(), "missing monthly inputs"
     for k in "BCD":
         d[f"transfer_{k}"] = d.gross - (d[f"int_{k}"] - d.int_A) / 12
-    E, W0 = analytic_E(s)
+    E, W0 = analytic_E(s, t0, months_n)
     d["transfer_analytic"] = d.s / 100 / 12 * E.reindex(d.index) * W0
     gdp = pd.read_csv("data/raw/bea/NipaDataA.txt", dtype=str)
     gdp.columns = [c.strip() for c in gdp.columns]
     gdp = gdp[gdp.iloc[:, 0] == "A191RC"]
-    gdp20 = float(pd.to_numeric(gdp[gdp.iloc[:, 1].astype(int) == T0].iloc[0, 2].replace(",", "")))
-    d.to_csv(OUT / "inflation_test_monthly.csv")
+    gdp20 = float(pd.to_numeric(gdp[gdp.iloc[:, 1].astype(int) == t0].iloc[0, 2].replace(",", "")))
+    d.to_csv(OUT / f"inflation_test{tag}_monthly.csv")
     d["year"] = d.index.str[:4].astype(int)
     cols = ["gross", "transfer_B", "transfer_analytic", "transfer_D", "transfer_C"]
     y = d.groupby("year")[cols].sum().cumsum()
@@ -211,11 +217,16 @@ def main() -> None:
     y["rate_B_dec"] = d.groupby("year").rate_B.last()
     y["rate_C_dec"] = d.groupby("year").rate_C.last()
     y["rate_D_dec"] = d.groupby("year").rate_D.last()
-    y.to_csv(OUT / "inflation_test_summary.csv")
-    print(f"expected inflation (end-2020 5y breakeven): {exp:.2f}%")
+    y.to_csv(OUT / f"inflation_test{tag}_summary.csv")
+    print(f"expected inflation (end-{t0} 5y breakeven): {exp:.2f}%")
     pd.set_option("display.width", 220)
     print(y.round(2).to_string())
+    return y
 
+
+
+def main() -> None:
+    run(T0, MONTHS, realized_totals=True)
 
 if __name__ == "__main__":
     main()

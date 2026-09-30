@@ -31,7 +31,8 @@ RRP_AT_BOTTOM_FROM = "2024-12-19"              # ON RRP set at the bottom of the
 def policy_rates() -> pd.DataFrame:
     """Daily IORB and ON RRP rates from the FOMC target range (NY Fed EFFR API):
     IORB = top - 0.10; ON RRP = bottom + 0.05 (bottom from 2024-12-19)."""
-    d = pd.DataFrame(json.load(open("data/raw/fed/effr_2021_2025.json"))["refRates"])
+    files = [f for f in ("data/raw/fed/effr_2021_2025.json", "data/raw/fed/effr_2026.json") if Path(f).exists()]
+    d = pd.DataFrame([r for f in files for r in json.load(open(f))["refRates"]]).drop_duplicates("effectiveDate")
     d["date"] = pd.to_datetime(d.effectiveDate)
     d = d.sort_values("date").set_index("date")
     out = pd.DataFrame({"iorb": d.targetRateTo - 0.10,

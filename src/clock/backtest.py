@@ -63,7 +63,7 @@ def issuance_mix(auc: pd.DataFrame, year: int) -> pd.DataFrame:
     return mix
 
 
-def project(t_year: int, sec, rates, auc, h15, totals, months=36, realized_totals=True):
+def project(t_year: int, sec, rates, auc, h15, totals, months=36, realized_totals=True, beyond_last_year=False):
     t0 = pd.Timestamp(f"{t_year}-12-31")
     x = sec[sec.record_date == t0].merge(rates[rates.record_date == t0][["cusip", "rate"]], on="cusip", how="left")
     x = x.dropna(subset=["rate"])
@@ -83,7 +83,7 @@ def project(t_year: int, sec, rates, auc, h15, totals, months=36, realized_total
         y = h.loc[key]
         yrs = m / 12
         y0, y1 = t_year + int(np.floor((m - 1) / 12)), t_year + int(np.floor((m - 1) / 12)) + 1
-        if y1 not in totals.index:
+        if y1 not in totals.index and not beyond_last_year:      # trend borrowing can run past the data
             break
         frac = (m - 12 * (y0 - t_year)) / 12
         target = (totals[y0] * (totals[y1] / totals[y0]) ** frac if realized_totals
