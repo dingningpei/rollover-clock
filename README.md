@@ -20,6 +20,8 @@ We measure the clock security by security for the United States, 1980–2025, an
 - in a 2001–2024 backtest of the official average interest rate;
 - out of sample on the 2022–25 tightening, frozen at end-2021, for both Treasury interest costs and the Fed's deferred asset.
 
+Section 6 builds the same measures for the United Kingdom (2007–2025, gilt by gilt, net of the Bank of England's Asset Purchase Facility) and Japan (fiscal years 2020–2024, JGB by issue, net of the Bank of Japan).
+
 ## Reproducing the results
 
 Requirements:
@@ -45,12 +47,12 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Table 3, Figure 3, Appendix E (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
 | Section 5.3, Table 5 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
-| Table 8 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
+| Section 7, Table 11 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
 | Section 5.2, Table 4 (robustness, Monte Carlo) | `data/processed/limit/robustness*.csv` |
 | Section 5.4, Table 6 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
 | Sections 3.5 and 5.5, Table 7, Figure 4 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
-| United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 inflation test, Figure 5 (section in the next version of the paper) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
+| Section 6, Tables 8–10, Figure 5 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 inflation test) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 

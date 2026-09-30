@@ -57,7 +57,9 @@ def panel() -> pd.DataFrame:
 
 
 def figure(d: pd.DataFrame) -> None:
-    fig, (a, b, c) = plt.subplots(1, 3, figsize=(14, 4.4), facecolor=SURFACE)
+    fig = plt.figure(figsize=(10, 8.4), facecolor=SURFACE)
+    gs = fig.add_gridspec(2, 2)
+    a, b, c = fig.add_subplot(gs[0, :]), fig.add_subplot(gs[1, 0]), fig.add_subplot(gs[1, 1])
     for ax in (a, b, c):
         style(ax)
         ax.tick_params(colors=INK2)
@@ -70,7 +72,7 @@ def figure(d: pd.DataFrame) -> None:
     a.set_ylim(0, 3.3)
     a.set_xticks(range(2008, 2026, 4))
     a.set_title("A. Inflation-layer ratio ∫P/∫E, H = 10\n(Japan: fiscal years)", loc="left", color=INK, fontsize=10)
-    a.legend(frameon=False, fontsize=7.5, labelcolor=INK, loc="lower left", ncol=2)
+    a.legend(frameon=False, fontsize=9, labelcolor=INK, loc="lower left", ncol=2)
     psi = np.linspace(0, 0.05, 101)
     ps = pd.read_csv(OUT / "intl_phistar.csv")
     for k in COLOR:
@@ -79,11 +81,11 @@ def figure(d: pd.DataFrame) -> None:
                label=f"{k} {int(x.year)}: r − g = {100 * (x.r - x.g):+.1f}pp, b = {x.b:.2f}")
     b.axhline(0, color=INK2, lw=0.8)
     b.axvline(3, color=GRIDC, lw=1.2, ls=":")
-    b.set_ylim(-1.5, 0.8)
+    b.set_ylim(-1.0, 0.85)
     b.set_xlabel("ψ, bp per pp of debt/GDP", color=INK2)
     b.set_title("B. Fiscal threshold φ* = 1 − g/(r + ψb)\n(g = trailing real growth + 2%)", loc="left", color=INK,
                 fontsize=10)
-    b.legend(frameon=False, fontsize=7.5, labelcolor=INK, loc="lower right")
+    b.legend(frameon=False, fontsize=9, labelcolor=INK, loc="lower right")
     us = pd.read_csv("data/processed/clock/inflation_test_summary.csv")
     uk = pd.read_csv("data/processed/uk/uk_inflation_test_summary.csv")
     for k, x in (("United States", us), ("United Kingdom", uk)):
@@ -96,7 +98,7 @@ def figure(d: pd.DataFrame) -> None:
     c.set_xticks(range(2021, 2026))
     c.set_title("C. Transfer from the 2021–25 inflation surprise,\ncumulative, % of 2020 GDP", loc="left",
                 color=INK, fontsize=10)
-    c.legend(frameon=False, fontsize=7.5, labelcolor=INK, loc="upper left")
+    c.legend(frameon=False, fontsize=9, labelcolor=INK, loc="upper left")
     fig.tight_layout()
     fig.savefig(FIG / "fig5_three_countries.png", dpi=160, facecolor=SURFACE)
     fig.savefig(FIG / "fig5_three_countries.svg", facecolor=SURFACE)
