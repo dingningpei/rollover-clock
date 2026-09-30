@@ -41,12 +41,13 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Figure 1, Section 4.2 (the clock) | `data/processed/clock/*_clock_yearend.csv`, `paper/figures/fig1_*` |
 | Table 1 (backtest) | `data/processed/clock/backtest_scores.csv` |
 | Section 4.4, Figure 2 (2022–25 test) | `data/processed/clock/freeze2021_*.csv`, `paper/figures/fig2_*` |
-| Table 2, Figure 3 (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
-| Section 5.3, Table 3 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
+| Section 4.5, Table 2 (inflation layer, 2021–25) | `data/processed/clock/inflation_test_*.csv` |
+| Table 3, Figure 3 (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
+| Section 5.3, Table 4 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
-| Table 5 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
+| Table 6 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
-| Section 5.4, Table 4 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
+| Section 5.4, Table 5 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 
@@ -60,7 +61,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | Federal Reserve Board, Data Download Program | H.4.1 (reserves, reverse repos, SOMA totals) and H.15 (yields) bulk files |
 | Federal Reserve Bank of New York API | SOMA holdings by CUSIP, SOMA MBS at end-2021, effective federal funds rate |
 | BEA | NIPA annual tables (GDP, primary balance) |
-| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT) |
+| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL) |
 
 **Hand-collected, committed in `data/manual/`:**
 

@@ -24,7 +24,7 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   curl -fsSL -o data/raw/fred/CURRCIR.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CURRCIR"
   curl -fsSL -o data/raw/fred/RESBALNS.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RESBALNS"
   # Debt held by the public, real and potential GDP: fiscal-response regressions (Section 5.3)
-  for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT; do
+  for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT CPIAUCSL; do
     curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
   done
 fi
@@ -47,6 +47,7 @@ python3 -m src.clock.inflation_layer
 python3 -m src.clock.backtest
 python3 -m src.clock.freeze_2021
 python3 -m src.clock.fd5_clock
+python3 -m src.clock.inflation_test
 
 # Sections 5-6: the two-layer limit, identification attempt, counterfactuals
 python3 -m src.limit.limit_map

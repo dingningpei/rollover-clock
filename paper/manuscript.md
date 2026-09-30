@@ -10,7 +10,7 @@ The first is a **fiscal layer**. Debt is locally stable if and only if the prima
 
 The second is an **inflation layer**. If the fiscal response falls short, surprise inflation must substitute for it. How much inflation that takes depends on how fast the consolidated interest-bearing liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*, and on how much of the consolidated balance sheet inflation can erode: nominal debt that has not yet repriced, and currency.
 
-We measure the clock security by security for the United States from 1980 to 2025, both for the Treasury alone and consolidated with the Federal Reserve, with reserves treated as overnight debt. The clock predicts the official average interest rate on marketable debt far better than maturity summaries do. Over 12–36 months the mean absolute error is 0.05–0.07 percentage points, against 0.28–0.62 for a WAM-based clock. Frozen at end-2021, it tracks the 2022–25 rise in Treasury interest costs within about 0.05 pp. Using the Fed's actual policy rates and expenses, it also reproduces the Fed's cumulative operating loss: a predicted deferred asset of −$245bn against −$243bn actual at end-2025.
+We measure the clock security by security for the United States from 1980 to 2025, both for the Treasury alone and consolidated with the Federal Reserve, with reserves treated as overnight debt. The clock predicts the official average interest rate on marketable debt far better than maturity summaries do. Over 12–36 months the mean absolute error is 0.05–0.07 percentage points, against 0.28–0.62 for a WAM-based clock. Frozen at end-2021, it tracks the 2022–25 rise in Treasury interest costs within about 0.05 pp. Using the Fed's actual policy rates and expenses, it also reproduces the Fed's cumulative operating loss: a predicted deferred asset of −$245bn against −$243bn actual at end-2025. In the 2021–23 inflation, markets priced far less inflation into new debt than the model assumes, so the surprise eroded about 1.8 times the model's prediction before higher real rates took most of it back.
 
 Three findings follow:
 
@@ -42,10 +42,12 @@ Two implications follow. First, inflation on debt only buys time. Debt reprices,
 
 **Measurement.** We build the clock from the Monthly Statement of the Public Debt (MSPD) security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP from SOMA data, add reserves and reverse repos as overnight liabilities, and add currency to the base that inflation erodes. We extend the series to 1980 with hand-transcribed maturity distributions of privately held debt from the Treasury Bulletin. The security-level reconstruction matches official totals exactly in every year. The Fed's holdings match its balance sheet exactly from 2007.
 
-**Validation.** Two tests show that the clock is a sufficient statistic for interest-cost pass-through in a way that maturity summaries are not.
+**Validation.** Two tests show that the clock is a sufficient statistic for interest-cost pass-through in a way that maturity summaries are not, and a third tests the inflation layer.
 
 - *Historical backtest.* Across 22 year-end origins from 2001 to 2024, projecting the average interest rate on marketable debt from the portfolio known at the origin and realized yields gives a mean absolute error of 0.047 pp at 12 months (0.091 pp with trend rather than realized borrowing). A clock based only on weighted-average maturity gives 0.279 pp.
 - *Out-of-sample test on 2022–25.* Freezing the balance sheets at end-2021, the clock tracks the 1.9 pp rise in the Treasury's average rate over four years within about 0.05 pp. The WAM-based clock captures less than a fifth of the first year's rise. On the Fed side, overnight repricing of reserves against the frozen end-2021 asset book reproduces the Fed's cumulative loss: a predicted deferred asset of −$245bn against −$243bn actual.
+
+- *The inflation layer in 2021–25.* From the end-2020 balance sheet, the inflation surprise transferred about 11% of GDP from holders of nominal liabilities by 2023. That is 1.8 times what full Fisher repricing implies, because new debt was priced for 2–3% inflation while prices rose 6–7% a year. Higher real rates then took most of it back: the net transfer was 4% of GDP by 2025.
 
 **Findings.** Putting the two layers on a common 1980–2025 timeline gives three results.
 
@@ -286,6 +288,36 @@ The close deferred-asset fit therefore partly reflects offsetting errors on the 
 
 The consolidated clock is thus validated where QE matters most. The 2022–25 rate shock reached consolidated interest costs through a Treasury clock that passed through about 0.9 pp within a year, and through an overnight Fed clock that passed through at once and appeared in the budget as lost remittances.
 
+### 4.5 Validation III: the inflation layer in 2021–25
+
+The two tests above check how rate shocks pass through to interest costs. The inflation layer rests on a different assumption: surprise inflation erodes nominal liabilities until they reprice, and repriced debt then pays Fisher-adjusted rates. The inflation surprise of 2021–23 lets us test it.
+
+We freeze the consolidated balance sheet at end-2020. Expected inflation is the end-2020 five-year breakeven, 1.87%, and the surprise is realized CPI inflation minus 1.87 (October 2025, not published because of the federal shutdown, is interpolated). The real transfer from holders of nominal government liabilities to the government, relative to a no-surprise path, accrues each month as the surprise times nominal liabilities, less the extra interest paid when debt reprices:
+- nominal liabilities N are privately held non-indexed marketable debt, reserves, reverse repos and currency;
+- extra interest is computed with the rollover-clock projection of Section 4.3, under realized borrowing.
+
+Four runs differ only in the yields at which debt reprices:
+- **A**, no surprise: the end-2020 forward curve;
+- **B**, the model's assumption: forwards plus the surprise realized over each new security's life (full Fisher repricing);
+- **D**, inflation as priced: forwards plus the actual change in breakeven inflation, with real yields at their forwards;
+- **C**, actual yields.
+
+**Table 2. Real transfer to the consolidated government from the 2021–25 inflation surprise** (cumulative, % of 2020 GDP)
+
+| End of | Cumulative surprise (pp of price level) | Gross erosion | Model: full Fisher repricing (B) | Model, analytic s·b·E | Inflation as priced (D) | Actual (C) |
+|---|---|---|---|---|---|---|
+| 2021 | 5.1 | 5.4 | 3.1 | 2.7 | 5.1 | 5.4 |
+| 2022 | 9.4 | 10.3 | 5.5 | 4.7 | 9.5 | 9.4 |
+| 2023 | 10.8 | 12.0 | 6.1 | 5.2 | 10.9 | 8.2 |
+| 2024 | 11.7 | 13.2 | 6.6 | 5.5 | 11.8 | 6.2 |
+| 2025 | 12.5 | 14.2 | 6.8 | 5.7 | 12.5 | 4.2 |
+
+Three findings follow.
+
+1. **The accounting holds up.** Gross erosion of nominal liabilities reached 12% of 2020 GDP by end-2023, about $2.6tn. The analytic formula s·b·E(h), applied to the end-2020 stock, gives 5.2% by 2023 against 6.1% for its numerical counterpart B; the difference is new borrowing, which the analytic version omits.
+2. **Markets repriced far less than the model assumes, so the surprise went further.** Five-year breakeven inflation averaged 2.7% in 2021–22 and peaked at 3.4%, while CPI inflation averaged 6.6%. New debt was therefore issued at rates that did not compensate for the inflation that followed. With inflation compensation as actually priced (D), the transfer reached 10.9% of GDP by 2023, about 1.8 times the 6.1% implied by full Fisher repricing (B). The inflation layer is thus conservative for an inflation that markets do not anticipate. Its object is a sustained inflation that new issues price (Section 3.4), and an unanticipated burst cannot be repeated at will.
+3. **Higher real rates took most of it back.** The five-year real yield rose from −1.5% at end-2020 to an average of 1.7% in 2024–25. With actual yields (C), the transfer peaked at 9.4% of GDP in 2022 and fell to 4.2% by end-2025, as debt repriced at higher real rates. This is the rate layer at work: the transfer from the inflation surprise was largely reversed by the real-rate shock that followed it.
+
 ## 5. The two-layer limit, 1980–2025
 
 ### 5.1 Parameters
@@ -308,7 +340,7 @@ The consolidated clock is thus validated where QE matters most. The 2022–25 ra
 
 *Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the baseline φ̂ (0.39 to 2003, 0 from 2004), the line a common φ̂ = 0.25 in every year.*
 
-**Table 2. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
+**Table 3. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
 
 | Period | φ* | φ̂ | Gap | Inflation-layer ratio | Inflation to cover gap (pp/yr) |
 |---|---|---|---|---|---|
@@ -356,7 +388,7 @@ The controls are the output gap, temporary defense spending (defense/GDP minus i
 
 Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
 
-**Table 3. Implied fiscal response φ (standard error)**
+**Table 4. Implied fiscal response φ (standard error)**
 
 | Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
 |---|---|---|---|---|---|
@@ -400,7 +432,7 @@ $$\Delta\pi^{level}(H)=\frac{\int_0^H\big[(\bar r(h)-g)\,b-g\,z-s(h)\big]\,dh}{b
 
 For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal years 2026–2035. For 2007 and 2019 we hold the actual primary balance (excluding Fed remittances) constant. The average rate r̄₀ prices each privately held security at its own rate, calibrated to the Treasury's official average rate on marketable debt; TIPS add 2% expected inflation, reserves earn the interest rate on reserves, and reverse repos the ON RRP rate.
 
-**Table 4. Inflation needed to hold consolidated debt/GDP constant**
+**Table 5. Inflation needed to hold consolidated debt/GDP constant**
 
 | | End-2007 | End-2019 | End-2025 (CBO baseline) |
 |---|---|---|---|
@@ -428,9 +460,9 @@ This number does not use φ̂, since the actual and projected primary balances a
 
 ## 6. Counterfactuals and policy options
 
-Table 5 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
+Table 6 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
-**Table 5. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 6. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
