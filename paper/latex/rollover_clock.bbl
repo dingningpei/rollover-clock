@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -18,6 +18,11 @@ A.~Anderson, P.~Marks, D.~Na, B.~Schlusche, and Z.~Senyuz.
   balance sheet, part 2: Projections under alternative interest rate paths.
 \newblock FEDS Notes, Board of Governors of the Federal Reserve System, 15
   July, 2022.
+
+\bibitem[Andreolli(2024)]{andreolli2024}
+M.~Andreolli.
+\newblock Monetary policy and the maturity structure of public debt.
+\newblock Working paper, Boston College, 2024.
 
 \bibitem[Angeletos(2002)]{angeletos2002}
 G.-M. Angeletos.
@@ -215,6 +220,12 @@ J.~Hilscher, A.~Raviv, and R.~Reis.
 Z.~Jiang, H.~Lustig, S.~Van~Nieuwerburgh, and M.~Z. Xiaolan.
 \newblock The {U.S.} public debt valuation puzzle.
 \newblock \emph{Econometrica}, 92\penalty0 (4):\penalty0 1309--1347, 2024.
+
+\bibitem[Johns et~al.(2026)Johns, Mehrotra, and Zampolli]{johns2026}
+C.~Johns, A.~Mehrotra, and F.~Zampolli.
+\newblock Public debt and monetary policy transmission: Evidence from advanced
+  and emerging {Europe}.
+\newblock BIS Working Paper 1365, Bank for International Settlements, 2026.
 
 \bibitem[Krause and Moyen(2016)]{krause2016}
 M.~U. Krause and S.~Moyen.
