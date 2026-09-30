@@ -44,18 +44,18 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Table 1 (backtest) | `data/processed/clock/backtest_scores.csv` |
 | Section 4.4, Figure 2 (2022–25 test) | `data/processed/clock/freeze2021_*.csv`, `paper/figures/fig2_*` |
 | Section 4.5, Table 2 (inflation layer, 2021–25) | `data/processed/clock/inflation_test_*.csv` |
-| Table 3, Figure 3, Appendix E (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
-| Section 5.3, Table 5 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
-| Section 5.3, Table 5b (break dates), Table 5c (UK fiscal events); Appendix C (panel, CBO) | `data/processed/fiscal/breaks*.csv`, `phi_obr*.csv`, `phi_cbo*.csv`, `phi_panel.csv` |
-| Table 4, regime-specific ψ | `data/processed/limit/psi_regimes_*.csv` |
-| Sections 3.3, 5.2 (Table 3b), 6.2: monetary tolerance threshold κ* | `data/processed/limit/monetary_reaction_*.csv` |
-| Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
+| Section 5.2, Table 3, Figure 3, Appendix F (two-layer limit) | `data/processed/limit/`, `paper/figures/fig3_*` |
+| Appendix D.1, Table D1 (fiscal response regressions) | `data/processed/fiscal/fiscal_response_*.csv` |
+| Appendix D.2–D.4, Table D2 (break dates), Table D3 (UK fiscal events), panel and CBO designs | `data/processed/fiscal/breaks*.csv`, `phi_obr*.csv`, `phi_cbo*.csv`, `phi_panel.csv` |
+| Table 5, regime-specific ψ | `data/processed/limit/psi_regimes_*.csv` |
+| Sections 3.3, 5.3 (Table 4), 6.2: monetary tolerance threshold κ* | `data/processed/limit/monetary_reaction_*.csv` |
+| Appendix D.4 (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
 | Section 7, Table 11 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |
-| Section 5.2, Table 4 (robustness, Monte Carlo) | `data/processed/limit/robustness*.csv` |
-| Section 5.4, Table 6 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
-| Sections 3.5 and 5.5, Table 7, Figure 4 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
-| Section 6, Tables 8–11, Figure 5 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 and Japan 2022–25 inflation tests) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
+| Section 5.4, Table 5 (robustness, Monte Carlo) | `data/processed/limit/robustness*.csv` |
+| Section 5.5, Table 6 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
+| Appendix C.2, Table C1, Figure C1 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
+| Section 6, Tables 7–10, Figure 4 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 and Japan 2022–25 inflation tests) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 
@@ -76,7 +76,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | Statistics Bureau of Japan | CPI, 2020 base, monthly |
 | Office for Budget Responsibility | Fiscal forecast revisions database; historical official forecasts database |
 | CBO (github.com/US-CBO/eval-projections) | Baselines and baseline changes by source, 1983–2026 |
-| OECD Economic Outlook; BIS debt securities statistics | Fiscal and maturity panel for 23 advanced economies (Appendix C) |
+| OECD Economic Outlook; BIS debt securities statistics | Fiscal and maturity panel for 23 advanced economies (Appendix D.4) |
 | FRED (Federal Reserve Bank of St. Louis) | UK and Japan nominal and real GDP (UKNGDP, NGDPRSAXDCGBQ, JPNNGDP, JPNRGDPEXP); Japan CPI before 2020 (JPNCPIALLMINMEI); currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL); Cleveland Fed 10-year expected inflation (EXPINF10YR) |
 
 **Hand-collected, committed in `data/manual/`:**

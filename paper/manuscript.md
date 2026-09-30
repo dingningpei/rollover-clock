@@ -1,6 +1,6 @@
 # The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign
 
-*Preliminary working paper, September 2026. Comments welcome. Replication code and data: <https://github.com/dingningpei/rollover-clock> (Appendix D).*
+*Preliminary working paper, September 2026. Comments welcome. Replication code and data: <https://github.com/dingningpei/rollover-clock> (Appendix E).*
 
 ## Abstract
 
@@ -16,59 +16,90 @@ In the United Kingdom and Japan, too, the inflation layer is set by the consolid
 
 ## 1. Introduction
 
-Can an issuer that replaces maturing high-coupon debt with new low-coupon debt keep doing so forever? For a sovereign that issues the world's reserve currency and whose central bank can buy its bonds, default is a choice rather than a constraint. The question is then not whether a debt limit exists but what form it takes. This paper argues that the limit has two layers, and that they depend on the debt's maturity in opposite ways.
+A sovereign that borrows in its own reserve currency, and whose central bank can buy its bonds, does not face a debt wall: default is a choice, not a constraint. When interest costs rise and the budget does not respond, the gap is still paid, by one of three groups:
+- taxpayers or program beneficiaries, if fiscal policy adjusts;
+- holders of nominal claims, if the central bank tolerates the inflation that erodes the government's nominal liabilities;
+- taxpayers again, if the central bank raises real rates instead. The debt that reprices then costs more, and the inflation transfer is taken back.
 
-**The fiscal layer is maturity-free.** In a transparent model of consolidated debt dynamics, the market rate rises with debt and the average rate on outstanding debt reprices toward it at a speed set by maturity. Debt is then locally stable if and only if
+This paper prices these routes. For the United States from 1980 to 2025, and for the United Kingdom and Japan, it measures three things:
+- how much fiscal adjustment a rate shock requires;
+- how much inflation would substitute for that adjustment;
+- how much monetary tightening the substitution can survive.
+
+The answers to the last two are set by the consolidated balance sheet of the Treasury and the central bank, and above all by how the central bank funds the bonds it holds.
+
+**Two layers.** In a transparent model of consolidated debt dynamics, the market rate rises with debt, and the average rate on outstanding debt reprices toward it at a speed set by maturity. Debt is locally stable if and only if
 
 $$(1-\phi)\,(r+\psi b)<g ,$$
 
-where φ is the share of marginal interest cost offset by the primary surplus and r + ψb is the marginal interest cost of debt. With φ = 0 this is the condition of Mian, Straub and Sufi (2025). We show that the repricing speed cancels from it for any maturity structure. Shorter debt makes a rate shock bite faster but does not change whether the system is stable. What it does change is timing. When the primary surplus has a ceiling, maturity decides how many years pass before a large rate shock breaks the limit (Section 3.5).
+where φ is the share of marginal interest cost offset by the primary surplus.
 
-**The inflation layer depends on maturity and on what the government owes.** If the fiscal response falls short of the threshold, the gap must be closed some other way, and for a reserve-currency sovereign that other way is inflation. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced. Debt that rolls over at new, Fisher-adjusted rates escapes; currency, which never reprices, does not. The inflation needed to replace a missing fiscal offset therefore depends on the rollover clock P(h), the share of a permanent rate shock that has reached the average rate after h years, and on the erodible share E(h) of the balance sheet:
+The *fiscal layer* is maturity-free. The repricing speed cancels from this condition for any maturity structure, so the minimum offset φ* = 1 − g/(r + ψb) depends on r − g, on the debt sensitivity of rates ψ and on debt b, not on maturity.
 
-$$\Delta\pi^{req}(H)=(\phi^*-\hat\phi)^+\,\Delta r\,\frac{\int_0^H P(h)\,dh}{\int_0^H E(h)\,dh}.$$
+The *inflation layer* is where maturity and the central bank matter. Sustained surprise inflation erodes only nominal liabilities that have not yet repriced, and currency, which never reprices. The inflation that covers a missing offset u after a permanent rate rise Δr is
 
-Two implications follow. First, inflation on debt only buys time: debt reprices, so its erosion runs out as the horizon lengthens, and only currency can be taxed permanently. At end-2025, covering the fiscal gap with a permanent inflation tax on currency would take about 5.6 pp of extra inflation a year, before any flight from cash. Second, the relevant balance sheet is the consolidated one. A central bank that holds Treasuries against currency turns interest-bearing debt into a zero-interest liability that inflation erodes. One that holds them against interest-bearing reserves does the opposite: it shortens the maturity of the government's liabilities to the private sector and takes them out of the inflation-tax base. The inflation substitute then becomes costlier, even while Treasury-only maturity statistics lengthen.
+$$\Delta\pi(H)=u\,\Delta r\,R,\qquad R=\frac{\int_0^H P(h)\,dh}{\int_0^H E(h)\,dh}.$$
 
-**Measurement.** We build the clock from the Monthly Statement of the Public Debt security by security for 2001–2025, net the Fed's holdings CUSIP by CUSIP, add reserves and reverse repos as overnight liabilities, and add currency to the base that inflation erodes. Hand-transcribed maturity distributions from the Treasury Bulletin extend the series to 1980. The reconstruction matches official totals exactly in every year, and the Fed's holdings match its balance sheet exactly from 2007.
+Here P(h), the *rollover clock*, is the share of the rate shock that has reached the average rate after h years, and E(h) is the share of the consolidated balance sheet that inflation can still erode. R is the price of the inflation route.
 
-**Validation.** Three tests check the clock. In a backtest over 22 year-end origins from 2001 to 2024, projecting the average interest rate on marketable debt from the portfolio known at the origin and realized yields gives a mean absolute error of 0.047 pp at 12 months, against 0.279 pp for a clock based only on weighted-average maturity. Frozen at end-2021, the clock tracks the 1.9 pp rise in the Treasury's average rate over four years within about 0.05 pp, and overnight repricing of reserves against the frozen Fed book reproduces the Fed's cumulative loss: a deferred asset of −$245bn predicted against −$243bn actual. Finally, from the end-2020 balance sheet, the 2021–23 inflation surprise transferred about 11% of GDP from holders of nominal liabilities by 2023. That is 1.8 times what full Fisher repricing implies, because new debt was priced for 2–3% inflation while prices rose 6–7% a year; higher real rates then took most of it back, leaving a net transfer of 4% of GDP by 2025.
+If the central bank raises the real rate by κ per point of inflation, repriced debt pays more, and the requirement becomes u·Δr·R/(1 − κR). It is infinite beyond a *monetary tolerance threshold* κ\* = 1/R. The same ratio therefore sets both the price of the inflation route and how much monetary tightening the route can survive.
 
-**Findings.** On a common 1980–2025 timeline, the fiscal threshold today is ordinary. At about 0.47 in 2023–25 it is within its 1980–2007 range of roughly 0.1–0.56; the exception was 2008–21, when the threshold was negative. Whether the threshold is met is a policy choice, and the paper does not need to estimate it: it reports the price of falling short. The best available evidence suggests that the U.S. response is weak. Auerbach and Yagan (2024) estimate a legislated offset of higher interest costs of about 0.39 before 2004 and about zero since. Our break tests confirm that the response changed but date the changes to the mid-1990s and 2009–13 rather than 2004, and time-series regressions across these regimes cannot measure its size. UK fiscal events, where market-driven revisions to debt interest identify the response, give about 0.15 (Section 5.3). We therefore report every result as a function of the fiscal response.
+**Measurement and tests.** We build the U.S. clock security by security from the Monthly Statement of the Public Debt for 2001–2025. We net the Fed's holdings CUSIP by CUSIP, add reserves and reverse repos as overnight liabilities, and add currency to the erosion base. Treasury Bulletin tables extend the series to 1980, and the reconstruction matches official totals exactly. Three tests check it:
+- *Backtest.* Over 22 year-end origins, it predicts the Treasury's average interest rate a year ahead within 0.05 pp. That is a sixth of the error of a clock based on weighted-average maturity.
+- *The 2022–25 tightening.* Frozen at end-2021, it tracks the 1.9 pp rise in the average rate through 2025. With reserves repricing overnight, it reproduces the Fed's cumulative operating loss: a deferred asset of −$245bn predicted, against −$243bn actual.
+- *The 2021–23 inflation.* From the end-2020 balance sheet, the surprise transferred about 11% of GDP from holders of nominal liabilities by 2023. That is 1.8 times what full Fisher repricing implies, because new debt was priced for far less inflation than followed. Higher real rates then took most of it back.
 
-The third finding concerns the Fed. Before 2008, consolidating with the Fed roughly halved the inflation needed per unit of relief, because the Fed's Treasuries were financed by currency. Since 2009 the consolidated and Treasury-only requirements have been about equal. From end-2007 to end-2025 the consolidated ratio rose by half, and QE's reserve funding accounts for 50–80% of that rise, depending on the order of decomposition.
+**Findings for the United States.**
+- *The threshold is ordinary.* At about 0.47 in 2023–25, φ* is within its 1980–2007 range. The exception was 2008–21, when it was negative.
+- *The price of falling short is high.*
+  - At the end-2025 clock, each 0.1 of missing offset after a permanent 1pp rate rise costs about 0.2 pp of extra inflation a year for a decade.
+  - With no offset the cost is 1.0–1.1 pp a year, the highest since at least 1980. The ranking holds for any common fiscal response below about 0.35 and in 99% of parameter draws, provided today's ψ is at least about 2bp.
+  - Holding debt/GDP stable at CBO's baseline deficits would take about 4 pp a year.
+- *QE raised the price.* Before 2008 the Fed held Treasuries against currency, which inflation erodes, and consolidation roughly halved the price. Since 2009 reserves that reprice overnight fund its book, and consolidation no longer lowers it. QE's reserve funding accounts for 50–80% of the rise in the consolidated ratio since 2007.
+- *QE also lowered the monetary tolerance threshold,* by about two fifths at five-, ten- and fifteen-year horizons.
+  - Over ten years, κ\* fell from 0.64–0.82 before 2008 to 0.39–0.50 in every year since 2009, below the 0.5 of a Taylor rule.
+  - Beyond a few years, the inflation route is open only to a central bank that responds to inflation much less than its usual rule.
 
-The price of falling short is the inflation-layer ratio. At the end-2025 clock, each 0.1 of missing offset after a permanent 1pp rate rise costs about 0.22 pp of extra inflation a year for ten years. With no offset the requirement in 2023–25 is 1.01–1.12 pp a year, against 0.61 in 2007 and 0.23 in 1981, the highest in the sample. The ranking is driven by the inflation layer, not by the timing of the change in the fiscal response: with one common response in every year it holds for any value below about 0.35, and it holds in 99% of draws when the parameters are drawn from their plausible ranges. It does not require one debt sensitivity of rates for 1980–2025, but it does require today's to be at least about 2bp per point of debt/GDP (3bp if the common response is 0.25). In levels, holding debt/GDP stable at CBO's baseline primary deficits and today's rates would take about 4 pp of extra inflation a year for a decade, against about 3 pp in 2019 and nothing in 2007. Each point of sustained surprise inflation erodes about $100bn a year, so a primary shortfall of about $400bn a year is far beyond what a modest inflation overshoot can cover.
+**Three sovereigns.** The same measures for the United Kingdom (2007–2025) and Japan (fiscal years 2020–2024) show that these are properties of the consolidated balance sheet, not of debt management.
+- *The UK.* It issues the longest debt of the three, and its own-debt price is about 0.9, against 2.1–2.7 in the United States. Yet at the 2021 QE peak its consolidated price, 2.47, matched the U.S. 2.46.
+- *Japan.* Its zero-rate reserve tier kept the price near 0.8 until the March 2024 reform raised it to about 2.
+- *The post-2020 inflations* show two of the three routes. In the United States and the UK, higher real rates took most of the transfer back; in the UK almost all of that ran through interest on reserves (5.7% of GDP). In Japan, where yields were held down, holders of nominal claims bore about 18% of GDP.
 
-**The monetary response.** These prices assume a central bank that tolerates the inflation. If it instead raises the real rate by κ per point of inflation, the debt that has repriced pays more, and the requirement rises to R/(1 − κR) times the gap. It becomes infinite at a **monetary tolerance threshold** κ\* = 1/R: above κ\*, no rate of inflation covers any fiscal gap. Over a ten-year horizon, the U.S. threshold was 0.64–0.82 before 2008; in every year since 2009 it has been 0.39–0.50, below the 0.5 of a Taylor rule. The level depends on the horizon, but at five, ten and fifteen years alike QE lowered it by about two fifths. QE therefore did more than raise the price of the inflation route: beyond a few years, it closed that route to a central bank that follows its usual rule. After 2021, higher real rates, much of them paid on reserves, took back most of the transfer in the United States and the UK.
+**The fiscal response.** Whether the threshold is met is a policy choice, and the paper does not need to estimate it: every result is reported as a function of the response. The best available evidence suggests the response is weak.
+- Auerbach and Yagan (2024) estimate a legislated U.S. offset of higher interest costs of about 0.39 before 2004 and about zero since.
+- Our break tests confirm a change, but date it to the mid-1990s and 2009–13.
+- UK fiscal events, where market-driven revisions to debt interest identify the response, give about 0.15 (Appendix D).
 
-Counterfactuals rank the levers. Restoring the fiscal response the literature estimates before 2004 (0.39) cuts the required inflation by about 84%. Among balance-sheet policies, ending interest on reserves has the largest effect, a third, because reserves rejoin the zero-interest base; but it amounts to a tax on banks and would change how the Fed sets rates. Undoing QE, so that the Fed holds only as many Treasuries as it has currency outstanding, cuts the requirement by 18%, and a Fed shift to bills cuts it by 12% because it leaves longer debt in private hands. Raising the Treasury's bill share to 30% raises it by 15%, and losing 50–100bp of convenience yield by 8–14%.
+**Contribution.** None of the ingredients is new on its own:
+- debt dynamics with endogenous rates come from Mian, Straub and Sufi (2025) and Lorenzoni and Werning (2019);
+- consolidated Treasury–Fed maturity from Greenwood, Hanson, Rudolph and Summers (2014), the TBAC (2020, 2026) and the OBR (2021);
+- maturity and the inflation tax from Cochrane (2001, 2022), Hilscher, Raviv and Reis (2022) and Barro and Bianchi (2026);
+- fiscal responses from Bohn (1998) and Auerbach and Yagan (2024).
 
-**Who pays.** When the fiscal response falls short, the gap does not disappear; the question is who bears it, and the monetary response decides. There are three routes:
-- **Fiscal adjustment.** Taxpayers or program beneficiaries pay, by legislation. The threshold φ* says how much is needed.
-- **Inflation.** If the central bank tolerates it, holders of nominal claims pay: savers, bondholders and holders of currency, part of them abroad. Nobody votes on it. The inflation-layer ratio is its price.
-- **Higher real rates.** If the central bank tightens against the inflation, the transfer is largely taken back, entirely above κ\*. Taxpayers then pay higher interest to bondholders and, through interest on reserves, to banks, while tighter policy slows the economy.
+The paper adds three things:
+1. It proves that the fiscal threshold is maturity-free, and derives closed forms for the price of the inflation route and the monetary tolerance threshold in terms of the measured clock.
+2. It builds and tests a 1980–2025 series of the full consolidated repricing profile of the United States, which we have not found elsewhere, and the same measures for the UK and Japan.
+3. It quantifies the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
 
-The post-2020 tests show two of these routes. In the United States and the UK, higher real rates returned most of the transfer; in the UK the extra interest on reserves alone was 5.7% of GDP. In Japan, where yields were held down, holders of nominal claims (households, banks and insurers) bore about 18% of GDP. A central bank independent of the fiscal authority keeps the second route from being taken quietly. The paper puts a price on each route, so that the choice among them can be made in the open.
-
-**Three sovereigns.** Section 6 builds the same measures for the United Kingdom (2007–2025, gilt by gilt, net of the Bank of England's Asset Purchase Facility) and Japan (fiscal years 2020–2024, JGB by issue, net of the Bank of Japan). On their own debt the three governments differ widely: the UK's gilts average 14–16 years and a quarter are index-linked, and its own-debt inflation ratio is about 0.9 against 2.1–2.7 for the United States. Consolidation erases most of the difference. At the QE peak the consolidated ratios were 2.47 in the UK, 2.46 in the United States and 1.99 in Japan. How the central bank funds its bonds is decisive. Japan's zero-rate reserve tier kept its ratio near 0.8 until the March 2024 reform, which raised it to about 2 with almost no change in the government's own debt. The fiscal threshold is where the three differ: the UK is the only one with r above g, and Japan's threshold depends almost entirely on how rates respond to debt. The UK's 2021–25 inflation repeats the U.S. result: new debt was priced for far less inflation than followed, so the surprise transferred 1.8 times what full Fisher repricing implies, and the extra interest on reserves then took back most of the transfer. In Japan, where yields were held down, the 2022–25 surprise transferred about 18% of GDP by March 2026 and was not taken back.
-
-**Contribution.** None of the ingredients is new on its own. Debt dynamics with endogenous rates come from Mian, Straub and Sufi (2025) and Lorenzoni and Werning (2019); consolidated Treasury–Fed maturity from Greenwood, Hanson, Rudolph and Summers (2014), the TBAC (2020, 2026) and the OBR (2021); maturity and the inflation tax from Cochrane (2001, 2022), Hilscher, Raviv and Reis (2022) and Barro and Bianchi (2026); and fiscal responses to debt service from Bohn (1998), Auerbach and Yagan (2024) and Eichengreen, Menuet and Donnat (2026). The paper puts them together. It proves that the fiscal threshold is maturity-free and derives a closed-form inflation requirement in which maturity enters only through the measured clock. It builds a long series, 1980–2025, of the full consolidated repricing profile for the United States, generalizing the scalar reset measures used in debt management and testing it out of sample; we found no earlier series of this kind. And it gives a year-by-year, two-layer distance to the limit that separates what fiscal policy must do from what balance-sheet policy changes. It does not need the level of the fiscal response: it gives the threshold and the price of falling short, and reports every result as a function of the response. It also quantifies the effect of consolidation on the inflation requirement, which Barro and Bianchi (2026) note would be desirable but for which "data are not available."
-
-**What the results rest on.** The results differ in how much they depend on assumptions. The measurement and the accounting are the most secure; the levels of the requirement are orders of magnitude; the level of the fiscal response is the least secure, and the paper does not rely on it.
+**What the results rest on.** The measurement and the accounting are the most secure. The levels of the requirement are orders of magnitude. The level of the fiscal response is the least secure, and the paper does not rely on it.
 
 | Result | Basis | Depends on | Reliability |
 |---|---|---|---|
 | The rollover clock and the consolidated stock | Security-level data, exact against official totals; backtest error 0.05 pp; the Fed's 2022–25 loss reproduced | Bucket correction for 1980–2002 | High |
 | The fiscal threshold does not depend on maturity | Proof (Section 3.2) | Linear debt dynamics; constant ψ | High, within the model class |
-| Funding central-bank bonds with reserves raises the price of the inflation substitute | Accounting; the same in the United States, the UK and Japan; Japan's 2024 reform | Ignores the return on the Fed's MBS | High |
+| Funding central-bank bonds with reserves raises the price of the inflation route | Accounting; the same in the United States, the UK and Japan; Japan's 2024 reform | Ignores the return on the Fed's MBS | High |
+| QE lowered the monetary tolerance threshold κ\* | Same accounting, three countries | First order; the response lasts as long as the surprise | High for the fall (about two fifths at H = 5, 10, 15); below 0.5 at H = 10 and 15, not at H = 5 |
 | Markets priced far less of the post-2020 surprises than full Fisher repricing | U.S. and UK tests (1.8 times in both); Japan | UK and Japan: closed portfolio | High |
-| QE lowered the monetary tolerance threshold κ\* below a Taylor rule (0.5) | Same accounting; the same in the UK and Japan | First order; the response lasts as long as the surprise | High for the fall (about two fifths at H = 5, 10, 15); below 0.5 at H = 10 and 15, not at H = 5 |
 | 2023–25 has the largest requirement since 1980 | Year-by-year accounting | Today's ψ at least about 2bp (3bp at φ̂ = 0.25) | Medium |
-| Levels of the requirement (1.0–1.1 pp; about 4 pp to hold debt/GDP) | Same | ψ, g, H; real rates and currency demand held fixed | Order of magnitude |
+| Levels of the requirement (1.0–1.1 pp; about 4 pp to hold debt/GDP) | Same | ψ, g, H; currency demand held fixed | Order of magnitude |
 | The level of the fiscal response φ̂ | UK fiscal events about 0.15; U.S. not identified | — | Low; not needed for the results |
 
-Section 2 reviews related work and Section 3 presents the model. Section 4 builds and tests the clock. Section 5 presents the two-layer limit from 1980 to 2025, our own evidence on the fiscal response, the level of inflation that would hold debt stable today, and the time to the limit when the surplus has a ceiling. Section 6 builds the same measures for the United Kingdom and Japan. Section 7 reports counterfactuals and policy options, and Section 8 concludes.
+**Plan of the paper.**
+- Section 2 reviews related work and Section 3 presents the model.
+- Section 4 builds and tests the clock.
+- Section 5 prices the fiscal gap from 1980 to 2025.
+- Section 6 turns to the United Kingdom and Japan, Section 7 to policy options, and Section 8 concludes.
+- Appendix C treats timing (a one-time price jump; a ceiling on the surplus), and Appendix D the evidence on the fiscal response.
 
 ## 2. Related literature
 
@@ -76,11 +107,11 @@ Section 2 reviews related work and Section 3 presents the model. Section 4 build
 
 **Consolidated maturity and QE.** Greenwood et al. (2014) measure consolidated Treasury–Fed duration and show that Treasury's maturity extension offset about a third of QE's reduction in privately held duration (35% from a 2007 baseline; 63% from December 2008). The Treasury Borrowing Advisory Committee (2020) computed consolidated maturity and duration, and since 2022 Treasury's refunding materials report a consolidated weighted-average next rate reset, which TBAC (2026) reviews; it treats the part of SOMA that funds reserves, ON RRP and other interest-bearing Fed liabilities as repricing overnight. The OBR (2021) documents the same shortening for the UK, and CBO (2022), Levin, Lu and Nelson (2022), Cavallo et al. (2019) and d'Avernas et al. (2024) discuss the fiscal risk it creates. Del Negro and Sims (2015) and Hall and Reis (2015) ask when a central bank's balance sheet needs fiscal support, and Bassetto and Messer (2013) trace the fiscal consequences of paying interest on reserves; our consolidated clock shows those consequences in the erosion base, since remunerated reserves took the Fed's book out of the inflation-tax base in 2008. In July 2022, Fed staff projected the deferred asset to peak at about $60 billion, with a tail of about $180 billion (Anderson et al. 2022). We generalize the scalar reset measures to the full repricing profile, build it from 1980, and test it on realized outcomes, including the Fed's 2022–25 losses.
 
-**Maturity and the inflation tax.** In the fiscal theory of the price level, maturity determines whether fiscal news shows up as inflation now or later (Cochrane 2001, 2022, 2023), and monetary and fiscal policy jointly determine the price level (Sims 2013). Barro and Bianchi (2026) scale fiscal spending shocks by debt times duration in explaining 2020–23 inflation. Hilscher, Raviv and Reis (2022) and Aizenman and Marion (2011) show that short U.S. maturity limits how far inflation can erode debt. Reis (2017a) argues that QE, by bringing more debt due, lowers the price increase a fiscal crisis requires, and Reis (2017b) sets out how far a central bank can relieve fiscal burdens, including through seigniorage on the currency base. Krause and Moyen (2016) show in a New Keynesian model with a maturity structure that a higher inflation target lowers real debt substantially only if the change is close to permanent; our inflation layer measures the same channel on the actual consolidated balance sheet, with currency in the erosion base. Section 3.4 reconciles the signs in this literature: a one-time level jump is maturity-neutral, a transitory surprise favors short debt, and sustained inflation favors long debt. We invert the erosion calculation into a required inflation rate as a function of the measured clock and quantify how consolidation shifts it.
+**Maturity and the inflation tax.** In the fiscal theory of the price level, maturity determines whether fiscal news shows up as inflation now or later (Cochrane 2001, 2022, 2023), and monetary and fiscal policy jointly determine the price level (Sims 2013). Barro and Bianchi (2026) scale fiscal spending shocks by debt times duration in explaining 2020–23 inflation. Hilscher, Raviv and Reis (2022) and Aizenman and Marion (2011) show that short U.S. maturity limits how far inflation can erode debt. Reis (2017a) argues that QE, by bringing more debt due, lowers the price increase a fiscal crisis requires, and Reis (2017b) sets out how far a central bank can relieve fiscal burdens, including through seigniorage on the currency base. Krause and Moyen (2016) show in a New Keynesian model with a maturity structure that a higher inflation target lowers real debt substantially only if the change is close to permanent; our inflation layer measures the same channel on the actual consolidated balance sheet, with currency in the erosion base. Appendix C.1 reconciles the signs in this literature: a one-time level jump is maturity-neutral, a transitory surprise favors short debt, and sustained inflation favors long debt. We invert the erosion calculation into a required inflation rate as a function of the measured clock and quantify how consolidation shifts it.
 
 **Optimal maturity.** Angeletos (2002), Bhandari, Evans, Golosov and Sargent (2017) and Faraglia, Marcet, Oikonomou and Scott (2019) study how the maturity structure should be chosen to insure the budget. We take the structure as given and measure its consequences.
 
-**Fiscal responses.** Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt; his coefficient maps exactly into ours (Section 5.1). Eichengreen, Menuet and Donnat (2026) find that surpluses respond to debt service more than to debt stocks, and more strongly when r > g; their object is a log-log elasticity, and they describe their evidence as descriptive. Auerbach and Yagan (2024) find that legislated U.S. fiscal feedback, including the response to lagged net interest, was substantial before 2004 and has been about zero since. We use their estimates as the baseline φ̂, check them with our own regressions in Section 5.3, and show which conclusions hold without them.
+**Fiscal responses.** Bohn (1998, 2008) estimates a positive U.S. response of surpluses to debt; his coefficient maps exactly into ours (Appendix D). Eichengreen, Menuet and Donnat (2026) find that surpluses respond to debt service more than to debt stocks, and more strongly when r > g; their object is a log-log elasticity, and they describe their evidence as descriptive. Auerbach and Yagan (2024) find that legislated U.S. fiscal feedback, including the response to lagged net interest, was substantial before 2004 and has been about zero since. We use their estimates as a reference path for φ̂, bring our own evidence in Appendix D, and report every result as a function of φ̂.
 
 ## 3. Model
 
@@ -121,7 +152,7 @@ $$\phi^*=1-\frac{g}{r+\psi b}.$$
 The result has three boundaries.
 - If the debt-rate schedule depends on the duration the private sector holds (a term-premium channel), maturity moves r and through it φ*. The effect runs through r, which we measure, not through repricing speed.
 - If the fiscal rule responds to projected rather than realized interest, the response is faster but the threshold is the same.
-- If the primary surplus has a ceiling, maturity decides when a large shock breaks the limit. Section 3.5 makes this precise.
+- If the primary surplus has a ceiling, maturity decides when a large shock breaks the limit (Appendix C.2).
 
 ### 3.3 The inflation layer
 
@@ -147,7 +178,7 @@ $$\Delta\pi^{req}(H)\to u\,\Delta r\,\frac{b}{C},$$
 
 the permanent inflation tax on currency that covers the gap. Without currency, Δπ^req(H) → ∞. At end-2025 b/C ≈ 12, so with u = 0.46 the limit is about 5.6 pp per year indefinitely, before any fall in currency demand. In 2007 it was about 1.9.
 
-The currency base is where the reserve-currency status enters the inflation layer directly. About 44% of U.S. currency is held abroad, so close to half of the inflation tax on currency is paid by foreign holders. Counting only domestically held currency would raise the 2025 consolidated ratio from 2.18 to 2.46.
+The currency base is where the reserve-currency status enters the inflation layer directly: about 44% of U.S. currency is held abroad, so close to half of the inflation tax on currency falls on foreign holders.
 
 **Combined metric.** Local stability requires offsetting the share φ* of marginal interest cost. With a historical offset φ̂ < φ*, the missing share is u = (φ* − φ̂)⁺. This gives the two-layer distance to the limit:
 
@@ -169,33 +200,7 @@ $$\Delta\pi^{gap}(H;\kappa)=\frac{(\phi^*-\hat\phi)^+\,\Delta r\,R}{1-\kappa R},
 
 It is finite only if κ < κ\* = 1/R. Above this **monetary tolerance threshold**, no rate of inflation covers any fiscal gap, because the real-rate response takes back more than the inflation erodes. A Taylor (1993) rule, which raises the nominal rate by 1.5 points per point of inflation, has κ = 0.5. The ratio R that prices the inflation route therefore also sets how much monetary tightening the route can survive. A faster clock or a smaller zero-interest base raises the price and lowers the threshold.
 
-### 3.4 Which inflation? Reconciling the maturity sign
-
-Let w(s) be the share of nominal debt payments due at s and p(s) the cumulative surprise in the price level. Real erosion of the debt is N∫w(s)p(s)ds; currency C loses p(s) of its value for as long as the price level stays higher. How maturity matters depends on how persistent the price-level path is:
-
-| Price-level path | Erosion (debt + currency) | Effect of shorter maturity |
-|---|---|---|
-| Permanent one-time jump, p(s) = Δp | (N + C)·Δp | none |
-| Transitory surprise until τ, then reversed | N·Δp·F_N(τ) | helps (Reis 2017a: "more of the debt coming due") |
-| Sustained inflation over H, p(s) = Δπ·s | (N·D_N + C·H)·Δπ | hurts through the debt term (Cochrane; Barro–Bianchi; HRR; this paper) |
-
-Here D_N is the average time to repricing of nominal debt over the horizon. A reversed surprise leaves currency holders whole, while a sustained one taxes currency throughout.
-
-QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P / (N/b + C/b), which depends on maturity only through the cost of the shock.
-
-### 3.5 When maturity matters: a ceiling on the surplus
-
-Governments cannot raise the primary surplus without limit; Ghosh et al. (2013) call the flattening of the response at high debt fiscal fatigue. Let the surplus have a ceiling s_max. After a permanent rise Δr in the marginal rate, the primary balance that holds debt/GDP constant is
-
-$$s^{req}(h)=\big(\bar r(h)-g\big)\,b-g\,z-\Delta\pi\,b\,E(h),\qquad \bar r(h)=\bar r_0+(r+\Delta r-\bar r_0)\,P(h),$$
-
-where z is the zero-interest base relative to GDP, g·z its seigniorage, and Δπ an optional sustained surprise inflation. The limit is broken when s^req(h) first exceeds s_max, at the time to the limit T(Δr).
-
-Two properties follow.
-- *Whether* the limit is broken does not depend on maturity: it happens whenever the long-run requirement (r + Δr − g)b − g·z − Δπ·z exceeds s_max.
-- *When* it is broken depends only on the rollover clock, because the requirement climbs toward its long-run value at the speed P(h). A faster clock shortens T.
-
-Inflation enters the same way. A sustained surprise lowers the requirement by Δπ·b·E(h), which shrinks as the debt reprices, so it lengthens T but, unless the currency base alone can carry the gap, does not remove the limit. This is the sense in which inflation buys time. Section 5.5 measures T.
+**Which inflation.** The metric uses a sustained surprise inflation, because the question is whether inflation can stand in for a missing fiscal response over a horizon. A one-time jump in the price level erodes debt and currency regardless of maturity; a transitory surprise that is later reversed favors short debt. Appendix C.1 reconciles these cases with the literature.
 
 ## 4. Measuring the rollover clock
 
@@ -203,7 +208,7 @@ Inflation enters the same way. A sustained surprise lowers the requirement by Δ
 
 **Treasury, 2001–2025.** MSPD Table 3 (marketable), year-end snapshots, one row per CUSIP.
 - Repricing dates are maturity for bills, notes, bonds and TIPS, and one week for FRNs.
-- The security-level sums match the official unmatured totals for all 25 year-ends, to within 2×10⁻¹⁴ %. One MSPD label is misspelled ("Tresasury Floating Rate Notes", 2016); we handle it.
+- The security-level sums match the official unmatured totals for all 25 year-ends, to within 2×10⁻¹⁴ %.
 
 **Federal Reserve, 2003–2025.**
 - SOMA Treasury holdings by CUSIP, including TIPS inflation compensation, from the New York Fed. They match H.4.1 Treasuries held outright exactly from 2007, and within 0.25–0.51% in 2003–06.
@@ -287,12 +292,7 @@ The model reproduces the Fed's deferred asset at each year-end:
 
 ($bn.) Premium amortization matters: without it, the model understates losses by about 40%.
 
-Component check against the combined financial statements:
-- Modeled reverse-repo interest expense matches the statements within about 1% in every year ($40.8bn vs $42.0bn in 2022; $103.3bn vs $104.3bn in 2023), which validates the policy-rate rule.
-- Modeled interest on reserves is 6–10% below the statements' "depository institutions and others" line, which also covers other deposits.
-- Modeled interest income on the frozen book is $6–23bn below actual.
-
-The close deferred-asset fit therefore partly reflects offsetting errors on the income and expense sides. The out-of-sample claim rests mainly on the timing and size of the expense leg.
+Against the combined financial statements, modeled reverse-repo interest matches within about 1% in every year, which validates the policy-rate rule. Modeled interest on reserves is 6–10% lower, and interest income on the frozen book $6–23bn lower, than the statements show. The close fit of the deferred asset therefore partly reflects offsetting errors, and the out-of-sample claim rests mainly on the timing and size of the expense leg.
 
 For comparison, in July 2022 Fed staff projected the deferred asset to peak at about $60 billion in their baseline and about $180 billion in the tail (Anderson et al. 2022). The outcome passed $240 billion. Because the accounting, fed the realized rates, reproduces the outcome, the gap between that projection and the outcome lies in the assumed rate path.
 
@@ -329,33 +329,28 @@ Four runs differ only in the yields at which debt reprices:
 Three findings follow.
 
 1. **The accounting holds up.** Gross erosion of nominal liabilities reached 12% of 2020 GDP by end-2023, about $2.6tn. The analytic formula s·b·E(h), applied to the end-2020 stock, gives 5.2% by 2023 against 6.1% for its numerical counterpart B; the difference is new borrowing, which the analytic version omits.
-2. **Markets repriced far less than the model assumes, so the surprise went further.** Five-year breakeven inflation averaged 2.7% in 2021–22 and peaked at 3.4%, while CPI inflation averaged 6.6%. New debt was therefore issued at rates that did not compensate for the inflation that followed. With inflation compensation as actually priced (D), the transfer reached 10.9% of GDP by 2023, about 1.8 times the 6.1% implied by full Fisher repricing (B). The inflation layer is thus conservative for an inflation that markets do not anticipate. Its object is a sustained inflation that new issues price (Section 3.4), and an unanticipated burst cannot be repeated at will.
+2. **Markets repriced far less than the model assumes, so the surprise went further.** Five-year breakeven inflation averaged 2.7% in 2021–22 and peaked at 3.4%, while CPI inflation averaged 6.6%. New debt was therefore issued at rates that did not compensate for the inflation that followed. With inflation compensation as actually priced (D), the transfer reached 10.9% of GDP by 2023, about 1.8 times the 6.1% implied by full Fisher repricing (B). The inflation layer is thus conservative for an inflation that markets do not anticipate. Its object is a sustained inflation that new issues price (Appendix C.1), and an unanticipated burst cannot be repeated at will.
 3. **Higher real rates took most of it back.** The five-year real yield rose from −1.5% at end-2020 to an average of 1.7% in 2024–25. With actual yields (C), the transfer peaked at 9.4% of GDP in 2022 and fell to 4.2% by end-2025, as debt repriced at higher real rates. This is the rate layer at work: the transfer from the inflation surprise was largely reversed by the real-rate shock that followed it.
 
-The two findings pull in opposite directions for the combined metric of Section 3.3. Underpriced inflation makes it conservative; a monetary tightening that raises real rates makes it optimistic. The real-rate take-back (D minus C) was about 1.3 times what a response of κ = 1 on the repriced debt would imply, 1.0 times in the UK (Section 6.4). This is an upper bound on the reaction to inflation, since real rates also rose for other reasons. It is well above the monetary tolerance threshold of Section 3.3, which Section 5.2 measures. The transfer survived at all only because new debt was priced for far less inflation than followed. Whether inflation can substitute for a fiscal response therefore depends on the monetary response that follows. Section 6.5 shows the case where real rates did not rise.
+The two findings pull in opposite directions for the combined metric of Section 3.3. Underpriced inflation makes it conservative; a monetary tightening that raises real rates makes it optimistic. The real-rate take-back (D minus C) was about 1.3 times what a response of κ = 1 on the repriced debt would imply, 1.0 times in the UK (Section 6.4). This is an upper bound on the reaction to inflation, since real rates also rose for other reasons. It is well above the monetary tolerance threshold of Section 3.3, which Section 5.3 measures. The transfer survived at all only because new debt was priced for far less inflation than followed. Whether inflation can substitute for a fiscal response therefore depends on the monetary response that follows. Section 6.5 shows the case where real rates did not rise.
 
-## 5. The two-layer limit, 1980–2025
+## 5. Pricing the fiscal gap, 1980–2025
 
 ### 5.1 Parameters
 
-- **ψ = 3bp per pp of debt/GDP**, range 2–4.5. Sources: Laubach 2009 (3–4); Engen and Hubbard 2005 (≈ 3); Plante, Richter and Zubairy 2025 (3.0–3.5); Bhatt et al. 2026 (3–4); Bi, Phillot and Zubairy 2026 (2.8 at peak, from identified supply shocks). CBO's 2bp (Neveu and Schafer 2024) is the low case. ψ may differ across monetary regimes, for example when the Fed was buying Treasuries; Table 4 lets it differ by regime.
-- **φ̂, the fiscal response.** φ̂ is a policy choice, and the paper reports results as a function of it. As a reference path we use 0.39 through 2003 and 0 from 2004. These are Auerbach and Yagan's (2024) estimates of the legislated response to lagged net interest (0.386, s.e. 0.131, for 1984–2003; −0.31, s.e. 0.41, for 2004–24; their Table 3).
-  - The evidence is thinner than the point values suggest. The pre-2004 coefficient comes from semi-annual data and falls to about −0.12 once their projected-surplus control is added, and the post-2004 coefficient cannot reject 0.39.
-  - Data-determined break tests place the changes in the U.S. response in the mid-1990s and around 2009–13 rather than at 2004 (Section 5.3). We keep 2004 only as the literature's date.
-  - We therefore also report results under a single φ̂ common to all years (0, 0.15, 0.25, 0.35, 0.39), and we bring our own evidence in Section 5.3.
-  - De Groot, Holm-Hadulla and Leiner-Killinger (2015) imply an offset of about 0.7 over ten years for European countries. We treat that as an upper bound.
-- **Mapping from Bohn's coefficient.** Bohn (1998) estimates ρ in s = ρb + controls. In our model the surplus responds to interest cost with slope φ, so at a steady state ds/db = φ(r + ψb), and
-  - φ = ρ / (r + ψb);
-  - Bohn's sustainability condition ρ > (r + ψb) − g is then exactly our condition (1 − φ)(r + ψb) < g;
-  - a Bohn coefficient of 0.02 at a marginal cost of 8% corresponds to φ = 0.25, the intermediate value we use.
+- **ψ = 3bp per pp of debt/GDP**, range 2–4.5. Sources: Laubach 2009 (3–4); Engen and Hubbard 2005 (≈ 3); Plante, Richter and Zubairy 2025 (3.0–3.5); Bhatt et al. 2026 (3–4); Bi, Phillot and Zubairy 2026 (2.8 at peak, from identified supply shocks). CBO's 2bp (Neveu and Schafer 2024) is the low case. ψ may differ across monetary regimes, for example when the Fed was buying Treasuries; Table 5 lets it differ by regime.
+- **φ̂, the fiscal response,** is a policy choice, and results are reported as a function of it.
+  - *Reference path.* We use Auerbach and Yagan's (2024) estimates of the legislated response to lagged net interest: 0.39 through 2003 (s.e. 0.13) and 0 from 2004. Their post-2004 coefficient, −0.31 with s.e. 0.41, cannot reject 0.39.
+  - *Common values.* We also report a single φ̂ common to all years, from 0 to 0.39. De Groot, Holm-Hadulla and Leiner-Killinger (2015) imply about 0.7 over ten years for European countries, which we treat as an upper bound.
+  - *Our own evidence* (Appendix D). The U.S. response changed, but in the mid-1990s and around 2009–13 rather than at 2004. UK fiscal events put it at about 0.15.
 - **r** is the steady-state marginal cost of the existing structure: each security's original tenor priced at current yields. Before 2003 we use remaining-maturity pricing, corrected by its measured 0.28 pp gap on 2003–2025.
-- **g**, expected nominal growth, is proxied by realized forward ten-year nominal GDP growth through 2015. From 2016 we use the December FOMC Summary of Economic Projections: the longer-run median real GDP growth (1.8–1.9%) plus the 2% inflation objective. Trailing ten-year growth and an ex-ante measure (trailing real growth plus the Cleveland Fed's ten-year expected inflation) are sensitivities (Table 4). In 2013–15, when both measures exist, the SEP-based g (4.0–4.3%) was below realized forward growth (5.2–5.4%), which was inflated by 2021–22.
+- **g**, expected nominal growth, is proxied by realized forward ten-year nominal GDP growth through 2015. From 2016 we use the December FOMC Summary of Economic Projections: the longer-run median real GDP growth (1.8–1.9%) plus the 2% inflation objective. Trailing ten-year growth and an ex-ante measure (trailing real growth plus the Cleveland Fed's ten-year expected inflation) are sensitivities (Table 5). In 2013–15, when both measures exist, the SEP-based g (4.0–4.3%) was below realized forward growth (5.2–5.4%), which was inflated by 2021–22.
 
-### 5.2 Results
+### 5.2 The threshold and the price
 
 ![Figure 3](figures/fig3_limit_map.png)
 
-*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the baseline φ̂ (0.39 to 2003, 0 from 2004), the line a common φ̂ = 0.25 in every year.*
+*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the reference path of φ̂ (0.39 to 2003, 0 from 2004; Section 5.1), the line a common φ̂ = 0.25 in every year.*
 
 **Table 3. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
 
@@ -367,11 +362,11 @@ The two findings pull in opposite directions for the combined metric of Section 
 | 2009–21 | mostly < 0 (2017–19: 0.11–0.21) | 0 | ≈ 0 (2017–19: 0.11–0.21) | 2.0–2.6 | ≈ 0 (2017–19: 0.23–0.43) |
 | 2023–25 | 0.46–0.48 | 0 | 0.46–0.48 | 2.2–2.4 | 1.01–1.12 |
 
-Appendix E reports every year. Three readings follow. First, the fiscal threshold is ordinary today. The period that stands out is 2008–21, when r + ψb < g and debt stabilized with no fiscal response, and that period is over.
+Appendix F reports every year. Three readings follow. First, the fiscal threshold is ordinary today. The period that stands out is 2008–21, when r + ψb < g and debt stabilized with no fiscal response, and that period is over.
 
-Second, the fiscal response is not ordinary. On the baseline φ̂, a legislated offset of about 0.39 roughly met the threshold before 2004, and the high-rate 1980s and early 1990s ended in consolidation. Since 2004 the offset has been about zero, so the gap equals the threshold itself. The gap first opened in 2005–07, when φ* was 0.28–0.44, and the low-rate period of 2008–21 then hid it.
+Second, the fiscal response. On the reference path the offset roughly met the threshold until the mid-2000s and has fallen short since. The gap opened in 2005–07, when φ* was 0.28–0.44, and the low-rate period of 2008–21 hid it. Because the level and timing of the response are uncertain (Appendix D), Figure 3 also shows a common φ̂ = 0.25 in every year.
 
-Third, QE raised the price of the inflation substitute. The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on. Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07), because the Fed held Treasuries against currency, which inflation erodes. Since 2009 the two have been about equal (0.86–1.19), because the Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight. The Fed's share of marketable Treasuries was in fact lower at end-2025 (14%) than at end-2007 (16%). What QE changed is how the Fed's book is funded: SOMA Treasuries were 0.88 times currency in 2007 and 1.73 times in 2025, and reserves also fund the MBS.
+Third, QE raised the price of the inflation route. The consolidated ratio rose from 1.2–1.6 in 1980–2007 to 2.0–2.6 from 2008 on. Before QE, consolidation roughly halved the ratio relative to the Treasury's own liabilities (0.49–0.53 times the Treasury-only value in 2003–07), because the Fed held Treasuries against currency, which inflation erodes. Since 2009 the two have been about equal (0.86–1.19), because the Fed's additional Treasuries and MBS are financed by interest-bearing reserves that reprice overnight. The Fed's share of marketable Treasuries was in fact lower at end-2025 (14%) than at end-2007 (16%). What QE changed is how the Fed's book is funded: SOMA Treasuries were 0.88 times currency in 2007 and 1.73 times in 2025, and reserves also fund the MBS.
 
 **Decomposition, end-2007 to end-2025.** The consolidated ratio rose from 1.45 to 2.18. A chain of counterfactual balance sheets splits the 0.73 rise into three parts. Currency fell from 22% to 8% of interest-bearing liabilities, which adds 0.58. The Treasury's maturity and TIPS choices between 2007 and 2025, with a Fed funded only by currency, subtract 0.23: the Treasury's lengthening worked against the rise. QE, in the sense that reserves rather than currency fund the rest of the Fed's book, adds 0.38.
 
@@ -379,9 +374,13 @@ The QE share depends on the order. Measured first, on the end-2007 balance sheet
 
 The combined requirement in 2023–25 is the largest since 1980, about 1.8 times its 2006–07 level.
 
-**The monetary response.** These requirements assume a central bank that tolerates the inflation. Table 3b prices the same gaps when it responds (Section 3.3).
+The equivalent one-time surprise rise in the price level is about 3.3% (3.27–3.42% in 2023–25). As Appendix C.1 explains, it is much less sensitive to consolidation: since 2009 the consolidated value has been 0.95–1.05 times the Treasury-only value.
 
-**Table 3b. Monetary tolerance threshold κ\* = 1/R and the requirement under a monetary response** (consolidated; H = 10; +1pp permanent rate rise; φ̂ on the reference path)
+### 5.3 When the central bank responds
+
+The requirements above assume a central bank that tolerates the inflation. Table 4 prices the same gaps when it responds (Section 3.3).
+
+**Table 4. Monetary tolerance threshold κ\* = 1/R and the requirement under a monetary response** (consolidated; H = 10; +1pp permanent rate rise; φ̂ on the reference path)
 
 | Year | Ratio R | κ\*: H = 10 (H = 5; H = 15) | Inflation to cover gap (pp/yr): κ = 0 | κ = 0.25 | κ = 0.5 (Taylor rule) | κ = 0.5, H = 5 |
 |---|---|---|---|---|---|---|
@@ -404,11 +403,11 @@ The combined requirement in 2023–25 is the largest since 1980, about 1.8 times
 - **The price.** At κ = 0.25, half a Taylor rule, the 2023–25 requirement more than doubles, to 2.2–2.8 pp a year.
 - **In practice.** Beyond a few years, the inflation route to fiscal relief is open only to a central bank that responds to inflation much less than its usual rule.
 
-The equivalent one-time surprise rise in the price level is about 3.3% (3.27–3.42% in 2023–25). As Section 3.4 predicts, it is much less sensitive to consolidation: since 2009 the consolidated value has been 0.95–1.05 times the Treasury-only value.
+### 5.4 Robustness
 
-**Robustness.** Table 4 recomputes the 2023–25 requirement under alternative parameters, holding the measured clock fixed.
+Table 5 recomputes the 2023–25 requirement under alternative parameters, holding the measured clock fixed.
 
-**Table 4. Robustness of the 2023–25 requirement** (+1pp permanent rate rise, H = 10)
+**Table 5. Robustness of the 2023–25 requirement** (+1pp permanent rate rise, H = 10)
 
 | Variant | φ*, 2023–25 | Inflation to cover gap, 2023–25 (pp/yr) | Highest before 2022 (year) | 2023–25 highest since 1980? |
 |---|---|---|---|---|
@@ -430,80 +429,7 @@ Two further checks:
 - *Horizon.* With H = 5 the 2023–25 requirement is 0.60–0.69 pp per year; with H = 15 it is 1.33–1.46.
 - *Erosion base.* If all debt counted as erodible and currency were ignored, the requirement would be 1.22–1.41. Ignoring currency alone raises the 2025 consolidated ratio by a third (2.92 against 2.18).
 
-### 5.3 How large is the fiscal response? Our own evidence
-
-The paper's results are reported as a function of φ̂ and do not need its level. The reference values come from one study, however, so we bring three pieces of our own evidence: Bohn-type regressions, data-determined break tests, and UK fiscal events.
-
-**Bohn-type regressions.** We regress the federal primary surplus (NIPA, excluding Fed remittances, % of GDP) on one of three lagged variables:
-- debt held by the public, as in Bohn (1998);
-- interest payments;
-- the paper's consolidated debt.
-
-The controls are the output gap, temporary defense spending (defense/GDP minus its HP trend, following Barro and Bohn) and a 2020–21 dummy. The static version is Bohn's. The partial-adjustment version adds the lagged surplus and reports the long-run response. Debt coefficients are mapped to φ with the window's mean r + ψb (Section 5.1).
-
-Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
-
-**Table 5. Implied fiscal response φ (standard error)**
-
-| Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
-|---|---|---|---|---|---|
-| Debt held by the public | 1967/71–2003 | 1.12 (0.51) | 1.22 (0.53) | 0.99 (0.40) | 1.39 (0.69) |
-|  | 1984–2003 | −0.44 (0.44) | 0.63 (0.94) | −0.55 (0.39) | 2.61 (2.87) |
-|  | 2004–2024/25 | −1.16 (0.09) | −1.23 (0.10) | −1.26 (0.08) | −1.26 (0.09) |
-|  | 2004–2019 | −1.53 (0.17) | −1.71 (0.12) | −1.61 (0.13) | −1.63 (0.07) |
-| Interest payments | 1967/71–2003 | 1.52 (0.51) | 2.33 (0.58) | 0.77 (0.26) | 1.62 (0.69) |
-|  | 1984–2003 | −0.02 (0.45) | 1.03 (0.38) | −0.17 (0.38) | 1.72 (1.02) |
-|  | 2004–2024/25 | −0.62 (1.41) | −1.95 (1.54) | 0.21 (1.67) | −1.63 (1.69) |
-|  | 2004–2019 | 3.33 (1.25) | 2.94 (1.64) | 2.98 (1.12) | 2.49 (1.86) |
-| Consolidated debt (this paper) | 1984–2003 | −0.48 (0.50) | 1.02 (1.26) | — | — |
-|  | 2004–2024/25 | −1.05 (0.08) | −1.10 (0.09) | — | — |
-|  | 2004–2019 | −1.42 (0.12) | −1.53 (0.11) | — | — |
-
-Newey–West standard errors (2 lags); delta method for the long-run responses. Actual surplus: NIPA, calendar years, from 1971 (debt held by the public from 1970). Cyclically adjusted: CBO, fiscal years, from 1967.
-
-Three things follow.
-
-1. **The estimates agree on direction.** Every debt-based specification is lower after 2004 than before. A break imposed at 2004 is significant for debt held by the public in the static version (p = 0.005; p = 0.002 cyclically adjusted) and for interest payments with partial adjustment (p = 0.001 in both). It is not significant for the consolidated debt measure (p ≈ 0.6), whose pre-2004 window starts only in 1981 and is itself negative in the static version. The one exception is the interest specification over 2004–19, a period when interest costs were low and falling while the 2011 spending caps cut deficits; its standard error exceeds 1.
-2. **They do not agree on size, even without the automatic stabilizers.** Implied φ ranges from about −2 to +3 across samples and specifications, far outside any plausible structural value. Removing the stabilizers changes the estimates little, so the business cycle is not the main problem. The surplus also moves with revenue booms, tax legislation and wars that are not responses to debt. That is why Auerbach and Yagan use legislated changes, and we do not replace their estimates with ours.
-3. **The results that matter do not need the level.**
-   - The inflation layer, and with it the effect of QE, does not depend on φ̂ at all.
-   - The ranking of 2023–25 as the largest requirement since 1980 survives without assuming a collapse of the response at any date. With one common φ̂ in every year, it holds for any φ̂ below about 0.35 (Figure 3, line).
-   - At φ̂ = 0.25 throughout, the 2023–25 requirement is 0.46–0.53 pp per year, against a pre-2022 maximum of 0.43 in 1981.
-   - Only if the pre-2004 legislated value of 0.39 held in every year does 1981 rank first.
-
-**Where does the response break?** Imposing 2004 assumes the answer. We let the data choose the break dates (Bai and Perron 1998, 2003): all coefficients of the static regression may change at each break, the minimum segment is 15% of the sample, 2020–21 are dropped, and p-values come from a wild bootstrap.
-
-**Table 5b. Data-determined breaks in the U.S. fiscal response**
-
-| Surplus, regressor | Breaks: one / two / three | Number of breaks (sequential / BIC) |
-|---|---|---|
-| Actual (NIPA, 1971–2024), debt | 1992 / 1992, 2013 / 1979, 1992, 2013 | 1 / 3 |
-| Actual, interest | 2009 / 1992, 2009 / 1983, 1995, 2012 | 0 / 3 |
-| Cyclically adjusted (CBO, 1967–2024), debt | 1993 / 1979, 1993 / 1979, 1996, 2012 | 1 / 3 |
-| Cyclically adjusted, interest | 2009 / 1996, 2009 / 1979, 1996, 2009 | 3 / 3 |
-
-*Notes.* The test of no break against the best number of breaks (UDmax) has a bootstrap p-value of 0.00 in every row.
-
-The response did change, but the data place the changes in the mid-1990s and around 2009–13, not at 2004. The segment slopes are not credible responses. After 1992 the debt slope is negative, because the surpluses of the 1990s reduced debt; before 1991 the interest slope exceeds 2. Time-series regressions across regimes can date the changes in behaviour but cannot measure them.
-
-**UK fiscal events.** A cleaner design follows Auerbach and Yagan: at each fiscal event, compare the policy decisions with the revision to projected debt interest that the government saw before deciding. The UK's Office for Budget Responsibility publishes this decomposition for every event since 2010. Its fiscal forecast revisions database splits each revision to the borrowing forecast into policy decisions and underlying changes, and splits the underlying changes into receipts, debt interest and other spending. Debt interest (net of the Asset Purchase Facility) moves with gilt yields, Bank Rate and, through index-linked gilts, RPI inflation, none of which the Chancellor controls. For each of 32 events from November 2010 to March 2026 we average over the five years after the current one, in % of GDP, and regress the policy change on the debt-interest revision, controlling for the receipts and non-interest revisions. φ is minus the slope. To remove the part of the debt-interest revision that comes from revisions to borrowing, we instrument it with the revisions between consecutive forecasts to the market assumptions behind it: short rates and gilt rates, and the RPI price level.
-
-**Table 5c. UK: policy response to revisions in projected debt interest, 2010–2026**
-
-| Specification | φ (s.e.) | First-stage F |
-|---|---|---|
-| OLS, all 32 events | 0.30 (0.19) | — |
-| OLS, excluding the COVID events (29) | 0.19 (0.10) | — |
-| IV, rate and RPI assumption revisions, all events | 0.00 (0.31) | 20 |
-| IV, excluding the COVID events | 0.15 (0.10) | 66 |
-
-*Notes.* HC1 standard errors. COVID events: March 2020, November 2020, March 2021. Dropping one event at a time moves the OLS estimate between 0.09 (without November 2022) and 0.41.
-
-When higher debt interest comes from the market, UK policy has offset about 0.15 of it, mostly through spending. That is under explicit fiscal rules. The estimate is imprecise and leans on November 2022, when gilt yields and RPI inflation rose together and the Autumn Statement consolidated. It supports a low φ̂, within the paper's range of 0 to 0.25, but the results do not depend on it.
-
-The same design does not identify φ for the United States (Appendix C). Nor does a cross-country panel of repricing exposure × rate changes, or the clock used as an instrument in U.S. annual data.
-
-### 5.4 The level: how much inflation would hold debt stable today?
+### 5.5 The level: how much inflation would hold debt stable today?
 
 The combined metric is a sensitivity: inflation per point of a permanent rate shock. A policymaker's question is a level: at today's deficits and today's rates, how much inflation would stop debt/GDP from rising? The same two clocks answer it.
 
@@ -532,44 +458,11 @@ For end-2025, s(h) is CBO's August 2026 baseline primary balance for fiscal year
 | Inflation to hold debt/GDP, pp a year, H = 10 (H = 5) | none | 2.8 (2.1) | 4.2 (3.0) |
 | Same, discounted at r − g | none | 2.9 | 4.1 |
 
-Five points stand out.
-- At end-2025, holding debt/GDP constant through inflation alone would take about **4 pp of extra inflation a year for a decade** (3.0 over five years).
-- The primary shortfall averages 1.3% of GDP, about $400bn a year. Each point of sustained surprise inflation erodes about $100bn a year on average: more at first, less as the debt reprices.
-- The requirement rises with the horizon for the reason in the corollary of Section 3.3: the erodible share of the balance sheet falls from 46% on average over five years to 33% over ten.
-- A permanent inflation tax on currency alone would need about 17 pp a year (1.3% of GDP against currency of 7.9% of GDP).
-- The same calculation gives 2.8 pp for 2019 and nothing for 2007, when the primary surplus exceeded the debt-stabilizing level.
+At end-2025, holding debt/GDP constant through inflation alone would take about **4 pp of extra inflation a year for a decade** (3.0 over five years), against 2.8 pp in 2019 and nothing in 2007, when the primary surplus exceeded the debt-stabilizing level. The primary shortfall averages 1.3% of GDP, about $400bn a year. Each point of sustained surprise inflation erodes about $100bn a year on average: more at first, less as the debt reprices, which is why the requirement rises with the horizon (the corollary of Section 3.3).
 
 This number does not use φ̂, since the actual and projected primary balances already embed the fiscal response. It is an order of magnitude, not a forecast:
 - It holds the primary balance fixed in real terms. Bracket creep and lags in the indexation of spending would reduce it.
 - It holds currency demand and real rates fixed. A flight from currency or a rise in the inflation risk premium would raise it.
-
-### 5.5 Time to the limit
-
-Table 7 and Figure 4 compute T(Δr) at the end-2025 fiscal position: b = 0.95, r̄₀ = 3.6%, r = 4.2%, g = 3.8%, z = 0.079. The ceilings of 1–3% of GDP bracket the U.S. record. Since 1967 the primary surplus, excluding Fed remittances, has exceeded 2% of GDP only in fiscal years 1997–2001, when it peaked at 4.8%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
-
-**Table 7. Years until the debt-stabilizing primary surplus exceeds the ceiling** (end-2025 fiscal position)
-
-| Surplus ceiling | Rate shock | Consolidated, end-2025 | Without QE | End-2007 clock | Consolidated + 2 pp inflation |
-|---|---|---|---|---|---|
-| 1% of GDP | +3 pp | 0.8 | 1.5 | 1.4 | 2.9 |
-|  | +4 pp | 0.3 | 0.8 | 0.8 | 1.9 |
-|  | +5 pp | 0.2 | 0.4 | 0.5 | 1.2 |
-| 2% of GDP | +3 pp | 4.1 | 4.8 | 4.7 | 6.8 |
-|  | +4 pp | 2.0 | 2.6 | 2.4 | 3.9 |
-|  | +5 pp | 1.1 | 1.8 | 1.6 | 2.5 |
-| 3% of GDP | +3 pp | never | never | never | never |
-|  | +4 pp | 5.3 | 6.2 | 6.4 | 8.2 |
-|  | +5 pp | 2.9 | 3.7 | 3.6 | 4.6 |
-
-![Figure 4](figures/fig4_time_to_limit.png)
-
-*Figure 4. Time to the limit with a ceiling of 2% of GDP on the primary surplus. The end-2025 debt, rates and growth are common to all lines; only the repricing clock differs. The dashed line adds a sustained surprise inflation of 2 pp a year.*
-
-Four points stand out.
-- With a 2% ceiling, any permanent shock above about 2 pp eventually breaks the limit, whatever the maturity.
-- A 3 pp shock breaks it after about four years with today's consolidated clock and after almost five without QE. The faster post-QE clock costs 8–9 months at this ceiling, and more in relative terms for larger shocks: 2.0 against 2.6 years for a 4 pp shock.
-- The end-2007 clock gives almost the same times as the no-QE clock. The consolidated structure of 2025 is faster than both.
-- Two points of sustained surprise inflation lengthen the time to the limit by about 2–3 years for 3–4 pp shocks, and do not prevent the limit from binding. That is how much time inflation buys.
 
 ## 6. Japan and the United Kingdom
 
@@ -581,32 +474,23 @@ We build the same consolidated clock, inflation layer and fiscal threshold for b
 
 ### 6.1 Data
 
-**United Kingdom, 2007–2025.**
-- Gilts in issue by ISIN at each year-end are from the Debt Management Office's report D1A. Index-linked gilts enter at their inflation-uplifted amount. Undated gilts are treated as perpetual until a redemption date was announced; they were redeemed in 2014–15.
-- The security-level sums reproduce the DMO's stated total in all 19 year-ends.
-- The Asset Purchase Facility's holdings by gilt are rebuilt from the Bank of England's operation-level results:
-  - purchases in 2009–21 and the 2022 financial-stability purchases;
-  - active sales from November 2022 and the financial-stability sales.
-- Rebuilt this way, the current stock matches the Bank's published holdings table exactly (£405.35bn nominal).
-- Reserves are remunerated at Bank Rate and reprice overnight. Notes and coin form the zero-interest base.
-- Treasury bills (3–4% of marketable debt) are not yet included.
+**United Kingdom.**
+- *Gilts.* Gilts in issue by ISIN at each year-end, 2007–2025, from the Debt Management Office. The sums match its stated totals in every year.
+- *APF holdings.* Asset Purchase Facility holdings are rebuilt gilt by gilt from the Bank of England's operation-level results. The current stock matches the Bank's table exactly.
+- *Other liabilities.* Reserves earn Bank Rate; notes and coin are the zero-interest base.
+- *Not yet included.* Treasury bills, 3–4% of marketable debt.
 
-**Japan, fiscal years 2020–2024 (end-March).**
-- JGBs by issue (general and FILP bonds) are from Table 34 of the Ministry of Finance's debt yearbook. The by-issue sums match the yearbook's totals in each year.
-- Bank of Japan holdings are from the BoJ's by-issue release. Government holdings and treasury discount bills are from the BoJ's public-finance statistics; financing bills reprice at three months.
-- Floating-rate JGBs reset every six months.
-- BoJ current accounts are split by the rate they earn:
-  - Under the three-tier system of February 2016 to March 2024, the 0% tier joins banknotes in the zero-interest base, and the positive and negative tiers are interest-bearing.
-  - From the March 2024 reform, only required reserves earn zero.
-- Earlier yearbooks are not yet available to us in machine-readable form.
+**Japan.**
+- *JGBs.* JGBs by issue from the Ministry of Finance's debt yearbook, fiscal years 2020–2024, and Bank of Japan holdings by issue.
+- *Current accounts.* BoJ current accounts are split by the rate they earn. The 0% tier of 2016 to March 2024, and required reserves after the reform, join banknotes in the zero-interest base.
 
-**Rates and growth.** For the fiscal threshold, r is the marginal cost of each country's existing structure. Each security is priced at the year's average yield for its original tenor: constant-maturity JGB yields for Japan, and Bank of England par yields and SONIA for the UK.
+Appendix A gives the details.
 
-We put g on a common basis across the three countries: trailing 10-year average real growth plus the 2% inflation target that all three central banks share. For the United States this gives g = 4.4% in 2025, above the FOMC-based 3.8% of Section 5, so the U.S. threshold here is lower than in Table 3. Comparisons in this section are within this common basis.
+**Rates and growth.** For the fiscal threshold, r prices each security at the year's yield for its original tenor. g is trailing 10-year real growth plus the 2% inflation target the three central banks share. For the United States this gives g = 4.4% in 2025, above the FOMC-based 3.8% of Section 5, so comparisons in this section are within this common basis.
 
 ### 6.2 The clock and the inflation layer
 
-**Table 8. Three sovereigns, own and consolidated** (g = 4%, H = 10; Japan: fiscal years ending in March of the following year)
+**Table 7. Three sovereigns, own and consolidated** (g = 4%, H = 10; Japan: fiscal years ending in March of the following year)
 
 | | U.S. 2007 | U.S. 2025 | UK 2007 | UK 2021 | UK 2025 | Japan FY2022 | Japan FY2024 |
 |---|---|---|---|---|---|---|---|
@@ -620,11 +504,11 @@ We put g on a common basis across the three countries: trailing 10-year average 
 
 *Notes.* "Own" is the government's own marketable debt, with no central bank. Consolidated debt nets central-bank and government holdings and adds interest-bearing reserves (and, for the United States, reverse repos). The zero-interest base is currency (banknotes, notes and coin) plus reserves that earn nothing: U.S. reserves before October 2008, and Japan's 0% tier and required reserves.
 
-![Figure 5](figures/fig5_three_countries.png)
+![Figure 4](figures/fig5_three_countries.png)
 
-*Figure 5. United States (blue), United Kingdom (orange), Japan (green). A: inflation-layer ratio, consolidated (solid) and own debt (dashed), g = 4%, H = 10. B: fiscal threshold φ* against the debt-sensitivity of rates ψ, latest year, g = trailing 10-year real growth + 2%; the dotted line marks the U.S. baseline ψ = 3bp. C: cumulative real transfer from the post-2020 inflation surprises, from the end-2020 consolidated balance sheet (Japan: end-March 2022, plotted at fiscal year-ends), in % of GDP in the base year, under full Fisher repricing (B, dashed), inflation as priced (D, dotted; not available for Japan) and actual yields (C, solid).*
+*Figure 4. United States (blue), United Kingdom (orange), Japan (green). A: inflation-layer ratio, consolidated (solid) and own debt (dashed), g = 4%, H = 10. B: fiscal threshold φ* against the debt-sensitivity of rates ψ, latest year, g = trailing 10-year real growth + 2%; the dotted line marks the U.S. baseline ψ = 3bp. C: cumulative real transfer from the post-2020 inflation surprises, from the end-2020 consolidated balance sheet (Japan: end-March 2022, plotted at fiscal year-ends), in % of GDP in the base year, under full Fisher repricing (B, dashed), inflation as priced (D, dotted; not available for Japan) and actual yields (C, solid).*
 
-Figure 5A shows the ratios over time. Five findings follow.
+Figure 4A shows the ratios over time. Five findings follow.
 
 **(i) On their own debt, the three governments look very different.** The UK's gilts have an average maturity of 14–16 years, and only about a tenth of a rate shock reaches the average rate within a year. Japan is in between, and U.S. Treasury debt reprices fastest. Because long debt is exposed to inflation for longer, and index-linked gilts are exposed to none, the inflation needed per unit of relief on own debt is lowest in the UK (about 0.9), then Japan (1.1–1.3), then the United States (2.1–2.7). Judged by debt management alone, the UK is the best placed of the three to inflate.
 
@@ -640,7 +524,7 @@ The March 2024 reform ended negative rates and moved all but required reserves t
 
 ### 6.3 The fiscal threshold
 
-**Table 9. Fiscal threshold and inflation requirement on a common basis** (+1pp permanent rate rise, H = 10)
+**Table 8. Fiscal threshold and inflation requirement on a common basis** (+1pp permanent rate rise, H = 10)
 
 | | U.S. 2025 | UK 2025 | Japan FY2024 |
 |---|---|---|---|
@@ -652,7 +536,7 @@ The March 2024 reform ended negative rates and moved all but required reserves t
 | Required inflation, pp a year, ψ = 3bp: φ̂ = 0 / 0.25 | 0.82 / 0.27 | 0.79 / 0.44 | 1.12 / 0.66 |
 | Required inflation, pp a year, ψ = 0: φ̂ = 0 / 0.25 | 0 / 0 | 0.40 / 0.05 | 0 / 0 |
 
-Figure 5B plots φ* against ψ. Three findings follow.
+Figure 4B plots φ* against ψ. Three findings follow.
 
 1. **The UK is the only one of the three with r above g.** In 2025 its marginal cost exceeded trend nominal growth by 1.3 pp. Its fiscal threshold is therefore positive even if rates do not respond to debt (ψ = 0): the surplus must offset at least 28% of the marginal interest cost. At ψ = 0 and with no fiscal response, the UK is the only country where the inflation layer is needed at all.
 
@@ -660,7 +544,7 @@ Figure 5B plots φ* against ψ. Three findings follow.
 
 3. **The United States sits on the boundary.** At r ≈ g, the U.S. threshold is close to zero without a debt premium, and 0.37 at ψ = 3bp on this basis (0.47 with the FOMC growth path of Section 5).
 
-At ψ = 3bp and no fiscal response, covering the fiscal gap after a permanent 1pp rate rise would take about 0.8 pp of extra inflation a year for a decade in both the United States and the UK, and 1.1 pp in Japan (Table 9). The countries reach similar numbers by different routes:
+At ψ = 3bp and no fiscal response, covering the fiscal gap after a permanent 1pp rate rise would take about 0.8 pp of extra inflation a year for a decade in both the United States and the UK, and 1.1 pp in Japan (Table 8). The countries reach similar numbers by different routes:
 - the UK has the higher threshold but the lower ratio, because of QT and its index-linked gilts;
 - Japan has the highest threshold and, since 2024, a ratio close to the others.
 
@@ -675,7 +559,7 @@ Index-linked gilts (£454bn, privately held) carry no nominal claim to erode and
 
 The design differs from the U.S. test in one respect: we hold the end-2020 portfolio closed, so new borrowing and QT after 2020 are left out. Treasury bills are also excluded. Each gilt is rolled at redemption into a gilt of the same original tenor, and amounts stay at their end-2020 levels. Yields are Bank of England zero-coupon nominal, real and implied-inflation curves at 5, 10 and 20 years, with Bank Rate at the short end.
 
-**Table 10. United Kingdom: real transfer to the consolidated government from the 2021–25 inflation surprise** (cumulative, % of 2020 GDP)
+**Table 9. United Kingdom: real transfer to the consolidated government from the 2021–25 inflation surprise** (cumulative, % of 2020 GDP)
 
 | End of | Cumulative surprise (pp) | Gross erosion | Model: full Fisher repricing (B) | Model, analytic s·b·E | Inflation as priced (D) | Actual (C) | Memo: extra interest on reserves in C | Memo: RPI surprise on index-linked gilts |
 |---|---|---|---|---|---|---|---|---|
@@ -687,7 +571,7 @@ The design differs from the U.S. test in one respect: we hold the end-2020 portf
 
 *Notes.* Extra interest on reserves is measured relative to the no-surprise forward path. The RPI surprise on index-linked gilts is their inflation uplift in excess of the end-2020 implied RPI inflation. It is a nominal cost, not a real transfer, because holders of those gilts are fully compensated.
 
-The UK results repeat the U.S. pattern closely (Figure 5C).
+The UK results repeat the U.S. pattern closely (Figure 4C).
 
 1. **Markets repriced far less than full Fisher repricing implies.** With inflation compensation as actually priced (D), the transfer reached 9.2% of GDP by 2023, 1.8 times the 5.2% under full Fisher repricing (B). This is the same multiple as in the United States. The analytic layer s·b·E again tracks its numerical counterpart B.
 
@@ -707,7 +591,7 @@ Together these are 233% of FY2021 GDP. No public series of breakeven inflation i
 
 The closed-portfolio design is as for the UK, over the 48 months to March 2026. Floating-rate JGBs reset every six months at the 10-year yield. Interest-bearing current accounts earn their tier-weighted rate (+0.1% on the basic balance, −0.1% on the policy-rate balance) until the March 2024 reform and the call rate after it. Under actual yields (C), the reform also started paying the call rate on the 0% tier above required reserves.
 
-**Table 11. Japan: real transfer to the consolidated government from the 2022–25 inflation surprise** (cumulative, % of FY2021 GDP; fiscal years ending in March)
+**Table 10. Japan: real transfer to the consolidated government from the 2022–25 inflation surprise** (cumulative, % of FY2021 GDP; fiscal years ending in March)
 
 | End of | Cumulative surprise (pp) | Gross erosion | Model: full Fisher repricing (B) | Model, analytic s·b·E | Actual (C) | Memo: interest on the former 0% tier in C |
 |---|---|---|---|---|---|---|
@@ -738,9 +622,9 @@ Three sovereigns are not a panel. They do show, however, that the variation in m
 
 ## 7. Counterfactuals and policy options
 
-Table 12 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
+Table 11 changes one element of the end-2025 balance sheet at a time and reports the combined metric. Unless stated, debt/GDP is held at its baseline so that each scenario isolates a change in composition.
 
-**Table 12. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
+**Table 11. End-2025 counterfactuals** (+1pp permanent rate rise, H = 10; baseline φ̂ = 0)
 
 | Scenario | φ* | Gap | Inflation to cover gap (pp/yr) | Change vs. baseline | One-time jump (%) |
 |---|---|---|---|---|---|
@@ -781,7 +665,7 @@ Five results follow.
 2. **Balance-sheet policy moves only the inflation layer.** None of the central-bank or debt-management scenarios changes φ* when debt/GDP is held fixed. They change the cost of the inflation substitute by 6–33%.
 3. **Ending interest on reserves is the largest balance-sheet lever.**
    - It cuts the requirement by a third (36% once debt/GDP falls with the interest-bearing stock), almost twice the effect of undoing QE. Tiering at 50% or 25% cuts it by 19% or 10%.
-   - In levels (Section 5.4), it lowers the inflation needed to hold debt/GDP stable from 4.2 to 2.3 pp a year, because reserves stop costing interest (about $104bn a year at the end-2025 rate of 3.65%) and their growth becomes seigniorage.
+   - In levels (Section 5.5), it lowers the inflation needed to hold debt/GDP stable from 4.2 to 2.3 pp a year, because reserves stop costing interest (about $104bn a year at the end-2025 rate of 3.65%) and their growth becomes seigniorage.
    - It is not a free lunch. Unremunerated reserves are a tax on banks. In an ample-reserves framework the interest rate on reserves is also how the Fed sets the policy rate, so ending it would require far smaller reserves or binding reserve requirements. The ECB's move to stop remunerating minimum reserves in 2023 is a partial version of the same idea.
 4. **A Fed shift to bills lengthens the consolidated structure.** Moving half the Fed's Treasuries into bills cuts the requirement by 12%. The Fed's own portfolio gets shorter, but the private sector ends up holding more coupons, and it is the private sector's holdings that matter. From the consolidated point of view, the Fed buying bills is Treasury terming out.
 5. **More bills raise the price of the inflation substitute.** A bill share of 25% raises the requirement by 6%, and 30% by 15%. Terming out a tenth of bills lowers it by 7%.
@@ -797,11 +681,9 @@ Two limitations apply. The balance-sheet scenarios hold r fixed and ignore the t
 
 ## 8. Conclusion
 
-A reserve-currency sovereign does not run into a debt wall. It runs into a choice between fiscal adjustment and an inflation tax.
+A reserve-currency sovereign does not run into a debt wall. It runs into a choice about who bears a fiscal gap, and the monetary response decides by whom.
 
-The choice is about who pays. A gap left by the fiscal response is borne by someone, and the monetary response decides by whom:
-
-**Table 13. Who bears a fiscal gap**
+**Table 12. Who bears a fiscal gap**
 
 | Route | Who pays | Decided by | Price or size in this paper |
 |---|---|---|---|
@@ -809,15 +691,26 @@ The choice is about who pays. A gap left by the fiscal response is borne by some
 | Inflation, tolerated by the central bank | Holders of nominal claims: savers, bondholders, currency holders (part of them abroad) | Central bank, without a legislative vote | About 0.2 pp of inflation a year for a decade per 0.1 of missing offset; Japan 2022–25: about 18% of GDP from holders of nominal claims |
 | Higher real rates, when the central bank tightens | Taxpayers, through interest paid to bondholders and, on reserves, to banks; workers, through slower growth | Central bank | Above κ\* = 1/R (0.46 in the United States in 2025), inflation cannot close the gap at all; United States and UK 2021–25: most of a 10–14% of GDP transfer returned; UK interest on reserves alone 5.7% of GDP |
 
-The table does not rank the routes: which is best depends on the distortions of each and on who should bear the cost, and these are political judgments. What the paper adds is the prices, which make the choice explicit rather than implicit.
+The table does not rank the routes. Which is best depends on the distortions of each and on who should bear the cost, and these are political judgments. What the paper adds is the prices, which make the choice explicit rather than implicit.
 
-The size of the required adjustment, the fiscal layer, depends on r − g, on how sensitive rates are to debt and on the debt level, not on maturity. How expensive the inflation alternative is, the inflation layer, depends on how fast the consolidated liabilities reprice and on how much of them inflation can erode. Both are measurable. QE made the clock faster and, by replacing the Fed's currency funding with interest-bearing reserves, shrank the base the inflation tax falls on.
+Three findings organize these prices.
 
-The paper prices that choice rather than predicting it. The United States in 2023–25 faces an ordinary fiscal threshold and an unusually fast consolidated clock. Each 0.1 of missing fiscal offset after a permanent 1pp rate rise costs about 0.2 pp of extra inflation a year for a decade, and inflation would buy less relief per point than at any time since 1980. On the best available evidence, from the literature for the United States and from UK fiscal events, the offset actually delivered is small. Inflation on debt only buys time, and a permanent inflation tax on currency alone would take about 5.6 pp a year per point of rate shock. In levels, holding debt/GDP stable at CBO's baseline deficits would take about 4 pp of extra inflation a year for a decade. When the primary surplus has a ceiling, maturity decides how long the limit takes to bind: a 3 pp permanent shock breaks a ceiling of 2% of GDP in about four years at today's consolidated clock, and two points of sustained inflation buy two to three more. These prices assume that the central bank tolerates the inflation. If it raises real rates by more than κ\* = 1/R per point of inflation, no inflation covers any gap. QE lowered the U.S. threshold by about two fifths, below the 0.5 of a Taylor rule over ten years or more, so beyond a few years the inflation route is open only to a central bank that departs from its usual rule. After 2021 the Fed and the Bank of England did not, and higher real rates, much of them paid on reserves, took back most of the transfer. The durable resolutions are a fiscal response that meets the threshold, or a one-time surprise revaluation of the debt.
+1. **The fiscal layer is maturity-free.** The adjustment needed depends on r − g, on how rates respond to debt and on the debt level. In the United States in 2023–25 it is ordinary by the standard of 1980–2007.
+2. **The price of the inflation route is set by the consolidated balance sheet.**
+   - QE funded the Fed's book with interest-bearing reserves rather than currency. That raised the price of the inflation route to its highest level since at least 1980.
+   - It also lowered, by about two fifths, the monetary tightening the route can survive. Over ten years or more, the threshold is now below a Taylor rule.
+   - The UK and Japan show the same mechanism, whatever their debt management.
+3. **Which route is taken depends on the central bank.**
+   - Where the central bank raised real rates after 2021, the transfer from the inflation was largely returned, mostly through interest on reserves.
+   - Where yields were held down, holders of nominal claims bore it.
 
-Several issues remain open. The level of the U.S. fiscal response is not identified. The data date its changes to the mid-1990s and around 2009–13 but cannot measure them, and neither a cross-country panel nor CBO's baseline changes pin it down. UK fiscal events do, at about 0.15. The results are therefore reported as a function of the response; the main ranking holds for any constant response below 0.35. The debt sensitivity of rates may differ across regimes; the ranking needs today's to be at least about 2bp. Expected growth is the parameter that matters most for the level of the requirement; an ex-ante measure lowers it by about 30%, although the ranking survives. The balance-sheet counterfactuals abstract from term-premium effects, and the combined metric is a first-order, undiscounted composition. Finally, currency demand is held fixed; a sustained inflation tax would shrink it, so the requirements are lower bounds in that respect.
+The durable resolutions are a fiscal response that meets the threshold, or a one-time surprise revaluation of the debt.
 
-The comparison with the United Kingdom and Japan suggests that these conclusions are not specific to the United States. In all three countries QE funded by interest-bearing reserves made the inflation substitute costlier, and QT or zero-rate reserves made it cheaper again. The UK's long, partly indexed debt did not protect its consolidated balance sheet from that effect. Japan's 2022–25 inflation shows the other side: where yields are held down and much of the balance sheet pays no interest, a surprise inflation does transfer resources to the government, at the cost of real returns to savers. Extending the Japanese series before 2020 and adding the UK's Treasury bills are the next steps.
+Several issues remain open.
+- *The fiscal response.* Its U.S. level is not identified, which is why results are reported as a function of it.
+- *The debt sensitivity of rates.* It may differ across regimes, and ranking today's requirement first needs today's ψ to be at least about 2bp.
+- *The approximations.* The prices are first order and undiscounted and hold currency demand fixed. The balance-sheet counterfactuals ignore term-premium effects.
+- *Next steps.* Extending the Japanese series before 2020 and adding the UK's Treasury bills are natural next steps. Three sovereigns are not yet the panel that could identify the fiscal response across countries.
 
 ---
 
@@ -982,27 +875,158 @@ Three remarks:
 2. Indexed debt pays the higher real rate once it reprices, and it is included in P.
 3. The response is assumed to last as long as the surprise, as a Taylor rule implies for a sustained deviation of inflation from target. A temporary response would give an effective κ below the rule's coefficient.
 
-## Appendix C. Identifying φ: what works and what does not
+## Appendix C. Timing: which inflation, and a ceiling on the surplus
 
-The paper reports results as a function of φ̂ and does not need its level. We nevertheless tried four designs. Only one identifies it.
+### C.1 Which inflation? Reconciling the maturity sign
 
-**1. The clock as an instrument, U.S. annual data (1980–2024).**
+Let w(s) be the share of nominal debt payments due at s and p(s) the cumulative surprise in the price level. Real erosion of the debt is N∫w(s)p(s)ds; currency C loses p(s) of its value for as long as the price level stays higher. How maturity matters depends on how persistent the price-level path is:
+
+| Price-level path | Erosion (debt + currency) | Effect of shorter maturity |
+|---|---|---|
+| Permanent one-time jump, p(s) = Δp | (N + C)·Δp | none |
+| Transitory surprise until τ, then reversed | N·Δp·F_N(τ) | helps (Reis 2017a: "more of the debt coming due") |
+| Sustained inflation over H, p(s) = Δπ·s | (N·D_N + C·H)·Δπ | hurts through the debt term (Cochrane; Barro–Bianchi; HRR; this paper) |
+
+Here D_N is the average time to repricing of nominal debt over the horizon. A reversed surprise leaves currency holders whole, while a sustained one taxes currency throughout.
+
+QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, Δp^req = u·Δr·∫₀^H P / (N/b + C/b), which depends on maturity only through the cost of the shock.
+
+### C.2 A ceiling on the surplus and the time to the limit
+
+Governments cannot raise the primary surplus without limit; Ghosh et al. (2013) call the flattening of the response at high debt fiscal fatigue. Let the surplus have a ceiling s_max. After a permanent rise Δr in the marginal rate, the primary balance that holds debt/GDP constant is
+
+$$s^{req}(h)=\big(\bar r(h)-g\big)\,b-g\,z-\Delta\pi\,b\,E(h),\qquad \bar r(h)=\bar r_0+(r+\Delta r-\bar r_0)\,P(h),$$
+
+where z is the zero-interest base relative to GDP, g·z its seigniorage, and Δπ an optional sustained surprise inflation. The limit is broken when s^req(h) first exceeds s_max, at the time to the limit T(Δr).
+
+Two properties follow.
+- *Whether* the limit is broken does not depend on maturity: it happens whenever the long-run requirement (r + Δr − g)b − g·z − Δπ·z exceeds s_max.
+- *When* it is broken depends only on the rollover clock, because the requirement climbs toward its long-run value at the speed P(h). A faster clock shortens T.
+
+Inflation enters the same way. A sustained surprise lowers the requirement by Δπ·b·E(h), which shrinks as the debt reprices, so it lengthens T but, unless the currency base alone can carry the gap, does not remove the limit. This is the sense in which inflation buys time.
+
+Table C1 and Figure C1 compute T(Δr) at the end-2025 fiscal position: b = 0.95, r̄₀ = 3.6%, r = 4.2%, g = 3.8%, z = 0.079. The ceilings of 1–3% of GDP bracket the U.S. record. Since 1967 the primary surplus, excluding Fed remittances, has exceeded 2% of GDP only in fiscal years 1997–2001, when it peaked at 4.8%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
+
+**Table C1. Years until the debt-stabilizing primary surplus exceeds the ceiling** (end-2025 fiscal position)
+
+| Surplus ceiling | Rate shock | Consolidated, end-2025 | Without QE | End-2007 clock | Consolidated + 2 pp inflation |
+|---|---|---|---|---|---|
+| 1% of GDP | +3 pp | 0.8 | 1.5 | 1.4 | 2.9 |
+|  | +4 pp | 0.3 | 0.8 | 0.8 | 1.9 |
+|  | +5 pp | 0.2 | 0.4 | 0.5 | 1.2 |
+| 2% of GDP | +3 pp | 4.1 | 4.8 | 4.7 | 6.8 |
+|  | +4 pp | 2.0 | 2.6 | 2.4 | 3.9 |
+|  | +5 pp | 1.1 | 1.8 | 1.6 | 2.5 |
+| 3% of GDP | +3 pp | never | never | never | never |
+|  | +4 pp | 5.3 | 6.2 | 6.4 | 8.2 |
+|  | +5 pp | 2.9 | 3.7 | 3.6 | 4.6 |
+
+![Figure C1](figures/fig4_time_to_limit.png)
+
+*Figure C1. Time to the limit with a ceiling of 2% of GDP on the primary surplus. The end-2025 debt, rates and growth are common to all lines; only the repricing clock differs. The dashed line adds a sustained surprise inflation of 2 pp a year.*
+
+Four points stand out.
+- With a 2% ceiling, any permanent shock above about 2 pp eventually breaks the limit, whatever the maturity.
+- A 3 pp shock breaks it after about four years with today's consolidated clock and after almost five without QE. The faster post-QE clock costs 8–9 months at this ceiling, and more in relative terms for larger shocks: 2.0 against 2.6 years for a 4 pp shock.
+- The end-2007 clock gives almost the same times as the no-QE clock. The consolidated structure of 2025 is faster than both.
+- Two points of sustained surprise inflation lengthen the time to the limit by about 2–3 years for 3–4 pp shocks, and do not prevent the limit from binding. That is how much time inflation buys.
+
+## Appendix D. Evidence on the fiscal response
+
+The paper's results are reported as a function of φ̂ and do not need its level. The reference values come from one study, however, so we bring our own evidence: Bohn-type regressions, data-determined break tests, UK fiscal events, and three designs that do not identify φ.
+
+**Mapping from Bohn's coefficient.** Bohn (1998) estimates ρ in s = ρb + controls. In our model the surplus responds to interest cost with slope φ, so at a steady state ds/db = φ(r + ψb), and φ = ρ/(r + ψb). Bohn's sustainability condition ρ > (r + ψb) − g is then exactly our condition (1 − φ)(r + ψb) < g. A Bohn coefficient of 0.02 at a marginal cost of 8% corresponds to φ = 0.25.
+
+### D.1 Bohn-type regressions
+
+ We regress the federal primary surplus (NIPA, excluding Fed remittances, % of GDP) on one of three lagged variables:
+- debt held by the public, as in Bohn (1998);
+- interest payments;
+- the paper's consolidated debt.
+
+The controls are the output gap, temporary defense spending (defense/GDP minus its HP trend, following Barro and Bohn) and a 2020–21 dummy. The static version is Bohn's. The partial-adjustment version adds the lagged surplus and reports the long-run response. Debt coefficients are mapped to φ with the window's mean r + ψb.
+
+Recessions both lower the surplus and raise debt, and an output-gap control removes this only in part. We therefore repeat every regression on CBO's primary surplus with the automatic stabilizers removed (fiscal years 1967–2025, as a share of potential GDP; CBO 2026), less Fed remittances, with CBO's GDP gap as the cyclical control.
+
+**Table D1. Implied fiscal response φ (standard error)**
+
+| Regressor | Sample | Actual surplus, static | Actual, partial adj. | Cyclically adjusted, static | Cyclically adj., partial adj. |
+|---|---|---|---|---|---|
+| Debt held by the public | 1967/71–2003 | 1.12 (0.51) | 1.22 (0.53) | 0.99 (0.40) | 1.39 (0.69) |
+|  | 1984–2003 | −0.44 (0.44) | 0.63 (0.94) | −0.55 (0.39) | 2.61 (2.87) |
+|  | 2004–2024/25 | −1.16 (0.09) | −1.23 (0.10) | −1.26 (0.08) | −1.26 (0.09) |
+|  | 2004–2019 | −1.53 (0.17) | −1.71 (0.12) | −1.61 (0.13) | −1.63 (0.07) |
+| Interest payments | 1967/71–2003 | 1.52 (0.51) | 2.33 (0.58) | 0.77 (0.26) | 1.62 (0.69) |
+|  | 1984–2003 | −0.02 (0.45) | 1.03 (0.38) | −0.17 (0.38) | 1.72 (1.02) |
+|  | 2004–2024/25 | −0.62 (1.41) | −1.95 (1.54) | 0.21 (1.67) | −1.63 (1.69) |
+|  | 2004–2019 | 3.33 (1.25) | 2.94 (1.64) | 2.98 (1.12) | 2.49 (1.86) |
+| Consolidated debt (this paper) | 1984–2003 | −0.48 (0.50) | 1.02 (1.26) | — | — |
+|  | 2004–2024/25 | −1.05 (0.08) | −1.10 (0.09) | — | — |
+|  | 2004–2019 | −1.42 (0.12) | −1.53 (0.11) | — | — |
+
+Newey–West standard errors (2 lags); delta method for the long-run responses. Actual surplus: NIPA, calendar years, from 1971 (debt held by the public from 1970). Cyclically adjusted: CBO, fiscal years, from 1967.
+
+Three things follow.
+
+1. **The estimates agree on direction.** Every debt-based specification is lower after 2004 than before. A break imposed at 2004 is significant for debt held by the public in the static version (p = 0.005; p = 0.002 cyclically adjusted) and for interest payments with partial adjustment (p = 0.001 in both). It is not significant for the consolidated debt measure (p ≈ 0.6), whose pre-2004 window starts only in 1981 and is itself negative in the static version. The one exception is the interest specification over 2004–19, a period when interest costs were low and falling while the 2011 spending caps cut deficits; its standard error exceeds 1.
+2. **They do not agree on size, even without the automatic stabilizers.** Implied φ ranges from about −2 to +3 across samples and specifications, far outside any plausible structural value. Removing the stabilizers changes the estimates little, so the business cycle is not the main problem. The surplus also moves with revenue booms, tax legislation and wars that are not responses to debt. That is why Auerbach and Yagan use legislated changes, and we do not replace their estimates with ours.
+3. **The results that matter do not need the level.**
+   - The inflation layer, and with it the effect of QE, does not depend on φ̂ at all.
+   - The ranking of 2023–25 as the largest requirement since 1980 survives without assuming a collapse of the response at any date. With one common φ̂ in every year, it holds for any φ̂ below about 0.35 (Figure 3, line).
+   - At φ̂ = 0.25 throughout, the 2023–25 requirement is 0.46–0.53 pp per year, against a pre-2022 maximum of 0.43 in 1981.
+   - Only if the pre-2004 legislated value of 0.39 held in every year does 1981 rank first.
+
+### D.2 Where does the response break?
+
+ Imposing 2004 assumes the answer. We let the data choose the break dates (Bai and Perron 1998, 2003): all coefficients of the static regression may change at each break, the minimum segment is 15% of the sample, 2020–21 are dropped, and p-values come from a wild bootstrap.
+
+**Table D2. Data-determined breaks in the U.S. fiscal response**
+
+| Surplus, regressor | Breaks: one / two / three | Number of breaks (sequential / BIC) |
+|---|---|---|
+| Actual (NIPA, 1971–2024), debt | 1992 / 1992, 2013 / 1979, 1992, 2013 | 1 / 3 |
+| Actual, interest | 2009 / 1992, 2009 / 1983, 1995, 2012 | 0 / 3 |
+| Cyclically adjusted (CBO, 1967–2024), debt | 1993 / 1979, 1993 / 1979, 1996, 2012 | 1 / 3 |
+| Cyclically adjusted, interest | 2009 / 1996, 2009 / 1979, 1996, 2009 | 3 / 3 |
+
+*Notes.* The test of no break against the best number of breaks (UDmax) has a bootstrap p-value of 0.00 in every row.
+
+The response did change, but the data place the changes in the mid-1990s and around 2009–13, not at 2004. The segment slopes are not credible responses. After 1992 the debt slope is negative, because the surpluses of the 1990s reduced debt; before 1991 the interest slope exceeds 2. Time-series regressions across regimes can date the changes in behaviour but cannot measure them.
+
+### D.3 UK fiscal events
+
+ A cleaner design follows Auerbach and Yagan: at each fiscal event, compare the policy decisions with the revision to projected debt interest that the government saw before deciding. The UK's Office for Budget Responsibility publishes this decomposition for every event since 2010. Its fiscal forecast revisions database splits each revision to the borrowing forecast into policy decisions and underlying changes, and splits the underlying changes into receipts, debt interest and other spending. Debt interest (net of the Asset Purchase Facility) moves with gilt yields, Bank Rate and, through index-linked gilts, RPI inflation, none of which the Chancellor controls. For each of 32 events from November 2010 to March 2026 we average over the five years after the current one, in % of GDP, and regress the policy change on the debt-interest revision, controlling for the receipts and non-interest revisions. φ is minus the slope. To remove the part of the debt-interest revision that comes from revisions to borrowing, we instrument it with the revisions between consecutive forecasts to the market assumptions behind it: short rates and gilt rates, and the RPI price level.
+
+**Table D3. UK: policy response to revisions in projected debt interest, 2010–2026**
+
+| Specification | φ (s.e.) | First-stage F |
+|---|---|---|
+| OLS, all 32 events | 0.30 (0.19) | — |
+| OLS, excluding the COVID events (29) | 0.19 (0.10) | — |
+| IV, rate and RPI assumption revisions, all events | 0.00 (0.31) | 20 |
+| IV, excluding the COVID events | 0.15 (0.10) | 66 |
+
+*Notes.* HC1 standard errors. COVID events: March 2020, November 2020, March 2021. Dropping one event at a time moves the OLS estimate between 0.09 (without November 2022) and 0.41.
+
+When higher debt interest comes from the market, UK policy has offset about 0.15 of it, mostly through spending. That is under explicit fiscal rules. The estimate is imprecise and leans on November 2022, when gilt yields and RPI inflation rose together and the Autumn Statement consolidated. It supports a low φ̂, within the paper's range of 0 to 0.25, but the results do not depend on it.
+
+### D.4 Designs that do not identify φ
+
+**The clock as an instrument, U.S. annual data (1980–2024).**
 - *Design.* The predicted interest-cost change b_t·P_t(1)·Δr_{t+1} uses the predetermined repricing exposure as an instrument for interest-cost changes. The outcome is the subsequent change in the NIPA primary surplus, excluding Fed remittances. The controls are the rate change, debt, growth and the lagged surplus.
 - *Result.* The first-stage F is about 6.7 and falls below 1 once Δr·b is controlled. The implied φ is implausible (6–26).
 - *Why.* The U.S. repricing speed varies too little over time. P(1) has a standard deviation of 0.056, and the instrument is 99% correlated with Δr·b.
 
-**2. A cross-country panel (21–23 advanced economies).** The same instrument is built with two measures of the share of debt that reprices within a year: the OECD Economic Outlook's refinancing share (2014–2025) and the BIS bills share (1990–2025). The outcome is the underlying or actual primary balance, over local-projection horizons of 0–3 years, with country and year fixed effects.
+**A cross-country panel (21–23 advanced economies).** The same instrument is built with two measures of the share of debt that reprices within a year: the OECD Economic Outlook's refinancing share (2014–2025) and the BIS bills share (1990–2025). The outcome is the underlying or actual primary balance, over local-projection horizons of 0–3 years, with country and year fixed effects.
 - *With the refinancing share.* The first stage is adequate (F = 9–15), but φ comes out at 1.5–3.2. The usable variation is Δr·b, which is confounded: in 2022–24 the countries with the most debt and the largest rate increases were also unwinding the most COVID and energy support. Once Δr·b is controlled, the instrument is weak (F = 1–5).
 - *With the BIS bills share.* The series is inconsistent across countries: some shares exceed 1, and the totals and the short-term series do not always cover the same instruments.
 
-**3. UK fiscal events (2010–2026).** This design works (Section 5.3, Table 5c). Market-driven revisions to projected debt interest identify the response: φ = 0.15 (0.10) excluding the COVID events, with a first-stage F of 66.
-
-**4. U.S. CBO baseline updates (1992–2026).** This is the same design as for the UK, using CBO's record of changes between baselines by source (legislative, economic, technical), from its public evaluation repository.
+**U.S. CBO baseline updates (1992–2026).** This is the same design as for the UK, using CBO's record of changes between baselines by source (legislative, economic, technical), from its public evaluation repository.
 - *Variables.* Policy is the legislative change in the primary deficit. The interest revision is the economic plus technical change in net interest. The controls are the non-legislative changes in revenue and non-interest outlays, and the instruments are changes in 10-year and 3-month yields between updates.
 - *Result.* The estimates are uninformative. OLS gives 0.28 (0.51). The IV first stage is weak (F ≈ 5). Lagged responses over the next one to four updates lie between −1.5 and 0.5, with standard errors of 0.5–0.9.
 - *Why.* Legislative changes are dominated by a few large packages: the 2001–03 tax cuts, the 2009 Recovery Act, the 2017 tax act and the 2020–21 COVID relief. Their standard deviation is 0.55% of GDP, three times that of the interest revisions (0.18%).
 
-## Appendix D. Reproduction
+## Appendix E. Reproduction
 
 The replication package is at <https://github.com/dingningpei/rollover-clock>. It contains the code (`src/`) and three hand-collected inputs (`data/manual/`):
 - the Treasury Bulletin FD-5/FD-7 December rows for 1980–2003, transcribed from FRASER scans;
@@ -1015,7 +1039,7 @@ Everything else is downloaded from public sources: the Treasury (FiscalData: MSP
 bash reproduce.sh
 ```
 
-downloads the inputs, runs the model checks and the full pipeline, and writes all tables to `data/processed/` and Figures 1–3 to `paper/figures/`.
+downloads the inputs, runs the model checks and the full pipeline, and writes all tables to `data/processed/` and the figures to `paper/figures/`.
 
 Section 6 uses the code in `src/intl/`. The DMO's gilts-in-issue reports (D1A, 2007–2025) are included in `data/manual/uk_dmo/`, because the DMO site does not allow scripted downloads. The other inputs are downloaded from public sources:
 - the Bank of England (APF operation results and holdings table, statistical database);
@@ -1024,20 +1048,20 @@ Section 6 uses the code in `src/intl/`. The DMO's gilts-in-issue reports (D1A, 2
 - the Bank of Japan (JGB holdings by issue, time-series API);
 - FRED (GDP).
 
-`src/intl/comparison.py` writes Tables 8–9 and Figure 5; `src/intl/uk_inflation_test.py` writes Table 10 and `src/intl/jp_inflation_test.py` Table 11.
+`src/intl/comparison.py` writes Tables 7–8 and Figure 4; `src/intl/uk_inflation_test.py` writes Table 9 and `src/intl/jp_inflation_test.py` Table 10.
 
-Section 5.3 and Appendix C use:
-- `src/limit/monetary_reaction.py` (Table 3b, the monetary tolerance threshold κ\*, and the implied κ in Section 4.5);
-- `src/fiscal/breaks.py` (Table 5b) and `src/limit/psi_regimes.py` (Table 4, regime-specific ψ);
-- `src/fiscal/phi_obr.py` (Table 5c), with the OBR's fiscal forecast revisions and historical official forecasts databases;
+Sections 5.3–5.4 and Appendix D use:
+- `src/limit/monetary_reaction.py` (Table 4, the monetary tolerance threshold κ\*, and the implied κ in Section 4.5);
+- `src/fiscal/breaks.py` (Table D2) and `src/limit/psi_regimes.py` (Table 5, regime-specific ψ);
+- `src/fiscal/phi_obr.py` (Table D3), with the OBR's fiscal forecast revisions and historical official forecasts databases;
 - `src/fiscal/phi_cbo.py`, with CBO's baselines and baseline changes from github.com/US-CBO/eval-projections;
 - `src/fiscal/panel_fetch.py` and `src/fiscal/phi_panel.py`, with the OECD Economic Outlook and BIS debt securities statistics.
 
 All of these inputs are downloaded by `reproduce.sh`.
 
-## Appendix E. The two-layer limit by year, 1980–2025
+## Appendix F. The two-layer limit by year, 1980–2025
 
-**Table E1. Two-layer limit by year** (consolidated; +1pp permanent rate rise, H = 10; ψ = 3bp; g forward to 2015, SEP from 2016)
+**Table F1. Two-layer limit by year** (consolidated; +1pp permanent rate rise, H = 10; ψ = 3bp; g forward to 2015, SEP from 2016)
 
 | Year | Source | r (%) | g (%) | b | φ* | φ̂ | Gap | Ratio, consolidated | Ratio, Treasury | Inflation to cover gap (pp/yr) | One-time jump (%) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
