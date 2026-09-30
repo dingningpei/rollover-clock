@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\centering
+\caption{Backtest: mean absolute error (bias) of the predicted change in the average rate, pp}\label{tab:backtest}
+\footnotesize
+\begin{tabularx}{\textwidth}{l>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+\toprule
+Horizon & Clock, realized borrowing & Clock, trend borrowing & WAM-only clock & No change & Origins \\
+\midrule
+12 months & 0.047 ($-$0.003) & 0.091 (+0.068) & 0.279 ($-$0.108) & 0.389 (+0.118) & 22 \\
+24 months & 0.066 ($-$0.005) & 0.155 (+0.116) & 0.502 ($-$0.254) & 0.693 (+0.167) & 21 \\
+36 months & 0.071 ($-$0.019) & 0.170 (+0.140) & 0.620 ($-$0.431) & 0.815 (+0.146) & 20 \\
+\bottomrule
+\end{tabularx}
+\end{table}

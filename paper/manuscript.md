@@ -350,7 +350,7 @@ The two findings pull in opposite directions for the combined metric of Section 
 
 ![Figure 3](figures/fig3_limit_map.png)
 
-*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and historical offset φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the reference path of φ̂ (0.39 to 2003, 0 from 2004; Section 5.1), the line a common φ̂ = 0.25 in every year.*
+*Figure 3. Two-layer limit. Top: fiscal threshold φ* (line; band spans g and ψ) and the reference path of the fiscal response φ̂ (dashed). Middle: inflation-layer ratio ∫P/∫E, consolidated (erosion base includes currency, and reserves before 2008) and for the Treasury's own marketable debt. Bottom: inflation needed to cover the gap (φ* − φ̂)⁺ after a +1pp permanent rate rise, pp per year for 10 years; bars use the reference path of φ̂ (0.39 to 2003, 0 from 2004; Section 5.1), the line a common φ̂ = 0.25 in every year.*
 
 **Table 3. Two-layer limit by period (consolidated; g forward; ψ = 3bp)**
 

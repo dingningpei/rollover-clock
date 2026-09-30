@@ -46,6 +46,7 @@ def fig1():
     fig.tight_layout()
     fig.savefig(OUT / "fig1_rollover_clock.png", dpi=160, facecolor=SURFACE)
     fig.savefig(OUT / "fig1_rollover_clock.svg", facecolor=SURFACE)
+    fig.savefig(OUT / "fig1_rollover_clock.pdf", facecolor=SURFACE)                # vector, for the LaTeX paper
 
 
 def fig2():
@@ -71,6 +72,7 @@ def fig2():
     fig.tight_layout()
     fig.savefig(OUT / "fig2_2022_test.png", dpi=160, facecolor=SURFACE)
     fig.savefig(OUT / "fig2_2022_test.svg", facecolor=SURFACE)
+    fig.savefig(OUT / "fig2_2022_test.pdf", facecolor=SURFACE)                # vector, for the LaTeX paper
 
 
 if __name__ == "__main__":

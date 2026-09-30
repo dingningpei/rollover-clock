@@ -1,0 +1,31 @@
+\section{Timing: which inflation, and a ceiling on the surplus}\label{app:timing}
+\setcounter{table}{0}\setcounter{figure}{0}
+
+\subsection{Which inflation? Reconciling the maturity sign}\label{app:whichinflation}
+
+Let $w(s)$ be the share of nominal debt payments due at $s$ and $p(s)$ the cumulative surprise in the price level. Real erosion of the debt is $N\int w(s)p(s)\,ds$; currency $C$ loses $p(s)$ of its value for as long as the price level stays higher. How maturity matters depends on how persistent the price-level path is:
+
+\input{tables/tabC0}
+
+Here $D_N$ is the average time to repricing of nominal debt over the horizon. A reversed surprise leaves currency holders whole, while a sustained one taxes currency throughout. QE therefore makes a front-loaded surprise more effective and a persistent inflation tax less effective. Because our question is whether inflation can stand in for a missing fiscal response over a horizon, we use the sustained object. We also report the one-time level jump, $\Delta p^{req}=u\,\Delta r\int_0^H P/(N/b+C/b)$, which depends on maturity only through the cost of the shock.
+
+\subsection{A ceiling on the surplus and the time to the limit}\label{app:ceiling}
+
+Governments cannot raise the primary surplus without limit; \citet{ghosh2013} call the flattening of the response at high debt fiscal fatigue. Let the surplus have a ceiling $s_{max}$. After a permanent rise $\Delta r$ in the marginal rate, the primary balance that holds debt/GDP constant is
+\begin{equation}
+s^{req}(h)=\big(\bar r(h)-g\big)\,b-g\,z-\Delta\pi\,b\,E(h),\qquad \bar r(h)=\bar r_0+(r+\Delta r-\bar r_0)\,P(h),
+\end{equation}
+where $z$ is the zero-interest base relative to GDP, $g\,z$ its seigniorage, and $\Delta\pi$ an optional sustained surprise inflation. The limit is broken when $s^{req}(h)$ first exceeds $s_{max}$, at the time to the limit $T(\Delta r)$. \emph{Whether} the limit is broken does not depend on maturity: it happens whenever the long-run requirement $(r+\Delta r-g)b-g\,z-\Delta\pi\,z$ exceeds $s_{max}$. \emph{When} it is broken depends only on the rollover clock, because the requirement climbs toward its long-run value at the speed $P(h)$; a faster clock shortens $T$. Inflation enters the same way. A sustained surprise lowers the requirement by $\Delta\pi\,b\,E(h)$, which shrinks as the debt reprices, so it lengthens $T$ but, unless the currency base alone can carry the gap, does not remove the limit. This is the sense in which inflation buys time.
+
+Table~\ref{tab:timetolimit} and Figure~\ref{fig:timetolimit} compute $T(\Delta r)$ at the end-2025 fiscal position: $b=0.95$, $\bar r_0=3.6\%$, $r=4.2\%$, $g=3.8\%$, $z=0.079$. The ceilings of 1--3\% of GDP bracket the U.S. record: since 1967 the primary surplus, excluding Fed remittances, has exceeded 2\% of GDP only in fiscal years 1997--2001, when it peaked at 4.8\%. Each column uses the same fiscal position and a different repricing clock, so the comparison isolates maturity.
+
+\input{tables/tabC1}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig4_time_to_limit.pdf}
+\caption{Time to the limit with a ceiling of 2\% of GDP on the primary surplus}\label{fig:timetolimit}
+\begin{minipage}{0.85\textwidth}\footnotesize The end-2025 debt, rates and growth are common to all lines; only the repricing clock differs. The dashed line adds a sustained surprise inflation of 2pp a year.\end{minipage}
+\end{figure}
+
+With a 2\% ceiling, any permanent shock above about 2pp eventually breaks the limit, whatever the maturity. A 3pp shock breaks it after about four years with today's consolidated clock and after almost five without QE: the faster post-QE clock costs 8--9 months at this ceiling, and more in relative terms for larger shocks (2.0 against 2.6 years for a 4pp shock). The end-2007 clock gives almost the same times as the no-QE clock, and the consolidated structure of 2025 is faster than both. Two points of sustained surprise inflation lengthen the time to the limit by about 2--3 years for 3--4pp shocks, and do not prevent the limit from binding. That is how much time inflation buys.

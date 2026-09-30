@@ -46,6 +46,7 @@ def main() -> None:
     out = Path("paper/figures")
     fig.savefig(out / "fig4_time_to_limit.png", dpi=160, facecolor=SURFACE)
     fig.savefig(out / "fig4_time_to_limit.svg", facecolor=SURFACE)
+    fig.savefig(out / "fig4_time_to_limit.pdf", facecolor=SURFACE)                # vector, for the LaTeX paper
 
 
 if __name__ == "__main__":

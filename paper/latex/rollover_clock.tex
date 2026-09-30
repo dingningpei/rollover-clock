@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+\usepackage[round,authoryear]{natbib}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\onehalfspacing
+\setlist{itemsep=1pt,topsep=3pt}
+\newtheorem{proposition}{Proposition}
+\graphicspath{{../figures/}}
+\renewcommand{\arraystretch}{1.15}
+
+\title{The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet,\\ and the Debt Limit of a Reserve-Currency Sovereign}
+\author{Ningpei Ding\thanks{Independent researcher. Email: \href{mailto:dingningpei@gmail.com}{dingningpei@gmail.com}. Replication code and data: \url{https://github.com/dingningpei/rollover-clock} (Appendix~\ref{app:reproduction}).}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent When can a sovereign that borrows in its own reserve currency keep rolling its debt over, and what stops it if it cannot? We separate two layers of the answer. In the \emph{fiscal layer}, debt is locally stable if and only if the primary surplus offsets at least a share $\varphi^*=1-g/(r+\psi b)$ of the marginal interest cost of debt, a threshold we prove does not depend on maturity. In the \emph{inflation layer}, surprise inflation substitutes for a missing fiscal response. How much it takes depends on how fast the consolidated liabilities of the Treasury and the central bank reprice, the \emph{rollover clock}, and on how much of them inflation can erode, including currency.
+
+We measure the clock security by security for the United States from 1980 to 2025. It predicts the Treasury's average interest rate within 0.05--0.07 percentage points and reproduces the 2022--25 rise in interest costs and the Federal Reserve's operating loss.
+
+Today's threshold ($\varphi^*\approx0.47$) is back in its pre-2008 range. Whether it is met is a policy choice, which we price rather than estimate. Each 0.1 of missing fiscal offset after a permanent 1pp rate rise costs about 0.2pp of extra inflation a year for a decade. With no offset, the U.S. norm on the best available evidence, the cost is 1.0--1.1pp, the most since at least 1980. QE raised this price by replacing currency with interest-bearing reserves; it accounts for 50--80\% of the rise since 2007. It did more: if the central bank raises real rates by more than $\kappa^*=1/R$ per point of inflation, where $R$ is that price, no inflation covers any gap. QE lowered the U.S. $\kappa^*$ by about two fifths at every horizon; at ten years, from 0.64--0.82 to 0.39--0.50, below a Taylor rule's 0.5.
+
+In the United Kingdom and Japan, too, the inflation layer is set by the consolidated balance sheet, not by debt management. After 2021, higher real rates took most of the inflation transfer back in the United States and the UK. In Japan, where yields were held down, holders of nominal claims lost about 18\% of GDP. The binding constraint is not default but who bears the gap: taxpayers through fiscal adjustment or higher real rates, or holders of nominal claims through inflation. We price each route.
+
+\medskip
+\noindent\textbf{JEL:} E52, E58, E62, E63, H62, H63.\\
+\noindent\textbf{Keywords:} rollover risk; debt maturity; consolidated government balance sheet; quantitative easing; fiscal limits; inflation tax; debt sustainability; interest costs.
+\end{abstract}
+
+\newpage
+\setcounter{page}{1}
+
+\input{sections/s1_intro}
+\input{sections/s2_literature}
+\input{sections/s3_model}
+\input{sections/s4_measurement}
+\input{sections/s5_pricing}
+\input{sections/s6_international}
+\input{sections/s7_policy}
+\input{sections/s8_conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\renewcommand{\thetable}{\thesection\arabic{table}}
+\renewcommand{\thefigure}{\thesection\arabic{figure}}
+\input{sections/appA_data}
+\input{sections/appB_proofs}
+\input{sections/appC_timing}
+\input{sections/appD_fiscal}
+\input{sections/appE_reproduction}
+\input{sections/appF_annual}
+
+\end{document}

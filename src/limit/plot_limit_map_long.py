@@ -30,7 +30,7 @@ def main() -> None:
     a.axhline(0, color=INK2, lw=0.8)
     a.set_ylabel("share of extra interest")
     a.set_title("Fiscal layer: minimum offset φ* (line: forward g, ψ = 3bp; band: trailing/forward g, ψ 2–4.5bp)\n"
-                "vs historical offset φ̂ (dashed: 0.39 to 2003, ≈0 since 2004; Auerbach–Yagan)",
+                "vs reference path of the fiscal response φ̂ (dashed: 0.39 to 2003, 0 from 2004; Auerbach–Yagan)",
                 loc="left", color=INK, fontsize=10)
     a.annotate("φ̂", xy=(1981, 0.42), color=INK, fontsize=10)
     a.set_ylim(-1.0, 0.8)
@@ -45,7 +45,7 @@ def main() -> None:
     b.legend(frameon=False, loc="upper left", labelcolor=INK, fontsize=9)
     b.set_ylim(0, 4)
 
-    c.bar(d.year, d.dpi_to_cover_gap, color=CONSOL, width=0.75, label="φ̂ = 0.39 to 2003, 0 from 2004 (baseline)")
+    c.bar(d.year, d.dpi_to_cover_gap, color=CONSOL, width=0.75, label="φ̂ = 0.39 to 2003, 0 from 2004 (reference path)")
     c.plot(d.year, d["dpi_common_0.25"], color=INK, lw=1.2, marker="o", ms=2.5, label="φ̂ = 0.25 in every year")
     c.legend(frameon=False, loc="upper left", labelcolor=INK, fontsize=9)
     c.set_ylabel("pp per year")
@@ -63,6 +63,7 @@ def main() -> None:
         out.mkdir(parents=True, exist_ok=True)
         fig.savefig(out / f"{name}.png", dpi=160, facecolor=SURFACE)
         fig.savefig(out / f"{name}.svg", facecolor=SURFACE)
+        fig.savefig(out / f"{name}.pdf", facecolor=SURFACE)                # vector, for the LaTeX paper
 
 
 if __name__ == "__main__":

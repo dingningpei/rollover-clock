@@ -1,0 +1,67 @@
+\section{Model}\label{sec:model}
+
+\subsection{Setup}\label{sec:setup}
+
+All variables are ratios to GDP. The government is consolidated: Treasury plus central bank. $b$ is net debt to the private sector (marketable Treasuries held outside the central bank, plus reserves and reverse repos), $\bar r$ is the average effective rate on $b$, $r$ the market rate on new issuance, $s$ the primary surplus, and $g$ growth:
+\begin{equation}
+\dot b=(\bar r-g)\,b-s,\qquad r=r^*+\psi\,(b-b^*),\qquad s=s^*+\varphi\,(\bar r b-r^*b^*).
+\end{equation}
+
+\paragraph{Repricing.} If debt matures at rate $\lambda$ and grows through net issuance at rate $\dot B/B$, the average rate obeys, exactly,
+\begin{equation}
+\dot{\bar r}=\big(\lambda+\dot B/B\big)(r-\bar r).
+\end{equation}
+We verify this law against a cohort-level simulation (maximum error $4\times10^{-7}$). Near a steady state the repricing speed is $\Lambda=\lambda+g$: new debt issued to keep pace with growth is priced at the new rate. For a general maturity structure with repricing distribution $F(h)$, the share of a permanent rate shock that reaches the average rate after $h$ years is
+\begin{equation}
+P(h)=1-\big(1-F(h)\big)e^{-gh}.
+\end{equation}
+We call $P(h)$ the \emph{rollover clock}.
+
+\subsection{The fiscal layer is maturity-free}\label{sec:fiscallayer}
+
+\begin{proposition}[Maturity-free threshold]\label{prop:threshold}
+The steady state is locally stable if and only if $(1-\varphi)(r^*+\psi b^*)<g$, for any repricing kernel. The minimum stabilizing offset is
+\begin{equation}
+\varphi^*=1-\frac{g}{r+\psi b}.
+\end{equation}
+\end{proposition}
+
+With exponential repricing, linearizing around the steady state gives $\det J=\Lambda\,[\,g-(1-\varphi)(r^*+\psi b^*)\,]$, and $\Lambda$ cancels from the sign. For a general kernel, the characteristic equation is $x=a+c\psi K(x)$, with $a=(1-\varphi)r^*-g$, $c=(1-\varphi)b^*$ and $K$ the Laplace transform of the kernel; since $|K(x)|\le1$ for $\operatorname{Re}x\ge0$, no root lies in the closed right half-plane when the condition holds (Appendix~\ref{app:proofs}). When fiscal adjustment responds with a lag, a numerical scan over 3,180 parameter combinations with $\lambda\in[0.05,5]$ found no case in which $\lambda$ changes stability, and maturity barely moves the asymptotic divergence rate when the system is unstable.
+
+\paragraph{What Proposition~\ref{prop:threshold} does and does not say.} \citet{cbo2022}, the \citet{obr2021} and the \citet{tbac2020,tbac2026} show that QE shortened the maturity of the consolidated government's liabilities and so raised the budget's sensitivity to interest rates. That is correct, and the rollover clock measures it. What does not follow is that QE or shorter maturity moved the threshold at which debt becomes unstable. In this model class maturity is a filter between the market rate and the average rate: it shapes the path of interest costs after a shock, but not the slow root that decides stability. The result has three boundaries. If the debt-rate schedule depends on the duration the private sector holds (a term-premium channel), maturity moves $r$ and through it $\varphi^*$; the effect runs through $r$, which we measure, not through repricing speed. If the fiscal rule responds to projected rather than realized interest, the response is faster but the threshold is the same. And if the primary surplus has a ceiling, maturity decides when a large shock breaks the limit (Appendix~\ref{app:ceiling}).
+
+\subsection{The inflation layer}\label{sec:inflationlayer}
+
+Let a permanent real-rate rise $\Delta r$ add extra interest $\Delta r\,b\,P(h)$, where $P$ is the clock of all interest-bearing liabilities; inflation-indexed debt reprices its real coupon at maturity like any other bond. Sustained surprise inflation $\Delta\pi$ lowers the real value of nominal liabilities that have not yet repriced. Two parts of the consolidated balance sheet qualify: non-indexed debt $N$, with its own clock $P_N$, and currency $C$, which pays no interest and never reprices (before October 2008 this also includes reserves). Inflation-indexed debt cannot be eroded. Per unit of interest-bearing debt $b$, the erodible share at horizon $h$ is
+\begin{equation}
+E(h)=\frac{N}{b}\,\big[1-P_N(h)\big]+\frac{C}{b}.
+\end{equation}
+
+\begin{proposition}[The price of the inflation route]\label{prop:price}
+Replacing an unfinanced share $u$ of the extra interest over horizon $H$ requires sustained surprise inflation
+\begin{equation}
+\Delta\pi(H)=u\,\Delta r\,R,\qquad R=\frac{\int_0^H P}{\int_0^H E}.
+\end{equation}
+\end{proposition}
+
+If all debt were nominal and there were no currency, the denominator would be $\int(1-P)$. Because $\int_0^\infty[1-P_N]=\int_0^\infty[1-F_N]e^{-gh}\,dh$ is finite, the debt part of the erosion base runs out, and only the currency part grows with $H$. As $H\to\infty$, the requirement converges to $u\,\Delta r\,b/C$, the permanent inflation tax on currency that covers the gap; without currency it diverges. Inflation on debt therefore only buys time. At end-2025 $b/C\approx12$, so with $u=0.46$ the limit is about 5.6pp a year indefinitely, before any fall in currency demand; in 2007 it was about 1.9. The currency base is also where reserve-currency status enters the inflation layer directly: about 44\% of U.S. currency is held abroad, so close to half of the inflation tax on currency falls on foreign holders.
+
+\paragraph{Combined metric.} Local stability requires offsetting the share $\varphi^*$ of marginal interest cost. With a fiscal response $\hat\varphi<\varphi^*$, the missing share is $u=(\varphi^*-\hat\varphi)^+$, which gives the two-layer distance to the limit,
+\begin{equation}\label{eq:combined}
+\Delta\pi^{gap}(H)=(\varphi^*-\hat\varphi)^+\,\Delta r\,R.
+\end{equation}
+The metric separates what fiscal policy must do from its price. $\varphi^*$ is the offset needed, and $R$ is the price of each unit of offset that is missing: each 0.1 of $u$ costs $0.1\,\Delta r\,R$ of extra inflation a year. Neither needs $\hat\varphi$, which is a policy choice; we report results as a function of it. The approximations are that $\varphi^*$ is evaluated at $r$ rather than $r+\Delta r$ (which is conservative), that flows are matched undiscounted, that $\Delta r$ is exogenous, that currency demand does not respond to inflation (which makes the requirement a lower bound), that $H$ is finite, and that real rates do not respond to the inflation, which we relax next.
+
+\paragraph{The monetary response.} The combined metric holds real rates fixed, which describes a central bank that tolerates the inflation. Suppose instead that it raises the real rate by $\kappa$ per point of sustained surprise inflation. The debt that has repriced by horizon $h$, $b\,P(h)$ including reserves, then pays $\kappa\,\Delta\pi$ more in real terms, and over $[0,H]$ the net relief per point of inflation falls from $b\int E$ to $b\int(E-\kappa P)$.
+
+\begin{proposition}[Monetary tolerance threshold]\label{prop:kappa}
+With a real-rate response $\kappa$, the requirement is
+\begin{equation}\label{eq:kappa}
+\Delta\pi^{gap}(H;\kappa)=\frac{(\varphi^*-\hat\varphi)^+\,\Delta r\,R}{1-\kappa R},
+\end{equation}
+which is finite only if $\kappa<\kappa^*=1/R$.
+\end{proposition}
+
+Above the monetary tolerance threshold $\kappa^*$, no rate of inflation covers any fiscal gap, because the real-rate response takes back more than the inflation erodes. A \citet{taylor1993} rule, which raises the nominal rate by 1.5 points per point of inflation, has $\kappa=0.5$. The ratio $R$ that prices the inflation route therefore also sets how much monetary tightening the route can survive. A faster clock or a smaller zero-interest base raises the price and lowers the threshold. The proof is in Appendix~\ref{app:proofs}.
+
+\paragraph{Which inflation.} The metric uses a sustained surprise inflation, because the question is whether inflation can stand in for a missing fiscal response over a horizon. A one-time jump in the price level erodes debt and currency regardless of maturity, and a transitory surprise that is later reversed favors short debt. Appendix~\ref{app:whichinflation} reconciles these cases with the literature.

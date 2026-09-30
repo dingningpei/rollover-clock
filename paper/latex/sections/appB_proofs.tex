@@ -1,0 +1,31 @@
+\section{Proofs}\label{app:proofs}
+
+\paragraph{B.1 Repricing law.} Let $B$ be the face value of debt and $\mathcal R=\bar r B$ total interest. Debt matures at rate $\lambda$, and the average rate on the maturing flow is $\bar r$ (exact under exponential maturity). Maturing debt and net issuance $\dot B$ are refinanced at the market rate $r$, so $\dot{\mathcal R}=(\lambda B+\dot B)\,r-\lambda B\,\bar r$. Then
+\begin{equation}
+\dot{\bar r}=\frac{\dot{\mathcal R}}{B}-\bar r\frac{\dot B}{B}=\Big(\lambda+\frac{\dot B}{B}\Big)(r-\bar r).
+\end{equation}
+A cohort-level simulation reproduces this law to within $4\times10^{-7}$, which is the time-step error.
+
+\paragraph{B.2 Stability with exponential repricing.} Take the state $(b,\bar r)$ and let $\Lambda=\lambda+g$. Around the steady state $(b^*,r^*)$,
+\begin{equation}
+J=\begin{pmatrix}(1-\varphi)r^*-g & (1-\varphi)b^*\\ \psi\Lambda & -\Lambda\end{pmatrix},\qquad \det J=\Lambda\,[\,g-(1-\varphi)(r^*+\psi b^*)\,].
+\end{equation}
+Write $a=(1-\varphi)r^*-g$ and $c=(1-\varphi)b^*\ge0$ for $\varphi\le1$. Then $\det J>0$ if and only if $a+c\psi<0$. That implies $a<0$, and therefore $\operatorname{tr}J=a-\Lambda<0$. So the steady state is locally stable if and only if $(1-\varphi)(r^*+\psi b^*)<g$, whatever $\Lambda$ is.
+
+\paragraph{B.3 Any repricing kernel (Proposition~\ref{prop:threshold}).} Let the average rate be a weighted history of market rates, $\bar r(t)=\int_0^\infty k(s)\,r(t-s)\,ds$, with $k\ge0$ and $\int k=1$. The cumulative kernel $\int_0^h k$ is the rollover clock $P(h)$. Linearizing gives $\dot b=a\,b+c\,\bar r$ with $r=\psi b$, so modes $e^{xt}$ solve
+\begin{equation}
+x=a+c\psi K(x),\qquad K(x)=\int_0^\infty k(s)e^{-xs}\,ds.
+\end{equation}
+If $\operatorname{Re}x\ge0$, then $|K(x)|\le1$, so $\operatorname{Re}x=a+c\psi\operatorname{Re}K(x)\le a+c\psi$. Under the stability condition $a+c\psi<0$, which is a contradiction, so every root has $\operatorname{Re}x<0$. Conversely, if $a+c\psi>0$, the real function $f(x)=a+c\psi K(x)-x$ is positive at $x=0$ and tends to $-\infty$, so it has a positive real root. Stability thus depends on $(a,c,\psi)$ and not on the kernel. The exponential kernel $k(s)=\Lambda e^{-\Lambda s}$ gives $K(x)=\Lambda/(\Lambda+x)$ and reproduces B.2. With lagged fiscal adjustment, $\dot s=\theta[s^*+\varphi(\bar r b-r^*b^*)-s]$, the determinant condition is the same; a scan of 3,180 combinations of $(r,\varphi,\theta)$ with $\lambda\in[0.05,5]$ finds no case in which $\lambda$ changes stability.
+
+\paragraph{B.4 The price of the inflation route (Proposition~\ref{prop:price}).} A permanent real-rate rise $\Delta r$ raises interest by $\Delta r\,b\,P(h)$ at horizon $h$, where $P$ is the clock of all interest-bearing debt $b=N+I$ (nominal plus indexed). A sustained surprise inflation $\Delta\pi$ lowers the real value of a nominal liability until it reprices, since repriced debt carries a Fisher-adjusted coupon. Indexed debt $I$ is not eroded at all. Currency $C$ pays no interest and never reprices, so it is eroded at every $h$. The erosion flow at $h$ is therefore $\Delta\pi\{N[1-P_N(h)]+C\}=\Delta\pi\,b\,E(h)$. Setting cumulative erosion over $[0,H]$ equal to the unfinanced share $u$ of cumulative extra interest,
+\begin{equation}
+\Delta\pi\,b\int_0^H E=u\,\Delta r\,b\int_0^H P\quad\Rightarrow\quad \Delta\pi(H)=u\,\Delta r\,\frac{\int_0^H P}{\int_0^H E}.
+\end{equation}
+With $u=(\varphi^*-\hat\varphi)^+$ this is the combined metric \eqref{eq:combined}. Three remarks follow. First, $\varphi^*$ is evaluated at $r$ rather than $r+\Delta r$; since $\varphi^*$ rises with $r$, the metric is conservative, and the error is second order in $\Delta r$. Second, since $\int_0^\infty(1-P_N)=\int_0^\infty(1-F_N)e^{-gh}dh<\infty$, both $\int_0^H P$ and $\int_0^H E$ grow like $H$, with slopes 1 and $C/b$, so the required rate converges to $u\,\Delta r\,b/C$ as $H\to\infty$; without currency it diverges. Third, for a one-time level jump $\Delta p$, erosion is $(N+C)\Delta p$ regardless of maturity, so $\Delta p^{req}=u\,\Delta r\int_0^H P/(N/b+C/b)$.
+
+\paragraph{B.5 The monetary response (Proposition~\ref{prop:kappa}).} Let the central bank raise the real rate by $\kappa\,\Delta\pi$ while the surprise inflation $\Delta\pi$ lasts. Debt that has repriced by $h$, including new issuance and reserves, is a share $P(h)$ of $b$ and pays the higher real rate, so the real interest bill rises by $\kappa\,\Delta\pi\,b\,P(h)$. Setting cumulative net relief equal to the unfinanced share of the extra interest from the rate shock,
+\begin{equation}
+\Delta\pi\,b\int_0^H(E-\kappa P)=u\,\Delta r\,b\int_0^H P\quad\Rightarrow\quad\Delta\pi(H;\kappa)=\frac{u\,\Delta r\,R}{1-\kappa R},
+\end{equation}
+which has a positive solution only if $\kappa<1/R$. Three remarks follow. The higher real rate also raises the marginal cost $r$ and hence $\varphi^*$; omitting this is conservative. Indexed debt pays the higher real rate once it reprices, and it is included in $P$. And the response is assumed to last as long as the surprise, as a Taylor rule implies for a sustained deviation of inflation from target; a temporary response would give an effective $\kappa$ below the rule's coefficient.

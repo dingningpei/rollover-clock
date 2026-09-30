@@ -1,0 +1,63 @@
+\section{Measuring the rollover clock}\label{sec:measurement}
+
+\subsection{Data}\label{sec:data}
+
+\paragraph{Treasury, 2001--2025.} We use Table 3 (marketable) of the Monthly Statement of the Public Debt (MSPD), year-end snapshots, one row per CUSIP. Repricing dates are maturity for bills, notes, bonds and TIPS, and one week for floating-rate notes. The security-level sums match the official unmatured totals for all 25 year-ends, to within $2\times10^{-14}$ percent.
+
+\paragraph{Federal Reserve, 2003--2025.} SOMA Treasury holdings by CUSIP, including TIPS inflation compensation, come from the New York Fed; they match H.4.1 Treasuries held outright exactly from 2007, and within 0.25--0.51\% in 2003--06. Reserve balances and reverse repurchase agreements come from H.4.1, and both reprice overnight. Currency pays no interest, so it is not part of interest-bearing debt $b$; it enters the erosion base of the inflation layer, measured as H.4.1 currency in circulation in the same week as reserves. Reserves paid no interest before October 2008, so through 2007 they are counted with currency. The Treasury General Account is intragovernmental and excluded. The Fed's MBS (about \$2tn at end-2025) are funded by reserves: consolidated debt includes those reserves but does not net the MBS, which are a fixed-rate asset funded by a floating-rate liability, so the interest-rate exposure is real. Section~\ref{sec:policy} reports the no-QE counterfactual both with debt/GDP fixed and with the MBS-funding reserves removed. About 44\% of U.S. currency was held abroad at end-2025 (33\% at end-2007), according to the Financial Accounts of the United States. We keep all currency in the erosion base, because the transfer accrues to the U.S. government either way.
+
+\paragraph{1980--2002.} Treasury Bulletin table FD-5 (FD-7 before 1983) reports marketable debt held by private investors, which excludes the Fed and government accounts, by remaining-maturity bucket. Because reserves paid no interest before October 2008, privately held marketable debt is the consolidated interest-bearing liability for that period. We transcribed 24 December rows from FRASER scans; every row's buckets sum to its total within one million dollars. The December 2003 FD-5 total matches MSPD minus SOMA within 0.07\%, and on the exact data for 2003--07 bucketing understates the ten-year inflation-layer ratio by a stable 0.077 (s.d.\ 0.016), for which we correct. FD-5 does not separate inflation-indexed notes (first issued in 1997); we remove them from the erosion base by maturity bucket, using the Treasury Bulletin's FD-2 totals and the maturities of the TIPS outstanding at each year-end. The zero-interest base is currency in circulation plus reserve balances (December averages); it was 27--33\% of privately held marketable debt in 1980--2002, against 8\% in 2025.
+
+\paragraph{Other inputs.} Security-level accounting of U.S. debt goes back to \citet{hall2011}; we use the same MSPD-based building blocks to measure repricing speed rather than realized returns. Yields are H.15 constant-maturity series. Official average interest rates on marketable debt and the auction record are from FiscalData; GDP is from the BEA. Appendix~\ref{app:data} gives the details.
+
+\subsection{The clock, 1980--2025}\label{sec:clock}
+
+Figure~\ref{fig:clock} shows $P(1)$, the share of a permanent rate shock that reaches the average rate within a year. The clock slowed steadily through the 1980s as the Treasury lengthened maturity: $P(1)$ fell from 0.51 in 1980 to about 0.37 by 1987. Before 2008 the consolidated clock was slightly \emph{slower} than the Treasury-only clock, because the Fed held mostly bills. QE reversed this. In 2021 the consolidated $P(1)$ was 0.53 against 0.33 for the Treasury alone, and consolidated weighted-average maturity was 4.1 years against 6.0: the Treasury was lengthening while the Fed was shortening. QT narrowed the gap, but in 2025 the consolidated $P(1)$ was still about 9 points higher.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{fig1_rollover_clock.pdf}
+\caption{Rollover clock $P(1)$}\label{fig:clock}
+\begin{minipage}{0.92\textwidth}\footnotesize Orange: consolidated. For 1980--2002 this is privately held debt from FD-5 buckets (open markers); for 2003--2025 it is MSPD net of SOMA plus reserves and reverse repos. Blue: Treasury only (MSPD, 2001--).\end{minipage}
+\end{figure}
+
+\subsection{Interest-cost pass-through I: historical backtest}\label{sec:backtest}
+
+From each year-end origin $t$ (2001--2024; 2004 is omitted because the official figure is missing), we project the official average interest rate on marketable debt for 36 months. Surviving securities keep their rate, and maturing principal and net new borrowing are reissued at realized H.15 yields, using the auction mix of year $t$. We score the change in the rate against two benchmarks: a scalar clock based on weighted-average maturity (WAM), which is the information in maturity summaries, and no change. Table~\ref{tab:backtest} shows that the full repricing profile cuts the error of a maturity summary by a factor of three to nine. The largest ex-ante misses come from unanticipated bill-financed deficits, in 2007 ($+0.52$pp at 12 months) and 2019 ($+0.32$pp); they shrink to $+0.14$ and $+0.08$pp once realized borrowing is used.
+
+\input{tables/tab1}
+
+\subsection{Interest-cost pass-through II: the 2022--25 tightening from end-2021}\label{sec:freeze}
+
+We freeze both balance sheets at end-2021, before the first rate increase, and feed in realized rates and quantities. For the Treasury (Figure~\ref{fig:freeze}A), the clock predicts a 0.94pp rise in the average rate by December 2022 (actual 0.89) and 1.96pp by December 2025 (actual 1.93); the WAM-only clock predicts 0.17 and 1.57.
+
+For the Federal Reserve (Figure~\ref{fig:freeze}B), the asset book is frozen at end-2021: Treasuries at their coupons, MBS at the end-2021 book coupon of 2.48\%, TIPS inflation compensation as realized, and premium amortization net of discount accretion. Reserves reprice overnight at the rate of interest on reserve balances and reverse repos at the ON RRP rate, both set from the FOMC target range (the top of the range minus 10bp, and the bottom plus 5bp, or the bottom itself from 19 December 2024). Other expenses are taken year by year from the Reserve Banks' combined financial statements. The model reproduces the Fed's deferred asset at each year-end (\$bn):
+
+\input{tables/fedloss}
+
+Premium amortization matters: without it, the model understates losses by about 40\%. Against the combined financial statements, modeled reverse-repo interest matches within about 1\% in every year, which validates the policy-rate rule. Modeled interest on reserves is 6--10\% lower, and interest income on the frozen book \$6--23bn lower, than the statements show. The close fit of the deferred asset therefore partly reflects offsetting errors, and the out-of-sample claim rests mainly on the timing and size of the expense leg. In July 2022, Fed staff projected the deferred asset to peak at about \$60 billion in their baseline and about \$180 billion in the tail \citep{anderson2022}; the outcome passed \$240 billion. Because the accounting, fed the realized rates, reproduces the outcome, the gap between that projection and the outcome lies in the assumed rate path.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig2_2022_test.pdf}
+\caption{Out-of-sample test from end-2021}\label{fig:freeze}
+\begin{minipage}{0.92\textwidth}\footnotesize A: change in the official average rate on marketable debt; the clock (dashed) against the WAM-only clock (dotted). B: Fed deferred asset; frozen end-2021 asset book with reserves repricing overnight.\end{minipage}
+\end{figure}
+
+The consolidated clock is thus validated where QE matters most. The 2022--25 rate shock reached consolidated interest costs through a Treasury clock that passed through about 0.9pp within a year, and through an overnight Fed clock that passed through at once and appeared in the budget as lost remittances.
+
+\subsection{The inflation layer in 2021--25}\label{sec:inflationtest}
+
+The two tests above check how rate shocks pass through to interest costs. The inflation layer rests on a different assumption: surprise inflation erodes nominal liabilities until they reprice, and repriced debt then pays Fisher-adjusted rates. The inflation surprise of 2021--23 lets us test it.
+
+We freeze the consolidated balance sheet at end-2020. Expected inflation is the end-2020 five-year breakeven, 1.87\%, and the surprise is realized CPI inflation minus 1.87 (October 2025, not published because of the federal shutdown, is interpolated). The real transfer from holders of nominal government liabilities to the government, relative to a no-surprise path, accrues each month as the surprise times nominal liabilities $N$ (privately held non-indexed marketable debt, reserves, reverse repos and currency), less the extra interest paid when debt reprices, computed with the projection of Section~\ref{sec:backtest} under realized borrowing. Four runs differ only in the yields at which debt reprices: (A) no surprise, the end-2020 forward curve; (B) the model's assumption, forwards plus the surprise realized over each new security's life (full Fisher repricing); (D) inflation as priced, forwards plus the actual change in breakeven inflation, with real yields at their forwards; and (C) actual yields. Table~\ref{tab:inflationtest} reports the results.
+
+\input{tables/tab2}
+
+Three findings follow. First, the accounting holds up. Gross erosion of nominal liabilities reached 12\% of 2020 GDP by end-2023, about \$2.6tn, and the analytic formula applied to the end-2020 stock gives 5.2\% by 2023 against 6.1\% for its numerical counterpart B; the difference is new borrowing, which the analytic version omits.
+
+Second, markets repriced far less than the model assumes, so the surprise went further. Five-year breakeven inflation averaged 2.7\% in 2021--22 and peaked at 3.4\%, while CPI inflation averaged 6.6\%. New debt was therefore issued at rates that did not compensate for the inflation that followed. With inflation compensation as actually priced (D), the transfer reached 10.9\% of GDP by 2023, about 1.8 times the 6.1\% implied by full Fisher repricing (B). The inflation layer is thus conservative for an inflation that markets do not anticipate; its object is a sustained inflation that new issues price (Appendix~\ref{app:whichinflation}), and an unanticipated burst cannot be repeated at will.
+
+Third, higher real rates took most of it back. The five-year real yield rose from $-1.5$\% at end-2020 to an average of 1.7\% in 2024--25. With actual yields (C), the transfer peaked at 9.4\% of GDP in 2022 and fell to 4.2\% by end-2025, as debt repriced at higher real rates. The transfer from the inflation surprise was largely reversed by the real-rate shock that followed it.
+
+The last two findings pull in opposite directions for the combined metric. Underpriced inflation makes it conservative; a monetary tightening that raises real rates makes it optimistic. The real-rate take-back (D minus C) was about 1.3 times what a response of $\kappa=1$ on the repriced debt would imply, and 1.0 times in the UK (Section~\ref{sec:uktest}). This is an upper bound on the reaction to inflation, since real rates also rose for other reasons, but it is well above the monetary tolerance threshold that Section~\ref{sec:kappa} measures. The transfer survived at all only because new debt was priced for far less inflation than followed. Whether inflation can substitute for a fiscal response therefore depends on the monetary response that follows; Section~\ref{sec:jptest} shows the case where real rates did not rise.

@@ -57,6 +57,8 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Appendix C.2, Table C1, Figure C1 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
 | Section 6, Tables 7–10, Figure 4 (United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 and Japan 2022–25 inflation tests) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
 
+A LaTeX version of the paper is in `paper/latex/` (`bash paper/latex/build.sh`; needs pdflatex and bibtex). Its tables are generated from `paper/manuscript.md` by `paper/latex/md_tables.py`, and its figures are the vector PDFs in `paper/figures/`.
+
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 
 ## Data

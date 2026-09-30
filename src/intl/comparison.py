@@ -107,6 +107,7 @@ def figure(d: pd.DataFrame) -> None:
     fig.tight_layout()
     fig.savefig(FIG / "fig5_three_countries.png", dpi=160, facecolor=SURFACE)
     fig.savefig(FIG / "fig5_three_countries.svg", facecolor=SURFACE)
+    fig.savefig(FIG / "fig5_three_countries.pdf", facecolor=SURFACE)                # vector, for the LaTeX paper
 
 
 def main() -> None:
