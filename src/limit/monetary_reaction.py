@@ -40,17 +40,19 @@ def requirement(u: float, R: float, kappa: float, dr: float = 1.0) -> float:
 
 def kappa_star() -> pd.DataFrame:
     us = pd.read_csv(OUT / "limit_map_1980_2025.csv").set_index("year")
-    rows = [{"country": "United States", "year": t, "R_consol": r.ratio10_consol, "R_own": r.ratio10_treasury}
-            for t, r in us.iterrows()]
+    rows = [{"country": "United States", "year": t, "R_consol": r.ratio10_consol, "R_own": r.ratio10_treasury,
+             "R_consol_H5": r.ratio5_consol, "R_consol_H15": r.ratio15_consol} for t, r in us.iterrows()]
     uk = pd.read_csv("data/processed/uk/uk_clock.csv").set_index("year")
-    rows += [{"country": "United Kingdom", "year": t, "R_consol": r.ratio_consol_g4, "R_own": r.ratio_gross_g4}
-             for t, r in uk.iterrows()]
+    rows += [{"country": "United Kingdom", "year": t, "R_consol": r.ratio_consol_g4, "R_own": r.ratio_gross_g4,
+              "R_consol_H5": r.ratio_consol_g4_H5, "R_consol_H15": r.ratio_consol_g4_H15} for t, r in uk.iterrows()]
     jp = pd.read_csv("data/processed/jp/jp_clock.csv").set_index("fy")
-    rows += [{"country": "Japan", "year": t, "R_consol": r.ratio_consol_g4, "R_own": r.ratio_gross_g4}
-             for t, r in jp.iterrows()]
+    rows += [{"country": "Japan", "year": t, "R_consol": r.ratio_consol_g4, "R_own": r.ratio_gross_g4,
+              "R_consol_H5": r.ratio_consol_g4_H5, "R_consol_H15": r.ratio_consol_g4_H15} for t, r in jp.iterrows()]
     d = pd.DataFrame(rows)
     d["kappa_star_consol"] = 1 / d.R_consol
     d["kappa_star_own"] = 1 / d.R_own
+    for H in (5, 15):
+        d[f"kappa_star_H{H}"] = 1 / d[f"R_consol_H{H}"]
     return d
 
 
@@ -64,6 +66,9 @@ def requirements() -> pd.DataFrame:
             rec = {"year": t, "phi_hat": lab, "u": u, "R": r.ratio10_consol, "kappa_star": 1 / r.ratio10_consol}
             for k in KAPPAS:
                 rec[f"dpi_k{k:.2f}"] = requirement(u, r.ratio10_consol, k)
+            for H, col in ((5, "ratio5_consol"), (15, "ratio15_consol")):
+                rec[f"kappa_star_H{H}"] = 1 / r[col]
+                rec[f"dpi_k0.50_H{H}"] = requirement(u, r[col], 0.5)
             rows.append(rec)
     return pd.DataFrame(rows)
 

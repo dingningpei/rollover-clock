@@ -71,6 +71,8 @@ def main() -> None:
             row[f"ratio_consol_{tag}"] = layer(tau, w, ix, notes, 10, g)["ratio"]
             row[f"ratio_consol_nocur_{tag}"] = layer(tau, w, ix, 0.0, 10, g)["ratio"]
             row[f"ratio_gross_{tag}"] = layer(tau_t, w_t, ix_t, 0.0, 10, g)["ratio"]
+        for H in (5, 15):                                             # horizon sensitivity, g = 4%
+            row[f"ratio_consol_g4_H{H}"] = layer(tau, w, ix, notes, H, 0.04)["ratio"]
         rows.append(row)
     d = pd.DataFrame(rows)
     d.to_csv(OUT / "uk_clock.csv", index=False)
