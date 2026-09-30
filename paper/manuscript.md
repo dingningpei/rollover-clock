@@ -6,11 +6,11 @@
 
 When can a sovereign that borrows in its own reserve currency keep rolling its debt over, and what stops it if it cannot? We separate two layers of the answer. In the **fiscal layer**, debt is locally stable if and only if the primary surplus offsets at least a share φ* = 1 − g/(r + ψb) of the marginal interest cost of debt; we prove that this threshold does not depend on maturity, for any repricing kernel. In the **inflation layer**, surprise inflation substitutes for a missing fiscal response. How much it takes depends on how fast the consolidated liabilities of the Treasury and the central bank reprice, which we call the *rollover clock*, and on how much of them inflation can erode, including currency.
 
-We measure the clock security by security for the United States from 1980 to 2025. It predicts the Treasury's average interest rate within 0.05–0.07 percentage points and reproduces both the 2022–25 rise in Treasury interest costs and the Federal Reserve's operating loss. In the 2021–25 inflation it shows that markets priced far less inflation into new debt than full Fisher repricing implies.
+We measure the clock security by security for the United States from 1980 to 2025. It predicts the Treasury's average interest rate within 0.05–0.07 percentage points, reproduces the 2022–25 rise in interest costs and the Federal Reserve's operating loss, and shows that in 2021–25 markets priced far less inflation into new debt than full Fisher repricing implies.
 
-Today's fiscal threshold (φ* ≈ 0.47) is back in its pre-2008 range. What has changed is the fiscal response, which fell from about 0.39 before 2004 to about zero, and the funding of the Fed: QE replaced currency, which inflation erodes, with interest-bearing reserves, and accounts for 50–80% of the rise since 2007 in the inflation needed per unit of relief. Covering the fiscal gap after a permanent 1pp rate rise would take 1.0–1.1 pp of extra inflation a year for a decade, the most since at least 1980. Holding debt/GDP stable at CBO's baseline deficits would take about 4 pp. The binding U.S. constraint is not default but the cost of the inflation tax.
+Today's fiscal threshold (φ* ≈ 0.47) is back in its pre-2008 range. What has changed is the fiscal response, down from about 0.39 before 2004 to about zero, and the funding of the Fed: QE replaced currency, which inflation erodes, with interest-bearing reserves, and accounts for 50–80% of the rise since 2007 in the inflation needed per unit of relief. Covering the fiscal gap after a permanent 1pp rate rise would take 1.0–1.1 pp of extra inflation a year for a decade, the most since at least 1980; holding debt/GDP stable at CBO's baseline deficits, about 4 pp.
 
-The same measures for the United Kingdom and Japan show that the inflation layer is set by the consolidated balance sheet, not by debt management. The UK's gilts are the longest of the three countries' debt, yet at the 2021 QE peak its consolidated ratio matched that of the United States. Japan's 2024 move to paying interest on reserves more than doubled its ratio. In the UK's 2021–25 inflation the pattern of the U.S. test repeats, and the extra interest paid on reserves took back most of the transfer.
+The same measures for the United Kingdom and Japan show that the inflation layer is set by the consolidated balance sheet, not by debt management. Despite the longest gilts of the three, the UK's consolidated ratio matched that of the United States at the 2021 QE peak, and Japan's 2024 move to paying interest on reserves more than doubled its ratio. The binding constraint is not default but the cost of the inflation tax.
 
 ---
 
@@ -763,6 +763,34 @@ The clock adds growth-financing issuance at the new rate: P_t(h) = 1 − (1 − 
 - "Realized borrowing" interpolates the actual path of marketable debt. "Trend borrowing" grows the year-t stock at 4% a year.
 
 **Fiscal-reaction coefficient.** Auerbach and Yagan (2024) estimate the legislated primary-surplus response to lagged net interest. Their coefficient is in dollars of surplus per dollar of interest, which is the marginal offset φ of Section 3. Eichengreen, Menuet and Donnat (2026) instead estimate a log-log elasticity of the surplus to debt service. That elasticity maps to φ only through s/(r̄b), which is undefined when the primary balance is negative, so we use it as qualitative evidence only.
+
+**United Kingdom (Section 6).**
+- *Gilts.* We use the DMO's report D1A for the last business day of each year, 2007–2025. Conventional gilts, including "rump" gilts, enter at their nominal amount. Index-linked gilts, with both the 3-month and the 8-month indexation lag, enter at their nominal amount including the inflation uplift. Undated gilts have no repricing date and are given one of 100 years until the Treasury announced their redemption in 2014–15. The parsed sums reproduce the total stated in each report.
+- *APF holdings.* Holdings of each gilt at any date are the sum of the nominal amounts in all operations settled by that date. A holding drops out at the gilt's redemption, which is read from the Bank's bond code, and index-linked holdings are uplifted with the DMO ratio of amount to nominal for the same gilt. The operations are:
+  - APF purchases, 2009–21, including reinvestments;
+  - the 2022 financial-stability purchases of long-dated conventional and index-linked gilts;
+  - minus active sales from November 2022 and the financial-stability sales of November 2022 to January 2023.
+- *Other liabilities and GDP.* Reserve balances and notes and coin are the last December observations of Bank of England series LPMBL22 and LPMAVAA. GDP is the calendar-year sum of quarterly nominal GDP (FRED UKNGDP).
+- *Marginal cost.* The marginal cost r prices each gilt at the calendar-year average yield for its original tenor (redemption date minus first issue date). Yields are interpolated between SONIA and the Bank's 5-, 10- and 20-year nominal par yields, flat beyond 20 years; undated gilts are priced at 20 years.
+- *Growth.* Real growth for g is from FRED NGDPRSAXDCGBQ.
+- *Inflation test.* The test in Section 6.4 uses the Bank's 5-, 10- and 20-year zero-coupon nominal, real and implied-inflation curves (monthly averages), with Bank Rate at zero maturity and the real curve flat below 5 years. Inflation is from the ONS series D7BT (CPI) and CHAW (RPI).
+
+**Japan (Section 6).**
+- *JGBs by issue.* JGBs by issue at each fiscal year-end come from Table 34 of the Ministry of Finance's debt yearbook (general bonds and FILP bonds). Columns are located by their header labels, because the layout differs across editions. Issues are classified as:
+  - index-linked (物価連動);
+  - floating-rate (変動), which reprice at the next six-month reset;
+  - discount bills (割引);
+  - fixed-rate.
+- *Holdings.* BoJ holdings are matched by issue name and number from the BoJ's release of JGB holdings by issue at the fiscal year-end (the last business day of March).
+- *Financing bills and holder shares.* Financing bills are the treasury-discount-bill total in the BoJ's public-finance statistics (PF02) minus the treasury bills in Table 34, and reprice at three months. BoJ holdings of bills (balance-sheet item MABJMA5A) and government holdings of bills and JGBs (PF02) are allocated pro rata.
+- *Current accounts.*
+  - Current accounts are the end-March balance (MABJML11).
+  - Through February 2024 the 0% tier's share of current accounts is the March average share of balances at a zero rate among the three tiers (MD08). We apply that share to the end-March balance.
+  - After the March 2024 reform the zero-rate part is required reserves (MD07, average outstanding).
+  - Banknotes (MABJML1) complete the zero-interest base.
+- *GDP.* GDP is the fiscal-year average of quarterly nominal GDP at annual rates (FRED JPNNGDP).
+- *Marginal cost.* The marginal cost r prices each issue at the fiscal-year average of the Ministry of Finance's constant-maturity yield for its original tenor. Bills and floating-rate bonds are priced at one year, and index-linked bonds at the 10-year nominal yield.
+- *Growth.* Real growth for g is the fiscal-year growth of FRED JPNRGDPEXP.
 
 ## Appendix B. Proofs
 
