@@ -31,6 +31,14 @@ if [[ "${1:-}" != "--no-fetch" ]]; then
   for s in FYGFDPUN FYPUGDA188S GDPC1 GDPPOT CPIAUCSL EXPINF10YR; do
     curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
   done
+  # Section 6: nominal and real GDP for the United Kingdom and Japan
+  for s in UKNGDP NGDPRSAXDCGBQ JPNNGDP JPNRGDPEXP; do
+    curl -fsSL -o data/raw/fred/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"
+  done
+  # Section 6: Bank of England, ONS, Ministry of Finance, Bank of Japan
+  # (the DMO's gilts-in-issue reports are committed in data/manual/uk_dmo/)
+  python3 -m src.intl.uk_fetch
+  python3 -m src.intl.jp_fetch
 fi
 
 # Treasury MSPD, auctions and average rates (FiscalData API) and SOMA by CUSIP (NY Fed API);
@@ -54,7 +62,7 @@ python3 -m src.clock.freeze_2021
 python3 -m src.clock.fd5_clock
 python3 -m src.clock.inflation_test
 
-# Sections 5-6: the two-layer limit, identification attempt, counterfactuals
+# Sections 5 and 7: the two-layer limit, identification attempt, counterfactuals
 python3 -m src.limit.limit_map
 python3 -m src.limit.limit_map_long
 python3 -m src.fiscal.fiscal_response
@@ -65,8 +73,19 @@ python3 -m src.limit.level_metric
 python3 -m src.limit.time_to_limit
 python3 -m src.limit.robustness
 
-# Figures 1-4
+# Section 6: the United Kingdom and Japan
+python3 -m src.intl.uk_stock
+python3 -m src.intl.uk_apf
+python3 -m src.intl.uk_clock
+python3 -m src.intl.jp_stock
+python3 -m src.intl.jp_boj
+python3 -m src.intl.jp_clock
+python3 -m src.intl.phi_star
+python3 -m src.intl.uk_inflation_test
+
+# Figures 1-5
 python3 -m src.limit.plot_limit_map_long
 python3 -m src.limit.plot_time_to_limit
 python3 -m src.paper.figures
+python3 -m src.intl.comparison
 echo "Done. Outputs in data/processed/, figures in paper/figures/."

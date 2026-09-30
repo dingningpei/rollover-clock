@@ -50,6 +50,7 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Section 5.2, Table 4 (robustness, Monte Carlo) | `data/processed/limit/robustness*.csv` |
 | Section 5.4, Table 6 (inflation to hold debt/GDP constant) | `data/processed/limit/level_metric.csv` |
 | Sections 3.5 and 5.5, Table 7, Figure 4 (time to the limit) | `data/processed/limit/time_to_limit.csv`, `paper/figures/fig4_*` |
+| United Kingdom and Japan: clocks, fiscal threshold, UK 2021–25 inflation test, Figure 5 (section in the next version of the paper) | `data/processed/uk/`, `data/processed/jp/`, `data/processed/intl_*.csv`, `paper/figures/fig5_*` |
 
 To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome python3 paper/pdf/build_pdf.py`.
 
@@ -63,7 +64,11 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | Federal Reserve Board, Data Download Program | H.4.1 (reserves, reverse repos, currency, SOMA totals), H.15 (yields) and Z.1 (U.S. currency held abroad) bulk files |
 | Federal Reserve Bank of New York API | SOMA holdings by CUSIP, SOMA MBS at end-2021, effective federal funds rate |
 | BEA | NIPA annual tables (GDP, primary balance) |
-| FRED (Federal Reserve Bank of St. Louis) | Currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL); Cleveland Fed 10-year expected inflation (EXPINF10YR) |
+| Bank of England | APF gilt purchase and sale results and holdings table; statistical database (reserves, notes and coin, Bank Rate, SONIA, gilt yield curves) |
+| ONS | CPI (D7BT) and RPI (CHAW) |
+| Ministry of Finance, Japan | Debt yearbook, Table 34 (JGBs by issue), FY2020–2024; constant-maturity JGB yields |
+| Bank of Japan | JGB holdings by issue; Time-Series Data Search API (balance sheet, current-account tiers, required reserves, government debt by holder) |
+| FRED (Federal Reserve Bank of St. Louis) | UK and Japan nominal and real GDP (UKNGDP, NGDPRSAXDCGBQ, JPNNGDP, JPNRGDPEXP); currency in circulation and reserve balances, 1980–2002 (CURRCIR, RESBALNS); debt held by the public, real and potential GDP (FYGFDPUN, FYPUGDA188S, GDPC1, GDPPOT); CPI (CPIAUCSL); Cleveland Fed 10-year expected inflation (EXPINF10YR) |
 
 **Hand-collected, committed in `data/manual/`:**
 
@@ -73,6 +78,7 @@ To rebuild the PDF you also need Chromium or Chrome. Run `CHROME=/path/to/chrome
 | `fed_income_2022_2025.csv` | Federal Reserve Banks' combined statements of income, 2022–2025 |
 | `sep_longrun.csv` | FOMC Summary of Economic Projections, December longer-run real GDP growth, 2013–2025 |
 | `tips_fd2_december.csv` | Treasury Bulletin FD-2: TIPS outstanding, December 1997–2002 |
+| `uk_dmo/D1A_{year}-12-31.xls` | UK Debt Management Office, report D1A (gilts in issue by ISIN) for the last business day of 2007–2025. Committed because the DMO site blocks scripted downloads. |
 | `cbo_automatic_stabilizers_2026-08.xlsx` | CBO, *Effects of Automatic Stabilizers on the Federal Budget: 2026 to 2036* (publication 62568), supplemental data: deficits with and without automatic stabilizers, FY1966–2036. Committed because cbo.gov blocks scripted downloads. |
 
 `src/clock/fd5_locate.py` and `src/clock/fd5_parse.py` are the helpers used to find the FD-5 pages in the FRASER PDFs. They are not needed to reproduce the results.
@@ -84,6 +90,8 @@ src/model/    model checks: symbolic Jacobian, repricing-law simulation, stabili
 src/clock/    data fetchers; Treasury-only and consolidated clocks; backtest; 2022-25 test; FD-5 era
 src/limit/    two-layer limit map 1980-2025; counterfactuals; Figure 3
 src/fiscal/   attempt to identify the fiscal-offset coefficient (a negative result)
+src/intl/     United Kingdom and Japan: fetchers, security-level stocks, central-bank holdings, clocks,
+              cross-country fiscal threshold, UK 2021-25 inflation test, Figure 5
 src/paper/    Figures 1-2
 ```
 

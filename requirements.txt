@@ -4,6 +4,8 @@ matplotlib>=3.8
 statsmodels>=0.14
 sympy>=1.12
 openpyxl>=3.1
+xlrd>=2.0
+requests>=2.31
 # only for rebuilding the PDF (paper/pdf/build_pdf.py)
 markdown>=3.5
 latex2mathml>=3.77
