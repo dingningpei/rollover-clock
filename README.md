@@ -48,6 +48,7 @@ A full run takes about 10–20 minutes, mostly downloads. Outputs:
 | Section 5.3, Table 5 (fiscal response) | `data/processed/fiscal/fiscal_response_*.csv` |
 | Section 5.3, Table 5b (break dates), Table 5c (UK fiscal events); Appendix C (panel, CBO) | `data/processed/fiscal/breaks*.csv`, `phi_obr*.csv`, `phi_cbo*.csv`, `phi_panel.csv` |
 | Table 4, regime-specific ψ | `data/processed/limit/psi_regimes_*.csv` |
+| Sections 3.3, 5.2 (Table 3b), 6.2: monetary tolerance threshold κ* | `data/processed/limit/monetary_reaction_*.csv` |
 | Appendix C (φ identification with the clock) | `data/processed/fiscal/phi_*.csv` |
 | Section 7, Table 11 (counterfactuals) | `data/processed/limit/counterfactuals_2025.csv` |
 | Section 5.2 (decomposition, 2007–2025) | `data/processed/limit/decomposition_2007_2025.csv` |

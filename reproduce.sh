@@ -91,6 +91,7 @@ python3 -m src.intl.jp_clock
 python3 -m src.intl.phi_star
 python3 -m src.intl.uk_inflation_test
 python3 -m src.intl.jp_inflation_test
+python3 -m src.limit.monetary_reaction
 
 # Figures 1-5
 python3 -m src.limit.plot_limit_map_long
