@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code or the rollover-clock data, please cite the paper below."
+title: "The Rollover Clock: replication package and monthly data"
+authors:
+  - family-names: Ding
+    given-names: Ningpei
+repository-code: "https://github.com/dingningpei/rollover-clock"
+license: MIT
+preferred-citation:
+  type: article
+  title: "The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign"
+  authors:
+    - family-names: Ding
+      given-names: Ningpei
+  year: 2026
+  notes: "Working paper"

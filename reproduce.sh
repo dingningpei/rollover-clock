@@ -98,4 +98,7 @@ python3 -m src.limit.plot_limit_map_long
 python3 -m src.limit.plot_time_to_limit
 python3 -m src.paper.figures
 python3 -m src.intl.comparison
+# Monthly data series (data/release/): the clock, inflation price and kappa* at every month-end since 2003
+python3 -m src.release.monthly_clock
+
 echo "Done. Outputs in data/processed/, figures in paper/figures/."

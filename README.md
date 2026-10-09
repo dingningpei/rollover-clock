@@ -6,6 +6,9 @@ Replication package for
 
 - Paper: [`paper/rollover_clock.pdf`](paper/rollover_clock.pdf), built from the LaTeX source in [`paper/latex/`](paper/latex/); a Markdown version of the text is in [`paper/manuscript.md`](paper/manuscript.md)
 - Contact: dingningpei@gmail.com
+- **Monthly data:** [`data/release/`](data/release/), updated every month: the rollover clock, the inflation price and the monetary tolerance threshold κ\* for the consolidated Treasury + Fed balance sheet since July 2003
+
+![Rollover clock and monetary tolerance threshold, monthly](data/release/rollover_clock_monthly.png)
 
 ## What the paper does
 
@@ -102,8 +105,9 @@ src/fiscal/   evidence on the fiscal response: Bohn regressions, break tests, UK
 src/intl/     United Kingdom and Japan: fetchers, security-level stocks, central-bank holdings, clocks,
               cross-country fiscal threshold, UK and Japan inflation tests, Figure 5
 src/paper/    Figures 1-2
+src/release/  monthly data series (data/release/), updated by .github/workflows/update-clock.yml
 ```
 
 ## License
 
-MIT (see `LICENSE`). If you use the data or code, please cite the paper.
+MIT (see `LICENSE`). If you use the data or code, please cite the paper (see `CITATION.cff`).
