@@ -77,6 +77,7 @@ def soma_holdings(d: str, fetch: bool) -> pd.DataFrame | None:
 def refresh_h41() -> None:
     """Same download as reproduce.sh (curl; the Board's server refuses Python's default client)."""
     z = RAW_FED / "h41.zip"
+    z.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["curl", "-fsSL", "-o", str(z), H41_ZIP], check=True)
     zipfile.ZipFile(z).extract("H41_data.xml", RAW_FED)
 

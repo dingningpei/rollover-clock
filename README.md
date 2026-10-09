@@ -2,7 +2,7 @@
 
 Replication package for
 
-> Ningpei Ding (2026). **"The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign."** Working paper.
+> Ningpei Ding (2026). **"The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign."** Working paper, [SSRN 7542158](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7542158).
 
 - Paper: [`paper/rollover_clock.pdf`](paper/rollover_clock.pdf), built from the LaTeX source in [`paper/latex/`](paper/latex/); a Markdown version of the text is in [`paper/manuscript.md`](paper/manuscript.md)
 - Contact: dingningpei@gmail.com
