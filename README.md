@@ -5,7 +5,7 @@ Replication package for
 > Ningpei Ding (2026). **"The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign."** Working paper, [SSRN 7542158](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7542158).
 
 - Paper: [`paper/rollover_clock.pdf`](paper/rollover_clock.pdf), built from the LaTeX source in [`paper/latex/`](paper/latex/); a Markdown version of the text is in [`paper/manuscript.md`](paper/manuscript.md)
-- Contact: dingningpei@gmail.com
+- Contact: dingningpei@gmail.com · ORCID [0009-0003-4938-6127](https://orcid.org/0009-0003-4938-6127)
 - **Monthly data:** [`data/release/`](data/release/), updated every month: the rollover clock, the inflation price and the monetary tolerance threshold κ\* for the consolidated Treasury + Fed balance sheet since July 2003
 
 ![Rollover clock and monetary tolerance threshold, monthly](data/release/rollover_clock_monthly.png)
