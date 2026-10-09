@@ -6,6 +6,7 @@ authors:
     given-names: Ningpei
     affiliation: "Independent researcher"
     orcid: "https://orcid.org/0009-0003-4938-6127"
+doi: "10.5281/zenodo.23265467"
 repository-code: "https://github.com/dingningpei/rollover-clock"
 license: MIT
 preferred-citation:

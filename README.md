@@ -1,5 +1,7 @@
 # The Rollover Clock
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23265467.svg)](https://doi.org/10.5281/zenodo.23265467)
+
 Replication package for
 
 > Ningpei Ding (2026). **"The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign."** Working paper, [SSRN 7542158](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7542158).
@@ -110,4 +112,4 @@ src/release/  monthly data series (data/release/), updated by .github/workflows/
 
 ## License
 
-MIT (see `LICENSE`). If you use the data or code, please cite the paper (see `CITATION.cff`).
+MIT (see `LICENSE`). If you use the data or code, please cite the paper and the archived code and data, [doi:10.5281/zenodo.23265467](https://doi.org/10.5281/zenodo.23265467) (see `CITATION.cff`).

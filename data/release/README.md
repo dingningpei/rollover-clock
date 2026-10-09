@@ -14,6 +14,8 @@ If you use these data, please cite:
 
 > Ding, Ningpei (2026). "The Rollover Clock: Debt Maturity, the Central-Bank Balance Sheet, and the Debt Limit of a Reserve-Currency Sovereign." Working paper, SSRN. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7542158
 
+To cite the data and code themselves, use the archived version on Zenodo: [doi:10.5281/zenodo.23265467](https://doi.org/10.5281/zenodo.23265467). This DOI always resolves to the latest version.
+
 The definitions and validation are in the paper (Sections 3–5). The repository's `CITATION.cff` gives the same reference in machine-readable form.
 
 ## Construction
