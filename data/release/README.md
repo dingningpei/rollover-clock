@@ -30,7 +30,10 @@ Repricing dates:
 - floating-rate notes reprice weekly;
 - reserves and reverse repos reprice overnight.
 
-Every month uses the same code as the paper's year-end measures. The December values of `R_H5`, `R_H10` and κ\* reproduce the paper exactly. From 2008 on, the clock (`P*`, `wam_years`) also matches the paper exactly. Before 2008 it differs by at most 0.002, because here unremunerated reserves are counted in the zero-interest base rather than as overnight debt.
+Every month uses the same construction as the paper's year-end measures, with two small differences:
+
+- **Clock (`P*`, `wam_years`).** From 2008 on, the December values match the paper exactly. Before 2008 they differ by at most 0.002, because here unremunerated reserves are counted in the zero-interest base rather than as overnight debt.
+- **Inflation price and κ\* (`R_*`, `kappa_star_*`).** Securities that reprice on the same day are pooled before the repricing profile is interpolated, so the series is identical on every computer. The paper's code orders such ties arbitrarily, which moves R in the third decimal from one platform to another. December values differ from the paper by at most 0.006 in R and 0.005 in κ\*.
 
 ## Variables
 

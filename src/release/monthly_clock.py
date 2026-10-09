@@ -5,7 +5,8 @@ inflation_layer, monetary_reaction), applied at every month-end:
   marketable Treasuries by CUSIP (MSPD) net of SOMA holdings by CUSIP (NY Fed), plus reserves
   and reverse repos (H.4.1, Wednesday on or before the SOMA as-of date); currency is the
   zero-interest base, and reserves join it before interest on reserves (October 2008).
-December values reproduce the year-end files exactly.
+December values reproduce the year-end files: the clock exactly (from 2008), R and kappa* to
+within 0.006, the difference coming from pooling tied repricing dates (see exact_F below).
 
 Usage:
   python -m src.release.monthly_clock           # download what is new, then build
@@ -27,7 +28,7 @@ import pandas as pd
 from src.clock.consolidated_clock import OVERNIGHT, soma_by_cusip
 from src.clock.fetch_fed import h41_levels
 from src.clock.fiscaldata import fetch_all
-from src.clock.inflation_layer import layer
+from src.clock.inflation_layer import GRID, integrals
 from src.clock.treasury_clock import G_BASELINE, securities
 
 MARKET = "/v1/debt/mspd/mspd_table_3_market"
@@ -80,6 +81,23 @@ def refresh_h41() -> None:
     z.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["curl", "-fsSL", "-o", str(z), H41_ZIP], check=True)
     zipfile.ZipFile(z).extract("H41_data.xml", RAW_FED)
+
+
+def exact_F(tau: np.ndarray, w: np.ndarray, h: np.ndarray = GRID) -> np.ndarray:
+    """Share of w repricing within h. Securities with the same repricing date are pooled first,
+    so the result does not depend on how a sort orders ties (it does in the paper's
+    inflation_layer.exact_F, which gives platform-dependent R in the third decimal)."""
+    t, inv = np.unique(tau, return_inverse=True)
+    cw = np.cumsum(np.bincount(inv, weights=w)) / w.sum()
+    F = np.interp(h, t, cw, left=0.0, right=1.0)
+    F[h < t[0]] = 0.0
+    return F
+
+
+def layer(tau: np.ndarray, w: np.ndarray, indexed: np.ndarray, currency: float, H: float) -> dict:
+    nom = ~indexed
+    return integrals(exact_F(tau, w), exact_F(tau[nom], w[nom]), w[nom].sum() / w.sum(),
+                     currency / w.sum(), H, G_BASELINE)
 
 
 def month_row(d: str, sec: pd.DataFrame, soma: pd.DataFrame, asof: str, lev: pd.Series) -> dict:
